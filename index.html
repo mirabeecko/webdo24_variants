@@ -295,6 +295,7 @@
       <button class="tab-btn" onclick="filterVariants('v4')">V4</button>
       <button class="tab-btn" onclick="filterVariants('v5')">V5</button>
       <button class="tab-btn" onclick="filterVariants('v6')">V6</button>
+      <button class="tab-btn" onclick="filterVariants('v7')">V7</button>
     </div>
   </header>
 
@@ -665,6 +666,63 @@
         </div>
       </div>
 
+      <div class="variant-card" data-variant="v7">
+        <div class="vc-preview">
+          <iframe src="v7/index.html" loading="lazy" title="Varianta V7"></iframe>
+          <div class="vc-preview-overlay"></div>
+          <span class="vc-badge badge-v7" style="background:rgba(37,99,235,.25);color:#60a5fa;border-color:rgba(37,99,235,.4)">V7</span>
+          <a href="v7/index.html" target="_blank" class="vc-open-btn">Otevřít →</a>
+        </div>
+        <div class="vc-body">
+          <div>
+            <div class="vc-version">Varianta 7 · Univerzální <span class="badge" style="background:rgba(37,99,235,.2);color:#60a5fa;border:1px solid rgba(37,99,235,.4)">Nejširší apel</span></div>
+            <div class="vc-title">Profesionální web pro každý byznys</div>
+            <div class="vc-subtitle">Čistý design, jasné poselství, 6 typů zákazníků — řemeslníci, restaurace, salony, konzultanti, firmy, e-shopy</div>
+          </div>
+          <div class="vc-target">
+            <div class="vc-target-label">Cílová skupina</div>
+            <div class="vc-target-text">Nejširší možný záběr — každý, kdo potřebuje web. Žádná niche, žádný jargon, žádný strašák. Oslovuje od živnostníka po střední firmu.</div>
+          </div>
+          <div class="vc-tags">
+            <span class="vc-tag">6 typů oborů</span>
+            <span class="vc-tag">30denní garance</span>
+            <span class="vc-tag">od 6 900 Kč</span>
+            <span class="vc-tag">3 cenové balíčky</span>
+            <span class="vc-tag">6 referencí</span>
+          </div>
+          <div>
+            <div style="font-size:.7rem;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;margin-bottom:4px">Cena</div>
+            <div class="vc-price" style="color:#60a5fa">od 6 900 Kč <small style="color:var(--text2)">· Firemní 9 900 Kč · E-shop 14 900 Kč</small></div>
+          </div>
+          <div class="vc-pros-cons">
+            <div class="pros">
+              <div class="vc-list-label">Silné stránky</div>
+              <ul class="vc-list">
+                <li>Oslovuje naprosto každý typ podnikání</li>
+                <li>Nižší vstupní cena = méně odporu</li>
+                <li>Sekce "Pro koho" = zákazník se v ní vidí</li>
+                <li>6 různých referencí z různých oborů</li>
+                <li>Jednoduchý formulář = nízká bariéra</li>
+                <li>Čistý, důvěryhodný blue design</li>
+              </ul>
+            </div>
+            <div class="cons">
+              <div class="vc-list-label">Slabé stránky</div>
+              <ul class="vc-list">
+                <li>Nižší základní cena = nižší marže</li>
+                <li>Žádný subscription / MRR model</li>
+                <li>Bez crisis/urgency triggeru</li>
+                <li>Generičtější positioning = horší konverze v niche</li>
+              </ul>
+            </div>
+          </div>
+          <div class="vc-footer">
+            <a href="v7/index.html" target="_blank" class="btn-primary" style="background:#2563eb">Otevřít V7</a>
+            <a href="#" class="btn-ghost-sm" onclick="openDetail('v7');return false">Detailní náhled</a>
+          </div>
+        </div>
+      </div>
+
     </div><!-- /overview-grid -->
 
     <!-- ══════════ COMPARE VIEW ══════════ -->
@@ -681,6 +739,7 @@
             <th class="ver-col version-head"><span class="badge badge-v4">V4</span></th>
             <th class="ver-col version-head"><span class="badge badge-v5">V5</span></th>
             <th class="ver-col version-head"><span class="badge badge-v6">V6 ⭐</span></th>
+            <th class="ver-col version-head"><span class="badge" style="background:rgba(37,99,235,.2);color:#60a5fa;border:1px solid rgba(37,99,235,.4)">V7</span></th>
           </tr>
         </thead>
         <tbody>
@@ -692,6 +751,7 @@
             <td>Startup / Founder</td>
             <td>Revenue machine</td>
             <td>Revenue machine</td>
+            <td class="tag-good">Každý byznys</td>
           </tr>
           <tr>
             <td class="row-label">Cílová skupina</td>
@@ -701,6 +761,7 @@
             <td>Founders, startupy</td>
             <td>Všichni podnikatelé</td>
             <td>Prémiový segment</td>
+            <td class="tag-good">Všichni — max. záběr</td>
           </tr>
           <tr>
             <td class="row-label">Základní cena</td>
@@ -710,6 +771,7 @@
             <td class="tag-warn">9 900 Kč</td>
             <td class="tag-warn">9 900 Kč</td>
             <td class="tag-good">12 900 Kč</td>
+            <td>od 6 900 Kč</td>
           </tr>
           <tr>
             <td class="row-label">Subscription model</td>
@@ -719,6 +781,7 @@
             <td>Upsell zmínka</td>
             <td class="tag-good">Ano (1 990/měs)</td>
             <td class="tag-good">Ano (1 990/měs)</td>
+            <td class="tag-bad">Ne</td>
           </tr>
           <tr>
             <td class="row-label">Garance</td>
@@ -728,11 +791,13 @@
             <td>30 dní</td>
             <td>30 dní</td>
             <td class="tag-good">7 dní</td>
+            <td class="tag-good">30 dní</td>
           </tr>
           <tr>
             <td class="row-label">Platba po schválení</td>
             <td class="tag-bad">Ne</td>
             <td class="tag-bad">Ne</td>
+            <td class="tag-good">Ano</td>
             <td class="tag-good">Ano</td>
             <td class="tag-good">Ano</td>
             <td class="tag-good">Ano</td>
@@ -746,6 +811,7 @@
             <td class="tag-bad">Ne</td>
             <td class="tag-bad">Ne</td>
             <td class="tag-good">+3 000 Kč / 8h</td>
+            <td class="tag-bad">Ne</td>
           </tr>
           <tr>
             <td class="row-label">Formulář</td>
@@ -755,6 +821,7 @@
             <td class="tag-good">9krokový multi-step</td>
             <td>Standardní (1 stránka)</td>
             <td>Standardní (1 stránka)</td>
+            <td>Jednoduchý (1 stránka)</td>
           </tr>
           <tr>
             <td class="row-label">AI brief / automatizace</td>
@@ -762,6 +829,7 @@
             <td class="tag-bad">Ne</td>
             <td class="tag-good">n8n + prompt šablona</td>
             <td class="tag-good">AI brief generátor</td>
+            <td class="tag-bad">Ne</td>
             <td class="tag-bad">Ne</td>
             <td class="tag-bad">Ne</td>
           </tr>
@@ -773,6 +841,7 @@
             <td class="tag-bad">Ne</td>
             <td class="tag-good">Ano</td>
             <td class="tag-good">Ano</td>
+            <td class="tag-bad">Ne</td>
           </tr>
           <tr>
             <td class="row-label">Crisis scenarios sekce</td>
@@ -780,6 +849,7 @@
             <td class="tag-bad">Ne</td>
             <td class="tag-bad">Ne</td>
             <td class="tag-good">Ano</td>
+            <td class="tag-bad">Ne</td>
             <td class="tag-bad">Ne</td>
             <td class="tag-bad">Ne</td>
           </tr>
@@ -791,6 +861,7 @@
             <td class="tag-good">Ano</td>
             <td class="tag-bad">Ne</td>
             <td class="tag-bad">Ne</td>
+            <td class="tag-bad">Ne</td>
           </tr>
           <tr>
             <td class="row-label">Výsledky klientů (case studies)</td>
@@ -800,6 +871,7 @@
             <td class="tag-bad">Ne</td>
             <td class="tag-good">Ano (ROI + čísla)</td>
             <td class="tag-good">Ano (ROI + čísla)</td>
+            <td class="tag-bad">Ne</td>
           </tr>
           <tr>
             <td class="row-label">MRR potenciál (měsíčně)</td>
@@ -809,6 +881,7 @@
             <td>490 Kč upsell</td>
             <td class="tag-good">1 990–2 990 Kč</td>
             <td class="tag-good">1 990–2 990 Kč</td>
+            <td class="tag-bad">0 Kč</td>
           </tr>
           <tr>
             <td class="row-label">Složitost prodeje</td>
@@ -818,6 +891,7 @@
             <td>Střední</td>
             <td>Střední</td>
             <td>Střední–Vysoká</td>
+            <td class="tag-good">Nízká</td>
           </tr>
           <tr>
             <td class="row-label">Doporučeno pro</td>
@@ -827,6 +901,7 @@
             <td>Startup niche</td>
             <td>Škálování + MRR</td>
             <td class="tag-good" style="font-weight:700">Max. příjem</td>
+            <td class="tag-good" style="font-weight:700">Max. záběr publika</td>
           </tr>
         </tbody>
       </table>
@@ -843,6 +918,7 @@
         <button class="dnav-btn" onclick="loadDetail('v4')">V4</button>
         <button class="dnav-btn" onclick="loadDetail('v5')">V5</button>
         <button class="dnav-btn" onclick="loadDetail('v6')">V6 ⭐</button>
+        <button class="dnav-btn" onclick="loadDetail('v7')">V7</button>
       </div>
       <div class="detail-iframe-wrap">
         <div class="detail-iframe-bar">
@@ -989,6 +1065,30 @@
         ],
         verdict: 'Doporučeno pro maximální finanční výnos. Spusťte a měřte.',
       },
+      v7: {
+        label: 'V7 — Univerzální',
+        useCase: 'Nejširší apel — oslovuje každý typ podnikání bez výjimky',
+        audience: 'Všichni — živnostníci, řemeslníci, restaurace, salony, konzultanti, firmy, e-shopy',
+        pricing: 'od 6 900 Kč / Firemní 9 900 Kč / E-shop 14 900 Kč',
+        model: 'One-time payment, 3 cenové tiery',
+        pros: [
+          'Oslovuje naprosto každý typ podnikání',
+          'Sekce "Pro koho" — zákazník se v ní okamžitě vidí',
+          'Nižší vstupní cena 6 900 Kč = méně odporu',
+          '6 referencí z různých oborů = každý najde sebe',
+          'Jednoduchý formulář = minimální bariéra',
+          'Čistý, důvěryhodný modrý design',
+          '30denní záruka = nejpřesvědčivější garance',
+        ],
+        cons: [
+          'Nižší základní cena = nižší marže vs V6',
+          'Žádný subscription / MRR model',
+          'Bez crisis/urgency triggeru',
+          'Generičtější positioning = slabší v niche segmentech',
+          'Bez ROI kalkulačky nebo case studies s čísly',
+        ],
+        verdict: 'Ideální jako první varianta pro testování šíře trhu nebo pro marketingové kampaně s neurčitou cílovou skupinou.',
+      },
     };
 
     // ── VIEW SWITCHING ────────────────────────────────────────────
@@ -1027,8 +1127,9 @@
 
     // ── DETAIL ───────────────────────────────────────────────────
     function loadDetail(v) {
+      const keys = ['v1','v2','v3','v4','v5','v6','v7'];
       document.querySelectorAll('.dnav-btn').forEach((b, i) => {
-        b.classList.toggle('active', `v${i+1}` === v);
+        b.classList.toggle('active', keys[i] === v);
       });
       const src = `${v}/index.html`;
       document.getElementById('detailIframe').src = src;

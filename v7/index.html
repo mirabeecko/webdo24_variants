@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Profesionální web pro vaši firmu do 24 hodin. Od 6 900 Kč. Pro řemeslníky, restaurace, salony, firmy i e-shopy. Přímá komunikace, 30denní záruka.">
+  <title>Web pro vaši firmu do 24 hodin | webdo24.cz</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- URGENCY BAR -->
+  <div class="urgency-bar" id="urgencyBar">
+    <div class="container urgency-inner">
+      <span class="urgency-text">
+        Objednejte dnes do 18:00 — web máte spuštěný <strong>zítra</strong>.
+        Zbývá: <span class="countdown" id="countdown">--:--:--</span>
+      </span>
+      <button class="urgency-close" onclick="this.closest('.urgency-bar').style.display='none'" aria-label="Zavřít">×</button>
+    </div>
+  </div>
+
+  <!-- NAV -->
+  <nav class="nav" id="nav">
+    <div class="container nav-inner">
+      <a href="#hero" class="logo">webdo<span class="logo-accent">24</span>.cz</a>
+      <div class="nav-links" id="navLinks">
+        <a href="#for-whom">Pro koho</a>
+        <a href="#process">Jak to funguje</a>
+        <a href="#pricing">Ceny</a>
+        <a href="#faq">FAQ</a>
+        <a href="#contact" class="btn btn-primary nav-cta-mobile">Chci web →</a>
+      </div>
+      <a href="#contact" class="btn btn-primary nav-cta">Chci web →</a>
+      <button class="hamburger" id="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <main>
+
+    <!-- ── HERO ── -->
+    <section class="hero" id="hero">
+      <div class="hero-bg"></div>
+      <div class="container hero-grid">
+        <div class="hero-content fade-up">
+          <div class="hero-badge">Hotový web do 24 hodin</div>
+          <h1>Profesionální web<br>pro <span class="gradient-text">vaši firmu.</span><br>Za jednu noc.</h1>
+          <p class="hero-sub">
+            Bez čekání. Bez zbytečných schůzek. Bez nafouklé ceny.<br>
+            Vy řeknete, co potřebujete — já web postavím za 24 hodin.
+          </p>
+          <div class="hero-checks">
+            <div class="hc-item"><span class="hc-icon">✓</span>Hotovo do 24 hodin od objednávky</div>
+            <div class="hc-item"><span class="hc-icon">✓</span>Pevná cena, žádná překvapení</div>
+            <div class="hc-item"><span class="hc-icon">✓</span>30denní garance nebo vrátím peníze</div>
+            <div class="hc-item"><span class="hc-icon">✓</span>Design, texty, spuštění — vše v ceně</div>
+          </div>
+          <div class="hero-actions">
+            <a href="#contact" class="btn btn-primary btn-large pulse-btn">Chci svůj web →</a>
+            <a href="#process" class="btn btn-ghost btn-large">Jak to funguje</a>
+          </div>
+          <div class="hero-proof">
+            <div class="proof-item"><strong>200+</strong><span>hotových webů</span></div>
+            <div class="proof-sep"></div>
+            <div class="proof-item"><strong>4,9/5</strong><span>hodnocení klientů</span></div>
+            <div class="proof-sep"></div>
+            <div class="proof-item"><strong>30 dní</strong><span>záruka vrácení</span></div>
+          </div>
+        </div>
+        <div class="hero-visual fade-up">
+          <div class="browser-mock">
+            <div class="browser-bar">
+              <div class="browser-dots">
+                <span class="dot-red"></span>
+                <span class="dot-yellow"></span>
+                <span class="dot-green"></span>
+              </div>
+              <div class="browser-url">vaseweb.cz</div>
+            </div>
+            <div class="browser-content">
+              <div class="mock-nav-bar"></div>
+              <div class="mock-section">
+                <div class="mock-headline-big"></div>
+                <div class="mock-headline-small"></div>
+                <div class="mock-sub-text"></div>
+                <div class="mock-sub-text w60"></div>
+                <div class="mock-buttons">
+                  <div class="mock-btn-primary"></div>
+                  <div class="mock-btn-ghost"></div>
+                </div>
+              </div>
+              <div class="mock-cards">
+                <div class="mock-card"></div>
+                <div class="mock-card"></div>
+                <div class="mock-card"></div>
+              </div>
+            </div>
+          </div>
+          <div class="badge-float">
+            <span class="bf-icon">⏱</span>
+            <div><div class="bf-label">Čas od objednávky</div><div class="bf-value">24 hodin</div></div>
+          </div>
+          <div class="badge-float badge-float-2">
+            <span class="bf-icon">✅</span>
+            <div><div class="bf-label">Právě spuštěno</div><div class="bf-value">instalaterstvi-novak.cz</div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── STATS ── -->
+    <section class="stats">
+      <div class="container">
+        <div class="stats-grid fade-up">
+          <div class="stat-item">
+            <div class="stat-num">200<span>+</span></div>
+            <div class="stat-lbl">hotových webů</div>
+          </div>
+          <div class="stat-div"></div>
+          <div class="stat-item">
+            <div class="stat-num">24<span>h</span></div>
+            <div class="stat-lbl">průměrná dodací lhůta</div>
+          </div>
+          <div class="stat-div"></div>
+          <div class="stat-item">
+            <div class="stat-num">4,9<span class="stat-small">/5</span></div>
+            <div class="stat-lbl">průměrné hodnocení</div>
+          </div>
+          <div class="stat-div"></div>
+          <div class="stat-item">
+            <div class="stat-num">30<span class="stat-small">dní</span></div>
+            <div class="stat-lbl">záruka spokojenosti</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── PRO KOHO ── -->
+    <section class="for-whom" id="for-whom">
+      <div class="container">
+        <div class="section-header fade-up">
+          <div class="section-tag">Pro koho to je</div>
+          <h2>Web pro každý byznys</h2>
+          <p class="section-sub">Ať podnikáte v čemkoliv — web zvládneme do 24 hodin</p>
+        </div>
+        <div class="fw-grid fade-up">
+          <div class="fw-card">
+            <div class="fw-icon">🔧</div>
+            <h3>Řemeslníci a živnostníci</h3>
+            <p>Instalatéři, elektrikáři, malíři, tesaři, zahradníci. Web, ze kterého vám volají zákazníci.</p>
+          </div>
+          <div class="fw-card">
+            <div class="fw-icon">🍽</div>
+            <h3>Restaurace a kavárny</h3>
+            <p>Menu, rezervace stolů, galerie, provozní doba. Vše co hosté potřebují vědět, na jednom místě.</p>
+          </div>
+          <div class="fw-card">
+            <div class="fw-icon">💅</div>
+            <h3>Salony a wellness</h3>
+            <p>Kosmetika, kadeřnictví, masáže, fitness. Online rezervace, ceník, galerie výsledků.</p>
+          </div>
+          <div class="fw-card">
+            <div class="fw-icon">👔</div>
+            <h3>Konzultanti a odborníci</h3>
+            <p>Právníci, účetní, poradci, lékaři. Profesionální prezentace, která buduje důvěru.</p>
+          </div>
+          <div class="fw-card">
+            <div class="fw-icon">🏢</div>
+            <h3>Malé a střední firmy</h3>
+            <p>Výrobní firmy, doprava, logistika, stavebnictví. Solidní firemní prezentace bez zbytečných nákladů.</p>
+          </div>
+          <div class="fw-card">
+            <div class="fw-icon">🛒</div>
+            <h3>E-shopy a produkty</h3>
+            <p>Prodáváte fyzické nebo digitální produkty? Postavím vám funkční e-shop s platební branou.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── PROCESS ── -->
+    <section class="process" id="process">
+      <div class="container">
+        <div class="section-header fade-up">
+          <div class="section-tag">Jak to funguje</div>
+          <h2>Od objednávky k hotovému webu<br>za <span class="gradient-text">24 hodin</span></h2>
+          <p class="section-sub">Tři jednoduché kroky bez zbytečné byrokracie</p>
+        </div>
+        <div class="process-steps fade-up">
+          <div class="process-step">
+            <div class="step-num">01</div>
+            <div class="step-when">Dnes — 15 minut</div>
+            <h3>Odešlete mi poptávku</h3>
+            <p>Vyplňte krátký formulář níže. Řekněte mi o svém byznysu, pošlete logo a fotky. Nic víc nepotřebuji.</p>
+          </div>
+          <div class="process-arrow">→</div>
+          <div class="process-step">
+            <div class="step-num">02</div>
+            <div class="step-when">Druhý den</div>
+            <h3>Stavím váš web</h3>
+            <p>Pracuji výhradně na vašem projektu. Posílám průběžné náhledy — vy schvalujete, já okamžitě upravuji.</p>
+          </div>
+          <div class="process-arrow">→</div>
+          <div class="process-step">
+            <div class="step-num">03</div>
+            <div class="step-when">Do 24 hodin</div>
+            <h3>Web je živý</h3>
+            <p>Dostanete přístupy, video-návod na úpravy a mé číslo pro případ potřeby. Jste online.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── COMPARISON ── -->
+    <section class="comparison" id="comparison">
+      <div class="container">
+        <div class="section-header fade-up">
+          <div class="section-tag">Proč webdo24.cz</div>
+          <h2>Srovnejte si sami</h2>
+          <p class="section-sub">Stejný výsledek. Desetina ceny. Dvacetina času.</p>
+        </div>
+        <div class="comp-wrap fade-up">
+          <div class="comp-table">
+            <div class="comp-row comp-head">
+              <div class="comp-cell comp-feature"></div>
+              <div class="comp-cell comp-agency"><div class="comp-option-name">Agentura</div></div>
+              <div class="comp-cell comp-us">
+                <div class="comp-badge">Doporučujeme</div>
+                <div class="comp-option-name">webdo24.cz</div>
+              </div>
+              <div class="comp-cell comp-diy"><div class="comp-option-name">Wix / sám</div></div>
+            </div>
+            <div class="comp-row">
+              <div class="comp-cell comp-feature">Cena</div>
+              <div class="comp-cell comp-agency"><span class="val-bad">50 000–150 000 Kč</span></div>
+              <div class="comp-cell comp-us"><span class="val-good">od 6 900 Kč</span></div>
+              <div class="comp-cell comp-diy"><span class="val-neutral">„Zdarma" + váš čas</span></div>
+            </div>
+            <div class="comp-row">
+              <div class="comp-cell comp-feature">Čas čekání</div>
+              <div class="comp-cell comp-agency"><span class="val-bad">2–3 měsíce</span></div>
+              <div class="comp-cell comp-us"><span class="val-good">24 hodin</span></div>
+              <div class="comp-cell comp-diy"><span class="val-neutral">Kolik máte času?</span></div>
+            </div>
+            <div class="comp-row">
+              <div class="comp-cell comp-feature">Komunikace</div>
+              <div class="comp-cell comp-agency"><span class="val-bad">Projektový manažer</span></div>
+              <div class="comp-cell comp-us"><span class="val-good">Přímo s tvůrcem</span></div>
+              <div class="comp-cell comp-diy"><span class="val-neutral">YouTube tutoriály</span></div>
+            </div>
+            <div class="comp-row">
+              <div class="comp-cell comp-feature">Výsledek</div>
+              <div class="comp-cell comp-agency"><span class="val-neutral">Záleží na agentuře</span></div>
+              <div class="comp-cell comp-us"><span class="val-good">Profesionální, na míru</span></div>
+              <div class="comp-cell comp-diy"><span class="val-bad">Generický šablonový</span></div>
+            </div>
+            <div class="comp-row">
+              <div class="comp-cell comp-feature">Záruka</div>
+              <div class="comp-cell comp-agency"><span class="val-bad">Smluvní podmínky</span></div>
+              <div class="comp-cell comp-us"><span class="val-good">30 dní nebo vrátím</span></div>
+              <div class="comp-cell comp-diy"><span class="val-bad">Žádná</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── PRICING ── -->
+    <section class="pricing" id="pricing">
+      <div class="container">
+        <div class="section-header fade-up">
+          <div class="section-tag">Ceny</div>
+          <h2>Transparentní ceny bez skrytých poplatků</h2>
+          <p class="section-sub">Vyberte si balíček, který odpovídá vašim potřebám</p>
+        </div>
+        <div class="pricing-grid fade-up">
+          <div class="pricing-card">
+            <div class="pricing-name">Vizitka online</div>
+            <div class="pricing-price">6 900 <span>Kč</span></div>
+            <div class="pricing-desc">Jednoduchý web 1–3 stránky. Ideální pro živnostníky a začínající podnikatele.</div>
+            <ul class="pricing-list">
+              <li>Design na míru</li>
+              <li>Mobilní verze</li>
+              <li>Kontaktní formulář</li>
+              <li>Základní SEO</li>
+              <li>SSL certifikát</li>
+              <li>Spuštění na doméně</li>
+            </ul>
+            <a href="#contact" class="btn btn-ghost btn-full">Vybrat tento balíček</a>
+          </div>
+          <div class="pricing-card pricing-featured">
+            <div class="pricing-popular">Nejoblíbenější</div>
+            <div class="pricing-name">Firemní web</div>
+            <div class="pricing-price">9 900 <span>Kč</span></div>
+            <div class="pricing-desc">Kompletní firemní prezentace 4–8 stránek. Vhodné pro firmy všech oborů.</div>
+            <ul class="pricing-list">
+              <li>Vše z Vizitky online</li>
+              <li>Blog / aktuality</li>
+              <li>Galerie a portfolio</li>
+              <li>Google Analytics</li>
+              <li>30 dní podpory</li>
+              <li>Video-návod na úpravy</li>
+            </ul>
+            <a href="#contact" class="btn btn-primary btn-full">Vybrat tento balíček →</a>
+          </div>
+          <div class="pricing-card">
+            <div class="pricing-name">E-shop</div>
+            <div class="pricing-price">14 900 <span>Kč</span></div>
+            <div class="pricing-desc">Funkční e-shop s platební branou. Pro prodej fyzických i digitálních produktů.</div>
+            <ul class="pricing-list">
+              <li>Vše z Firemního webu</li>
+              <li>Platební brána</li>
+              <li>Správa produktů</li>
+              <li>Objednávkový systém</li>
+              <li>60 dní podpory</li>
+              <li>Napojení na skladový systém</li>
+            </ul>
+            <a href="#contact" class="btn btn-ghost btn-full">Vybrat tento balíček</a>
+          </div>
+        </div>
+        <p class="pricing-note fade-up">Nevíte, co potřebujete? Napište mi — společně vybereme ten správný balíček.</p>
+      </div>
+    </section>
+
+    <!-- ── TESTIMONIALS ── -->
+    <section class="testimonials" id="testimonials">
+      <div class="container">
+        <div class="section-header fade-up">
+          <div class="section-tag">Reference</div>
+          <h2>Co říkají naši klienti</h2>
+          <p class="section-sub">Skutečné recenze od skutečných lidí z různých oborů</p>
+        </div>
+        <div class="testimonials-grid fade-up">
+          <div class="testi-card">
+            <div class="testi-stars">★★★★★</div>
+            <p class="testi-text">„Vůbec jsem nevěřil, že to za 24 hodin půjde. Výsledek je lepší než web, za který jsem před 3 lety zaplatil 80 tisíc v agentuře."</p>
+            <div class="testi-author">
+              <div class="testi-avatar">M</div>
+              <div><strong>Martin Kovář</strong><span>Instalatérství Kovář, Praha</span></div>
+            </div>
+          </div>
+          <div class="testi-card testi-featured">
+            <div class="testi-stars">★★★★★</div>
+            <p class="testi-text">„Ráno jsem odeslala podklady, večer jsem schvalovala hotový web. Ještě ten den mi přišla první rezervace přes online formulář."</p>
+            <div class="testi-author">
+              <div class="testi-avatar">L</div>
+              <div><strong>Lenka Procházková</strong><span>Kosmetický salon Lenka, Brno</span></div>
+            </div>
+          </div>
+          <div class="testi-card">
+            <div class="testi-stars">★★★★★</div>
+            <p class="testi-text">„Jako restaurace jsme léta táhli s Facebookem. Teď máme vlastní web s rezervacemi a zákazníci nás nacházejí přes Google."</p>
+            <div class="testi-author">
+              <div class="testi-avatar">P</div>
+              <div><strong>Petr Novotný</strong><span>Restaurace Na Rohu, Plzeň</span></div>
+            </div>
+          </div>
+          <div class="testi-card">
+            <div class="testi-stars">★★★★★</div>
+            <p class="testi-text">„Jako účetní jsem potřebovala profesionální web, který buduje důvěru. Přesně to jsem dostala — za den a za rozumnou cenu."</p>
+            <div class="testi-author">
+              <div class="testi-avatar">E</div>
+              <div><strong>Eva Horáčková</strong><span>Účetní poradenství, Olomouc</span></div>
+            </div>
+          </div>
+          <div class="testi-card">
+            <div class="testi-stars">★★★★★</div>
+            <p class="testi-text">„Nevěděl jsem, kde začít. Vyplnil jsem formulář, druhý den jsem měl web. Jednoduché, rychlé, profesionální."</p>
+            <div class="testi-author">
+              <div class="testi-avatar">J</div>
+              <div><strong>Jiří Blažek</strong><span>Zahradnické práce, Liberec</span></div>
+            </div>
+          </div>
+          <div class="testi-card">
+            <div class="testi-stars">★★★★★</div>
+            <p class="testi-text">„Web jsme dostali přesně podle představ. Oceňuju hlavně to, že jsem komunikoval přímo s člověkem, který ho stavěl — žádné dohadování přes prostředníky."</p>
+            <div class="testi-author">
+              <div class="testi-avatar">T</div>
+              <div><strong>Tomáš Kratochvíl</strong><span>Doprava Kratochvíl s.r.o., Pardubice</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── GUARANTEE ── -->
+    <section class="guarantee">
+      <div class="container fade-up">
+        <div class="guarantee-box">
+          <div class="guarantee-icon">🛡️</div>
+          <div class="guarantee-content">
+            <h2>30denní garance spokojenosti</h2>
+            <p>Pokud nebudete s webem spokojeni do 30 dní od spuštění, vrátím vám celou částku. Bez otázek, bez komplikací.</p>
+            <p class="guarantee-note">Za 6 let práce jsem peníze ještě nikdy vrátit nemusel. Na svoji práci jsem hrdý.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── FAQ ── -->
+    <section class="faq" id="faq">
+      <div class="container">
+        <div class="section-header fade-up">
+          <div class="section-tag">Časté dotazy</div>
+          <h2>Máte otázky?<br>Mám odpovědi.</h2>
+        </div>
+        <div class="faq-list fade-up">
+          <div class="faq-item">
+            <button class="faq-q">Co od vás potřebuji, abych web mohl postavit?</button>
+            <div class="faq-a"><p>Stačí logo (nebo jen název firmy), pár fotek a základní informace o vašem byznysu. Fotky mohu vzít také ze stocku zdarma. Texty napíšu já — vy jen schválíte.</p></div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-q">Pro jaké typy podnikání weby děláte?</button>
+            <div class="faq-a"><p>Pro prakticky každý obor: řemeslníky, restaurace, salony, konzultanty, lékaře, firmy, e-shopy. Pokud máte specifický požadavek, ozvěte se a domluvíme se.</p></div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-q">Budu moci web sám upravovat?</button>
+            <div class="faq-a"><p>Ano. Každý web stavím tak, aby si klient mohl sám jednoduše upravit texty, fotky nebo přidat stránku — bez programování. Dostanete video-návod přímo pro váš web.</p></div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-q">Co přesně je zahrnuto v ceně?</button>
+            <div class="faq-a"><p>Design na míru, vývoj, texty, mobilní verze, základní SEO, nastavení hostingu a SSL certifikát. U balíčků Firemní web a E-shop navíc 30/60 dní podpory a video-návod. Žádné skryté poplatky.</p></div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-q">Co když potřebuji web rychleji než za 24 hodin?</button>
+            <div class="faq-a"><p>Napište mi hned — v případě volné kapacity zvládnu expresní dodání do 8 hodin. Ozvěte se a domluvíme se.</p></div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-q">Jak funguje 30denní garance?</button>
+            <div class="faq-a"><p>Pokud do 30 dní od spuštění webu nebudete spokojeni z jakéhokoliv důvodu, vrátím vám celou zaplacenou částku. Bez otázek a bez komplikací.</p></div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-q">Mám platit předem nebo až po schválení webu?</button>
+            <div class="faq-a"><p>Platba probíhá po schválení prvního náhledu webu, před finálním spuštěním. Nejprve uvidíte výsledek, pak teprve platíte.</p></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── CONTACT ── -->
+    <section class="contact" id="contact">
+      <div class="container">
+        <div class="section-header fade-up">
+          <div class="section-tag">Začněme</div>
+          <h2>Řekněte mi o svém projektu.<br><span class="gradient-text">Web máte zítra.</span></h2>
+          <p class="section-sub">Odpovím do hodiny v pracovní době.</p>
+        </div>
+        <div class="contact-grid fade-up">
+          <div class="contact-info">
+            <div class="ci-item">
+              <div class="ci-icon">⚡</div>
+              <div>
+                <strong>Rychlá odpověď</strong>
+                <p>Ozvu se do hodiny v pracovní době (Po–Pá 8–20 h)</p>
+              </div>
+            </div>
+            <div class="ci-item">
+              <div class="ci-icon">📞</div>
+              <div>
+                <strong>Přímý kontakt</strong>
+                <p>Mluvíte přímo se mnou — ne s call centrem nebo sekretářkou</p>
+              </div>
+            </div>
+            <div class="ci-item">
+              <div class="ci-icon">🛡</div>
+              <div>
+                <strong>Bez závazku</strong>
+                <p>Poptávka je nezávazná. Nejprve si promluvíme, pak se rozhodnete.</p>
+              </div>
+            </div>
+            <div class="ci-item">
+              <div class="ci-icon">💬</div>
+              <div>
+                <strong>Nebo napište přímo</strong>
+                <p><a href="mailto:info@webdo24.cz">info@webdo24.cz</a> · <a href="tel:+420777123456">+420 777 123 456</a></p>
+              </div>
+            </div>
+          </div>
+          <div class="contact-form-wrap">
+            <form id="contactForm" class="contact-form" novalidate>
+              <div class="form-row">
+                <div class="form-field">
+                  <label for="name">Vaše jméno <span class="req">*</span></label>
+                  <input type="text" id="name" name="name" placeholder="Jan Novák" required autocomplete="name">
+                </div>
+                <div class="form-field">
+                  <label for="email">E-mail <span class="req">*</span></label>
+                  <input type="email" id="email" name="email" placeholder="jan@firma.cz" required autocomplete="email">
+                </div>
+              </div>
+              <div class="form-field">
+                <label for="business">Čemu se věnujete?</label>
+                <input type="text" id="business" name="business" placeholder="např. restaurace, instalatérství, kosmetický salon…">
+              </div>
+              <div class="form-field">
+                <label for="about">Co od webu čekáte? <span class="req">*</span></label>
+                <textarea id="about" name="about" rows="4" placeholder="Popište svůj projekt — co prodáváte, kdo jsou vaši zákazníci, co chcete aby web dělal…" required></textarea>
+              </div>
+              <div class="form-field">
+                <label>Jak rychle web potřebujete?</label>
+                <div class="radio-group">
+                  <label class="radio-opt"><input type="radio" name="urgence" value="Co nejdříve (24h)"><span>Co nejdříve</span></label>
+                  <label class="radio-opt"><input type="radio" name="urgence" value="Tento týden" checked><span>Tento týden</span></label>
+                  <label class="radio-opt"><input type="radio" name="urgence" value="Tento měsíc"><span>Tento měsíc</span></label>
+                  <label class="radio-opt"><input type="radio" name="urgence" value="Jsem flexibilní"><span>Jsem flexibilní</span></label>
+                </div>
+              </div>
+              <button type="submit" id="submitBtn" class="btn btn-primary btn-large btn-full">
+                Odeslat poptávku →
+              </button>
+              <div id="formSuccess" class="form-success" style="display:none">
+                <div class="fs-icon">🎉</div>
+                <h3>Poptávka odeslána!</h3>
+                <p>Ozvu se vám do hodiny (v pracovní době). Zatím si připravte logo a fotky — ušetříte čas.</p>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="footer-logo">webdo<span class="logo-accent">24</span>.cz</div>
+          <p>Profesionální weby do 24 hodin.<br>Pro každý byznys. Za pevnou cenu.<br>S 30denní zárukou spokojenosti.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Navigace</h4>
+          <a href="#for-whom">Pro koho</a>
+          <a href="#process">Jak to funguje</a>
+          <a href="#pricing">Ceny</a>
+          <a href="#faq">FAQ</a>
+          <a href="#contact">Kontakt</a>
+        </div>
+        <div class="footer-col">
+          <h4>Kontakt</h4>
+          <a href="tel:+420777123456">+420 777 123 456</a>
+          <a href="mailto:info@webdo24.cz">info@webdo24.cz</a>
+          <span>Po–Pá, 8:00–20:00</span>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2024 webdo24.cz · Profesionální weby do 24 hodin</p>
+        <div class="footer-legal">
+          <a href="#">Ochrana osobních údajů</a>
+          <a href="#">Obchodní podmínky</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
