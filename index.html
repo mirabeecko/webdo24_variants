@@ -107,10 +107,12 @@
     .variant-card.hidden { display: none; }
 
     .vc-preview {
-      height: 200px;
+      height: 220px;
       position: relative;
       overflow: hidden;
       flex-shrink: 0;
+      border-bottom: 1px solid var(--border);
+      background: #08090f;
     }
     .vc-preview iframe {
       width: 200%;
@@ -122,7 +124,7 @@
     }
     .vc-preview-overlay {
       position: absolute; inset: 0;
-      background: linear-gradient(to bottom, transparent 60%, var(--surface) 100%);
+      background: linear-gradient(to bottom, transparent 55%, rgba(8,9,15,.7) 100%);
     }
     .vc-badge {
       position: absolute; top: 12px; left: 12px;
