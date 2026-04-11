@@ -263,6 +263,18 @@ h3{font-size:clamp(1rem,2vw,1.25rem);font-weight:700}
 .footer-legal a{color:var(--faint);font-size:.8rem}
 .footer-legal a:hover{color:var(--muted)}
 
+/* ── TABLET ── */
+@media(max-width:960px){
+  .hero-grid{gap:40px}
+  .fw-grid{grid-template-columns:1fr 1fr}
+  .pricing-grid{grid-template-columns:1fr 1fr;gap:16px}
+  .pricing-featured{transform:none;grid-column:span 2}
+  .testimonials-grid{grid-template-columns:1fr 1fr}
+  .contact-grid{grid-template-columns:1fr;gap:40px}
+  .comp-cell{padding:12px;font-size:.85rem}
+  .footer-grid{grid-template-columns:1fr 1fr;gap:32px}
+}
+
 /* ── HAMBURGER (mobile) ── */
 @media(max-width:768px){
   .hamburger{display:flex}

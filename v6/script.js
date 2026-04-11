@@ -1,89 +1,87 @@
 /* ============================================================
-   webdo24.cz — JavaScript
+   webdo24.cz V6 — JavaScript
    ============================================================ */
+
+/* ── KONFIGURACE ─────────────────────────────────────────────
+   Sem vlož URL svého webhooků před nasazením na produkci.
+   Podporované služby: n8n, Make.com, Zapier, vlastní backend.
+   Příklad: 'https://hook.eu1.make.com/abc123xyz'
+─────────────────────────────────────────────────────────── */
+const WEBHOOK_URL = '';
+
 
 /* ── COUNTDOWN TIMER ────────────────────────────────────────── */
 function updateCountdown() {
   const now      = new Date();
   const deadline = new Date();
   deadline.setHours(18, 0, 0, 0);
-
-  // Pokud je již po 18:00, ukazuj do zítřejší 18:00
-  if (now >= deadline) {
-    deadline.setDate(deadline.getDate() + 1);
-  }
+  if (now >= deadline) deadline.setDate(deadline.getDate() + 1);
 
   const diff = deadline - now;
-  const h = Math.floor(diff / 3_600_000);
-  const m = Math.floor((diff % 3_600_000) / 60_000);
-  const s = Math.floor((diff % 60_000) / 1_000);
-  const pad = (n) => String(n).padStart(2, '0');
-  const str = `${pad(h)}:${pad(m)}:${pad(s)}`;
+  const h    = Math.floor(diff / 3_600_000);
+  const m    = Math.floor((diff % 3_600_000) / 60_000);
+  const s    = Math.floor((diff % 60_000) / 1_000);
+  const pad  = (n) => String(n).padStart(2, '0');
+  const str  = `${pad(h)}:${pad(m)}:${pad(s)}`;
 
-  const el1 = document.getElementById('countdown');
-  const el2 = document.getElementById('countdownMini');
-  if (el1) el1.textContent = str;
-  if (el2) el2.textContent = str;
+  ['countdown', 'countdownMini'].forEach(id => {
+    const el = document.getElementById(id);
+    if (el) el.textContent = str;
+  });
 }
-
 setInterval(updateCountdown, 1000);
 updateCountdown();
 
 
 /* ── STICKY NAV ─────────────────────────────────────────────── */
 const nav = document.getElementById('nav');
-
 window.addEventListener('scroll', () => {
   nav.classList.toggle('scrolled', window.scrollY > 60);
 }, { passive: true });
 
 
 /* ── HAMBURGER MENU ─────────────────────────────────────────── */
-const hamburger = document.getElementById('hamburger');
+const navBurger = document.getElementById('navBurger');
 const navLinks  = document.getElementById('navLinks');
 
-hamburger.addEventListener('click', () => {
-  const isOpen = navLinks.classList.toggle('open');
-  hamburger.setAttribute('aria-expanded', isOpen);
-});
-
-// Zavřít po kliknutí na odkaz
-navLinks.querySelectorAll('a').forEach(link => {
-  link.addEventListener('click', () => {
-    navLinks.classList.remove('open');
-    hamburger.setAttribute('aria-expanded', 'false');
+if (navBurger && navLinks) {
+  navBurger.addEventListener('click', () => {
+    const isOpen = navLinks.classList.toggle('open');
+    navBurger.setAttribute('aria-expanded', isOpen);
   });
-});
 
-// Zavřít při kliknutí mimo
-document.addEventListener('click', (e) => {
-  if (!nav.contains(e.target)) {
-    navLinks.classList.remove('open');
-  }
-});
+  navLinks.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      navLinks.classList.remove('open');
+      navBurger.setAttribute('aria-expanded', 'false');
+    });
+  });
+
+  document.addEventListener('click', (e) => {
+    if (!nav.contains(e.target)) {
+      navLinks.classList.remove('open');
+      navBurger.setAttribute('aria-expanded', 'false');
+    }
+  });
+}
 
 
-/* ── SCROLL ANIMATIONS (IntersectionObserver) ───────────────── */
-const fadeObserver = new IntersectionObserver((entries) => {
+/* ── SCROLL ANIMATIONS ──────────────────────────────────────── */
+const revealObserver = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
     if (entry.isIntersecting) {
       entry.target.classList.add('visible');
-      fadeObserver.unobserve(entry.target); // stačí jednou
+      revealObserver.unobserve(entry.target);
     }
   });
-}, {
-  threshold: 0.08,
-  rootMargin: '0px 0px -40px 0px'
-});
+}, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
 
-// Registruj hned po načtení
-document.querySelectorAll('.fade-up').forEach(el => fadeObserver.observe(el));
-
-// Pokud je element nad foldem při načtení, zobraz ho hned
-document.querySelectorAll('.fade-up').forEach(el => {
+document.querySelectorAll('.fade-up, .reveal').forEach(el => {
   const rect = el.getBoundingClientRect();
   if (rect.top < window.innerHeight) {
     el.classList.add('visible');
+  } else {
+    revealObserver.observe(el);
   }
 });
 
@@ -93,14 +91,116 @@ document.querySelectorAll('.faq-q').forEach(btn => {
   btn.addEventListener('click', () => {
     const item   = btn.closest('.faq-item');
     const isOpen = item.classList.contains('open');
-
-    // Zavři všechny
-    document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
-
-    // Otevři kliknutý (pokud byl zavřený)
-    if (!isOpen) item.classList.add('open');
+    document.querySelectorAll('.faq-item').forEach(i => {
+      i.classList.remove('open');
+      i.querySelector('.faq-q')?.setAttribute('aria-expanded', 'false');
+    });
+    if (!isOpen) {
+      item.classList.add('open');
+      btn.setAttribute('aria-expanded', 'true');
+    }
   });
 });
+
+
+/* ── ANIMOVANÝ COUNTER (hero stats) ─────────────────────────── */
+function animateCounter(el, target, duration = 1600) {
+  const start  = performance.now();
+  const isFloat = !Number.isInteger(target);
+  const update = (now) => {
+    const progress = Math.min((now - start) / duration, 1);
+    const eased    = 1 - Math.pow(1 - progress, 3);
+    const value    = eased * target;
+    el.textContent = isFloat ? value.toFixed(1) : Math.round(value);
+    if (progress < 1) requestAnimationFrame(update);
+  };
+  requestAnimationFrame(update);
+}
+
+const heroCounterObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (!entry.isIntersecting) return;
+    heroCounterObserver.unobserve(entry.target);
+    entry.target.querySelectorAll('.counter[data-target]').forEach(el => {
+      animateCounter(el, parseFloat(el.dataset.target));
+    });
+  });
+}, { threshold: 0.4 });
+
+const heroStats = document.querySelector('.hero-stats');
+if (heroStats) heroCounterObserver.observe(heroStats);
+
+
+/* ── ROI KALKULÁTOR ─────────────────────────────────────────── */
+const calcValue   = document.getElementById('calcValue');
+const calcClients = document.getElementById('calcClients');
+
+function updateCalc() {
+  if (!calcValue || !calcClients) return;
+
+  const value   = parseInt(calcValue.value, 10);
+  const clients = parseInt(calcClients.value, 10);
+  const annual  = value * clients * 12;
+  const invest  = 12_900 + 1_990 * 12; // základ + Růst/rok
+  const roi     = Math.round((annual - invest) / invest * 100);
+
+  const fmt = (n) => n.toLocaleString('cs-CZ') + ' Kč';
+
+  const valOut     = document.getElementById('calcValueOut');
+  const clientsOut = document.getElementById('calcClientsOut');
+  const revenue    = document.getElementById('calcRevenue');
+  const roiEl      = document.getElementById('calcRoi');
+
+  if (valOut)     valOut.textContent     = value.toLocaleString('cs-CZ');
+  if (clientsOut) clientsOut.textContent = clients;
+  if (revenue)    revenue.textContent    = fmt(annual);
+  if (roiEl)      roiEl.textContent      = roi.toLocaleString('cs-CZ') + ' %';
+}
+
+if (calcValue)   calcValue.addEventListener('input', updateCalc);
+if (calcClients) calcClients.addEventListener('input', updateCalc);
+updateCalc();
+
+
+/* ── SOCIAL PROOF TOAST ─────────────────────────────────────── */
+const toastData = [
+  { name: 'Tomáš N.', msg: 'Právě objednal revenue machine', avatar: 'TN' },
+  { name: 'Markéta K.', msg: 'Spustila Growth balíček dnes', avatar: 'MK' },
+  { name: 'Pavel S.', msg: 'Web schválen — spouštíme za hodinu', avatar: 'PS' },
+  { name: 'Jana H.', msg: 'Přišla první poptávka přes nový web', avatar: 'JH' },
+  { name: 'Radek M.', msg: 'Scale balíček — aktivován', avatar: 'RM' },
+];
+
+function showToast() {
+  const toast    = document.getElementById('spToast');
+  const nameEl   = document.getElementById('spName');
+  const msgEl    = document.getElementById('spMsg');
+  const avatarEl = document.getElementById('spAvatar');
+  const closeBtn = document.getElementById('spClose');
+  if (!toast) return;
+
+  const item = toastData[Math.floor(Math.random() * toastData.length)];
+  if (nameEl)   nameEl.textContent   = item.name;
+  if (msgEl)    msgEl.textContent    = item.msg;
+  if (avatarEl) avatarEl.textContent = item.avatar;
+
+  toast.classList.add('visible');
+
+  let hideTimer = setTimeout(() => toast.classList.remove('visible'), 4000);
+
+  if (closeBtn) {
+    closeBtn.onclick = () => {
+      clearTimeout(hideTimer);
+      toast.classList.remove('visible');
+    };
+  }
+}
+
+// Zobrazit po 6 s, pak každých 25 s
+setTimeout(() => {
+  showToast();
+  setInterval(showToast, 25_000);
+}, 6_000);
 
 
 /* ── KONTAKTNÍ FORMULÁŘ ─────────────────────────────────────── */
@@ -108,42 +208,61 @@ const form      = document.getElementById('contactForm');
 const submitBtn = document.getElementById('submitBtn');
 const successEl = document.getElementById('formSuccess');
 
-form.addEventListener('submit', (e) => {
-  e.preventDefault();
+if (form) {
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
 
-  // Jednoduchá validace
-  const name  = form.querySelector('[name=name]').value.trim();
-  const email = form.querySelector('[name=email]').value.trim();
-  const about = form.querySelector('[name=about]').value.trim();
+    // Validace povinných polí
+    const requiredFields = form.querySelectorAll('[required]');
+    let valid = true;
+    requiredFields.forEach(field => {
+      if (!field.value.trim()) {
+        valid = false;
+        field.style.borderColor = '#f87171';
+        field.addEventListener('input', () => { field.style.borderColor = ''; }, { once: true });
+      }
+    });
+    if (!valid) return;
 
-  if (!name || !email || !about) {
-    // Highlight chybějících polí
-    [form.querySelector('[name=name]'), form.querySelector('[name=email]'), form.querySelector('[name=about]')]
-      .forEach(field => {
-        if (!field.value.trim()) {
-          field.style.borderColor = '#f87171';
-          field.addEventListener('input', () => { field.style.borderColor = ''; }, { once: true });
-        }
-      });
-    return;
-  }
+    submitBtn.textContent = 'Odesílám…';
+    submitBtn.disabled    = true;
 
-  submitBtn.textContent = 'Odesílám…';
-  submitBtn.disabled    = true;
+    const data = Object.fromEntries(new FormData(form));
 
-  // Simulace odeslání (zde by byl fetch na backend)
-  setTimeout(() => {
-    submitBtn.style.display = 'none';
-    successEl.style.display = 'block';
-    form.reset();
+    try {
+      if (WEBHOOK_URL) {
+        await fetch(WEBHOOK_URL, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ ...data, variant: 'v6', timestamp: new Date().toISOString() }),
+        });
+      } else {
+        // Fallback: přesměrování na mailto (dokud není webhook nastaven)
+        const subject = encodeURIComponent('Nová poptávka – webdo24 V6');
+        const body    = encodeURIComponent(
+          Object.entries(data).map(([k, v]) => `${k}: ${v}`).join('\n')
+        );
+        window.location.href = `mailto:info@webdo24.cz?subject=${subject}&body=${body}`;
+        return;
+      }
 
-    // Scroll na potvrzení
-    successEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
-  }, 900);
-});
+      submitBtn.style.display = 'none';
+      if (successEl) {
+        successEl.removeAttribute('hidden');
+        successEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }
+      form.reset();
+
+    } catch (err) {
+      submitBtn.textContent = 'Chyba — zkuste znovu';
+      submitBtn.disabled    = false;
+      console.error('Form submission error:', err);
+    }
+  });
+}
 
 
-/* ── SMOOTH SCROLL pro kotvy ────────────────────────────────── */
+/* ── SMOOTH SCROLL ──────────────────────────────────────────── */
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
   anchor.addEventListener('click', function (e) {
     const href   = this.getAttribute('href');
@@ -151,51 +270,8 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     const target = document.querySelector(href);
     if (!target) return;
     e.preventDefault();
-
     const offset = nav.offsetHeight + 12;
     const top    = target.getBoundingClientRect().top + window.scrollY - offset;
     window.scrollTo({ top, behavior: 'smooth' });
   });
-});
-
-
-/* ── ČÍSLA — animovaný counter ──────────────────────────────── */
-function animateCounter(el, target, suffix, duration = 1400) {
-  const start = performance.now();
-  const update = (now) => {
-    const progress = Math.min((now - start) / duration, 1);
-    const eased    = 1 - Math.pow(1 - progress, 3); // ease-out cubic
-    const value    = Math.round(eased * target);
-    el.textContent = value + suffix;
-    if (progress < 1) requestAnimationFrame(update);
-  };
-  requestAnimationFrame(update);
-}
-
-const statsObserver = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (!entry.isIntersecting) return;
-    statsObserver.unobserve(entry.target);
-
-    entry.target.querySelectorAll('[data-count]').forEach(el => {
-      const target = parseFloat(el.dataset.count);
-      const suffix = el.dataset.suffix || '';
-      animateCounter(el, target, suffix);
-    });
-  });
-}, { threshold: 0.3 });
-
-const statsSection = document.querySelector('.stats-grid');
-if (statsSection) statsObserver.observe(statsSection);
-
-
-/* ── DATA ATRIBUTY pro counter ───────────────────────────────── */
-// Nastav data-count a data-suffix na .stat-num span dynamicky
-document.addEventListener('DOMContentLoaded', () => {
-  const counters = [
-    { selector: '.stats-grid .stat-item:nth-child(1) .stat-num', count: 200, suffix: '+' },
-    { selector: '.stats-grid .stat-item:nth-child(3) .stat-num', count: 24,  suffix: 'h' },
-    { selector: '.stats-grid .stat-item:nth-child(7) .stat-num', count: 100, suffix: '%' },
-  ];
-  // Poznámka: animace čísla 4,9 je vynechána záměrně — desetinné číslo by blikalo
 });
