@@ -1,0 +1,1080 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>webdo24 — Dashboard variant</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #08090f;
+      --bg2: #0e0f1a;
+      --surface: #14151f;
+      --surface2: #1c1e2f;
+      --border: rgba(255,255,255,.08);
+      --border-hi: rgba(255,255,255,.15);
+      --primary: #7c3aed;
+      --primary-hi: #9f5fff;
+      --accent: #22c55e;
+      --orange: #f97316;
+      --blue: #3b82f6;
+      --red: #ef4444;
+      --text: #f1f5f9;
+      --text2: #a0aec0;
+      --muted: #64748b;
+      --font: 'Inter', -apple-system, sans-serif;
+      --r: 10px;
+      --r-lg: 16px;
+      --r-xl: 24px;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--font); background: var(--bg); color: var(--text); line-height: 1.6; overflow-x: hidden; }
+    a { color: inherit; text-decoration: none; }
+
+    /* ── HEADER ── */
+    .header {
+      background: var(--bg2);
+      border-bottom: 1px solid var(--border);
+      padding: 20px 32px;
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 24px; flex-wrap: wrap;
+      position: sticky; top: 0; z-index: 100;
+    }
+    .header-logo { font-size: 1.2rem; font-weight: 900; letter-spacing: -.02em; }
+    .header-logo span { color: var(--orange); }
+    .header-tabs { display: flex; gap: 6px; flex-wrap: wrap; }
+    .tab-btn {
+      padding: 7px 16px; border-radius: 8px; font-size: .82rem; font-weight: 600;
+      font-family: var(--font); cursor: pointer; border: 1px solid var(--border);
+      background: var(--surface); color: var(--text2); transition: all .18s;
+    }
+    .tab-btn:hover { border-color: var(--border-hi); color: var(--text); }
+    .tab-btn.active { background: var(--primary); border-color: var(--primary); color: #fff; }
+    .tab-btn.all-btn { background: var(--surface2); color: var(--text); border-color: var(--border-hi); }
+    .tab-btn.all-btn.active { background: var(--orange); border-color: var(--orange); }
+
+    /* ── CONTAINER ── */
+    .container { max-width: 1280px; margin: 0 auto; padding: 0 32px; }
+
+    /* ── HERO SUMMARY ── */
+    .dash-hero {
+      padding: 48px 0 36px;
+      border-bottom: 1px solid var(--border);
+      background: linear-gradient(180deg, rgba(124,58,237,.04) 0%, transparent 100%);
+    }
+    .dash-hero h1 { font-size: clamp(1.8rem, 3vw, 2.6rem); font-weight: 900; letter-spacing: -.03em; margin-bottom: 10px; }
+    .dash-hero p { color: var(--text2); font-size: 1rem; max-width: 640px; }
+    .dash-stats {
+      display: flex; gap: 32px; margin-top: 28px; flex-wrap: wrap;
+    }
+    .ds-item { display: flex; flex-direction: column; gap: 2px; }
+    .ds-num { font-size: 1.5rem; font-weight: 900; }
+    .ds-label { font-size: .78rem; color: var(--muted); text-transform: uppercase; letter-spacing: .06em; }
+
+    /* ── VIEW SWITCHER ── */
+    .view-bar {
+      padding: 20px 0;
+      display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap;
+    }
+    .view-bar-left { display: flex; gap: 8px; }
+    .view-btn {
+      padding: 8px 18px; border-radius: 8px; font-size: .84rem; font-weight: 600;
+      font-family: var(--font); cursor: pointer; border: 1px solid var(--border);
+      background: var(--surface); color: var(--text2); transition: all .18s;
+    }
+    .view-btn.active { background: var(--surface2); color: var(--text); border-color: var(--border-hi); }
+
+    /* ── OVERVIEW GRID ── */
+    .overview-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      padding-bottom: 60px;
+    }
+    @media (max-width: 1000px) { .overview-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 640px) { .overview-grid { grid-template-columns: 1fr; } }
+
+    .variant-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--r-xl);
+      overflow: hidden;
+      display: flex; flex-direction: column;
+      transition: border-color .2s, transform .2s;
+    }
+    .variant-card:hover { border-color: var(--border-hi); transform: translateY(-2px); }
+    .variant-card.hidden { display: none; }
+
+    .vc-preview {
+      height: 200px;
+      position: relative;
+      overflow: hidden;
+      flex-shrink: 0;
+    }
+    .vc-preview iframe {
+      width: 200%;
+      height: 200%;
+      border: none;
+      transform: scale(.5);
+      transform-origin: top left;
+      pointer-events: none;
+    }
+    .vc-preview-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(to bottom, transparent 60%, var(--surface) 100%);
+    }
+    .vc-badge {
+      position: absolute; top: 12px; left: 12px;
+      font-size: .7rem; font-weight: 800; text-transform: uppercase; letter-spacing: .06em;
+      padding: 4px 10px; border-radius: 100px;
+      backdrop-filter: blur(8px);
+    }
+    .vc-open-btn {
+      position: absolute; top: 12px; right: 12px;
+      font-size: .75rem; font-weight: 700;
+      padding: 5px 12px; border-radius: 8px;
+      background: rgba(255,255,255,.1); backdrop-filter: blur(8px);
+      border: 1px solid rgba(255,255,255,.15); color: #fff;
+      cursor: pointer; transition: all .15s;
+    }
+    .vc-open-btn:hover { background: rgba(255,255,255,.2); }
+
+    .vc-body { padding: 22px; flex: 1; display: flex; flex-direction: column; gap: 16px; }
+    .vc-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 8px; }
+    .vc-version { font-size: .7rem; font-weight: 800; text-transform: uppercase; letter-spacing: .1em; color: var(--muted); }
+    .vc-title { font-size: 1rem; font-weight: 800; line-height: 1.3; margin-top: 4px; }
+    .vc-subtitle { font-size: .82rem; color: var(--text2); margin-top: 2px; line-height: 1.5; }
+
+    .vc-target {
+      background: var(--surface2);
+      border-radius: var(--r);
+      padding: 12px 14px;
+    }
+    .vc-target-label { font-size: .7rem; font-weight: 700; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); margin-bottom: 6px; }
+    .vc-target-text { font-size: .84rem; color: var(--text); line-height: 1.5; }
+
+    .vc-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+    .vc-tag {
+      font-size: .72rem; font-weight: 600;
+      padding: 3px 9px; border-radius: 100px;
+      border: 1px solid var(--border); color: var(--text2);
+    }
+
+    .vc-price { font-size: 1.1rem; font-weight: 800; }
+    .vc-price small { font-size: .78rem; font-weight: 500; color: var(--text2); }
+
+    .vc-pros-cons { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+    .vc-list-label { font-size: .7rem; font-weight: 700; text-transform: uppercase; letter-spacing: .06em; margin-bottom: 7px; }
+    .vc-list { list-style: none; display: flex; flex-direction: column; gap: 5px; }
+    .vc-list li { font-size: .78rem; line-height: 1.45; padding-left: 16px; position: relative; }
+    .vc-list li::before { position: absolute; left: 0; font-weight: 700; font-size: .75rem; }
+    .pros .vc-list-label { color: var(--accent); }
+    .pros .vc-list li::before { content: '+'; color: var(--accent); }
+    .cons .vc-list-label { color: #f87171; }
+    .cons .vc-list li::before { content: '–'; color: #f87171; }
+
+    .vc-footer {
+      display: flex; gap: 8px; padding-top: 4px; border-top: 1px solid var(--border);
+    }
+    .vc-footer a {
+      flex: 1; text-align: center; padding: 9px 12px; border-radius: 8px;
+      font-size: .8rem; font-weight: 700; cursor: pointer; transition: all .15s;
+    }
+    .btn-primary { background: var(--primary); color: #fff; }
+    .btn-primary:hover { background: var(--primary-hi); }
+    .btn-ghost-sm { background: var(--surface2); color: var(--text2); border: 1px solid var(--border); }
+    .btn-ghost-sm:hover { color: var(--text); border-color: var(--border-hi); }
+
+    /* ── COMPARE TABLE ── */
+    .compare-view { display: none; padding-bottom: 60px; }
+    .compare-view.active { display: block; }
+
+    .compare-table { width: 100%; border-collapse: collapse; font-size: .84rem; }
+    .compare-table th, .compare-table td {
+      padding: 13px 16px;
+      border-bottom: 1px solid var(--border);
+      text-align: left;
+      vertical-align: top;
+    }
+    .compare-table th {
+      background: var(--surface2);
+      font-weight: 700; font-size: .75rem;
+      text-transform: uppercase; letter-spacing: .06em; color: var(--text2);
+      position: sticky; top: 57px; z-index: 10;
+    }
+    .compare-table th.version-head { color: var(--text); font-size: .88rem; text-transform: none; }
+    .compare-table td { color: var(--text2); }
+    .compare-table .row-label { color: var(--text); font-weight: 600; white-space: nowrap; font-size: .82rem; }
+    .compare-table tr:hover td { background: rgba(255,255,255,.02); }
+    .tag-good { color: var(--accent); }
+    .tag-warn { color: var(--orange); }
+    .tag-bad  { color: #f87171; }
+    .compare-table .ver-col { min-width: 130px; }
+
+    /* ── DETAIL VIEW ── */
+    .detail-view { display: none; padding-bottom: 60px; }
+    .detail-view.active { display: block; }
+    .detail-iframe-wrap {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--r-xl);
+      overflow: hidden;
+      margin-top: 16px;
+    }
+    .detail-iframe-bar {
+      background: var(--surface2);
+      padding: 12px 16px;
+      display: flex; align-items: center; gap: 8px;
+      border-bottom: 1px solid var(--border);
+    }
+    .dib-dot { width: 10px; height: 10px; border-radius: 50%; }
+    .dib-dot.red { background: #ef4444; }
+    .dib-dot.yellow { background: #f59e0b; }
+    .dib-dot.green { background: var(--accent); }
+    .dib-url { font-size: .8rem; color: var(--muted); margin-left: 6px; flex: 1; text-align: center; }
+    .detail-iframe-wrap iframe { width: 100%; height: 700px; border: none; }
+    .detail-info {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 16px; margin-top: 20px;
+    }
+    @media (max-width: 768px) { .detail-info { grid-template-columns: 1fr; } }
+    .di-card {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: var(--r-lg); padding: 18px;
+    }
+    .di-title { font-size: .72rem; font-weight: 700; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); margin-bottom: 10px; }
+    .di-card ul { list-style: none; display: flex; flex-direction: column; gap: 6px; }
+    .di-card li { font-size: .84rem; color: var(--text2); padding-left: 16px; position: relative; }
+    .di-card li::before { content: '→'; position: absolute; left: 0; color: var(--muted); }
+    .di-card li.good::before { content: '✓'; color: var(--accent); }
+    .di-card li.bad::before { content: '✗'; color: #f87171; }
+
+    /* ── VARIANT SELECTOR (detail mode) ── */
+    .detail-nav {
+      display: flex; gap: 6px; margin-bottom: 0; flex-wrap: wrap;
+    }
+    .dnav-btn {
+      padding: 8px 16px; border-radius: 8px; font-size: .82rem; font-weight: 700;
+      font-family: var(--font); cursor: pointer; border: 1px solid var(--border);
+      background: var(--surface); color: var(--text2); transition: all .15s;
+    }
+    .dnav-btn.active { background: var(--primary); border-color: var(--primary); color: #fff; }
+    .dnav-btn:hover:not(.active) { border-color: var(--border-hi); color: var(--text); }
+
+    /* ── SECTION TITLE ── */
+    .section-title {
+      font-size: .7rem; font-weight: 700; text-transform: uppercase; letter-spacing: .08em;
+      color: var(--muted); margin-bottom: 16px; margin-top: 32px;
+    }
+
+    /* badges */
+    .badge { display: inline-block; padding: 3px 9px; border-radius: 100px; font-size: .7rem; font-weight: 700; }
+    .badge-v1 { background: rgba(124,58,237,.2); color: #a78bfa; border: 1px solid rgba(124,58,237,.3); }
+    .badge-v2 { background: rgba(59,130,246,.2); color: #93c5fd; border: 1px solid rgba(59,130,246,.3); }
+    .badge-v3 { background: rgba(34,197,94,.2); color: #86efac; border: 1px solid rgba(34,197,94,.3); }
+    .badge-v4 { background: rgba(249,115,22,.2); color: #fdba74; border: 1px solid rgba(249,115,22,.3); }
+    .badge-v5 { background: rgba(236,72,153,.2); color: #f9a8d4; border: 1px solid rgba(236,72,153,.3); }
+    .badge-v6 { background: rgba(239,68,68,.2); color: #fca5a5; border: 1px solid rgba(239,68,68,.3); }
+    .badge-rec { background: rgba(249,115,22,.15); color: var(--orange); border: 1px solid rgba(249,115,22,.3); }
+
+    /* ── EMPTY STATE ── */
+    .empty { text-align: center; padding: 60px; color: var(--muted); }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header class="header">
+    <div class="header-logo">webdo<span>24</span> <span style="color:var(--muted);font-weight:400;font-size:.9rem">— Dashboard variant</span></div>
+    <div class="header-tabs">
+      <button class="tab-btn all-btn active" onclick="filterVariants('all')">Všechny (6)</button>
+      <button class="tab-btn" onclick="filterVariants('v1')">V1</button>
+      <button class="tab-btn" onclick="filterVariants('v2')">V2</button>
+      <button class="tab-btn" onclick="filterVariants('v3')">V3</button>
+      <button class="tab-btn" onclick="filterVariants('v4')">V4</button>
+      <button class="tab-btn" onclick="filterVariants('v5')">V5</button>
+      <button class="tab-btn" onclick="filterVariants('v6')">V6</button>
+    </div>
+  </header>
+
+  <div class="container">
+
+    <!-- HERO SUMMARY -->
+    <div class="dash-hero">
+      <h1>Varianty webu webdo24.cz</h1>
+      <p>6 různých verzí landing page — různý positioning, cílová skupina, obchodní model a cenová strategie. Porovnejte, vyberte, spusťte.</p>
+      <div class="dash-stats">
+        <div class="ds-item"><span class="ds-num" style="color:var(--primary)">6</span><span class="ds-label">variant</span></div>
+        <div class="ds-item"><span class="ds-num" style="color:var(--accent)">3</span><span class="ds-label">obchodní modely</span></div>
+        <div class="ds-item"><span class="ds-num" style="color:var(--orange)">12 900 Kč</span><span class="ds-label">max. základní cena (V6)</span></div>
+        <div class="ds-item"><span class="ds-num" style="color:var(--blue)">V6</span><span class="ds-label">nejvyšší fin. potenciál</span></div>
+      </div>
+    </div>
+
+    <!-- VIEW SWITCHER -->
+    <div class="view-bar">
+      <div class="view-bar-left">
+        <button class="view-btn active" onclick="switchView('overview')">Přehled karet</button>
+        <button class="view-btn" onclick="switchView('compare')">Srovnávací tabulka</button>
+        <button class="view-btn" onclick="switchView('detail')">Náhled</button>
+      </div>
+    </div>
+
+    <!-- ══════════ OVERVIEW VIEW ══════════ -->
+    <div class="overview-grid" id="overviewView">
+
+      <!-- V1 -->
+      <div class="variant-card" data-variant="v1">
+        <div class="vc-preview">
+          <iframe src="v1/index.html" loading="lazy" title="Varianta V1"></iframe>
+          <div class="vc-preview-overlay"></div>
+          <span class="vc-badge badge-v1">V1</span>
+          <a href="v1/index.html" target="_blank" class="vc-open-btn">Otevřít →</a>
+        </div>
+        <div class="vc-body">
+          <div>
+            <div class="vc-version">Varianta 1 · Klasická</div>
+            <div class="vc-title">Profesionální web do 24 hodin</div>
+            <div class="vc-subtitle">Jednoduchý, přímočarý pitch s jedním freelancerem jako tvůrcem</div>
+          </div>
+          <div class="vc-target">
+            <div class="vc-target-label">Cílová skupina</div>
+            <div class="vc-target-text">Živnostníci, malé firmy, řemeslníci, lokální provozovny. Věk 35–55. Cena citlivá skupina, která potřebuje web ale nechce platit agentuře.</div>
+          </div>
+          <div class="vc-tags">
+            <span class="vc-tag">SMB / Lokální</span>
+            <span class="vc-tag">Jednorázová platba</span>
+            <span class="vc-tag">30denní garance</span>
+            <span class="vc-tag">Srovnávací tabulka</span>
+          </div>
+          <div>
+            <div style="font-size:.7rem;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;margin-bottom:4px">Cena</div>
+            <div class="vc-price">od 9 900 Kč <small>· jednorázově</small></div>
+          </div>
+          <div class="vc-pros-cons">
+            <div class="pros">
+              <div class="vc-list-label">Silné stránky</div>
+              <ul class="vc-list">
+                <li>Nejširší cílová skupina</li>
+                <li>Jasné srovnání s agenturou</li>
+                <li>Jednoduchý formulář → nízká bariéra</li>
+                <li>Solidní dark design</li>
+                <li>30denní garance jako jistota</li>
+              </ul>
+            </div>
+            <div class="cons">
+              <div class="vc-list-label">Slabé stránky</div>
+              <ul class="vc-list">
+                <li>Žádný opakující se příjem</li>
+                <li>Nevyniká oproti konkurenci</li>
+                <li>Žádná AI/subscription sekce</li>
+                <li>Formulář neprověří zákazníka</li>
+              </ul>
+            </div>
+          </div>
+          <div class="vc-footer">
+            <a href="v1/index.html" target="_blank" class="btn-primary">Otevřít V1</a>
+            <a href="#" class="btn-ghost-sm" onclick="openDetail('v1');return false">Detailní náhled</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- V2 -->
+      <div class="variant-card" data-variant="v2">
+        <div class="vc-preview">
+          <iframe src="v2/index.html" loading="lazy" title="Varianta V2"></iframe>
+          <div class="vc-preview-overlay"></div>
+          <span class="vc-badge badge-v2">V2</span>
+          <a href="v2/index.html" target="_blank" class="vc-open-btn">Otevřít →</a>
+        </div>
+        <div class="vc-body">
+          <div>
+            <div class="vc-version">Varianta 2 · Odlehčená</div>
+            <div class="vc-title">Profesionální web do 24 hodin</div>
+            <div class="vc-subtitle">Identický obsah jako V1, ale čistší, kompaktnější HTML kód</div>
+          </div>
+          <div class="vc-target">
+            <div class="vc-target-label">Cílová skupina</div>
+            <div class="vc-target-text">Stejná jako V1 — živnostníci a malé firmy. Technicky odlehčená verze vhodná pro A/B test rychlosti načítání vs. V1.</div>
+          </div>
+          <div class="vc-tags">
+            <span class="vc-tag">SMB / Lokální</span>
+            <span class="vc-tag">Jednorázová platba</span>
+            <span class="vc-tag">Odlehčený kód</span>
+            <span class="vc-tag">A/B varianta k V1</span>
+          </div>
+          <div>
+            <div style="font-size:.7rem;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;margin-bottom:4px">Cena</div>
+            <div class="vc-price">od 9 900 Kč <small>· jednorázově</small></div>
+          </div>
+          <div class="vc-pros-cons">
+            <div class="pros">
+              <div class="vc-list-label">Silné stránky</div>
+              <ul class="vc-list">
+                <li>Rychlejší načítání než V1</li>
+                <li>Čistší kód, lehčí údržba</li>
+                <li>Stejný obsah, lepší technicky</li>
+                <li>Vhodný pro mobilní sítě</li>
+              </ul>
+            </div>
+            <div class="cons">
+              <div class="vc-list-label">Slabé stránky</div>
+              <ul class="vc-list">
+                <li>Identický obsah jako V1</li>
+                <li>Malý rozdíl v konverzi</li>
+                <li>Žádné nové funkce oproti V1</li>
+                <li>Žádný subscription model</li>
+              </ul>
+            </div>
+          </div>
+          <div class="vc-footer">
+            <a href="v2/index.html" target="_blank" class="btn-primary">Otevřít V2</a>
+            <a href="#" class="btn-ghost-sm" onclick="openDetail('v2');return false">Detailní náhled</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- V3 -->
+      <div class="variant-card" data-variant="v3">
+        <div class="vc-preview">
+          <iframe src="v3/index.html" loading="lazy" title="Varianta V3"></iframe>
+          <div class="vc-preview-overlay"></div>
+          <span class="vc-badge badge-v3">V3</span>
+          <a href="v3/index.html" target="_blank" class="vc-open-btn">Otevřít →</a>
+        </div>
+        <div class="vc-body">
+          <div>
+            <div class="vc-version">Varianta 3 · Výsledková + Automatizace</div>
+            <div class="vc-title">"Web, který vydělává" + n8n pipeline</div>
+            <div class="vc-subtitle">Výsledkový positioning + automatizace formuláře přes n8n + AI prompt šablona</div>
+          </div>
+          <div class="vc-target">
+            <div class="vc-target-label">Cílová skupina</div>
+            <div class="vc-target-text">Podnikatelé orientovaní na výsledky — chci zákazníky, ne jen "pěkný web". Techničtější audience, která rozumí ROI. Lokální i online byznys.</div>
+          </div>
+          <div class="vc-tags">
+            <span class="vc-tag">ROI-orientovaný</span>
+            <span class="vc-tag">n8n automatizace</span>
+            <span class="vc-tag">AI prompt šablona</span>
+            <span class="vc-tag">Platba po schválení</span>
+          </div>
+          <div>
+            <div style="font-size:.7rem;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;margin-bottom:4px">Cena</div>
+            <div class="vc-price">od 9 900 Kč <small>· jednorázově</small></div>
+          </div>
+          <div class="vc-pros-cons">
+            <div class="pros">
+              <div class="vc-list-label">Silné stránky</div>
+              <ul class="vc-list">
+                <li>Výsledkový messaging ("vydělává")</li>
+                <li>n8n workflow pro auto-zpracování</li>
+                <li>AI prompt → okamžitý brief</li>
+                <li>Platba po schválení front&amp;center</li>
+                <li>Backend automatizace připravena</li>
+              </ul>
+            </div>
+            <div class="cons">
+              <div class="vc-list-label">Slabé stránky</div>
+              <ul class="vc-list">
+                <li>Vyžaduje n8n server pro plný provoz</li>
+                <li>Složitější nastavení backendu</li>
+                <li>Stejná cena jako V1/V2</li>
+                <li>Žádný subscription model</li>
+              </ul>
+            </div>
+          </div>
+          <div class="vc-footer">
+            <a href="v3/index.html" target="_blank" class="btn-primary">Otevřít V3</a>
+            <a href="#" class="btn-ghost-sm" onclick="openDetail('v3');return false">Detailní náhled</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- V4 -->
+      <div class="variant-card" data-variant="v4">
+        <div class="vc-preview">
+          <iframe src="v4/index.html" loading="lazy" title="Varianta V4"></iframe>
+          <div class="vc-preview-overlay"></div>
+          <span class="vc-badge badge-v4">V4</span>
+          <a href="v4/index.html" target="_blank" class="vc-open-btn">Otevřít →</a>
+        </div>
+        <div class="vc-body">
+          <div>
+            <div class="vc-version">Varianta 4 · Startup/Founders</div>
+            <div class="vc-title">Startup positioning + 9krokový formulář</div>
+            <div class="vc-subtitle">Premium targeting na founders, 9krokový brief, AI generátor, crisis scenarios, AI vs. Wix sekce</div>
+          </div>
+          <div class="vc-target">
+            <div class="vc-target-label">Cílová skupina</div>
+            <div class="vc-target-text">Zakladatelé startupů, freelanceři, growth-oriented founders. Věk 25–40. Technicky zdatní, oceňují kvalitu a rychlost. Menší objem, vyšší ochota platit.</div>
+          </div>
+          <div class="vc-tags">
+            <span class="vc-tag">Startupy / Founders</span>
+            <span class="vc-tag">9krokový formulář</span>
+            <span class="vc-tag">AI brief generátor</span>
+            <span class="vc-tag">Crisis scenarios</span>
+            <span class="vc-tag">AI vs. Wix sekce</span>
+          </div>
+          <div>
+            <div style="font-size:.7rem;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;margin-bottom:4px">Cena</div>
+            <div class="vc-price">od 9 900 Kč <small>· jednorázově · platba po schválení</small></div>
+          </div>
+          <div class="vc-pros-cons">
+            <div class="pros">
+              <div class="vc-list-label">Silné stránky</div>
+              <ul class="vc-list">
+                <li>Premium niche = vyšší marže</li>
+                <li>9krokový formulář kvalifikuje zákazníka</li>
+                <li>AI brief → okamžitá hodnota</li>
+                <li>Crisis scenarios = emoční trigger</li>
+                <li>AI vs. Wix sekce = unikátní</li>
+                <li>Subscription upsell zahrnut</li>
+              </ul>
+            </div>
+            <div class="cons">
+              <div class="vc-list-label">Slabé stránky</div>
+              <ul class="vc-list">
+                <li>Užší audience než V1–V3</li>
+                <li>Dlouhý formulář = vyšší odpad</li>
+                <li>Cena stále 9 900 Kč</li>
+                <li>Horší pro řemeslníky/lokální byznys</li>
+              </ul>
+            </div>
+          </div>
+          <div class="vc-footer">
+            <a href="v4/index.html" target="_blank" class="btn-primary">Otevřít V4</a>
+            <a href="#" class="btn-ghost-sm" onclick="openDetail('v4');return false">Detailní náhled</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- V5 -->
+      <div class="variant-card" data-variant="v5">
+        <div class="vc-preview">
+          <iframe src="v5/index.html" loading="lazy" title="Varianta V5"></iframe>
+          <div class="vc-preview-overlay"></div>
+          <span class="vc-badge badge-v5">V5</span>
+          <a href="v5/index.html" target="_blank" class="vc-open-btn">Otevřít →</a>
+        </div>
+        <div class="vc-body">
+          <div>
+            <div class="vc-version">Varianta 5 · Revenue Machine</div>
+            <div class="vc-title">Subscription model + ROI kalkulačka</div>
+            <div class="vc-subtitle">"Neděláme weby, budujeme revenue machines" — měsíční Growth optimalizace jako core produkt</div>
+          </div>
+          <div class="vc-target">
+            <div class="vc-target-label">Cílová skupina</div>
+            <div class="vc-target-text">Podnikatelé, kteří chápou, že web není výdaj ale investice. Ochotni platit měsíčně za výsledky. Lokální byznys s opakujícími se zákazníky (salony, řemesla, konzultanti).</div>
+          </div>
+          <div class="vc-tags">
+            <span class="vc-tag">Subscription / SaaS model</span>
+            <span class="vc-tag">ROI kalkulačka</span>
+            <span class="vc-tag">Growth optimalizace</span>
+            <span class="vc-tag">A/B testování</span>
+            <span class="vc-tag">Výsledky klientů</span>
+          </div>
+          <div>
+            <div style="font-size:.7rem;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;margin-bottom:4px">Cena</div>
+            <div class="vc-price">9 900 Kč <small>+ od 1 990 Kč/měsíc · Základ/Růst/Scale</small></div>
+          </div>
+          <div class="vc-pros-cons">
+            <div class="pros">
+              <div class="vc-list-label">Silné stránky</div>
+              <ul class="vc-list">
+                <li>Opakující se MRR příjem</li>
+                <li>ROI kalkulačka konvertuje</li>
+                <li>Nejsilnější positioning ("výsledky")</li>
+                <li>Scale balíček = high ticket</li>
+                <li>Real case studies s čísly</li>
+                <li>Nejkomplexnější nabídka</li>
+              </ul>
+            </div>
+            <div class="cons">
+              <div class="vc-list-label">Slabé stránky</div>
+              <ul class="vc-list">
+                <li>Základní cena 9 900 Kč stále nízká</li>
+                <li>30denní garance = refund risk</li>
+                <li>Komplexní slib → složitější deliver</li>
+                <li>Subscription nelze 100% AI-automatizovat</li>
+              </ul>
+            </div>
+          </div>
+          <div class="vc-footer">
+            <a href="v5/index.html" target="_blank" class="btn-primary">Otevřít V5</a>
+            <a href="#" class="btn-ghost-sm" onclick="openDetail('v5');return false">Detailní náhled</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- V6 -->
+      <div class="variant-card" data-variant="v6">
+        <div class="vc-preview">
+          <iframe src="v6/index.html" loading="lazy" title="Varianta V6"></iframe>
+          <div class="vc-preview-overlay"></div>
+          <span class="vc-badge badge-v6" style="background:rgba(249,115,22,.25);color:#fb923c;border-color:rgba(249,115,22,.4)">V6 ⭐</span>
+          <a href="v6/index.html" target="_blank" class="vc-open-btn">Otevřít →</a>
+        </div>
+        <div class="vc-body">
+          <div>
+            <div class="vc-version">Varianta 6 · Revenue Machine Optimized <span class="badge badge-rec">Max. výnos</span></div>
+            <div class="vc-title">V5 + vyšší ceny + 7denní garance + rush fee</div>
+            <div class="vc-subtitle">Finančně optimalizovaná verze V5 — +30 % na ceně, omezená garance, expresní příplatek</div>
+          </div>
+          <div class="vc-target">
+            <div class="vc-target-label">Cílová skupina</div>
+            <div class="vc-target-text">Stejná jako V5, ale filtruje cenově citlivé zákazníky a cílí na vážné zájemce ochotné zaplatit prémiovou cenu. Urgent use cases (pitch, opening) oceňují rush fee.</div>
+          </div>
+          <div class="vc-tags">
+            <span class="vc-tag">Max. marže</span>
+            <span class="vc-tag">Rush fee +3 000 Kč</span>
+            <span class="vc-tag">7denní garance</span>
+            <span class="vc-tag">12 900 / 24 900 Kč</span>
+            <span class="vc-tag">Subscription model</span>
+          </div>
+          <div>
+            <div style="font-size:.7rem;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;margin-bottom:4px">Cena</div>
+            <div class="vc-price" style="color:var(--orange)">12 900 Kč <small style="color:var(--text2)">+ od 1 990 Kč/měsíc · rush +3 000 Kč</small></div>
+          </div>
+          <div class="vc-pros-cons">
+            <div class="pros">
+              <div class="vc-list-label">Silné stránky</div>
+              <ul class="vc-list">
+                <li>+30 % na každé zakázce vs V5</li>
+                <li>Rush fee = extra příjem</li>
+                <li>7 dní garance snižuje refund risk</li>
+                <li>Filtruje nevážné zájemce</li>
+                <li>Nejlepší ROI na jednu zakázku</li>
+                <li>Vše z V5 zachováno</li>
+              </ul>
+            </div>
+            <div class="cons">
+              <div class="vc-list-label">Slabé stránky</div>
+              <ul class="vc-list">
+                <li>Vyšší cena může snížit konverzi</li>
+                <li>7 dní garance méně přesvědčivá</li>
+                <li>Testimonials stále uvádí 9 900 Kč</li>
+                <li>A/B test nutný pro ověření dopadu</li>
+              </ul>
+            </div>
+          </div>
+          <div class="vc-footer">
+            <a href="v6/index.html" target="_blank" class="btn-primary" style="background:var(--orange)">Otevřít V6 ⭐</a>
+            <a href="#" class="btn-ghost-sm" onclick="openDetail('v6');return false">Detailní náhled</a>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /overview-grid -->
+
+    <!-- ══════════ COMPARE VIEW ══════════ -->
+    <div class="compare-view" id="compareView">
+      <div class="section-title">Srovnávací tabulka všech variant</div>
+      <div style="overflow-x:auto">
+      <table class="compare-table">
+        <thead>
+          <tr>
+            <th>Vlastnost</th>
+            <th class="ver-col version-head"><span class="badge badge-v1">V1</span></th>
+            <th class="ver-col version-head"><span class="badge badge-v2">V2</span></th>
+            <th class="ver-col version-head"><span class="badge badge-v3">V3</span></th>
+            <th class="ver-col version-head"><span class="badge badge-v4">V4</span></th>
+            <th class="ver-col version-head"><span class="badge badge-v5">V5</span></th>
+            <th class="ver-col version-head"><span class="badge badge-v6">V6 ⭐</span></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="row-label">Positioning</td>
+            <td>Rychlost + cena</td>
+            <td>Rychlost + cena</td>
+            <td>Výsledky / vydělává</td>
+            <td>Startup / Founder</td>
+            <td>Revenue machine</td>
+            <td>Revenue machine</td>
+          </tr>
+          <tr>
+            <td class="row-label">Cílová skupina</td>
+            <td>Živnostníci, SMB</td>
+            <td>Živnostníci, SMB</td>
+            <td>ROI-oriented SMB</td>
+            <td>Founders, startupy</td>
+            <td>Všichni podnikatelé</td>
+            <td>Prémiový segment</td>
+          </tr>
+          <tr>
+            <td class="row-label">Základní cena</td>
+            <td class="tag-warn">9 900 Kč</td>
+            <td class="tag-warn">9 900 Kč</td>
+            <td class="tag-warn">9 900 Kč</td>
+            <td class="tag-warn">9 900 Kč</td>
+            <td class="tag-warn">9 900 Kč</td>
+            <td class="tag-good">12 900 Kč</td>
+          </tr>
+          <tr>
+            <td class="row-label">Subscription model</td>
+            <td class="tag-bad">Ne</td>
+            <td class="tag-bad">Ne</td>
+            <td class="tag-bad">Ne</td>
+            <td>Upsell zmínka</td>
+            <td class="tag-good">Ano (1 990/měs)</td>
+            <td class="tag-good">Ano (1 990/měs)</td>
+          </tr>
+          <tr>
+            <td class="row-label">Garance</td>
+            <td>30 dní</td>
+            <td>30 dní</td>
+            <td>30 dní</td>
+            <td>30 dní</td>
+            <td>30 dní</td>
+            <td class="tag-good">7 dní</td>
+          </tr>
+          <tr>
+            <td class="row-label">Platba po schválení</td>
+            <td class="tag-bad">Ne</td>
+            <td class="tag-bad">Ne</td>
+            <td class="tag-good">Ano</td>
+            <td class="tag-good">Ano</td>
+            <td class="tag-good">Ano</td>
+            <td class="tag-good">Ano</td>
+          </tr>
+          <tr>
+            <td class="row-label">Rush fee</td>
+            <td class="tag-bad">Ne</td>
+            <td class="tag-bad">Ne</td>
+            <td class="tag-bad">Ne</td>
+            <td class="tag-bad">Ne</td>
+            <td class="tag-bad">Ne</td>
+            <td class="tag-good">+3 000 Kč / 8h</td>
+          </tr>
+          <tr>
+            <td class="row-label">Formulář</td>
+            <td>Jednoduchý (1 stránka)</td>
+            <td>Jednoduchý (1 stránka)</td>
+            <td>Jednoduchý + n8n</td>
+            <td class="tag-good">9krokový multi-step</td>
+            <td>Standardní (1 stránka)</td>
+            <td>Standardní (1 stránka)</td>
+          </tr>
+          <tr>
+            <td class="row-label">AI brief / automatizace</td>
+            <td class="tag-bad">Ne</td>
+            <td class="tag-bad">Ne</td>
+            <td class="tag-good">n8n + prompt šablona</td>
+            <td class="tag-good">AI brief generátor</td>
+            <td class="tag-bad">Ne</td>
+            <td class="tag-bad">Ne</td>
+          </tr>
+          <tr>
+            <td class="row-label">ROI kalkulačka</td>
+            <td class="tag-bad">Ne</td>
+            <td class="tag-bad">Ne</td>
+            <td class="tag-bad">Ne</td>
+            <td class="tag-bad">Ne</td>
+            <td class="tag-good">Ano</td>
+            <td class="tag-good">Ano</td>
+          </tr>
+          <tr>
+            <td class="row-label">Crisis scenarios sekce</td>
+            <td class="tag-bad">Ne</td>
+            <td class="tag-bad">Ne</td>
+            <td class="tag-bad">Ne</td>
+            <td class="tag-good">Ano</td>
+            <td class="tag-bad">Ne</td>
+            <td class="tag-bad">Ne</td>
+          </tr>
+          <tr>
+            <td class="row-label">AI vs. Wix sekce</td>
+            <td class="tag-bad">Ne</td>
+            <td class="tag-bad">Ne</td>
+            <td class="tag-bad">Ne</td>
+            <td class="tag-good">Ano</td>
+            <td class="tag-bad">Ne</td>
+            <td class="tag-bad">Ne</td>
+          </tr>
+          <tr>
+            <td class="row-label">Výsledky klientů (case studies)</td>
+            <td class="tag-bad">Ne</td>
+            <td class="tag-bad">Ne</td>
+            <td class="tag-bad">Ne</td>
+            <td class="tag-bad">Ne</td>
+            <td class="tag-good">Ano (ROI + čísla)</td>
+            <td class="tag-good">Ano (ROI + čísla)</td>
+          </tr>
+          <tr>
+            <td class="row-label">MRR potenciál (měsíčně)</td>
+            <td class="tag-bad">0 Kč</td>
+            <td class="tag-bad">0 Kč</td>
+            <td class="tag-bad">0 Kč</td>
+            <td>490 Kč upsell</td>
+            <td class="tag-good">1 990–2 990 Kč</td>
+            <td class="tag-good">1 990–2 990 Kč</td>
+          </tr>
+          <tr>
+            <td class="row-label">Složitost prodeje</td>
+            <td class="tag-good">Nízká</td>
+            <td class="tag-good">Nízká</td>
+            <td>Střední</td>
+            <td>Střední</td>
+            <td>Střední</td>
+            <td>Střední–Vysoká</td>
+          </tr>
+          <tr>
+            <td class="row-label">Doporučeno pro</td>
+            <td>Start / testování</td>
+            <td>A/B test k V1</td>
+            <td>Automatizovaný pipeline</td>
+            <td>Startup niche</td>
+            <td>Škálování + MRR</td>
+            <td class="tag-good" style="font-weight:700">Max. příjem</td>
+          </tr>
+        </tbody>
+      </table>
+      </div>
+    </div><!-- /compare-view -->
+
+    <!-- ══════════ DETAIL VIEW ══════════ -->
+    <div class="detail-view" id="detailView">
+      <div class="section-title">Detailní náhled varianty</div>
+      <div class="detail-nav" id="detailNav">
+        <button class="dnav-btn active" onclick="loadDetail('v1')">V1</button>
+        <button class="dnav-btn" onclick="loadDetail('v2')">V2</button>
+        <button class="dnav-btn" onclick="loadDetail('v3')">V3</button>
+        <button class="dnav-btn" onclick="loadDetail('v4')">V4</button>
+        <button class="dnav-btn" onclick="loadDetail('v5')">V5</button>
+        <button class="dnav-btn" onclick="loadDetail('v6')">V6 ⭐</button>
+      </div>
+      <div class="detail-iframe-wrap">
+        <div class="detail-iframe-bar">
+          <span class="dib-dot red"></span>
+          <span class="dib-dot yellow"></span>
+          <span class="dib-dot green"></span>
+          <span class="dib-url" id="detailUrl">v1/index.html</span>
+          <a id="detailOpenLink" href="v1/index.html" target="_blank" style="font-size:.78rem;color:var(--text2);font-weight:600;flex-shrink:0">Otevřít v nové záložce →</a>
+        </div>
+        <iframe id="detailIframe" src="v1/index.html" title="Detail varianty"></iframe>
+      </div>
+      <div class="detail-info" id="detailInfo"></div>
+    </div><!-- /detail-view -->
+
+  </div><!-- /container -->
+
+  <script>
+    // ── DATA ──────────────────────────────────────────────────────
+    const variants = {
+      v1: {
+        label: 'V1 — Klasická',
+        useCase: 'Testování trhu, nejširší audience, první nasazení',
+        audience: 'Živnostníci, řemeslníci, lokální firmy (věk 35–55)',
+        pricing: 'od 9 900 Kč jednorázově',
+        model: 'One-time payment',
+        pros: [
+          'Nejširší cílová skupina',
+          'Jednoduchý formulář = nízká bariéra vstupu',
+          'Srovnávací tabulka (vs. agentura, vs. DIY)',
+          'Solidní dark design, mobilní verze',
+          '30denní garance jako pojistka',
+        ],
+        cons: [
+          'Nulový opakující se příjem (MRR)',
+          'Cena 9 900 Kč je pod tržním optimem',
+          'Standardní formulář neprověří zákazníka',
+          'Žádná sekce pro AI/subscription',
+        ],
+        verdict: 'Ideální jako výchozí bod nebo pro cenově citlivý trh.',
+      },
+      v2: {
+        label: 'V2 — Odlehčená',
+        useCase: 'A/B testování rychlosti načítání oproti V1',
+        audience: 'Stejná jako V1 — živnostníci a malé firmy',
+        pricing: 'od 9 900 Kč jednorázově',
+        model: 'One-time payment',
+        pros: [
+          'Kompaktnější HTML → rychlejší načítání',
+          'Čistší kód, snazší údržba',
+          'Identický obsah i konverzní prvky jako V1',
+          'Lepší skóre PageSpeed',
+        ],
+        cons: [
+          'Žádný nový obsah oproti V1',
+          'Rozdíl v konverzi minimální',
+          'Stále chybí subscription i AI sekce',
+        ],
+        verdict: 'Technická alternativa k V1. Spusťte jako A/B test.',
+      },
+      v3: {
+        label: 'V3 — Výsledková + Automatizace',
+        useCase: 'Pipeline zpracování leadů přes n8n, AI generování briefu',
+        audience: 'ROI-orientovaní podnikatelé, techničtější audience',
+        pricing: 'od 9 900 Kč jednorázově',
+        model: 'One-time payment + n8n backend',
+        pros: [
+          '"Web který vydělává" = silnější messaging než V1/V2',
+          'n8n workflow → automatické zpracování formuláře',
+          'PROMPT-SABLONA.md → AI generuje web okamžitě',
+          '"Platíte až po schválení" front-and-center',
+          'Backend automatizace = škálovatelnost',
+        ],
+        cons: [
+          'Vyžaduje funkční n8n instanci pro plný provoz',
+          'Složitější setup backendu',
+          'Cena stále 9 900 Kč — podhodnocena',
+          'Žádný subscription model',
+        ],
+        verdict: 'Nejlepší pro plně automatizovaný provoz bez manuální práce.',
+      },
+      v4: {
+        label: 'V4 — Startup / Founders',
+        useCase: 'Premium niche targeting, detailní kvalifikace zákazníka',
+        audience: 'Zakladatelé startupů, freelanceři, age 25–40',
+        pricing: 'od 9 900 Kč + subscription upsell 490 Kč/měsíc',
+        model: 'One-time + volitelný subscription',
+        pros: [
+          'Premium niche = vyšší ochota platit',
+          '9krokový formulář = výborná kvalifikace zákazníka',
+          'AI brief generátor po odeslání formuláře',
+          'Crisis scenarios = silný emoční trigger',
+          '"Proč ne AI/Wix" sekce = unikátní na trhu',
+          'Hora-by-hour timeline procesu',
+        ],
+        cons: [
+          'Užší audience = méně leadů celkově',
+          'Dlouhý formulář = vyšší opuštění',
+          'Základní cena 9 900 Kč stále nízká',
+          'Špatně cíleno pro řemeslníky / lokální byznys',
+        ],
+        verdict: 'Ideální pro premium segment a B2B founders. Kombinujte s V6 cenami.',
+      },
+      v5: {
+        label: 'V5 — Revenue Machine',
+        useCase: 'Škálování s opakujícím se příjmem, MRR model',
+        audience: 'Podnikatelé orientovaní na výsledky, salony, konzultanti',
+        pricing: '9 900 Kč + 1 990 Kč/měsíc (Růst) / 2 990 Kč/měsíc (Scale)',
+        model: 'Subscription / MRR',
+        pros: [
+          'ROI kalkulačka = silný konverzní prvek',
+          'Subscription MRR = stabilní opakující se příjem',
+          'Real case studies s ROI čísly',
+          'Nejkomplexnější nabídka (Základ/Růst/Scale)',
+          '"Revenue machine" positioning = prémium',
+          'Growth systém sekce buduje důvěru',
+        ],
+        cons: [
+          'Základní cena 9 900 Kč je stále podhodnocena',
+          '30denní garance = riziko refundu',
+          'Subscription slib vyžaduje skutečný delivery systém',
+          'Složitější produkt = složitější prodej',
+        ],
+        verdict: 'Nejlepší pro budování stabilního MRR. Základ pro V6.',
+      },
+      v6: {
+        label: 'V6 — Revenue Machine Optimized ⭐',
+        useCase: 'Maximalizace příjmu na zakázku + MRR + urgent use cases',
+        audience: 'Prémiový segment — podnikatelé s urgentní potřebou nebo MRR mindset',
+        pricing: '12 900 Kč + 1 990 Kč/měsíc / rush +3 000 Kč za 8h',
+        model: 'Premium one-time + Subscription + Rush fee',
+        pros: [
+          '+30 % příjem na každé zakázce oproti V5',
+          'Rush fee 3 000 Kč pro urgentní případy',
+          '7denní garance = minimalizace refund risku',
+          'Subscription MRR zachován z V5',
+          'Express option ve formuláři',
+          'Filtruje nevážné zájemce cenou',
+        ],
+        cons: [
+          'Vyšší cena může snížit počet konverzí',
+          '7denní garance méně přesvědčivá než 30 dní',
+          'Testimonials stále uvádí 9 900 Kč (nekonzistentní)',
+          'Nutný A/B test pro ověření dopadu ceny',
+        ],
+        verdict: 'Doporučeno pro maximální finanční výnos. Spusťte a měřte.',
+      },
+    };
+
+    // ── VIEW SWITCHING ────────────────────────────────────────────
+    let currentView = 'overview';
+
+    function switchView(view) {
+      currentView = view;
+      document.querySelectorAll('.view-btn').forEach(b => b.classList.remove('active'));
+      event.target.classList.add('active');
+
+      document.getElementById('overviewView').style.display = view === 'overview' ? '' : 'none';
+      document.getElementById('compareView').classList.toggle('active', view === 'compare');
+      document.getElementById('detailView').classList.toggle('active', view === 'detail');
+
+      if (view === 'overview') document.getElementById('overviewView').style.display = 'grid';
+    }
+
+    // ── FILTER ───────────────────────────────────────────────────
+    function filterVariants(v) {
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      event.target.classList.add('active');
+
+      document.querySelectorAll('.variant-card').forEach(card => {
+        const show = v === 'all' || card.dataset.variant === v;
+        card.classList.toggle('hidden', !show);
+      });
+
+      if (v !== 'all') {
+        switchView('detail');
+        document.querySelectorAll('.view-btn').forEach(b => {
+          b.classList.toggle('active', b.textContent.trim() === 'Náhled');
+        });
+        loadDetail(v);
+      }
+    }
+
+    // ── DETAIL ───────────────────────────────────────────────────
+    function loadDetail(v) {
+      document.querySelectorAll('.dnav-btn').forEach((b, i) => {
+        b.classList.toggle('active', `v${i+1}` === v);
+      });
+      const src = `${v}/index.html`;
+      document.getElementById('detailIframe').src = src;
+      document.getElementById('detailUrl').textContent = src;
+      document.getElementById('detailOpenLink').href = src;
+
+      const d = variants[v];
+      document.getElementById('detailInfo').innerHTML = `
+        <div class="di-card">
+          <div class="di-title">Popis &amp; use case</div>
+          <ul>
+            <li><strong>Use case:</strong> ${d.useCase}</li>
+            <li><strong>Cílová skupina:</strong> ${d.audience}</li>
+            <li><strong>Model:</strong> ${d.model}</li>
+            <li><strong>Cena:</strong> ${d.pricing}</li>
+          </ul>
+        </div>
+        <div class="di-card">
+          <div class="di-title">Silné stránky</div>
+          <ul>
+            ${d.pros.map(p => `<li class="good">${p}</li>`).join('')}
+          </ul>
+        </div>
+        <div class="di-card">
+          <div class="di-title">Slabé stránky &amp; verdikt</div>
+          <ul>
+            ${d.cons.map(c => `<li class="bad">${c}</li>`).join('')}
+            <li style="margin-top:10px;color:var(--orange);padding-left:16px"><strong>→ ${d.verdict}</strong></li>
+          </ul>
+        </div>
+      `;
+    }
+
+    function openDetail(v) {
+      switchView('detail');
+      document.querySelectorAll('.view-btn').forEach(b => {
+        b.classList.toggle('active', b.textContent.trim() === 'Náhled');
+      });
+      loadDetail(v);
+      document.getElementById('detailView').scrollIntoView({ behavior: 'smooth' });
+    }
+
+    // ── INIT ─────────────────────────────────────────────────────
+    document.getElementById('overviewView').style.display = 'grid';
+    document.getElementById('compareView').classList.remove('active');
+    document.getElementById('detailView').classList.remove('active');
+  </script>
+</body>
+</html>
