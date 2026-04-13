@@ -1,0 +1,847 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Profesionální web do 24 hodin se zárukou vrácení peněz. Bankovní úschova platby. 24 900 Kč. WebDo24.cz — nebo ho máte ZDARMA.">
+<title>WebDo24.cz | Váš web bude zítra online a vydělávat. Nebo ho máte ZDARMA.</title>
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://webdo24.cz">
+<meta property="og:title" content="WebDo24.cz | Web do 24 hodin. Nebo ZDARMA.">
+<meta property="og:description" content="Bankovní úschova platby. Platíte až po schválení. Nesplnili jsme? 0 Kč.">
+<meta property="og:locale" content="cs_CZ">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+tailwind.config = {
+  theme: {
+    extend: {
+      fontFamily: { outfit: ['Outfit', 'sans-serif'] },
+      colors: { navy: '#0B3954', teal: '#00C4B5', coral: '#FF3366' }
+    }
+  }
+}
+</script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Outfit',sans-serif;background-color:#0B3954;color:#fff;-webkit-font-smoothing:antialiased}
+:root{--navy:#0B3954;--teal:#00C4B5;--coral:#FF3366;--dark:#051D2E}
+.hero-bg{background:radial-gradient(ellipse 80% 60% at 20% 40%,rgba(0,196,181,0.07) 0%,transparent 60%),radial-gradient(ellipse 60% 50% at 80% 10%,rgba(255,51,102,0.06) 0%,transparent 55%),linear-gradient(170deg,#051D2E 0%,#0B3954 100%)}
+.glass{background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px)}
+.glass-nav{background:rgba(5,29,46,0.85);border-bottom:1px solid rgba(255,255,255,0.07);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px)}
+.glass-dark{background:rgba(5,29,46,0.6);border:1px solid rgba(255,255,255,0.08)}
+.btn-coral{display:inline-block;background:#FF3366;color:#fff;font-weight:900;border-radius:0.875rem;cursor:pointer;transition:all 0.25s ease;box-shadow:0 8px 32px -4px rgba(255,51,102,0.35);border:none;font-family:'Outfit',sans-serif}
+.btn-coral:hover{background:#e52e5a;transform:translateY(-2px);box-shadow:0 16px 40px -4px rgba(255,51,102,0.45)}
+.btn-outline{display:inline-block;background:transparent;color:rgba(255,255,255,0.6);font-weight:700;border-radius:0.875rem;cursor:pointer;transition:all 0.25s ease;border:1px solid rgba(255,255,255,0.15);font-family:'Outfit',sans-serif}
+.btn-outline:hover{color:#fff;border-color:rgba(255,255,255,0.4)}
+.grad-teal{background:linear-gradient(135deg,#00C4B5,#00e6d4);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.grad-coral{background:linear-gradient(135deg,#FF3366,#ff6b8a);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.glow-t{box-shadow:0 0 60px rgba(0,196,181,0.12)}
+.glow-c{box-shadow:0 0 60px rgba(255,51,102,0.15)}
+.trust-pill{background:rgba(0,196,181,0.08);border:1px solid rgba(0,196,181,0.25);border-radius:100px}
+.form-input{background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.12);border-radius:0.75rem;color:#fff;padding:0.875rem 1.125rem;width:100%;font-family:'Outfit',sans-serif;font-size:1rem;transition:border-color 0.25s;outline:none;-webkit-appearance:none}
+.form-input:focus{border-color:#00C4B5;background:rgba(0,196,181,0.06)}
+.form-input::placeholder{color:rgba(255,255,255,0.28)}
+.form-input option{background:#0B3954;color:#fff}
+.chart-wrap{position:relative;width:100%;height:280px}
+.chart-wrap-tall{position:relative;width:100%;height:320px}
+.vop-scroll{max-height:420px;overflow-y:auto;scrollbar-width:thin;scrollbar-color:#00C4B5 rgba(255,255,255,0.04);padding-right:0.75rem}
+.vop-scroll::-webkit-scrollbar{width:4px}
+.vop-scroll::-webkit-scrollbar-track{background:rgba(255,255,255,0.04);border-radius:10px}
+.vop-scroll::-webkit-scrollbar-thumb{background:#00C4B5;border-radius:10px}
+@keyframes pulse-ring{0%,100%{opacity:1;transform:scale(1)}50%{opacity:0.6;transform:scale(1.3)}}
+.pulse{animation:pulse-ring 1.8s ease-in-out infinite}
+@keyframes fade-up{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+.fade-up{animation:fade-up 0.7s ease-out forwards}
+.step-active-num{background:#00C4B5;color:#0B3954}
+.step-inactive-num{background:rgba(255,255,255,0.08);color:rgba(255,255,255,0.35)}
+.step-active-lbl{color:#00C4B5;font-weight:700}
+.step-inactive-lbl{color:rgba(255,255,255,0.3);font-weight:600}
+.timeline-node{position:relative;padding-left:4rem}
+.timeline-node::before{content:'';position:absolute;left:1.375rem;top:3.5rem;bottom:-2rem;width:2px;background:linear-gradient(180deg,rgba(0,196,181,0.6),rgba(0,196,181,0.1))}
+.timeline-node:last-child::before{display:none}
+.timeline-icon{position:absolute;left:0;top:0.25rem;width:2.75rem;height:2.75rem;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:0.95rem;flex-shrink:0}
+</style>
+</head>
+<body>
+
+<nav class="glass-nav fixed top-0 w-full z-50 px-6 py-4">
+  <div class="max-w-6xl mx-auto flex justify-between items-center">
+    <div class="text-2xl font-black tracking-tight"><span style="color:#FF3366">WEB</span><span style="color:#00C4B5">DO24</span><span style="color:rgba(255,255,255,0.25)">.cz</span></div>
+    <div class="hidden md:flex items-center gap-8 text-sm font-semibold" style="color:rgba(255,255,255,0.5)">
+      <a href="#jak-to-funguje" class="hover:text-white transition-colors">Jak to funguje</a>
+      <a href="#brief" class="hover:text-white transition-colors">Brief & Platba</a>
+      <a href="#vop" class="hover:text-white transition-colors">Garance</a>
+    </div>
+    <a href="#brief" class="btn-coral px-5 py-2.5 text-sm font-black">Spustit odpočet →</a>
+  </div>
+</nav>
+
+<div id="urgencyBar" class="fixed bottom-0 left-0 right-0 z-50 flex items-center justify-between px-5 py-3" style="background:#FF3366">
+  <div class="flex items-center gap-3">
+    <span class="pulse inline-block w-2 h-2 rounded-full bg-white"></span>
+    <span class="text-sm font-bold text-white">Dnes zbývá: <strong>1 volné místo</strong> — odpočet do 18:00: <span id="countdown" class="font-black text-white tabular-nums">--:--:--</span></span>
+  </div>
+  <button onclick="document.getElementById('urgencyBar').remove()" class="text-white ml-4 text-lg font-black leading-none opacity-70 hover:opacity-100 transition-opacity bg-transparent border-none cursor-pointer">×</button>
+</div>
+
+<section class="hero-bg pt-36 pb-28 px-6 overflow-hidden">
+  <div class="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+    <div class="space-y-8 fade-up">
+      <div class="trust-pill inline-flex items-center gap-2.5 px-4 py-2">
+        <span class="pulse inline-block w-1.5 h-1.5 rounded-full" style="background:#00C4B5"></span>
+        <span class="text-xs font-black uppercase tracking-widest" style="color:#00C4B5">Bankovní úschova platby · 24h garance · 0 Kč riziko</span>
+      </div>
+      <h1 class="text-5xl md:text-6xl font-black leading-tight tracking-tight">
+        Váš web bude<br>zítra online<br>a vydělávat.<br><span class="grad-coral">Nebo ho máte ZDARMA.</span>
+      </h1>
+      <p class="text-lg leading-relaxed" style="color:rgba(255,255,255,0.55);max-width:480px">
+        Profesionální firemní web do 24 hodin. Platba jde do <strong class="text-white">bankovní úschovy</strong> — neuvolníte ji, dokud nejste 100 % spokojeni. Žádné riziko, jen čistý výsledek.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 items-start">
+        <a href="#brief" class="btn-coral px-8 py-4 text-base font-black">Rezervovat termín a spustit odpočet</a>
+      </div>
+      <div class="grid grid-cols-3 gap-6 pt-6" style="border-top:1px solid rgba(255,255,255,0.08)">
+        <div>
+          <div class="text-3xl font-black" style="color:#00C4B5">24h</div>
+          <div class="text-xs mt-1" style="color:rgba(255,255,255,0.4)">garantovaný termín</div>
+        </div>
+        <div>
+          <div class="text-3xl font-black" style="color:#00C4B5">100%</div>
+          <div class="text-xs mt-1" style="color:rgba(255,255,255,0.4)">peníze v bezpečí</div>
+        </div>
+        <div>
+          <div class="text-3xl font-black" style="color:#FF3366">0 Kč</div>
+          <div class="text-xs mt-1" style="color:rgba(255,255,255,0.4)">pokud nesplníme</div>
+        </div>
+      </div>
+    </div>
+    <div class="glass rounded-3xl p-8 glow-t">
+      <div class="text-xs font-black uppercase tracking-widest mb-1" style="color:rgba(255,255,255,0.35)">Kolik vás stojí čekání na web</div>
+      <div class="text-2xl font-black mb-6">Ztráta příležitosti</div>
+      <div class="chart-wrap">
+        <canvas id="lossChart"></canvas>
+      </div>
+      <p class="text-xs mt-5 text-center" style="color:rgba(255,255,255,0.35)">Každý den bez webu = průměrně 1 200 Kč ztracených zakázek. S námi jste v zisku <strong class="text-white">už pozítří.</strong></p>
+    </div>
+  </div>
+</section>
+
+<section id="jak-to-funguje" class="py-28 px-6">
+  <div class="max-w-6xl mx-auto">
+    <div class="text-center mb-20">
+      <p class="text-xs font-black uppercase tracking-widest mb-4" style="color:#00C4B5">Cesta do ostrého provozu</p>
+      <h2 class="text-4xl md:text-5xl font-black">Od rezervace ke spuštěnému<br><span class="grad-teal">webu za 24 hodin</span></h2>
+    </div>
+
+    <div class="max-w-2xl mx-auto space-y-12">
+
+      <div class="timeline-node">
+        <div class="timeline-icon" style="background:rgba(0,196,181,0.15);border:2px solid #00C4B5;color:#00C4B5">0h</div>
+        <div class="glass rounded-2xl p-7">
+          <div class="text-4xl font-black mb-3" style="color:rgba(0,196,181,0.15)">00:00</div>
+          <h3 class="text-xl font-black mb-3">Rezervace & Hold</h3>
+          <p class="leading-relaxed" style="color:rgba(255,255,255,0.55)">Potvrdíte termín a autorizujete <strong class="text-white">pre-autorizaci platby</strong> (Hold). Částka se zablokuje na kartě — <span style="color:#00C4B5">neodchází nikam</span>, je v bezpečné úschově. Tým 3 specialistů je od té chvíle rezervován výhradně pro váš projekt.</p>
+        </div>
+      </div>
+
+      <div class="timeline-node">
+        <div class="timeline-icon" style="background:rgba(0,196,181,0.08);border:2px solid rgba(0,196,181,0.4);color:rgba(0,196,181,0.7)">12h</div>
+        <div class="glass rounded-2xl p-7">
+          <div class="text-4xl font-black mb-3" style="color:rgba(0,196,181,0.1)">12:00</div>
+          <h3 class="text-xl font-black mb-3">Produkce v Sandboxu</h3>
+          <p class="leading-relaxed" style="color:rgba(255,255,255,0.55)">Váš web vzniká na naší <strong class="text-white">sandboxové testovací adrese</strong>. Máte k náhledu přístup 24/7 a sledujete pokrok v reálném čase. Průběžný náhled je součástí standardního procesu — žádná černá skříňka, žádná překvapení.</p>
+        </div>
+      </div>
+
+      <div class="timeline-node">
+        <div class="timeline-icon" style="background:rgba(255,51,102,0.1);border:2px solid rgba(255,51,102,0.5);color:#FF3366">24h</div>
+        <div class="glass rounded-2xl p-7" style="border-color:rgba(0,196,181,0.2)">
+          <div class="text-4xl font-black mb-3" style="color:rgba(255,51,102,0.12)">24:00</div>
+          <h3 class="text-xl font-black mb-3">Schválení & Release Key</h3>
+          <p class="leading-relaxed" style="color:rgba(255,255,255,0.55)">Jste spokojeni? Jedním kliknutím uvolníte platbu a <strong class="text-white">okamžitě získáte Release Key</strong> — přístupy ke všem souborům, panelu správy, hostingu i doméně. Nesplnili jsme do 24h? Hold zaniká automaticky. <strong style="color:#FF3366">Riskujete 0 Kč. Bez výjimek.</strong></p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section id="brief" class="py-28 px-6" style="background:radial-gradient(ellipse 70% 50% at 50% 50%,rgba(0,196,181,0.04),transparent)">
+  <div class="max-w-2xl mx-auto">
+    <div class="text-center mb-12">
+      <p class="text-xs font-black uppercase tracking-widest mb-4" style="color:#00C4B5">Smart Brief</p>
+      <h2 class="text-4xl md:text-5xl font-black">3 kroky ke spuštění<br><span class="grad-coral">24h odpočtu</span></h2>
+      <p class="mt-4" style="color:rgba(255,255,255,0.45)">Vyplňte brief — potvrdíme termín a tým se okamžitě pustí do práce.</p>
+    </div>
+
+    <div class="glass rounded-3xl p-8 md:p-10 glow-t">
+
+      <div class="flex items-center gap-3 mb-10">
+        <div class="flex items-center gap-2.5">
+          <div id="sn1" class="w-8 h-8 rounded-full flex items-center justify-center text-sm font-black step-active-num">1</div>
+          <span id="sl1" class="text-sm step-active-lbl">Firma</span>
+        </div>
+        <div class="flex-1 h-px" style="background:rgba(255,255,255,0.1)" id="line1"></div>
+        <div class="flex items-center gap-2.5">
+          <div id="sn2" class="w-8 h-8 rounded-full flex items-center justify-center text-sm font-black step-inactive-num">2</div>
+          <span id="sl2" class="text-sm step-inactive-lbl">Kontext</span>
+        </div>
+        <div class="flex-1 h-px" style="background:rgba(255,255,255,0.1)" id="line2"></div>
+        <div class="flex items-center gap-2.5">
+          <div id="sn3" class="w-8 h-8 rounded-full flex items-center justify-center text-sm font-black step-inactive-num">3</div>
+          <span id="sl3" class="text-sm step-inactive-lbl">Platba</span>
+        </div>
+      </div>
+
+      <div id="step1">
+        <h3 class="text-xl font-black mb-6">Základní informace</h3>
+        <div class="space-y-5">
+          <div>
+            <label class="block text-sm font-bold mb-2" style="color:rgba(255,255,255,0.55)">Název firmy nebo projektu *</label>
+            <input id="f_name" type="text" class="form-input" placeholder="např. Pekárna U Novotných">
+            <p id="f_name_err" class="text-xs mt-1.5 hidden" style="color:#FF3366">Vyplňte prosím název firmy.</p>
+          </div>
+          <div>
+            <label class="block text-sm font-bold mb-2" style="color:rgba(255,255,255,0.55)">Hlavní cíl webu *</label>
+            <select id="f_goal" class="form-input cursor-pointer">
+              <option value="" disabled selected>Vyberte hlavní cíl...</option>
+              <option value="Získávání poptávek a telefonátů">Získávání poptávek a telefonátů</option>
+              <option value="Prodej produktů online (e-shop)">Prodej produktů online (e-shop)</option>
+              <option value="Budování značky a důvěry">Budování značky a důvěry</option>
+              <option value="Online rezervace termínů">Online rezervace termínů</option>
+              <option value="Portfolio a prezentace prací">Portfolio a prezentace prací</option>
+              <option value="Jiný cíl">Jiný cíl</option>
+            </select>
+            <p id="f_goal_err" class="text-xs mt-1.5 hidden" style="color:#FF3366">Vyberte prosím hlavní cíl.</p>
+          </div>
+          <div>
+            <label class="block text-sm font-bold mb-2" style="color:rgba(255,255,255,0.55)">Brandová barva</label>
+            <div class="flex gap-3 items-center">
+              <input id="f_picker" type="color" value="#00C4B5" class="w-12 h-12 rounded-xl cursor-pointer p-1" style="background:transparent;border:1px solid rgba(255,255,255,0.15)">
+              <input id="f_color" type="text" class="form-input" placeholder="#00C4B5 nebo název barvy" value="#00C4B5">
+            </div>
+          </div>
+        </div>
+        <button onclick="toStep(2)" class="btn-coral w-full py-4 mt-8 text-base font-black">Pokračovat: Kontext →</button>
+      </div>
+
+      <div id="step2" class="hidden">
+        <div class="flex items-center gap-3 mb-6">
+          <h3 class="text-xl font-black">Volitelný kontext</h3>
+          <span class="text-xs px-3 py-1 rounded-full font-bold" style="background:rgba(255,255,255,0.06);color:rgba(255,255,255,0.4)">nepovinné</span>
+        </div>
+        <p class="text-sm leading-relaxed mb-6" style="color:rgba(255,255,255,0.45)">Čím více víme, tím lépe cílíme copy a design. Bez odpovědí pracujeme s daty vašeho oboru.</p>
+        <div class="space-y-5">
+          <div>
+            <label class="block text-sm font-bold mb-2" style="color:rgba(255,255,255,0.55)">Kdo jsou vaši zákazníci?</label>
+            <textarea id="f_audience" class="form-input" rows="3" placeholder="např. Ženy 30–50 let, hledají zdravé produkty, žijí v Praze a okolí..."></textarea>
+          </div>
+          <div>
+            <label class="block text-sm font-bold mb-2" style="color:rgba(255,255,255,0.55)">Vaše největší konkurence</label>
+            <input id="f_competition" type="text" class="form-input" placeholder="URL nebo název firmy...">
+          </div>
+          <div>
+            <label class="block text-sm font-bold mb-2" style="color:rgba(255,255,255,0.55)">Weby, které se vám líbí (reference)</label>
+            <input id="f_reference" type="text" class="form-input" placeholder="Vložte URL nebo popište styl...">
+          </div>
+        </div>
+        <div class="flex gap-3 mt-8">
+          <button onclick="toStep(1)" class="btn-outline flex-1 py-4">← Zpět</button>
+          <button onclick="toStep(3)" class="btn-coral flex-1 py-4 font-black">Přejít k platbě →</button>
+        </div>
+      </div>
+
+      <div id="step3" class="hidden">
+        <h3 class="text-xl font-black mb-6">Souhrn & Pre-autorizace platby</h3>
+
+        <div class="rounded-2xl p-6 mb-6 space-y-3" style="background:#051D2E">
+          <div class="flex justify-between items-center">
+            <span class="text-sm" style="color:rgba(255,255,255,0.5)">Balíček</span>
+            <span class="font-bold">Business 24</span>
+          </div>
+          <div class="flex justify-between items-center">
+            <span class="text-sm" style="color:rgba(255,255,255,0.5)">Firma</span>
+            <span class="font-bold" id="s_name">—</span>
+          </div>
+          <div class="flex justify-between items-center">
+            <span class="text-sm" style="color:rgba(255,255,255,0.5)">Cíl webu</span>
+            <span class="font-bold" id="s_goal">—</span>
+          </div>
+          <div style="border-top:1px solid rgba(255,255,255,0.08);padding-top:0.75rem;margin-top:0.75rem"></div>
+          <div class="flex justify-between items-center">
+            <span class="text-lg font-black">Celkem k autorizaci</span>
+            <span class="text-3xl font-black" style="color:#00C4B5">24 900 Kč</span>
+          </div>
+        </div>
+
+        <div class="rounded-2xl p-6 mb-5" style="background:rgba(0,196,181,0.05);border:1px solid rgba(0,196,181,0.18)">
+          <h4 class="text-xs font-black uppercase tracking-widest mb-4" style="color:#00C4B5">Jak funguje Pre-autorizace (Hold)?</h4>
+          <div class="space-y-3 text-sm leading-relaxed" style="color:rgba(255,255,255,0.65)">
+            <div class="flex gap-3">
+              <span class="font-black text-base shrink-0" style="color:#00C4B5">1.</span>
+              <p>Částka 24 900 Kč se <strong class="text-white">zablokuje</strong> na vaší kartě nebo bankovním účtu. <em>Neodchází nikam</em> — zůstává v bezpečné bankovní úschově.</p>
+            </div>
+            <div class="flex gap-3">
+              <span class="font-black text-base shrink-0" style="color:#00C4B5">2.</span>
+              <p>Stavíme web v Sandboxu. Máte náhled v reálném čase a průběžně schvalujete pokrok.</p>
+            </div>
+            <div class="flex gap-3">
+              <span class="font-black text-base shrink-0" style="color:#00C4B5">3.</span>
+              <p><strong class="text-white">Až vy potvrdíte spokojnost</strong>, platba se uvolní. Nesplnili jsme do 24h? Hold zaniká automaticky. <strong style="color:#00C4B5">Riskujete 0 Kč.</strong></p>
+            </div>
+          </div>
+        </div>
+
+        <div class="rounded-2xl p-4 mb-6 text-sm" style="background:rgba(255,51,102,0.05);border:1px solid rgba(255,51,102,0.18);color:rgba(255,255,255,0.65)">
+          <strong style="color:#FF3366">Garance termínu:</strong> Pokud náhled nebude v Sandboxu do 24 hodin od rezervace, Hold se automaticky ruší. Platíte 0 Kč. Bez výjimek.
+        </div>
+
+        <div class="flex gap-3">
+          <button onclick="toStep(2)" class="btn-outline flex-1 py-4">← Zpět</button>
+          <button id="submitBtn" onclick="submitBrief()" class="btn-coral flex-1 py-4 font-black text-sm">Spustit odpočet a autorizovat Hold</button>
+        </div>
+        <p class="text-center text-xs mt-4" style="color:rgba(255,255,255,0.25)">Pre-autorizace odpovídá standardům PCI-DSS. Váš web spustíme do 24 hodin.</p>
+      </div>
+
+      <div id="step4" class="hidden">
+        <div class="text-center py-10">
+          <div class="text-6xl mb-6">⚡</div>
+          <h3 class="text-2xl font-black mb-4" style="color:#00C4B5">Odpočet spuštěn!</h3>
+          <p class="leading-relaxed mb-4" style="color:rgba(255,255,255,0.6)">Váš brief jsme přijali. Do 30 minut vás kontaktujeme s potvrzením termínu a instrukcemi k autorizaci platby.</p>
+          <p class="text-sm" style="color:rgba(255,255,255,0.35)">Web bude hotový do 24 hodin od potvrzení Holdu.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section class="py-28 px-6">
+  <div class="max-w-6xl mx-auto">
+    <div class="text-center mb-16">
+      <p class="text-xs font-black uppercase tracking-widest mb-4" style="color:#00C4B5">Data a důvěra</p>
+      <h2 class="text-4xl md:text-5xl font-black">Proč zákazníci platí<br><span class="grad-teal">prémiovou cenu</span></h2>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-5 mb-16">
+      <div class="glass rounded-2xl p-8 text-center">
+        <div class="text-5xl font-black mb-3" style="color:#00C4B5">320%</div>
+        <p class="text-sm leading-relaxed" style="color:rgba(255,255,255,0.5)">vyšší ochota zaplatit prémiovou cenu při modelu "Bankovní úschova" vs. platba 100 % předem</p>
+      </div>
+      <div class="glass rounded-2xl p-8 text-center">
+        <div class="text-5xl font-black mb-3" style="color:#FF3366">1 200</div>
+        <p class="text-sm leading-relaxed" style="color:rgba(255,255,255,0.5)">Kč stojí každý den bez webu v průměrných ztracených poptávkách pro malé a střední firmy</p>
+      </div>
+      <div class="glass rounded-2xl p-8 text-center">
+        <div class="text-5xl font-black mb-3" style="color:#00C4B5">98%</div>
+        <p class="text-sm leading-relaxed" style="color:rgba(255,255,255,0.5)">zákazníků uvolní Hold po schválení náhledu — díky Sandboxu přesně víte, co kupujete</p>
+      </div>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+      <div class="glass rounded-3xl p-8">
+        <h3 class="text-lg font-black mb-6">Model důvěry vs. ochota zaplatit</h3>
+        <div class="chart-wrap">
+          <canvas id="trustChart"></canvas>
+        </div>
+      </div>
+      <div class="space-y-6">
+        <h3 class="text-3xl font-black">Bankovní úschova<br><span class="grad-teal">mění vše</span></h3>
+        <p class="leading-relaxed" style="color:rgba(255,255,255,0.55)">Tradiční agentura chce 50 % zálohu předem. Vy riskujete tisíce za web, který možná nikdy neuvidíte dokončený. My riziko otočíme — vaše peníze jsou v bezpečí až do chvíle, kdy vy sami řeknete "ano".</p>
+        <div class="space-y-4">
+          <div class="flex items-start gap-4">
+            <div class="w-8 h-8 rounded-full flex items-center justify-center shrink-0 font-black text-sm" style="background:rgba(0,196,181,0.15);color:#00C4B5">✓</div>
+            <div>
+              <h4 class="font-bold mb-1">AI Smart Copy v ceně</h4>
+              <p class="text-sm" style="color:rgba(255,255,255,0.45)">Nemáte texty? Generujeme prodejní obsah přizpůsobený vašemu oboru a cílové skupině.</p>
+            </div>
+          </div>
+          <div class="flex items-start gap-4">
+            <div class="w-8 h-8 rounded-full flex items-center justify-center shrink-0 font-black text-sm" style="background:rgba(0,196,181,0.15);color:#00C4B5">✓</div>
+            <div>
+              <h4 class="font-bold mb-1">Sandbox náhled v reálném čase</h4>
+              <p class="text-sm" style="color:rgba(255,255,255,0.45)">Sledujte jak váš web vzniká. Přístup 24/7, průběžné komentáře, žádná černá skříňka.</p>
+            </div>
+          </div>
+          <div class="flex items-start gap-4">
+            <div class="w-8 h-8 rounded-full flex items-center justify-center shrink-0 font-black text-sm" style="background:rgba(0,196,181,0.15);color:#00C4B5">✓</div>
+            <div>
+              <h4 class="font-bold mb-1">SEO základ + Analytika</h4>
+              <p class="text-sm" style="color:rgba(255,255,255,0.45)">Google Analytics 4, strukturovaná data Schema.org, správná meta hierarchie — vše od startu.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="py-28 px-6" style="background:rgba(5,29,46,0.5)">
+  <div class="max-w-6xl mx-auto">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+      <div>
+        <p class="text-xs font-black uppercase tracking-widest mb-4" style="color:#00C4B5">Férová hranice úprav</p>
+        <h2 class="text-4xl font-black mb-6">Co je <span class="grad-teal">v ceně</span><br>a co jsou vícepráce</h2>
+        <p class="leading-relaxed mb-8" style="color:rgba(255,255,255,0.55)">Transparentnost je základem naší rychlosti. Přesně víte, co dostanete za 24 900 Kč a co by vyžadovalo nové zadání.</p>
+        <div class="space-y-3">
+          <div class="glass rounded-xl px-5 py-4 flex items-start gap-4">
+            <span class="text-lg font-black shrink-0" style="color:#00C4B5">✓</span>
+            <div>
+              <h4 class="font-bold text-sm">Texty, fotky, barvy a fonty — zdarma</h4>
+              <p class="text-xs mt-0.5" style="color:rgba(255,255,255,0.4)">2 kola revizí: výměna obsahu stávajících prvků bez zásahu do struktury</p>
+            </div>
+          </div>
+          <div class="glass rounded-xl px-5 py-4 flex items-start gap-4">
+            <span class="text-lg font-black shrink-0" style="color:#FF3366">+</span>
+            <div>
+              <h4 class="font-bold text-sm">Změna rozložení a struktury stránek</h4>
+              <p class="text-xs mt-0.5" style="color:rgba(255,255,255,0.4)">Přesun sekcí, sloučení bloků, nová navigace = nové zadání s ceníkem</p>
+            </div>
+          </div>
+          <div class="glass rounded-xl px-5 py-4 flex items-start gap-4">
+            <span class="text-lg font-black shrink-0" style="color:#FF3366">+</span>
+            <div>
+              <h4 class="font-bold text-sm">Nové funkce a integrace třetích stran</h4>
+              <p class="text-xs mt-0.5" style="color:rgba(255,255,255,0.4)">Rezervační systém, chatbot, CRM integrace = ceník víceprací</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="glass rounded-3xl p-8">
+        <h3 class="text-lg font-black mb-1 text-center">Rozsah v ceně vs. vícepráce</h3>
+        <p class="text-xs text-center mb-6" style="color:rgba(255,255,255,0.35)">Business 24 — vizuální přehled</p>
+        <div class="chart-wrap-tall">
+          <canvas id="scopeRadar"></canvas>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="vop" class="py-28 px-6">
+  <div class="max-w-4xl mx-auto">
+    <div class="text-center mb-12">
+      <p class="text-xs font-black uppercase tracking-widest mb-4" style="color:#FF3366">Smluvní podmínky</p>
+      <h2 class="text-4xl font-black">Všeobecné obchodní<br><span class="grad-coral">podmínky bez chaosu</span></h2>
+      <p class="mt-4 max-w-xl mx-auto" style="color:rgba(255,255,255,0.45)">Čtivé, konkrétní podmínky. Žádné skryté klauzule. Vše, co potřebujete vědět o naší spolupráci.</p>
+    </div>
+
+    <div class="glass rounded-3xl p-8 md:p-10">
+      <div class="vop-scroll">
+
+        <div class="space-y-2 mb-8">
+          <h3 class="text-xs font-black uppercase tracking-widest" style="color:#00C4B5">§ 1 — Pre-autorizace jako jistina</h3>
+          <div class="space-y-3 text-sm leading-relaxed" style="color:rgba(255,255,255,0.65)">
+            <p>Pre-autorizace (Hold) je standardní bankovní nástroj, který blokuje sjednanou částku na platební kartě nebo bankovním účtu klienta. Prostředky nejsou přesunuty na účet poskytovatele — zůstávají u klienta a jsou uvolněny nebo zrušeny výhradně na základě jeho explicitního pokynu.</p>
+            <p>Klient <strong class="text-white">uděluje pokyn k uvolnění</strong> platby až po schválení finálního náhledu webu v Sandboxu. Pokud klient náhled neschválí do 30 dní, Hold automaticky zaniká bez jakéhokoliv pohybu finančních prostředků.</p>
+            <p>Poskytovatel se zavazuje vydat Release Key (veškeré přístupové údaje, zdrojové soubory a převod domény) bezodkladně po uvolnění platby klientem, nejpozději do 2 hodin.</p>
+          </div>
+        </div>
+
+        <div class="pt-8 mb-8" style="border-top:1px solid rgba(255,255,255,0.08)">
+          <h3 class="text-xs font-black uppercase tracking-widest mb-4" style="color:#00C4B5">§ 2 — Pojistka proti estetickým rozmarům</h3>
+          <div class="space-y-3 text-sm leading-relaxed" style="color:rgba(255,255,255,0.65)">
+            <p>Klient bere na vědomí, že webdesign je odborná disciplína, jejíž výstupy se řídí principy UX, konverzní optimalizace a vizuální hierarchie. Subjektivní preference klienta ("chci to jinak, protože se mi to líbí více") nejsou smluvně závazným důvodem pro bezplatnou změnu strukturálního návrhu.</p>
+            <p>Pokud klient požaduje strukturální změny nad rámec schváleného wireframu a tyto požadavky <strong class="text-white">nejsou podloženy funkčními argumenty</strong> (např. "přidej kontakt do hlavičky" = funkční; "přesuň celou sekci dolů, protože se mi zdá nahoře příliš velká" = estetický rozmár), je poskytovatel oprávněn tyto práce fakturovat dle ceníku víceprací.</p>
+            <p>Klient odpovídá za důsledky vlastních designových rozhodnutí, pokud byla učiněna navzdory písemnému doporučení poskytovatele a vedla k nižšímu konverznímu výkonu webu.</p>
+          </div>
+        </div>
+
+        <div class="pt-8 mb-8" style="border-top:1px solid rgba(255,255,255,0.08)">
+          <h3 class="text-xs font-black uppercase tracking-widest mb-4" style="color:#00C4B5">§ 3 — Definice drobných úprav (Free vs. Paid)</h3>
+          <div class="space-y-3 text-sm leading-relaxed" style="color:rgba(255,255,255,0.65)">
+            <p><strong class="text-white">Drobnou úpravou v ceně balíčku</strong> se rozumí změna obsahu stávajících prvků bez zásahu do architektonického rozložení stránky:</p>
+            <ul class="space-y-1.5 pl-5" style="list-style:disc">
+              <li>Výměna nebo editace textového obsahu (titulky, odstavce, CTA texty)</li>
+              <li>Výměna fotografií a multimediálního obsahu za nový materiál dodaný klientem</li>
+              <li>Úprava barevné palety a fontů v rámci stávajícího design systému</li>
+              <li>Technické opravy chyb způsobených poskytovatelem</li>
+            </ul>
+            <p><strong class="text-white">Vícepracemi podléhajícími fakturaci</strong> jsou zejména:</p>
+            <ul class="space-y-1.5 pl-5" style="list-style:disc">
+              <li>Přidávání nových sekcí nebo stránek neuvedených v původním briefu</li>
+              <li>Změna rozložení existujících sekcí (přesunutí, odstranění, sloučení bloků)</li>
+              <li>Implementace nových interaktivních funkcí (formuláře, rezervace, filtry)</li>
+              <li>Integrace třetích stran neuvedená v briefu (CRM, POS, platební brány)</li>
+            </ul>
+            <p>Klient má nárok na <strong class="text-white">dvě kola bezplatných revizí</strong> dle výše definice drobných úprav v rámci každého dodaného projektu.</p>
+          </div>
+        </div>
+
+        <div class="pt-8 mb-8" style="border-top:1px solid rgba(255,255,255,0.08)">
+          <h3 class="text-xs font-black uppercase tracking-widest mb-4" style="color:#00C4B5">§ 4 — Garance termínu a sankce</h3>
+          <div class="space-y-3 text-sm leading-relaxed" style="color:rgba(255,255,255,0.65)">
+            <p>Poskytovatel garantuje, že finální náhled webu bude dostupný v Sandboxu do <strong class="text-white">24 hodin od potvrzené rezervace a aktivního Holdu</strong>. Za "dostupný" se považuje funkční HTML/CSS/JS prezentace splňující všechny body schváleného briefu, přístupná na testovací URL.</p>
+            <p>V případě nedodání ve sjednaném termínu z důvodů na straně poskytovatele <strong class="text-white">Hold automaticky zaniká</strong> a klientovi nevzniká žádný finanční závazek. Garance se nevztahuje na situace, kdy klient neposkytl požadované podklady (logo, texty, fotografie) do 2 hodin od potvrzení rezervace.</p>
+          </div>
+        </div>
+
+        <div class="pt-8" style="border-top:1px solid rgba(255,255,255,0.08)">
+          <h3 class="text-xs font-black uppercase tracking-widest mb-4" style="color:#00C4B5">§ 5 — Autorská práva a předání díla</h3>
+          <div class="space-y-3 text-sm leading-relaxed" style="color:rgba(255,255,255,0.65)">
+            <p>Uvolněním platby klientem přecházejí veškerá majetková autorská práva k vytvořenému webu na klienta v plném rozsahu. Klient získává zdrojové soubory, databáze, přístupové údaje k hostingu a registrátorovi domény. Poskytovatel si ponechává právo uvést projekt v portfoliu, pokud klient nevznese námitku do 14 dní od předání.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="py-28 px-6" style="background:radial-gradient(ellipse 60% 50% at 50% 0%,rgba(0,196,181,0.07),transparent 60%)">
+  <div class="max-w-3xl mx-auto text-center">
+    <div class="trust-pill inline-flex items-center gap-2.5 px-4 py-2 mb-10">
+      <span class="pulse inline-block w-1.5 h-1.5 rounded-full" style="background:#00C4B5"></span>
+      <span class="text-xs font-black uppercase tracking-widest" style="color:#00C4B5">Dnes zbývá: 1 volné místo</span>
+    </div>
+    <h2 class="text-5xl md:text-6xl font-black leading-tight mb-6">
+      Váš web bude<br>zítra online.<br><span class="grad-coral">Nebo ho máte ZDARMA.</span>
+    </h2>
+    <p class="text-lg leading-relaxed mb-10" style="color:rgba(255,255,255,0.55)">Platba jde do bankovní úschovy. Uvolníte ji až po schválení výsledku. Nesplnili jsme? Riskujete 0 Kč.</p>
+    <a href="#brief" class="btn-coral px-10 py-5 text-lg font-black">Rezervovat termín a spustit odpočet</a>
+    <p class="text-xs mt-6" style="color:rgba(255,255,255,0.25)">Pre-autorizace odpovídá standardům PCI-DSS. Bez registrace, bez skrytých poplatků.</p>
+  </div>
+</section>
+
+<footer class="py-16 px-6" style="border-top:1px solid rgba(255,255,255,0.08)">
+  <div class="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-start md:items-center gap-8">
+    <div>
+      <div class="text-2xl font-black tracking-tight mb-3"><span style="color:#FF3366">WEB</span><span style="color:#00C4B5">DO24</span><span style="color:rgba(255,255,255,0.25)">.cz</span></div>
+      <p class="text-sm" style="color:rgba(255,255,255,0.35)">Digitální řešení v šibeničním termínu.</p>
+      <p class="text-xs mt-2" style="color:rgba(255,255,255,0.18)">© 2026 WebDo24.cz — Všechna práva rozsvícena.</p>
+    </div>
+    <div class="space-y-2 text-right">
+      <p class="text-xs" style="color:rgba(255,255,255,0.25)">Pre-autorizace platby odpovídá standardům PCI-DSS.</p>
+      <p class="text-xs" style="color:rgba(255,255,255,0.25)">info@webdo24.cz</p>
+      <div class="flex gap-4 text-xs justify-end" style="color:rgba(255,255,255,0.35)">
+        <a href="#vop" class="hover:text-white transition-colors">VOP</a>
+        <span>·</span>
+        <a href="#" class="hover:text-white transition-colors">Ochrana osobních údajů</a>
+        <span>·</span>
+        <a href="#brief" class="hover:text-white transition-colors" style="color:#00C4B5">Objednat web →</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+const WEBHOOK_URL = 'http://localhost:5678/webhook/webdo24-intake';
+
+const wrapLabels = (labels) => labels.map(label => {
+  if (typeof label === 'string' && label.length > 16) {
+    const words = label.split(' ');
+    const lines = [];
+    let currentLine = words[0];
+    for (let i = 1; i < words.length; i++) {
+      if (currentLine.length + words[i].length + 1 <= 16) {
+        currentLine += ' ' + words[i];
+      } else {
+        lines.push(currentLine);
+        currentLine = words[i];
+      }
+    }
+    lines.push(currentLine);
+    return lines;
+  }
+  return label;
+});
+
+const ttCallback = {
+  title: function(tooltipItems) {
+    const item = tooltipItems[0];
+    let label = item.chart.data.labels[item.dataIndex];
+    return Array.isArray(label) ? label.join(' ') : label;
+  }
+};
+
+const lossCtx = document.getElementById('lossChart').getContext('2d');
+const lossGrad = lossCtx.createLinearGradient(0, 0, 0, 280);
+lossGrad.addColorStop(0, 'rgba(255,51,102,0.28)');
+lossGrad.addColorStop(1, 'rgba(255,51,102,0)');
+new Chart(lossCtx, {
+  type: 'line',
+  data: {
+    labels: ['Den 1', 'Den 2', 'Den 3', 'Den 4', 'Den 5', 'Den 6', 'Den 7'],
+    datasets: [{
+      label: 'Ztracený obrat (Kč)',
+      data: [0, 1200, 2400, 3600, 4800, 6000, 7200],
+      borderColor: '#FF3366',
+      backgroundColor: lossGrad,
+      fill: true,
+      tension: 0.4,
+      borderWidth: 3,
+      pointBackgroundColor: '#FF3366',
+      pointBorderColor: 'rgba(255,51,102,0.3)',
+      pointBorderWidth: 3,
+      pointRadius: 5,
+      pointHoverRadius: 8
+    }]
+  },
+  options: {
+    responsive: true,
+    maintainAspectRatio: false,
+    plugins: {
+      tooltip: { callbacks: ttCallback },
+      legend: { display: false }
+    },
+    scales: {
+      y: { display: false },
+      x: {
+        ticks: { color: 'rgba(255,255,255,0.35)', font: { family: 'Outfit', size: 11 } },
+        grid: { display: false },
+        border: { display: false }
+      }
+    }
+  }
+});
+
+const trustCtx = document.getElementById('trustChart').getContext('2d');
+new Chart(trustCtx, {
+  type: 'bar',
+  data: {
+    labels: wrapLabels(['Faktura po odevzdání', 'Platba 100% předem', 'Bankovní úschova (HOLD)']),
+    datasets: [{
+      label: 'Ochota zaplatit (%)',
+      data: [35, 12, 92],
+      backgroundColor: ['rgba(255,255,255,0.07)', 'rgba(255,255,255,0.04)', 'rgba(0,196,181,0.55)'],
+      borderColor: ['rgba(255,255,255,0.15)', 'rgba(255,255,255,0.08)', '#00C4B5'],
+      borderWidth: 1,
+      borderRadius: 10
+    }]
+  },
+  options: {
+    responsive: true,
+    maintainAspectRatio: false,
+    plugins: {
+      tooltip: { callbacks: ttCallback },
+      legend: { display: false }
+    },
+    scales: {
+      y: {
+        beginAtZero: true,
+        max: 100,
+        ticks: { color: 'rgba(255,255,255,0.3)', font: { family: 'Outfit', size: 11 }, callback: v => v + ' %' },
+        grid: { color: 'rgba(255,255,255,0.05)' },
+        border: { display: false }
+      },
+      x: {
+        ticks: { color: 'rgba(255,255,255,0.45)', font: { family: 'Outfit', size: 11 } },
+        grid: { display: false },
+        border: { display: false }
+      }
+    }
+  }
+});
+
+const radarCtx = document.getElementById('scopeRadar').getContext('2d');
+new Chart(radarCtx, {
+  type: 'radar',
+  data: {
+    labels: wrapLabels(['Změna textů a titulků', 'Výměna fotografií', 'Úprava barev a fontů', 'Změna rozložení stránek', 'Nové funkční bloky', 'Změna logiky webu']),
+    datasets: [{
+      label: 'V ceně (Free)',
+      data: [100, 100, 100, 20, 10, 5],
+      backgroundColor: 'rgba(0,196,181,0.12)',
+      borderColor: '#00C4B5',
+      borderWidth: 2,
+      pointBackgroundColor: '#00C4B5',
+      pointRadius: 4,
+      pointHoverRadius: 6
+    }, {
+      label: 'Vícepráce (Paid)',
+      data: [0, 0, 0, 80, 95, 100],
+      backgroundColor: 'rgba(255,51,102,0.08)',
+      borderColor: '#FF3366',
+      borderWidth: 2,
+      pointBackgroundColor: '#FF3366',
+      pointRadius: 4,
+      pointHoverRadius: 6
+    }]
+  },
+  options: {
+    responsive: true,
+    maintainAspectRatio: false,
+    plugins: {
+      tooltip: {
+        callbacks: {
+          title: function(tooltipItems) {
+            const item = tooltipItems[0];
+            let label = item.chart.data.labels[item.dataIndex];
+            return Array.isArray(label) ? label.join(' ') : label;
+          }
+        }
+      },
+      legend: {
+        display: true,
+        labels: {
+          color: 'rgba(255,255,255,0.55)',
+          font: { family: 'Outfit', size: 11 },
+          boxWidth: 12,
+          padding: 16
+        }
+      }
+    },
+    scales: {
+      r: {
+        angleLines: { color: 'rgba(255,255,255,0.07)' },
+        grid: { color: 'rgba(255,255,255,0.07)' },
+        pointLabels: { color: 'rgba(255,255,255,0.55)', font: { family: 'Outfit', size: 11 } },
+        ticks: { display: false },
+        beginAtZero: true,
+        max: 100
+      }
+    }
+  }
+});
+
+function updateCountdown() {
+  const now = new Date();
+  const end = new Date();
+  end.setHours(18, 0, 0, 0);
+  if (now >= end) end.setDate(end.getDate() + 1);
+  const diff = end - now;
+  const h = String(Math.floor(diff / 3600000)).padStart(2, '0');
+  const m = String(Math.floor((diff % 3600000) / 60000)).padStart(2, '0');
+  const s = String(Math.floor((diff % 60000) / 1000)).padStart(2, '0');
+  const el = document.getElementById('countdown');
+  if (el) el.textContent = h + ':' + m + ':' + s;
+}
+setInterval(updateCountdown, 1000);
+updateCountdown();
+
+function toStep(n) {
+  [1, 2, 3, 4].forEach(i => {
+    const el = document.getElementById('step' + i);
+    if (el) el.classList.add('hidden');
+  });
+  const target = document.getElementById('step' + n);
+  if (target) target.classList.remove('hidden');
+
+  [2, 3].forEach(i => {
+    const num = document.getElementById('sn' + i);
+    const lbl = document.getElementById('sl' + i);
+    if (num) { num.className = 'w-8 h-8 rounded-full flex items-center justify-center text-sm font-black step-inactive-num'; }
+    if (lbl) { lbl.className = 'text-sm step-inactive-lbl'; }
+  });
+
+  if (n >= 2) {
+    const num = document.getElementById('sn2');
+    const lbl = document.getElementById('sl2');
+    if (num) num.className = 'w-8 h-8 rounded-full flex items-center justify-center text-sm font-black step-active-num';
+    if (lbl) lbl.className = 'text-sm step-active-lbl';
+  }
+  if (n >= 3) {
+    const num = document.getElementById('sn3');
+    const lbl = document.getElementById('sl3');
+    if (num) num.className = 'w-8 h-8 rounded-full flex items-center justify-center text-sm font-black step-active-num';
+    if (lbl) lbl.className = 'text-sm step-active-lbl';
+
+    const nameVal = (document.getElementById('f_name').value || '').trim();
+    const goalVal = document.getElementById('f_goal').value || '';
+    document.getElementById('s_name').textContent = nameVal || '—';
+    document.getElementById('s_goal').textContent = goalVal || '—';
+  }
+
+  const section = document.getElementById('brief');
+  if (section) setTimeout(() => section.scrollIntoView({ behavior: 'smooth', block: 'start' }), 60);
+}
+
+function validateStep1() {
+  let ok = true;
+  const name = document.getElementById('f_name');
+  const nameErr = document.getElementById('f_name_err');
+  const goal = document.getElementById('f_goal');
+  const goalErr = document.getElementById('f_goal_err');
+
+  if (!name.value.trim()) {
+    name.style.borderColor = '#FF3366';
+    nameErr.classList.remove('hidden');
+    ok = false;
+  } else {
+    name.style.borderColor = '';
+    nameErr.classList.add('hidden');
+  }
+
+  if (!goal.value) {
+    goal.style.borderColor = '#FF3366';
+    goalErr.classList.remove('hidden');
+    ok = false;
+  } else {
+    goal.style.borderColor = '';
+    goalErr.classList.add('hidden');
+  }
+
+  return ok;
+}
+
+const origToStep = toStep;
+window.toStep = function(n) {
+  if (n === 2 && !validateStep1()) return;
+  origToStep(n);
+};
+
+async function submitBrief() {
+  const btn = document.getElementById('submitBtn');
+  btn.textContent = 'Odesílám...';
+  btn.disabled = true;
+  btn.style.opacity = '0.6';
+  btn.style.cursor = 'not-allowed';
+
+  const payload = {
+    firma: (document.getElementById('f_name').value || '').trim(),
+    cil: document.getElementById('f_goal').value || '',
+    barva: document.getElementById('f_color').value || '',
+    cilova_skupina: (document.getElementById('f_audience').value || '').trim(),
+    konkurence: (document.getElementById('f_competition').value || '').trim(),
+    reference: (document.getElementById('f_reference').value || '').trim(),
+    balicek: 'Business 24',
+    cena: '24900',
+    mena: 'CZK',
+    timestamp: new Date().toISOString(),
+    source: 'webdo24.cz/v9'
+  };
+
+  try {
+    const response = await fetch(WEBHOOK_URL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload)
+    });
+
+    if (response.ok) {
+      toStep(4);
+    } else {
+      throw new Error('Server error ' + response.status);
+    }
+  } catch (err) {
+    btn.textContent = 'Chyba odeslání — zkuste znovu';
+    btn.disabled = false;
+    btn.style.opacity = '1';
+    btn.style.cursor = 'pointer';
+    const errDiv = document.createElement('p');
+    errDiv.className = 'text-xs mt-3 text-center';
+    errDiv.style.color = '#FF3366';
+    errDiv.textContent = 'Nepodařilo se odeslat brief. Zkontrolujte připojení nebo nás kontaktujte přímo na info@webdo24.cz';
+    if (!document.getElementById('sendError')) {
+      errDiv.id = 'sendError';
+      btn.parentNode.insertAdjacentElement('afterend', errDiv);
+    }
+  }
+}
+
+const picker = document.getElementById('f_picker');
+const colorInput = document.getElementById('f_color');
+if (picker && colorInput) {
+  picker.addEventListener('input', () => { colorInput.value = picker.value; });
+  colorInput.addEventListener('input', () => {
+    if (/^#[0-9A-Fa-f]{6}$/.test(colorInput.value)) picker.value = colorInput.value;
+  });
+}
+</script>
+</body>
+</html>

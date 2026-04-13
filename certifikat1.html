@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="cs">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Certifikát technické kvality a vlastnictví - Original</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Montserrat:wght@300;400;600&display=swap');
+
+        body {
+            background-color: #f0f2f5;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .certificate-container {
+            width: 297mm;
+            min-height: 210mm;
+            padding: 20px;
+            margin: 20px auto;
+            background: white;
+            position: relative;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
+            overflow: hidden;
+        }
+
+        .outer-border {
+            border: 15px solid #1a2a6c;
+            height: 100%;
+            padding: 10px;
+            position: relative;
+        }
+
+        .inner-border {
+            border: 2px solid #b38728;
+            height: 100%;
+            padding: 40px;
+            position: relative;
+        }
+
+        .header-font {
+            font-family: 'Cinzel', serif;
+        }
+
+        .ornament {
+            color: #b38728;
+            font-size: 2rem;
+        }
+
+        .watermark {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) rotate(-30deg);
+            font-size: 8rem;
+            color: rgba(26, 42, 108, 0.03);
+            font-family: 'Cinzel', serif;
+            white-space: nowrap;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .seal-container {
+            position: absolute;
+            bottom: 60px;
+            right: 80px;
+            width: 150px;
+            height: 150px;
+        }
+
+        .seal {
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, #d4af37 0%, #b38728 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-family: 'Cinzel', serif;
+            font-weight: bold;
+            text-align: center;
+            box-shadow: 0 10px 20px rgba(179, 135, 40, 0.3);
+            transform: rotate(-15deg);
+            border: 4px double rgba(255, 255, 255, 0.3);
+            font-size: 0.75rem;
+            line-height: 1.2;
+        }
+
+        .url-box {
+            background: #f8f9fa;
+            border: 1px solid #e9ecef;
+            padding: 12px 24px;
+            font-family: monospace;
+            display: inline-block;
+            color: #1a2a6c;
+            font-weight: bold;
+            border-radius: 4px;
+        }
+
+        @media print {
+            body {
+                background: white;
+                margin: 0;
+            }
+
+            .certificate-container {
+                box-shadow: none;
+                margin: 0;
+            }
+        }
+    </style>
+</head>
+
+<body class="flex items-center justify-center min-h-screen">
+
+    <div class="certificate-container">
+        <div class="watermark">ORIGINÁL • KVALITA • 2026</div>
+
+        <div class="outer-border">
+            <div class="inner-border flex flex-col items-center text-center bg-white relative z-10">
+
+                <div class="ornament mb-4">⬥ ━━━━━━━━ ⬥ ━━━━━━━━ ⬥</div>
+
+                <h2 class="header-font text-[#b38728] text-xl tracking-[0.3em] uppercase mb-2">Oficiální Potvrzení</h2>
+                <h1 class="header-font text-[#1a2a6c] text-5xl font-bold uppercase mb-8 tracking-widest leading-tight">
+                    Certifikát <br>
+                    <span class="text-3xl text-[#b38728]">Technické Kvality a Vlastnictví</span>
+                </h1>
+
+                <p class="text-gray-600 italic mb-8 max-w-2xl text-lg">
+                    Tímto se na základě technického auditu a ověření digitální integrity
+                    oficiálně potvrzuje, že projekt uvedený níže splňuje nejvyšší standardy
+                    moderního webového inženýrství a je certifikovaným vlastnictvím.
+                </p>
+
+                <div class="mb-8">
+                    <p class="text-xs uppercase tracking-widest text-gray-400 mb-2 font-semibold">Doména / URL Projektu
+                    </p>
+                    <div class="url-box shadow-sm">
+                        https://customers-webs.vercel.app/demo3-ninja-vikend
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-3 gap-12 w-full max-w-4xl mt-4 mb-12">
+                    <div class="text-center">
+                        <p class="text-[#b38728] font-bold text-sm uppercase mb-1">Technologie</p>
+                        <p class="text-gray-800 font-semibold">React / Next.js Framework</p>
+                        <p class="text-xs text-gray-400">Architektura budoucnosti</p>
+                    </div>
+                    <div class="text-center">
+                        <p class="text-[#b38728] font-bold text-sm uppercase mb-1">Infrastruktura</p>
+                        <p class="text-gray-800 font-semibold">Vercel Edge Network</p>
+                        <p class="text-xs text-gray-400">Globální CDN distribuce</p>
+                    </div>
+                    <div class="text-center">
+                        <p class="text-[#b38728] font-bold text-sm uppercase mb-1">Stav Projektu</p>
+                        <p class="text-gray-800 font-semibold">Vlastnictví Ověřeno</p>
+                        <p class="text-xs text-gray-400">Technická integrita zaručena</p>
+                    </div>
+                </div>
+
+                <div class="w-full flex justify-around items-end mt-12 mb-8">
+                    <div class="text-center w-64">
+                        <div class="border-t border-gray-400 pt-2">
+                            <p class="text-sm font-bold text-gray-800">12. dubna 2026</p>
+                            <p class="text-xs uppercase text-gray-400">Datum Vydání</p>
+                        </div>
+                    </div>
+
+                    <div class="text-center w-64">
+                        <div class="border-t border-gray-400 pt-2">
+                            <p class="text-sm font-bold text-gray-800">Digitální Autorita</p>
+                            <p class="text-xs uppercase text-gray-400">Certifikační Orgán</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Seal -->
+                <div class="seal-container">
+                    <div class="seal">
+                        OFFICIAL<br>VERIFIED<br>OWNERSHIP<br>2026
+                    </div>
+                </div>
+
+                <div class="ornament mt-auto">⬥ ━━━━━━━━ ⬥ ━━━━━━━━ ⬥</div>
+
+                <p class="text-[10px] text-gray-300 uppercase mt-4 tracking-[0.5em]">Originální dokumentace • Technické
+                    parametry zaručeny</p>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>

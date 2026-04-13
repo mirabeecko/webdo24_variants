@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="cs">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WebDo24.cz | Web, který vydělává do 24 hodin</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --coral: #FF3366;
+      --teal: #00C4B5;
+      --navy: #0B3954;
+      --slate: #F8FAFC;
+    }
+
+    body {
+      font-family: 'Outfit', sans-serif;
+      background-color: var(--slate);
+      color: var(--navy);
+      scroll-behavior: smooth;
+    }
+
+    .chart-container {
+      position: relative;
+      width: 100%;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+      height: 350px;
+      max-height: 400px;
+    }
+
+    .glass-card {
+      background: white;
+      border-radius: 1.5rem;
+      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05);
+      border: 1px solid #e2e8f0;
+      padding: 2rem;
+      transition: transform 0.3s ease;
+    }
+
+    .glass-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .btn-primary {
+      background-color: var(--coral);
+      color: white;
+      padding: 1.25rem 2.5rem;
+      border-radius: 1rem;
+      font-weight: 900;
+      text-transform: uppercase;
+      box-shadow: 0 15px 30px -10px rgba(255, 51, 102, 0.4);
+      transition: all 0.3s ease;
+    }
+
+    .btn-primary:hover {
+      background-color: #e62e5c;
+      transform: scale(1.05);
+    }
+
+    .trust-badge {
+      border-left: 4px solid var(--teal);
+      padding-left: 1rem;
+    }
+
+    .hero-gradient {
+      background: linear-gradient(135deg, #0B3954 0%, #051926 100%);
+    }
+
+    .section-title {
+      font-size: 2.5rem;
+      font-weight: 900;
+      line-height: 1.2;
+    }
+  </style>
+</head>
+
+<body class="antialiased">
+
+  <nav class="fixed top-0 w-full z-50 bg-white/80 backdrop-blur-md border-b border-slate-200 px-6 py-4">
+    <div class="max-w-7xl mx-auto flex justify-between items-center">
+      <div class="text-2xl font-black tracking-tighter"><span class="text-[#FF3366]">WEB</span><span
+          class="text-[#00C4B5]">DO24</span></div>
+      <div class="hidden md:flex space-x-8 text-sm font-bold uppercase tracking-widest text-slate-500">
+        <a href="#proc" class="hover:text-[#FF3366]">Proč my</a>
+        <a href="#proces" class="hover:text-[#FF3366]">Proces</a>
+        <a href="#ceny" class="hover:text-[#FF3366]">Ceník</a>
+      </div>
+      <a href="#ceny"
+        class="bg-[#00C4B5] text-white px-5 py-2 rounded-lg text-sm font-bold shadow-lg shadow-teal-500/20">START</a>
+    </div>
+  </nav>
+
+  <header class="hero-gradient text-white pt-40 pb-32 px-6 relative overflow-hidden">
+    <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+      <div class="space-y-8 relative z-10">
+        <div
+          class="inline-block bg-[#00C4B5] text-navy px-4 py-1 rounded-full text-xs font-black uppercase tracking-widest">
+          Garantujeme termín: 24 Hodin
+        </div>
+        <h1 class="text-5xl md:text-7xl font-black leading-tight">
+          Mějte web dříve, než konkurence <span class="text-[#FF3366]">dopije kávu.</span>
+        </h1>
+        <p class="text-xl text-slate-300 font-light max-w-lg">
+          Profesionální firemní prezentace postavená do 24 hodin se 100% zárukou termínu a bankovní úschovou platby.
+          Žádné riziko, jen čistý výsledek.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4">
+          <a href="#ceny" class="btn-primary text-center">Spustit 24h odpočet</a>
+          <div class="flex items-center space-x-3 text-sm text-slate-400">
+            <span class="text-2xl">⚡</span>
+            <span>Dnes zbývá: <span class="text-white font-bold">1 volné místo</span></span>
+          </div>
+        </div>
+      </div>
+      <div class="glass-card bg-white/5 border-white/10 p-8">
+        <h3 class="text-xl font-bold mb-6 text-white">Ztráta příležitosti (Opportunity Cost)</h3>
+        <div class="chart-container">
+          <canvas id="lossChart"></canvas>
+        </div>
+        <p class="text-xs text-slate-400 mt-6 italic text-center">
+          Každý den bez webu vás stojí průměrně 1 200 Kč na ztracených zakázkách. S námi jste v zisku už pozítří.
+        </p>
+      </div>
+    </div>
+  </header>
+
+  <main class="max-w-7xl mx-auto px-6 space-y-32 py-32">
+
+    <section id="proc" class="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+      <div>
+        <h2 class="section-title mb-6 text-[#0B3954]">Proč zaplatit <span class="text-[#00C4B5]">prémiovou cenu?</span>
+        </h2>
+        <p class="text-lg text-slate-600 mb-10 leading-relaxed">
+          Nízká cena za web obvykle znamená skryté náklady: vaše nervy, nekonečné termíny a technické chyby. WebDo24 je
+          investice do rychlosti a klidu.
+        </p>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-8">
+          <div class="trust-badge">
+            <h4 class="font-bold text-lg mb-2 text-[#0B3954]">Bankovní úschova</h4>
+            <p class="text-sm text-slate-500 text-pretty">Peníze se zablokují, ale neodejdou. Máte nad nimi kontrolu až
+              do schválení náhledu.</p>
+          </div>
+          <div class="trust-badge">
+            <h4 class="font-bold text-lg mb-2 text-[#0B3954]">AI Smart Copy</h4>
+            <p class="text-sm text-slate-500 text-pretty">Nemáte texty? Naše AI modely vygenerují prodejní obsah za vás
+              v ceně balíčku.</p>
+          </div>
+        </div>
+      </div>
+      <div class="glass-card">
+        <h3 class="text-xl font-bold mb-6 text-center">Důvěra v cenové modely</h3>
+        <div class="chart-container">
+          <canvas id="trustChart"></canvas>
+        </div>
+        <p class="text-xs text-slate-400 mt-6 text-center font-medium">
+          Data potvrzují: Model "Bankovní úschova" vyvolává o 320 % vyšší ochotu zaplatit prémiovou cenu.
+        </p>
+      </div>
+    </section>
+
+    <section id="proces"
+      class="bg-[#0B3954] text-white p-12 md:p-20 rounded-[3rem] shadow-2xl relative overflow-hidden">
+      <div class="absolute top-0 right-0 w-64 h-64 bg-[#00C4B5] opacity-10 blur-3xl"></div>
+      <div class="text-center mb-16">
+        <h2 class="text-4xl md:text-5xl font-black mb-4">Cesta do <span class="text-[#00C4B5]">Ostrého Provozu</span>
+        </h2>
+        <p class="text-slate-400">Žádné zbytečné schůzky. Čistá produkce.</p>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-12 relative z-10">
+        <div class="text-center space-y-4">
+          <div class="text-5xl font-black text-[#00C4B5]/20">01</div>
+          <h4 class="text-xl font-bold">Rezervace & Hold</h4>
+          <p class="text-sm text-slate-400">Vyberete balíček a autorizujete platbu. V tu vteřinu blokujeme tým 3 lidí
+            jen pro vás.</p>
+        </div>
+        <div class="text-center space-y-4">
+          <div class="text-5xl font-black text-[#00C4B5]/20">02</div>
+          <h4 class="text-xl font-bold">Produkce v Sandboxu</h4>
+          <p class="text-sm text-slate-400">Stavíme web na naší testovací adrese. Máte k němu kdykoliv přístup pro
+            sledování pokroku.</p>
+        </div>
+        <div class="text-center space-y-4">
+          <div class="text-5xl font-black text-[#00C4B5]/20">03</div>
+          <h4 class="text-xl font-bold">Schválení & Klíče</h4>
+          <p class="text-sm text-slate-400">Jste spokojeni? Jedním kliknutím uvolníte platbu a okamžitě získáte všechny
+            přístupy.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="ceny">
+      <div class="text-center mb-16">
+        <h2 class="section-title mb-4">Transparentní <span class="text-[#FF3366]">Ceny</span></h2>
+        <p class="text-slate-500">Vyberte si úroveň rychlosti, kterou váš byznys potřebuje.</p>
+      </div>
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        <div class="glass-card border-t-4 border-slate-300">
+          <h4 class="text-xs font-bold uppercase tracking-widest text-slate-400 mb-2">Express Start</h4>
+          <div class="text-4xl font-black mb-6">14 900 Kč</div>
+          <ul class="space-y-4 text-sm mb-10 text-slate-600">
+            <li class="flex items-center"><span class="text-[#00C4B5] mr-2">✓</span> Landing Page (1 strana)</li>
+            <li class="flex items-center"><span class="text-[#00C4B5] mr-2">✓</span> Dodání do 24 hodin</li>
+            <li class="flex items-center"><span class="text-[#00C4B5] mr-2">✓</span> Responzivní design</li>
+          </ul>
+          <button
+            class="w-full py-4 border border-slate-200 rounded-xl font-bold hover:bg-slate-50 transition-colors">VYBRAT
+            START</button>
+        </div>
+        <div class="glass-card border-t-8 border-[#00C4B5] transform lg:scale-105 z-10 shadow-2xl">
+          <div
+            class="absolute -top-4 left-1/2 -translate-x-1/2 bg-[#00C4B5] text-navy text-[10px] font-black px-4 py-1 rounded-full uppercase">
+            Nejprodávanější</div>
+          <h4 class="text-xs font-bold uppercase tracking-widest text-[#00C4B5] mb-2">Business 24</h4>
+          <div class="text-5xl font-black mb-6">24 900 Kč</div>
+          <ul class="space-y-4 text-sm mb-10 font-medium">
+            <li class="flex items-center"><span class="text-[#00C4B5] mr-2">✓</span> Kompletní web (5 stran)</li>
+            <li class="flex items-center"><span class="text-[#00C4B5] mr-2">✓</span> AI Copywriting v ceně</li>
+            <li class="flex items-center"><span class="text-[#00C4B5] mr-2">✓</span> SEO základ + Analytika</li>
+            <li class="flex items-center"><span class="text-[#00C4B5] mr-2">✓</span> Prioritní revize</li>
+          </ul>
+          <button class="btn-primary w-full text-sm">REZERVOVAT BUSINESS</button>
+        </div>
+        <div class="glass-card border-t-4 border-[#FF3366]">
+          <h4 class="text-xs font-bold uppercase tracking-widest text-[#FF3366] mb-2">VIP Priority</h4>
+          <div class="text-4xl font-black mb-6">39 900 Kč</div>
+          <ul class="space-y-4 text-sm mb-10 text-slate-600">
+            <li class="flex items-center"><span class="text-[#00C4B5] mr-2">✓</span> Neomezený rozsah</li>
+            <li class="flex items-center"><span class="text-[#00C4B5] mr-2">✓</span> Full-service (Host, Doména)</li>
+            <li class="flex items-center"><span class="text-[#00C4B5] mr-2">✓</span> 100% Money-back garance</li>
+          </ul>
+          <button
+            class="w-full py-4 border border-slate-200 rounded-xl font-bold hover:bg-slate-50 transition-colors">VYBRAT
+            VIP</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="glass p-8 md:p-12">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <div class="chart-container">
+          <canvas id="scopeRadar"></canvas>
+        </div>
+        <div>
+          <h3 class="text-3xl font-black mb-6 text-[#0B3954]">Férová hranice úprav</h3>
+          <p class="text-slate-600 mb-6">
+            Transparentnost je základem naší rychlosti. Tento graf definuje, co vyřešíme v rámci fixní ceny balíčku
+            Business 24 a co už vyžaduje nové zadání.
+          </p>
+          <div class="p-6 bg-[#0B3954]/5 rounded-2xl border-l-4 border-[#FF3366]">
+            <h4 class="font-bold text-[#0B3954] mb-2 uppercase text-xs">Pravidlo dvou kol</h4>
+            <p class="text-sm text-slate-500">Máte nárok na dvě kola bleskových revizí. Změníme texty, fotky i barvy,
+              abyste byli 100% nadšeni.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="bg-[#0B3954] text-white py-20 px-6">
+    <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-10">
+      <div>
+        <div class="text-3xl font-black mb-4 tracking-tighter"><span class="text-[#FF3366]">WEB</span><span
+            class="text-[#00C4B5]">DO24</span></div>
+        <p class="text-slate-400 text-sm">Digitální řešení v šibeničním termínu.</p>
+      </div>
+      <div class="text-center md:text-right space-y-4">
+        <p class="text-xs text-slate-500 italic">Pre-autorizace karty je bezpečná a odpovídá standardům PCI-DSS.</p>
+        <p class="text-slate-300">© 2026 WebDo24.cz. Všechna práva rozsvícena.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Label Wrapping Logic
+    const wrapLabels = (labels) => labels.map(label => {
+      if (typeof label === 'string' && label.length > 16) {
+        const words = label.split(' ');
+        const lines = [];
+        let currentLine = words[0];
+        for (let i = 1; i < words.length; i++) {
+          if (currentLine.length + words[i].length + 1 <= 16) {
+            currentLine += ' ' + words[i];
+          } else {
+            lines.push(currentLine);
+            currentLine = words[i];
+          }
+        }
+        lines.push(currentLine);
+        return lines;
+      }
+      return label;
+    });
+
+    // Tooltip Config
+    const universalTooltip = {
+      plugins: {
+        tooltip: {
+          callbacks: {
+            title: function (tooltipItems) {
+              const item = tooltipItems[0];
+              let label = item.chart.data.labels[item.dataIndex];
+              return Array.isArray(label) ? label.join(' ') : label;
+            }
+          }
+        }
+      }
+    };
+
+    // Chart 1: Opportunity Loss
+    const ctxLoss = document.getElementById('lossChart').getContext('2d');
+    new Chart(ctxLoss, {
+      type: 'line',
+      data: {
+        labels: ['Den 1', 'Den 2', 'Den 3', 'Den 4', 'Den 5', 'Den 6', 'Den 7'],
+        datasets: [{
+          label: 'Ztracený obrat (Kč)',
+          data: [0, 1200, 2400, 3600, 4800, 6000, 7200],
+          borderColor: '#FF3366',
+          backgroundColor: 'rgba(255, 51, 102, 0.1)',
+          fill: true,
+          tension: 0.4,
+          borderWidth: 4
+        }]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        ...universalTooltip,
+        scales: {
+          y: { display: false },
+          x: { ticks: { color: 'rgba(255,255,255,0.4)', font: { family: 'Outfit' } }, grid: { display: false } }
+        },
+        plugins: { ...universalTooltip.plugins, legend: { display: false } }
+      }
+    });
+
+    // Chart 2: Trust Comparison
+    const ctxTrust = document.getElementById('trustChart').getContext('2d');
+    new Chart(ctxTrust, {
+      type: 'bar',
+      data: {
+        labels: wrapLabels(['Faktura po odevzdání', 'Platba 100% předem', 'Bankovní úschova (HOLD)']),
+        datasets: [{
+          data: [35, 12, 92],
+          backgroundColor: ['#e2e8f0', '#0B3954', '#00C4B5'],
+          borderRadius: 12
+        }]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        ...universalTooltip,
+        scales: {
+          y: { beginAtZero: true, max: 100, ticks: { color: '#94a3b8' }, grid: { display: false } },
+          x: { ticks: { color: '#94a3b8', font: { family: 'Outfit' } }, grid: { display: false } }
+        },
+        plugins: { ...universalTooltip.plugins, legend: { display: false } }
+      }
+    });
+
+    // Chart 3: Radar Scope
+    const ctxRadar = document.getElementById('scopeRadar').getContext('2d');
+    new Chart(ctxRadar, {
+      type: 'radar',
+      data: {
+        labels: wrapLabels(['Změna textů a titulků', 'Výměna fotografií', 'Úprava barev a fontů', 'Změna rozložení stránek', 'Nové funkční bloky', 'Změna logiky webu']),
+        datasets: [{
+          label: 'V ceně (Free)',
+          data: [100, 100, 100, 20, 10, 5],
+          backgroundColor: 'rgba(0, 196, 181, 0.2)',
+          borderColor: '#00C4B5',
+          borderWidth: 3
+        }, {
+          label: 'Vícepráce (Paid)',
+          data: [0, 0, 0, 80, 95, 100],
+          backgroundColor: 'rgba(255, 51, 102, 0.1)',
+          borderColor: '#FF3366',
+          borderWidth: 2
+        }]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        ...universalTooltip,
+        scales: {
+          r: {
+            angleLines: { color: '#e2e8f0' },
+            grid: { color: '#e2e8f0' },
+            pointLabels: { color: '#475569', font: { family: 'Outfit', size: 10 } },
+            ticks: { display: false },
+            beginAtZero: true,
+            max: 100
+          }
+        },
+        plugins: { ...universalTooltip.plugins, legend: { display: false } }
+      }
+    });
+  </script>
+</body>
+
+</html>

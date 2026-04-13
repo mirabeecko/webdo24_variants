@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="cs">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Webdo24: Precision Pipeline Strategy</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 300px;
+            max-height: 400px;
+        }
+
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 350px;
+            }
+        }
+
+        .full-width-chart {
+            max-width: 100%;
+        }
+    </style>
+</head>
+
+<body class="bg-[#F0F4F8] text-[#334E68] font-sans antialiased">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+
+        <header class="text-center mb-16">
+            <h1 class="text-4xl md:text-6xl font-extrabold text-[#102A43] mb-4">Webdo24 Pipeline Strategy</h1>
+            <p class="text-xl md:text-2xl text-[#627D98] max-w-3xl mx-auto">Od zadání k nasazenému webu a certifikátu do
+                24 hodin.</p>
+        </header>
+
+        <section class="mb-16">
+            <h2 class="text-3xl font-bold text-[#243B53] mb-6 border-b-4 border-[#3EBD93] pb-2 inline-block">The 24h
+                Loop: Architektura</h2>
+            <p class="text-lg mb-8">Páteří služby Webdo24 je optimalizovaný proces, který minimalizuje prodlevy a
+                maximalizuje využití automatizace. Následující kroky ukazují plynulý přechod od požadavku klienta až po
+                finální dodání.</p>
+
+            <div class="grid grid-cols-1 md:grid-cols-5 gap-4 text-center">
+                <div class="bg-white rounded-lg shadow-md p-6 border-t-4 border-[#3EBD93]">
+                    <div class="text-4xl mb-4 text-[#3EBD93]">&#128229;</div>
+                    <h3 class="font-bold text-lg mb-2">1. Intake</h3>
+                    <p class="text-sm text-[#627D98]">Webhook přijímá data z Tally/Typeform.</p>
+                </div>
+                <div class="bg-white rounded-lg shadow-md p-6 border-t-4 border-[#0F609B]">
+                    <div class="text-4xl mb-4 text-[#0F609B]">&#129417;</div>
+                    <h3 class="font-bold text-lg mb-2">2. Analysis</h3>
+                    <p class="text-sm text-[#627D98]">LLM extrahuje klíčové entity.</p>
+                </div>
+                <div class="bg-white rounded-lg shadow-md p-6 border-t-4 border-[#D946EF]">
+                    <div class="text-4xl mb-4 text-[#D946EF]">&#128221;</div>
+                    <h3 class="font-bold text-lg mb-2">3. Content</h3>
+                    <p class="text-sm text-[#627D98]">LLM generuje copy a SEO.</p>
+                </div>
+                <div class="bg-white rounded-lg shadow-md p-6 border-t-4 border-[#F59E0B]">
+                    <div class="text-4xl mb-4 text-[#F59E0B]">&#128640;</div>
+                    <h3 class="font-bold text-lg mb-2">4. Deployment</h3>
+                    <p class="text-sm text-[#627D98]">Automatické nasazení na Vercel.</p>
+                </div>
+                <div class="bg-white rounded-lg shadow-md p-6 border-t-4 border-[#10B981]">
+                    <div class="text-4xl mb-4 text-[#10B981]">&#127891;</div>
+                    <h3 class="font-bold text-lg mb-2">5. Certifikace</h3>
+                    <p class="text-sm text-[#627D98]">Generování a odeslání PDF.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="mb-16">
+            <h2 class="text-3xl font-bold text-[#243B53] mb-6 border-b-4 border-[#0F609B] pb-2 inline-block">Role LLM v
+                Procesu</h2>
+            <p class="text-lg mb-8">Výběr správného jazykového modelu je pro rychlost a kvalitu kritický. Webdo24
+                využívá specifické modely pro různé fáze vývoje, aby bylo dosaženo optimálního poměru ceny a výkonu.</p>
+
+            <div class="bg-white rounded-lg shadow-md p-8">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                    <div>
+                        <h3 class="text-2xl font-bold text-[#102A43] mb-4">Porovnání Modelů</h3>
+                        <p class="mb-4">Zatímco <strong>Gemini 2.5 Flash</strong> exceluje v rychlosti a schopnosti
+                            zpracovat obrovský kontext (ideální pro analýzu struktury a obsahu), <strong>Claude 3.5
+                                Sonnet</strong> je preferován pro úkoly vyžadující absolutní přesnost, jako je
+                            generování čistého React/Tailwind kódu.</p>
+                        <ul class="list-disc pl-6 space-y-2 text-[#486581]">
+                            <li>Gemini: Perfektní pro n8n orchestraci.</li>
+                            <li>Claude: Mistr ve strukturovaném výstupu.</li>
+                        </ul>
+                    </div>
+                    <div class="chart-container">
+                        <canvas id="llmComparisonChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="mb-16">
+            <h2 class="text-3xl font-bold text-[#243B53] mb-6 border-b-4 border-[#D946EF] pb-2 inline-block">n8n
+                Implementace: The AI Agent Approach</h2>
+            <p class="text-lg mb-8">Místo tradičního procedurálního programování (složité stromy podmínek) volí Webdo24
+                přístup pomocí AI agentů. Tento přístup drasticky snižuje čas potřebný k nastavení a zvyšuje
+                flexibilitu.</p>
+
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                <div class="col-span-1 bg-[#102A43] text-white rounded-lg shadow-md p-6">
+                    <h3 class="text-xl font-bold text-[#3EBD93] mb-4">Tradiční vs. Agentní Přístup</h3>
+                    <p class="text-sm mb-6 text-[#9FB3C8]">Graf ukazuje drastické snížení počtu uzlů (nodes) potřebných
+                        k dosažení stejného výsledku. Jeden AI Agent s nástroji nahradí desítky klasických bloků.</p>
+                    <div class="text-center">
+                        <div class="text-6xl font-bold text-[#D946EF] mb-2">-80%</div>
+                        <div class="text-sm uppercase tracking-wider">Méně uzlů v workflow</div>
+                    </div>
+                </div>
+                <div class="col-span-2 bg-white rounded-lg shadow-md p-6">
+                    <div class="chart-container full-width-chart">
+                        <canvas id="complexityChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="mb-16 bg-white rounded-lg shadow-md p-8 border-l-8 border-[#F59E0B]">
+            <h2 class="text-2xl font-bold text-[#102A43] mb-4">Shrnutí n8n Architektury</h2>
+            <div class="space-y-4 text-[#486581]">
+                <p>Základní stavební bloky minimálního efektivního workflow:</p>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 font-mono text-sm">
+                    <div class="bg-[#F0F4F8] p-4 rounded border border-[#D9E2EC]">
+                        <strong>1. Webhook</strong><br>
+                        Triggers process
+                    </div>
+                    <div class="bg-[#E0E7FF] p-4 rounded border border-[#C7D2FE]">
+                        <strong>2. AI Agent</strong><br>
+                        (Gemini/Claude)
+                    </div>
+                    <div class="bg-[#DCFCE7] p-4 rounded border border-[#BBF7D0]">
+                        <strong>3. Tools</strong><br>
+                        Vercel API, PDF Gen
+                    </div>
+                </div>
+                <p class="italic text-center mt-6">"Na základě těchto dat vygeneruj texty, nasaď web a pošli
+                    certifikát." - Základní prompt agenta.</p>
+            </div>
+        </section>
+
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            Chart.defaults.font.family = 'sans-serif';
+            Chart.defaults.color = '#627D98';
+
+            const llmCtx = document.getElementById('llmComparisonChart').getContext('2d');
+            new Chart(llmCtx, {
+                type: 'radar',
+                data: {
+                    labels: ['Rychlost', 'Kontextové okno', 'Cena', 'Přesnost kódu', 'Logika'],
+                    datasets: [{
+                        label: 'Gemini 2.5 Flash',
+                        data: [95, 100, 90, 75, 80],
+                        fill: true,
+                        backgroundColor: 'rgba(62, 189, 147, 0.2)',
+                        borderColor: '#3EBD93',
+                        pointBackgroundColor: '#3EBD93',
+                        pointBorderColor: '#fff',
+                        pointHoverBackgroundColor: '#fff',
+                        pointHoverBorderColor: '#3EBD93'
+                    }, {
+                        label: 'Claude 3.5 Sonnet',
+                        data: [70, 70, 60, 95, 90],
+                        fill: true,
+                        backgroundColor: 'rgba(15, 96, 155, 0.2)',
+                        borderColor: '#0F609B',
+                        pointBackgroundColor: '#0F609B',
+                        pointBorderColor: '#fff',
+                        pointHoverBackgroundColor: '#fff',
+                        pointHoverBorderColor: '#0F609B'
+                    }]
+                },
+                options: {
+                    maintainAspectRatio: false,
+                    elements: {
+                        line: { borderWidth: 3 }
+                    },
+                    scales: {
+                        r: {
+                            angleLines: { color: '#D9E2EC' },
+                            grid: { color: '#D9E2EC' },
+                            pointLabels: { color: '#334E68', font: { size: 12 } },
+                            ticks: { display: false }
+                        }
+                    },
+                    plugins: {
+                        legend: { position: 'bottom' },
+                        tooltip: {
+                            callbacks: {
+                                title: function (tooltipItems) {
+                                    const item = tooltipItems[0];
+                                    let label = item.chart.data.labels[item.dataIndex];
+                                    if (Array.isArray(label)) {
+                                        return label.join(' ');
+                                    } else {
+                                        return label;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+
+            const complexityCtx = document.getElementById('complexityChart').getContext('2d');
+            new Chart(complexityCtx, {
+                type: 'bar',
+                data: {
+                    labels: ['Intake Logic', 'Data Parsing', 'API Routing', 'Error Handling', 'Total Setup Time'],
+                    datasets: [{
+                        label: 'Tradiční n8n (Počet uzlů/Hodin)',
+                        data: [5, 12, 8, 15, 10],
+                        backgroundColor: '#627D98',
+                        borderRadius: 4
+                    }, {
+                        label: 'AI Agent n8n (Počet uzlů/Hodin)',
+                        data: [1, 1, 1, 1, 2],
+                        backgroundColor: '#D946EF',
+                        borderRadius: 4
+                    }]
+                },
+                options: {
+                    maintainAspectRatio: false,
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            grid: { color: '#D9E2EC' }
+                        },
+                        x: {
+                            grid: { display: false }
+                        }
+                    },
+                    plugins: {
+                        legend: { position: 'top' },
+                        tooltip: {
+                            callbacks: {
+                                title: function (tooltipItems) {
+                                    const item = tooltipItems[0];
+                                    let label = item.chart.data.labels[item.dataIndex];
+                                    if (Array.isArray(label)) {
+                                        return label.join(' ');
+                                    } else {
+                                        return label;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>

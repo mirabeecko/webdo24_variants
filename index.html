@@ -279,6 +279,10 @@
     .badge-v5 { background: rgba(236,72,153,.2); color: #f9a8d4; border: 1px solid rgba(236,72,153,.3); }
     .badge-v6 { background: rgba(239,68,68,.2); color: #fca5a5; border: 1px solid rgba(239,68,68,.3); }
     .badge-rec { background: rgba(249,115,22,.15); color: var(--orange); border: 1px solid rgba(249,115,22,.3); }
+    .badge-v8  { background: rgba(16,185,129,.2); color: #6ee7b7; border: 1px solid rgba(16,185,129,.3); }
+    .badge-v9  { background: rgba(0,196,181,.2); color: #5eead4; border: 1px solid rgba(0,196,181,.3); }
+    .badge-v10 { background: rgba(255,51,102,.2); color: #fca5a5; border: 1px solid rgba(255,51,102,.3); }
+    .badge-v11 { background: rgba(139,92,246,.2); color: #c4b5fd; border: 1px solid rgba(139,92,246,.3); }
 
     /* ── EMPTY STATE ── */
     .empty { text-align: center; padding: 60px; color: var(--muted); }
@@ -290,7 +294,7 @@
   <header class="header">
     <div class="header-logo">webdo<span>24</span> <span style="color:var(--muted);font-weight:400;font-size:.9rem">— Dashboard variant</span></div>
     <div class="header-tabs">
-      <button class="tab-btn all-btn active" onclick="filterVariants('all')">Všechny (6)</button>
+      <button class="tab-btn all-btn active" onclick="filterVariants('all')">Všechny (11)</button>
       <button class="tab-btn" onclick="filterVariants('v1')">V1</button>
       <button class="tab-btn" onclick="filterVariants('v2')">V2</button>
       <button class="tab-btn" onclick="filterVariants('v3')">V3</button>
@@ -298,6 +302,10 @@
       <button class="tab-btn" onclick="filterVariants('v5')">V5</button>
       <button class="tab-btn" onclick="filterVariants('v6')">V6</button>
       <button class="tab-btn" onclick="filterVariants('v7')">V7</button>
+      <button class="tab-btn" onclick="filterVariants('v8')">V8</button>
+      <button class="tab-btn" onclick="filterVariants('v9')">V9</button>
+      <button class="tab-btn" onclick="filterVariants('v10')">V10</button>
+      <button class="tab-btn" onclick="filterVariants('v11')">V11</button>
     </div>
   </header>
 
@@ -306,12 +314,12 @@
     <!-- HERO SUMMARY -->
     <div class="dash-hero">
       <h1>Varianty webu webdo24.cz</h1>
-      <p>6 různých verzí landing page — různý positioning, cílová skupina, obchodní model a cenová strategie. Porovnejte, vyberte, spusťte.</p>
+      <p>11 různých verzí landing page — různý positioning, cílová skupina, obchodní model a cenová strategie. Porovnejte, vyberte, spusťte.</p>
       <div class="dash-stats">
-        <div class="ds-item"><span class="ds-num" style="color:var(--primary)">6</span><span class="ds-label">variant</span></div>
-        <div class="ds-item"><span class="ds-num" style="color:var(--accent)">3</span><span class="ds-label">obchodní modely</span></div>
-        <div class="ds-item"><span class="ds-num" style="color:var(--orange)">12 900 Kč</span><span class="ds-label">max. základní cena (V6)</span></div>
-        <div class="ds-item"><span class="ds-num" style="color:var(--blue)">V6</span><span class="ds-label">nejvyšší fin. potenciál</span></div>
+        <div class="ds-item"><span class="ds-num" style="color:var(--primary)">11</span><span class="ds-label">variant</span></div>
+        <div class="ds-item"><span class="ds-num" style="color:var(--accent)">4</span><span class="ds-label">obchodní modely</span></div>
+        <div class="ds-item"><span class="ds-num" style="color:var(--orange)">24 900 Kč</span><span class="ds-label">max. základní cena (V9–V11)</span></div>
+        <div class="ds-item"><span class="ds-num" style="color:var(--blue)">V10</span><span class="ds-label">nejkomplexnější varianta</span></div>
       </div>
     </div>
 
@@ -725,6 +733,225 @@
         </div>
       </div>
 
+      <!-- V8 -->
+      <div class="variant-card" data-variant="v8">
+        <div class="vc-preview">
+          <iframe src="v8/index.html" loading="lazy" title="Varianta V8"></iframe>
+          <div class="vc-preview-overlay"></div>
+          <span class="vc-badge badge-v8">V8</span>
+          <a href="v8/index.html" target="_blank" class="vc-open-btn">Otevřít →</a>
+        </div>
+        <div class="vc-body">
+          <div>
+            <div class="vc-version">Varianta 8 · Hold model (světlý)</div>
+            <div class="vc-title">Pre-autorizace & Hold — světlý design</div>
+            <div class="vc-subtitle">Outfit + Chart.js, světlý slate design s 3 cenovými plány. Rezervace přes Hold bez rizika.</div>
+          </div>
+          <div class="vc-target">
+            <div class="vc-target-label">Cílová skupina</div>
+            <div class="vc-target-text">Podnikatelé hledající prémium web bez rizika. Hold model — platba teprve po schválení náhledu do 24h.</div>
+          </div>
+          <div class="vc-tags">
+            <span class="vc-tag">Hold / Pre-auth</span>
+            <span class="vc-tag">Světlý design</span>
+            <span class="vc-tag">Chart.js grafy</span>
+            <span class="vc-tag">3 cenové plány</span>
+          </div>
+          <div>
+            <div style="font-size:.7rem;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;margin-bottom:4px">Cena</div>
+            <div class="vc-price">14 900 / <span style="color:#10b981">24 900</span> / 39 900 Kč <small>· Hold platba</small></div>
+          </div>
+          <div class="vc-pros-cons">
+            <div class="pros">
+              <div class="vc-list-label">Silné stránky</div>
+              <ul class="vc-list">
+                <li>Hold model = nulové riziko zákazníka</li>
+                <li>Světlý design pro konzervativnější audience</li>
+                <li>3 cenové plány = širší záběr</li>
+                <li>Chart.js vizualizace argumentů</li>
+              </ul>
+            </div>
+            <div class="cons">
+              <div class="vc-list-label">Slabé stránky</div>
+              <ul class="vc-list">
+                <li>Multi-soubor (ne SPA)</li>
+                <li>Bez video hero ani portfolio sekce</li>
+                <li>Bez tmavého design-impaktu</li>
+              </ul>
+            </div>
+          </div>
+          <div class="vc-footer">
+            <a href="v8/index.html" target="_blank" class="btn-primary" style="background:#10b981">Otevřít V8</a>
+            <a href="#" class="btn-ghost-sm" onclick="openDetail('v8');return false">Detailní náhled</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- V9 -->
+      <div class="variant-card" data-variant="v9">
+        <div class="vc-preview">
+          <iframe src="v9/index.html" loading="lazy" title="Varianta V9"></iframe>
+          <div class="vc-preview-overlay"></div>
+          <span class="vc-badge badge-v9">V9</span>
+          <a href="v9/index.html" target="_blank" class="vc-open-btn">Otevřít →</a>
+        </div>
+        <div class="vc-body">
+          <div>
+            <div class="vc-version">Varianta 9 · Hold model (tmavý SPA)</div>
+            <div class="vc-title">Business 24 — tmavý SPA, bankovní úschova</div>
+            <div class="vc-subtitle">Kompletní dark mode SPA — Outfit + Tailwind + Chart.js. Hold/pre-autorizace, n8n webhook, Multi-step formulář.</div>
+          </div>
+          <div class="vc-target">
+            <div class="vc-target-label">Cílová skupina</div>
+            <div class="vc-target-text">Podnikatelé, kteří chtějí prémiový dojem a 0 Kč riziko. Dark design přitahuje digitálně zdatné zákazníky.</div>
+          </div>
+          <div class="vc-tags">
+            <span class="vc-tag">Hold / Pre-auth</span>
+            <span class="vc-tag">Dark SPA</span>
+            <span class="vc-tag">n8n webhook</span>
+            <span class="vc-tag">Multi-step form</span>
+            <span class="vc-tag">24 900 Kč</span>
+          </div>
+          <div>
+            <div style="font-size:.7rem;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;margin-bottom:4px">Cena</div>
+            <div class="vc-price" style="color:#00c4b5">24 900 Kč <small>· Business 24 · Hold platba</small></div>
+          </div>
+          <div class="vc-pros-cons">
+            <div class="pros">
+              <div class="vc-list-label">Silné stránky</div>
+              <ul class="vc-list">
+                <li>Prémiová cena 24 900 Kč</li>
+                <li>Hold = zákazník neriskuje nic</li>
+                <li>Single-file SPA, žádné závislosti</li>
+                <li>Chart.js grafy pro důvěryhodnost</li>
+                <li>n8n automatické zpracování leadů</li>
+              </ul>
+            </div>
+            <div class="cons">
+              <div class="vc-list-label">Slabé stránky</div>
+              <ul class="vc-list">
+                <li>Bez video hero sekce</li>
+                <li>Bez portfolio ukázek práce</li>
+                <li>Vyžaduje n8n instanci pro formulář</li>
+              </ul>
+            </div>
+          </div>
+          <div class="vc-footer">
+            <a href="v9/index.html" target="_blank" class="btn-primary" style="background:#00877e">Otevřít V9</a>
+            <a href="#" class="btn-ghost-sm" onclick="openDetail('v9');return false">Detailní náhled</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- V10 -->
+      <div class="variant-card" data-variant="v10">
+        <div class="vc-preview">
+          <iframe src="v10/index.html" loading="lazy" title="Varianta V10"></iframe>
+          <div class="vc-preview-overlay"></div>
+          <span class="vc-badge badge-v10">V10 ⭐</span>
+          <a href="v10/index.html" target="_blank" class="vc-open-btn">Otevřít →</a>
+        </div>
+        <div class="vc-body">
+          <div>
+            <div class="vc-version">Varianta 10 · Hold model Kompletní <span class="badge badge-rec">Doporučeno</span></div>
+            <div class="vc-title">V9 + video hero + spec tabs + portfolio + garance</div>
+            <div class="vc-subtitle">Nejkomplexnější varianta — všechny sekce, video hero, specifikace webu, ukázky práce, garance termínu s CSS grafikou.</div>
+          </div>
+          <div class="vc-target">
+            <div class="vc-target-label">Cílová skupina</div>
+            <div class="vc-target-text">Náročnější podnikatelé, kteří potřebují vidět reference, specifikace a procesní záruku před rozhodnutím.</div>
+          </div>
+          <div class="vc-tags">
+            <span class="vc-tag">Video hero</span>
+            <span class="vc-tag">Spec tabs</span>
+            <span class="vc-tag">Portfolio</span>
+            <span class="vc-tag">Garance 24h</span>
+            <span class="vc-tag">24 900 Kč</span>
+          </div>
+          <div>
+            <div style="font-size:.7rem;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;margin-bottom:4px">Cena</div>
+            <div class="vc-price" style="color:#ff3366">24 900 Kč <small>· Business 24 · Hold platba</small></div>
+          </div>
+          <div class="vc-pros-cons">
+            <div class="pros">
+              <div class="vc-list-label">Silné stránky</div>
+              <ul class="vc-list">
+                <li>Nejúplnější obsah ze všech verzí</li>
+                <li>Video hero = okamžitý dojem</li>
+                <li>Portfolio ukázek buduje důvěru</li>
+                <li>Spec tabs = transparentnost</li>
+                <li>CSS garance grafika = profesionalita</li>
+              </ul>
+            </div>
+            <div class="cons">
+              <div class="vc-list-label">Slabé stránky</div>
+              <ul class="vc-list">
+                <li>Video soubor nutno dodat externě</li>
+                <li>Delší stránka = možná vyšší bounce</li>
+                <li>Vyžaduje n8n pro formulář</li>
+              </ul>
+            </div>
+          </div>
+          <div class="vc-footer">
+            <a href="v10/index.html" target="_blank" class="btn-primary" style="background:#cc2952">Otevřít V10 ⭐</a>
+            <a href="#" class="btn-ghost-sm" onclick="openDetail('v10');return false">Detailní náhled</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- V11 -->
+      <div class="variant-card" data-variant="v11">
+        <div class="vc-preview">
+          <iframe src="v11/index.html" loading="lazy" title="Varianta V11"></iframe>
+          <div class="vc-preview-overlay"></div>
+          <span class="vc-badge badge-v11">V11</span>
+          <a href="v11/index.html" target="_blank" class="vc-open-btn">Otevřít →</a>
+        </div>
+        <div class="vc-body">
+          <div>
+            <div class="vc-version">Varianta 11 · Hold model Kompletní (A/B)</div>
+            <div class="vc-title">Identická s V10 — A/B testovací varianta</div>
+            <div class="vc-subtitle">Přesná kopie V10 se samostatným source tracking (`v11`). Vhodná pro split test s V10.</div>
+          </div>
+          <div class="vc-target">
+            <div class="vc-target-label">Cílová skupina</div>
+            <div class="vc-target-text">Stejná jako V10. Slouží k A/B testování různých kanálů nebo reklamních kreativ při identickém landing page obsahu.</div>
+          </div>
+          <div class="vc-tags">
+            <span class="vc-tag">A/B varianta k V10</span>
+            <span class="vc-tag">Source tracking</span>
+            <span class="vc-tag">Video hero</span>
+            <span class="vc-tag">Portfolio</span>
+            <span class="vc-tag">24 900 Kč</span>
+          </div>
+          <div>
+            <div style="font-size:.7rem;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;margin-bottom:4px">Cena</div>
+            <div class="vc-price" style="color:#8b5cf6">24 900 Kč <small>· Business 24 · Hold platba</small></div>
+          </div>
+          <div class="vc-pros-cons">
+            <div class="pros">
+              <div class="vc-list-label">Silné stránky</div>
+              <ul class="vc-list">
+                <li>Vše z V10 zachováno</li>
+                <li>Oddělené source=v11 pro analytics</li>
+                <li>Ideální pro split testing kanálů</li>
+              </ul>
+            </div>
+            <div class="cons">
+              <div class="vc-list-label">Slabé stránky</div>
+              <ul class="vc-list">
+                <li>Identický obsah s V10 = žádný nový test</li>
+                <li>Smysluplný až při různých UTM zdrojích</li>
+              </ul>
+            </div>
+          </div>
+          <div class="vc-footer">
+            <a href="v11/index.html" target="_blank" class="btn-primary" style="background:#6d28d9">Otevřít V11</a>
+            <a href="#" class="btn-ghost-sm" onclick="openDetail('v11');return false">Detailní náhled</a>
+          </div>
+        </div>
+      </div>
+
     </div><!-- /overview-grid -->
 
     <!-- ══════════ COMPARE VIEW ══════════ -->
@@ -742,6 +969,10 @@
             <th class="ver-col version-head"><span class="badge badge-v5">V5</span></th>
             <th class="ver-col version-head"><span class="badge badge-v6">V6 ⭐</span></th>
             <th class="ver-col version-head"><span class="badge" style="background:rgba(37,99,235,.2);color:#60a5fa;border:1px solid rgba(37,99,235,.4)">V7</span></th>
+            <th class="ver-col version-head"><span class="badge badge-v8">V8</span></th>
+            <th class="ver-col version-head"><span class="badge badge-v9">V9</span></th>
+            <th class="ver-col version-head"><span class="badge badge-v10">V10 ⭐</span></th>
+            <th class="ver-col version-head"><span class="badge badge-v11">V11</span></th>
           </tr>
         </thead>
         <tbody>
@@ -754,6 +985,10 @@
             <td>Revenue machine</td>
             <td>Revenue machine</td>
             <td class="tag-good">Každý byznys</td>
+            <td>Hold / 0 Kč riziko (světlý)</td>
+            <td class="tag-good">Hold / 0 Kč riziko (dark)</td>
+            <td class="tag-good">Hold + kompletní obsah</td>
+            <td class="tag-good">Hold + kompletní obsah</td>
           </tr>
           <tr>
             <td class="row-label">Cílová skupina</td>
@@ -764,6 +999,10 @@
             <td>Všichni podnikatelé</td>
             <td>Prémiový segment</td>
             <td class="tag-good">Všichni — max. záběr</td>
+            <td>Podnikatelé (konz. audience)</td>
+            <td>Podnikatelé (digitální)</td>
+            <td>Náročnější zákazníci</td>
+            <td>A/B test segment</td>
           </tr>
           <tr>
             <td class="row-label">Základní cena</td>
@@ -774,6 +1013,10 @@
             <td class="tag-warn">9 900 Kč</td>
             <td class="tag-good">12 900 Kč</td>
             <td>od 6 900 Kč</td>
+            <td class="tag-good">14 900–39 900 Kč</td>
+            <td class="tag-good">24 900 Kč</td>
+            <td class="tag-good">24 900 Kč</td>
+            <td class="tag-good">24 900 Kč</td>
           </tr>
           <tr>
             <td class="row-label">Subscription model</td>
@@ -783,6 +1026,10 @@
             <td>Upsell zmínka</td>
             <td class="tag-good">Ano (1 990/měs)</td>
             <td class="tag-good">Ano (1 990/měs)</td>
+            <td class="tag-bad">Ne</td>
+            <td class="tag-bad">Ne</td>
+            <td class="tag-bad">Ne</td>
+            <td class="tag-bad">Ne</td>
             <td class="tag-bad">Ne</td>
           </tr>
           <tr>
@@ -794,6 +1041,10 @@
             <td>30 dní</td>
             <td class="tag-good">7 dní</td>
             <td class="tag-good">30 dní</td>
+            <td class="tag-good">Hold 24h (automaticky)</td>
+            <td class="tag-good">Hold 24h (automaticky)</td>
+            <td class="tag-good">Hold 24h (automaticky)</td>
+            <td class="tag-good">Hold 24h (automaticky)</td>
           </tr>
           <tr>
             <td class="row-label">Platba po schválení</td>
@@ -804,6 +1055,10 @@
             <td class="tag-good">Ano</td>
             <td class="tag-good">Ano</td>
             <td class="tag-good">Ano</td>
+            <td class="tag-good">Ano (Hold)</td>
+            <td class="tag-good">Ano (Hold)</td>
+            <td class="tag-good">Ano (Hold)</td>
+            <td class="tag-good">Ano (Hold)</td>
           </tr>
           <tr>
             <td class="row-label">Rush fee</td>
@@ -813,6 +1068,10 @@
             <td class="tag-bad">Ne</td>
             <td class="tag-bad">Ne</td>
             <td class="tag-good">+3 000 Kč / 8h</td>
+            <td class="tag-bad">Ne</td>
+            <td class="tag-bad">Ne</td>
+            <td class="tag-bad">Ne</td>
+            <td class="tag-bad">Ne</td>
             <td class="tag-bad">Ne</td>
           </tr>
           <tr>
@@ -824,6 +1083,10 @@
             <td>Standardní (1 stránka)</td>
             <td>Standardní (1 stránka)</td>
             <td>Jednoduchý (1 stránka)</td>
+            <td class="tag-good">Multi-step + Hold</td>
+            <td class="tag-good">Multi-step + Hold + n8n</td>
+            <td class="tag-good">Multi-step + Hold + n8n</td>
+            <td class="tag-good">Multi-step + Hold + n8n</td>
           </tr>
           <tr>
             <td class="row-label">AI brief / automatizace</td>
@@ -834,6 +1097,10 @@
             <td class="tag-bad">Ne</td>
             <td class="tag-bad">Ne</td>
             <td class="tag-bad">Ne</td>
+            <td class="tag-bad">Ne</td>
+            <td class="tag-good">n8n webhook</td>
+            <td class="tag-good">n8n webhook</td>
+            <td class="tag-good">n8n webhook</td>
           </tr>
           <tr>
             <td class="row-label">ROI kalkulačka</td>
@@ -844,6 +1111,10 @@
             <td class="tag-good">Ano</td>
             <td class="tag-good">Ano</td>
             <td class="tag-bad">Ne</td>
+            <td>Chart.js (loss)</td>
+            <td>Chart.js (3 grafy)</td>
+            <td>Chart.js (3 grafy)</td>
+            <td>Chart.js (3 grafy)</td>
           </tr>
           <tr>
             <td class="row-label">Crisis scenarios sekce</td>
@@ -851,6 +1122,10 @@
             <td class="tag-bad">Ne</td>
             <td class="tag-bad">Ne</td>
             <td class="tag-good">Ano</td>
+            <td class="tag-bad">Ne</td>
+            <td class="tag-bad">Ne</td>
+            <td class="tag-bad">Ne</td>
+            <td class="tag-bad">Ne</td>
             <td class="tag-bad">Ne</td>
             <td class="tag-bad">Ne</td>
             <td class="tag-bad">Ne</td>
@@ -864,6 +1139,10 @@
             <td class="tag-bad">Ne</td>
             <td class="tag-bad">Ne</td>
             <td class="tag-bad">Ne</td>
+            <td class="tag-bad">Ne</td>
+            <td class="tag-bad">Ne</td>
+            <td class="tag-bad">Ne</td>
+            <td class="tag-bad">Ne</td>
           </tr>
           <tr>
             <td class="row-label">Výsledky klientů (case studies)</td>
@@ -874,6 +1153,10 @@
             <td class="tag-good">Ano (ROI + čísla)</td>
             <td class="tag-good">Ano (ROI + čísla)</td>
             <td class="tag-bad">Ne</td>
+            <td class="tag-bad">Ne</td>
+            <td class="tag-bad">Ne</td>
+            <td class="tag-good">Portfolio ukázky</td>
+            <td class="tag-good">Portfolio ukázky</td>
           </tr>
           <tr>
             <td class="row-label">MRR potenciál (měsíčně)</td>
@@ -883,6 +1166,10 @@
             <td>490 Kč upsell</td>
             <td class="tag-good">1 990–2 990 Kč</td>
             <td class="tag-good">1 990–2 990 Kč</td>
+            <td class="tag-bad">0 Kč</td>
+            <td class="tag-bad">0 Kč</td>
+            <td class="tag-bad">0 Kč</td>
+            <td class="tag-bad">0 Kč</td>
             <td class="tag-bad">0 Kč</td>
           </tr>
           <tr>
@@ -894,6 +1181,66 @@
             <td>Střední</td>
             <td>Střední–Vysoká</td>
             <td class="tag-good">Nízká</td>
+            <td>Střední</td>
+            <td>Střední</td>
+            <td>Střední</td>
+            <td>Střední</td>
+          </tr>
+          <tr>
+            <td class="row-label">Video hero</td>
+            <td class="tag-bad">Ne</td>
+            <td class="tag-bad">Ne</td>
+            <td class="tag-bad">Ne</td>
+            <td class="tag-bad">Ne</td>
+            <td class="tag-bad">Ne</td>
+            <td class="tag-bad">Ne</td>
+            <td class="tag-bad">Ne</td>
+            <td class="tag-bad">Ne</td>
+            <td class="tag-bad">Ne</td>
+            <td class="tag-good">Ano (CSS fallback)</td>
+            <td class="tag-good">Ano (CSS fallback)</td>
+          </tr>
+          <tr>
+            <td class="row-label">Specifikace webu (tabs)</td>
+            <td class="tag-bad">Ne</td>
+            <td class="tag-bad">Ne</td>
+            <td class="tag-bad">Ne</td>
+            <td class="tag-bad">Ne</td>
+            <td class="tag-bad">Ne</td>
+            <td class="tag-bad">Ne</td>
+            <td class="tag-bad">Ne</td>
+            <td class="tag-bad">Ne</td>
+            <td class="tag-bad">Ne</td>
+            <td class="tag-good">Ano (4 záložky)</td>
+            <td class="tag-good">Ano (4 záložky)</td>
+          </tr>
+          <tr>
+            <td class="row-label">Portfolio ukázek práce</td>
+            <td class="tag-bad">Ne</td>
+            <td class="tag-bad">Ne</td>
+            <td class="tag-bad">Ne</td>
+            <td class="tag-bad">Ne</td>
+            <td class="tag-bad">Ne</td>
+            <td class="tag-bad">Ne</td>
+            <td class="tag-bad">Ne</td>
+            <td class="tag-bad">Ne</td>
+            <td class="tag-bad">Ne</td>
+            <td class="tag-good">Ano (filtrovatelné)</td>
+            <td class="tag-good">Ano (filtrovatelné)</td>
+          </tr>
+          <tr>
+            <td class="row-label">Garance Hold 24h (grafika)</td>
+            <td class="tag-bad">Ne</td>
+            <td class="tag-bad">Ne</td>
+            <td class="tag-bad">Ne</td>
+            <td class="tag-bad">Ne</td>
+            <td class="tag-bad">Ne</td>
+            <td class="tag-bad">Ne</td>
+            <td class="tag-bad">Ne</td>
+            <td class="tag-bad">Ne</td>
+            <td>Text only</td>
+            <td class="tag-good">Ano (CSS animace)</td>
+            <td class="tag-good">Ano (CSS animace)</td>
           </tr>
           <tr>
             <td class="row-label">Doporučeno pro</td>
@@ -904,6 +1251,10 @@
             <td>Škálování + MRR</td>
             <td class="tag-good" style="font-weight:700">Max. příjem</td>
             <td class="tag-good" style="font-weight:700">Max. záběr publika</td>
+            <td>Hold model (světlá audience)</td>
+            <td>Hold model (dark audience)</td>
+            <td class="tag-good" style="font-weight:700">Nejkomplexnější obsah</td>
+            <td>A/B split test k V10</td>
           </tr>
         </tbody>
       </table>
@@ -921,6 +1272,10 @@
         <button class="dnav-btn" onclick="loadDetail('v5')">V5</button>
         <button class="dnav-btn" onclick="loadDetail('v6')">V6 ⭐</button>
         <button class="dnav-btn" onclick="loadDetail('v7')">V7</button>
+        <button class="dnav-btn" onclick="loadDetail('v8')">V8</button>
+        <button class="dnav-btn" onclick="loadDetail('v9')">V9</button>
+        <button class="dnav-btn" onclick="loadDetail('v10')">V10 ⭐</button>
+        <button class="dnav-btn" onclick="loadDetail('v11')">V11</button>
       </div>
       <div class="detail-iframe-wrap">
         <div class="detail-iframe-bar">
@@ -1091,6 +1446,85 @@
         ],
         verdict: 'Ideální jako první varianta pro testování šíře trhu nebo pro marketingové kampaně s neurčitou cílovou skupinou.',
       },
+      v8: {
+        label: 'V8 — Hold model (světlý design)',
+        useCase: 'Hold/pre-autorizace platby, světlý slate design, 3 cenové plány',
+        audience: 'Podnikatelé, konzervativnější audience, ženy 30–55',
+        pricing: '14 900 / 24 900 / 39 900 Kč (Hold platba)',
+        model: 'Hold / pre-autorizace, 3 tiery',
+        pros: [
+          'Hold model = zákazník neriskuje ani korunu',
+          'Světlý design oslovuje konzervativnější segment',
+          '3 cenové plány = flexibilita nabídky',
+          'Chart.js grafy dokládají ztráty bez webu',
+          'Multi-step formulář + Hold flow',
+        ],
+        cons: [
+          'Multi-soubor (ne SPA) — složitější deploy',
+          'Bez video hero ani portfolio sekce',
+          'Bez tmavého designu = méně "wow" efektu',
+        ],
+        verdict: 'Vhodné pro audience, která reaguje na světlý profesionální design.',
+      },
+      v9: {
+        label: 'V9 — Hold model (tmavý SPA)',
+        useCase: 'Business 24 balíček, dark SPA, bankovní úschova, n8n webhook',
+        audience: 'Digitálně zdatní podnikatelé, age 28–50',
+        pricing: '24 900 Kč (Business 24 · Hold platba)',
+        model: 'Hold / pre-autorizace, single-file SPA',
+        pros: [
+          'Prémiová cena 24 900 Kč = vyšší marže',
+          'Hold platba eliminuje námitku "a co když to nebude dobré"',
+          'Single-file SPA — zero-dependency deploy',
+          'Chart.js vizualizace (ztráty, důvěra, scope)',
+          'n8n webhook pro automatické zpracování formuláře',
+          'Multi-step form s validací kroků',
+        ],
+        cons: [
+          'Bez video hero sekce',
+          'Bez portfolio ukázek práce',
+          'Vyžaduje n8n instanci pro plný provoz formuláře',
+        ],
+        verdict: 'Silná základní dark varianta Hold modelu. Základ pro V10.',
+      },
+      v10: {
+        label: 'V10 — Hold model Kompletní ⭐',
+        useCase: 'Nejkomplexnější varianta — vše z V9 + video, spec, portfolio, garance grafika',
+        audience: 'Náročnější zákazníci, kteří hledají reference a transparentnost',
+        pricing: '24 900 Kč (Business 24 · Hold platba)',
+        model: 'Hold / pre-autorizace, maximální obsah',
+        pros: [
+          'Všechny sekce z V9 zachovány',
+          'Video hero sekce — okamžitý vizuální impakt',
+          'Specifikace webu (4 záložky) — transparentnost procesu',
+          'Portfolio ukázek práce — filtrovatelné CSS mock browsery',
+          'Garance Hold 24h s CSS animovanou grafikou',
+          'Nejpřesvědčivější pro skpetického zákazníka',
+        ],
+        cons: [
+          'Video soubor je nutné dodat externě (hero-showreel.mp4)',
+          'Delší stránka může zvýšit bounce rate',
+          'Vyžaduje n8n instanci pro plný provoz formuláře',
+        ],
+        verdict: 'Doporučeno jako produkční varianta. Spusťte jako primární landing page.',
+      },
+      v11: {
+        label: 'V11 — Hold model Kompletní (A/B)',
+        useCase: 'Identická kopie V10 se samostatným source trackingem pro split test',
+        audience: 'Stejná jako V10',
+        pricing: '24 900 Kč (Business 24 · Hold platba)',
+        model: 'Hold / pre-autorizace (identické s V10)',
+        pros: [
+          'Kompletní obsah V10 zachován beze změny',
+          'Oddělený source=v11 pro analytics a A/B test',
+          'Ideální pro testování různých kanálů nebo reklamních kreativ',
+        ],
+        cons: [
+          'Identický obsah s V10 — žádný nový konverzní prvek',
+          'Smysluplný pouze při různých UTM zdrojích',
+        ],
+        verdict: 'Nasaďte jako A/B test k V10 přes jiný marketingový kanál.',
+      },
     };
 
     // ── VIEW SWITCHING ────────────────────────────────────────────
@@ -1129,7 +1563,7 @@
 
     // ── DETAIL ───────────────────────────────────────────────────
     function loadDetail(v) {
-      const keys = ['v1','v2','v3','v4','v5','v6','v7'];
+      const keys = ['v1','v2','v3','v4','v5','v6','v7','v8','v9','v10','v11'];
       document.querySelectorAll('.dnav-btn').forEach((b, i) => {
         b.classList.toggle('active', keys[i] === v);
       });

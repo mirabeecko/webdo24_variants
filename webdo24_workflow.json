@@ -1,0 +1,306 @@
+{
+    "name": "Webdo24 - Production Pipeline v2.1",
+    "nodes": [
+        {
+            "parameters": {
+                "httpMethod": "POST",
+                "path": "webdo24-intake",
+                "options": {}
+            },
+            "id": "1",
+            "name": "1. Webhook Intake",
+            "type": "n8n-nodes-base.webhook",
+            "typeVersion": 1,
+            "position": [
+                0,
+                240
+            ]
+        },
+        {
+            "parameters": {
+                "agent": "reActAgent",
+                "text": "={{ $json.body }}",
+                "options": {
+                    "prefixMessage": "VLOŽ_ZDE_MASTER_PROMPT_KREATIVNI_ANALYZA"
+                }
+            },
+            "id": "2",
+            "name": "2. AI Creative Architect",
+            "type": "@n8n/n8n-nodes-langchain.agent",
+            "typeVersion": 1.1,
+            "position": [
+                220,
+                240
+            ]
+        },
+        {
+            "parameters": {
+                "modelName": "gemini-1.5-flash",
+                "options": {}
+            },
+            "id": "3",
+            "name": "Gemini 1.5 Flash (Fast Analysis)",
+            "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
+            "typeVersion": 1,
+            "position": [
+                220,
+                440
+            ]
+        },
+        {
+            "parameters": {
+                "operation": "upsert",
+                "collection": "webdo24-audit-trail",
+                "documentId": "={{ $json.email || $node[\"1. Webhook Intake\"].json.body.email }}",
+                "fields": [
+                    "raw_input",
+                    "ai_brief"
+                ]
+            },
+            "id": "4",
+            "name": "3. Firestore Save Brief",
+            "type": "n8n-nodes-base.googleFirestore",
+            "typeVersion": 1,
+            "position": [
+                480,
+                240
+            ]
+        },
+        {
+            "parameters": {
+                "promptType": "define",
+                "text": "={{ $node[\"2. AI Creative Architect\"].json.output }}",
+                "systemMessage": "VLOŽ_ZDE_CODE_GENERATOR_PROMPT (Claude 3.5 Sonnet focus)"
+            },
+            "id": "5",
+            "name": "4. AI Code Generator",
+            "type": "@n8n/n8n-nodes-langchain.chainLlm",
+            "typeVersion": 1.4,
+            "position": [
+                700,
+                240
+            ]
+        },
+        {
+            "parameters": {
+                "modelName": "claude-3-5-sonnet-20240620",
+                "options": {}
+            },
+            "id": "6",
+            "name": "Claude 3.5 Sonnet (Best Coding)",
+            "type": "@n8n/n8n-nodes-langchain.lmChatAnthropic",
+            "typeVersion": 1,
+            "position": [
+                700,
+                440
+            ]
+        },
+        {
+            "parameters": {
+                "agent": "reActAgent",
+                "text": "={{ $node[\"4. AI Code Generator\"].json.text }}",
+                "options": {
+                    "prefixMessage": "VLOŽ_ZDE_QA_AUDIT_PROMPT (Kontrola funkčnosti)"
+                }
+            },
+            "id": "7",
+            "name": "5. AI QA Auditor",
+            "type": "@n8n/n8n-nodes-langchain.agent",
+            "typeVersion": 1.1,
+            "position": [
+                960,
+                240
+            ]
+        },
+        {
+            "parameters": {
+                "modelName": "gemini-1.5-pro",
+                "options": {}
+            },
+            "id": "8",
+            "name": "Gemini 1.5 Pro (High Intelligence QA)",
+            "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
+            "typeVersion": 1,
+            "position": [
+                960,
+                440
+            ]
+        },
+        {
+            "parameters": {
+                "method": "POST",
+                "url": "https://api.vercel.com/v13/deployments",
+                "sendHeaders": true,
+                "headerParameters": {
+                    "parameters": [
+                        {
+                            "name": "Authorization",
+                            "value": "Bearer YOUR_VERCEL_TOKEN"
+                        }
+                    ]
+                },
+                "sendBody": true,
+                "bodyParameters": {
+                    "parameters": [
+                        {
+                            "name": "name",
+                            "value": "webdo24-sandbox"
+                        }
+                    ]
+                }
+            },
+            "id": "9",
+            "name": "6. Vercel Deploy",
+            "type": "n8n-nodes-base.httpRequest",
+            "typeVersion": 4.1,
+            "position": [
+                1200,
+                240
+            ]
+        },
+        {
+            "parameters": {
+                "httpMethod": "POST",
+                "path": "ceo-approval",
+                "responseMode": "onReceived",
+                "options": {}
+            },
+            "id": "10",
+            "name": "7. Wait for CEO Approval",
+            "type": "n8n-nodes-base.webhook",
+            "typeVersion": 1,
+            "position": [
+                1460,
+                240
+            ]
+        },
+        {
+            "parameters": {
+                "fromEmail": "no-reply@webdo24.cz",
+                "toEmail": "={{ $node[\"1. Webhook Intake\"].json.body.email }}",
+                "subject": "Váš web je připraven k náhledu!",
+                "html": "VLOŽ_ZDE_ŠABLONU_EMAILU"
+            },
+            "id": "11",
+            "name": "8. Email Dispatcher",
+            "type": "n8n-nodes-base.emailSend",
+            "typeVersion": 2.1,
+            "position": [
+                1720,
+                240
+            ]
+        }
+    ],
+    "connections": {
+        "1. Webhook Intake": {
+            "main": [
+                [
+                    {
+                        "node": "2. AI Creative Architect",
+                        "type": "main",
+                        "index": 0
+                    }
+                ]
+            ]
+        },
+        "2. AI Creative Architect": {
+            "main": [
+                [
+                    {
+                        "node": "3. Firestore Save Brief",
+                        "type": "main",
+                        "index": 0
+                    }
+                ]
+            ]
+        },
+        "3. Firestore Save Brief": {
+            "main": [
+                [
+                    {
+                        "node": "4. AI Code Generator",
+                        "type": "main",
+                        "index": 0
+                    }
+                ]
+            ]
+        },
+        "4. AI Code Generator": {
+            "main": [
+                [
+                    {
+                        "node": "5. AI QA Auditor",
+                        "type": "main",
+                        "index": 0
+                    }
+                ]
+            ]
+        },
+        "5. AI QA Auditor": {
+            "main": [
+                [
+                    {
+                        "node": "6. Vercel Deploy",
+                        "type": "main",
+                        "index": 0
+                    }
+                ]
+            ]
+        },
+        "6. Vercel Deploy": {
+            "main": [
+                [
+                    {
+                        "node": "7. Wait for CEO Approval",
+                        "type": "main",
+                        "index": 0
+                    }
+                ]
+            ]
+        },
+        "7. Wait for CEO Approval": {
+            "main": [
+                [
+                    {
+                        "node": "8. Email Dispatcher",
+                        "type": "main",
+                        "index": 0
+                    }
+                ]
+            ]
+        },
+        "Gemini 1.5 Flash (Fast Analysis)": {
+            "ai_languageModel": [
+                [
+                    {
+                        "node": "2. AI Creative Architect",
+                        "type": "ai_languageModel",
+                        "index": 0
+                    }
+                ]
+            ]
+        },
+        "Claude 3.5 Sonnet (Best Coding)": {
+            "ai_languageModel": [
+                [
+                    {
+                        "node": "4. AI Code Generator",
+                        "type": "ai_languageModel",
+                        "index": 0
+                    }
+                ]
+            ]
+        },
+        "Gemini 1.5 Pro (High Intelligence QA)": {
+            "ai_languageModel": [
+                [
+                    {
+                        "node": "5. AI QA Auditor",
+                        "type": "ai_languageModel",
+                        "index": 0
+                    }
+                ]
+            ]
+        }
+    }
+}
