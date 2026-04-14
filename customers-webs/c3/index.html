@@ -1,0 +1,898 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Za 24 hodin budete mít web, který vydělává. Pevná cena 9 900 Kč. Žádná záloha — platíte až po schválení. 30denní garance.">
+  <meta name="keywords" content="web do 24 hodin, tvorba webu, webové stránky rychle, web na klíč, levný web">
+  <title>Za 24 hodin budete mít web, který vydělává | webdo24.cz</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- SOCIAL PROOF POPUP -->
+  <div class="sp-popup" id="spPopup" role="status" aria-live="polite">
+    <button class="sp-close" id="spClose" aria-label="Zavřít">×</button>
+    <div class="sp-avatar" id="spAvatar"></div>
+    <div class="sp-content">
+      <div class="sp-name" id="spName"></div>
+      <div class="sp-action" id="spAction"></div>
+    </div>
+  </div>
+
+  <!-- MOBILE STICKY CTA BAR -->
+  <div class="mobile-cta-bar">
+    <a href="#contact" class="mobile-cta-link">Chci web do 24 hodin →</a>
+  </div>
+
+  <!-- URGENCY BAR -->
+  <div class="urgency-bar" id="urgencyBar">
+    <div class="container urgency-inner">
+      <span class="urgency-text">
+        🔥 <strong>Objednejte do 18:00</strong> — web máte spuštěný <strong>zítra</strong>. Zbývá:
+        <span class="countdown" id="countdown">--:--:--</span>
+        &nbsp;|&nbsp;
+        <span class="scarcity-badge">📅 Zbývají <strong id="slotsLeft">3</strong> termíny tento týden</span>
+      </span>
+      <button class="urgency-close" onclick="this.closest('.urgency-bar').style.display='none'" aria-label="Zavřít">×</button>
+    </div>
+  </div>
+
+  <!-- NAV -->
+  <nav class="nav" id="nav">
+    <div class="container nav-inner">
+      <a href="#hero" class="logo">
+        webdo<span class="logo-accent">24</span>.cz
+      </a>
+      <div class="nav-links" id="navLinks">
+        <a href="#process">Jak to funguje</a>
+        <a href="#portfolio">Portfolio</a>
+        <a href="#pricing">Ceny</a>
+        <a href="#faq">FAQ</a>
+        <a href="#contact" class="btn btn-primary nav-cta-mobile">Chci web →</a>
+      </div>
+      <a href="#contact" class="btn btn-primary nav-cta">Chci web →</a>
+      <button class="hamburger" id="hamburger" aria-label="Otevřít menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <main>
+
+    <!-- ======================== HERO ======================== -->
+    <section class="hero" id="hero">
+      <div class="hero-glow"></div>
+      <div class="container hero-inner">
+        <div class="hero-content">
+          <div class="hero-badge animate-fade-up">
+            <span class="badge-dot"></span> Dostupný právě teď — spustím váš web zítra
+          </div>
+          <h1 class="hero-headline animate-fade-up delay-1">
+            Za 24 hodin budete mít<br>
+            <span class="gradient-text">web, který vydělává.</span>
+          </h1>
+          <p class="hero-sub animate-fade-up delay-2">
+            Agentury berou <s>50 000–150 000 Kč</s> a čekáte 3 měsíce.<br>
+            U mě to je <strong>9 900 Kč</strong>, web máte zítra — a platíte až po schválení.
+          </p>
+          <ul class="hero-bullets animate-fade-up delay-3">
+            <li><span class="check">✓</span> Konverzní landing page přesně pro váš byznys</li>
+            <li><span class="check">✓</span> Spuštění do 24 hodin od zadání</li>
+            <li><span class="check">✓</span> Záloha 0 Kč — platíte až po schválení</li>
+          </ul>
+          <div class="hero-ctas animate-fade-up delay-4">
+            <a href="#contact" class="btn btn-primary btn-lg">Chci web do 24 hodin →</a>
+            <a href="#process" class="btn btn-ghost btn-lg">Jak to funguje ↓</a>
+          </div>
+          <div class="hero-trust animate-fade-up delay-5">
+            <div class="trust-item"><strong>147+</strong><span>spokojených klientů</span></div>
+            <div class="trust-sep">·</div>
+            <div class="trust-item"><strong>24 hod</strong><span>průměrná dodávka</span></div>
+            <div class="trust-sep">·</div>
+            <div class="trust-item"><strong>9 900 Kč</strong><span>pevná cena</span></div>
+            <div class="trust-sep">·</div>
+            <div class="trust-item"><strong>30 dní</strong><span>garance</span></div>
+          </div>
+        </div>
+        <div class="hero-visual animate-fade-up delay-3">
+          <div class="mockup-browser">
+            <div class="mockup-bar">
+              <span class="dot red"></span>
+              <span class="dot yellow"></span>
+              <span class="dot green"></span>
+              <span class="mockup-url">váš-web.cz</span>
+            </div>
+            <div class="mockup-screen">
+              <div class="mock-hero-bar"></div>
+              <div class="mock-hero-title"></div>
+              <div class="mock-hero-sub"></div>
+              <div class="mock-cta-row">
+                <div class="mock-cta orange"></div>
+                <div class="mock-cta ghost"></div>
+              </div>
+              <div class="mock-stats-row">
+                <div class="mock-stat"></div>
+                <div class="mock-stat"></div>
+                <div class="mock-stat"></div>
+              </div>
+            </div>
+          </div>
+          <div class="hero-badge-float badge-float-1">
+            <span class="bf-icon">⚡</span>
+            <div>
+              <strong>Web spuštěn!</strong>
+              <small>za 19 hodin</small>
+            </div>
+          </div>
+          <div class="hero-badge-float badge-float-2">
+            <span class="bf-icon">📩</span>
+            <div>
+              <strong>Nová poptávka</strong>
+              <small>právě teď</small>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================== STATS STRIP ======================== -->
+    <section class="stats-strip">
+      <div class="container stats-grid">
+        <div class="stat-item">
+          <div class="stat-num">147+</div>
+          <div class="stat-label">webů spuštěno</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num">18 hod</div>
+          <div class="stat-label">průměrná dodávka</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num">9 900 Kč</div>
+          <div class="stat-label">pevná cena vždy</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num">98 %</div>
+          <div class="stat-label">spokojených klientů</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num">0 Kč</div>
+          <div class="stat-label">záloha předem</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================== PROBLEM/SOLUTION ======================== -->
+    <section class="section problem-solution" id="about">
+      <div class="container">
+        <div class="section-label">Proč to nefunguje jinak</div>
+        <h2 class="section-title center">Klasické agentury vás stojí čas a peníze.<br><span class="gradient-text">Tohle je jiná cesta.</span></h2>
+        <div class="ps-grid">
+          <div class="ps-before">
+            <div class="ps-header before-header">
+              <span class="ps-icon">😤</span>
+              <strong>Klasická agentura</strong>
+            </div>
+            <ul class="ps-list ps-bad">
+              <li>❌ 50 000–150 000 Kč za průměrný web</li>
+              <li>❌ Čekáte 2–4 měsíce na spuštění</li>
+              <li>❌ Záloha 30–50 % předem bez záruky</li>
+              <li>❌ Komunikujete s projektovým manažerem, ne tvůrcem</li>
+              <li>❌ Generický web ze šablony za prémiovou cenu</li>
+              <li>❌ Každá změna = nová faktura</li>
+            </ul>
+          </div>
+          <div class="ps-divider">
+            <div class="ps-vs">VS</div>
+          </div>
+          <div class="ps-after">
+            <div class="ps-header after-header">
+              <span class="ps-icon">🚀</span>
+              <strong>webdo24.cz</strong>
+            </div>
+            <ul class="ps-list ps-good">
+              <li>✓ Pevná cena 9 900 Kč — vždy víte, co zaplatíte</li>
+              <li>✓ Web spuštěný do 24 hodin od zadání</li>
+              <li>✓ Záloha 0 Kč — platíte až po schválení webu</li>
+              <li>✓ Přímá komunikace se mnou — bez prostředníků</li>
+              <li>✓ Unikátní design přesně pro váš byznys</li>
+              <li>✓ 30denní garance nebo vrátím peníze</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================== PROCESS ======================== -->
+    <section class="section" id="process">
+      <div class="container">
+        <div class="section-label">Jak to funguje</div>
+        <h2 class="section-title center">Od poptávky ke spuštěnému webu<br><span class="gradient-text">za 3 jednoduché kroky</span></h2>
+        <div class="process-steps">
+          <div class="process-step animate-on-scroll">
+            <div class="step-num">01</div>
+            <div class="step-content">
+              <h3>Vyplníte 9minutový formulář</h3>
+              <p>Odpovíte na otázky o vašem byznysu, zákaznících a cílech. Žádné technické znalosti nepotřebujete — ptám se na věci, které skutečně znáte.</p>
+            </div>
+          </div>
+          <div class="process-connector"></div>
+          <div class="process-step animate-on-scroll">
+            <div class="step-num">02</div>
+            <div class="step-content">
+              <h3>Tvořím váš web do 24 hodin</h3>
+              <p>Dostanete náhled ke schválení. Není-li něco podle vašich představ, upravím to. Platíte až tehdy, kdy jste 100% spokojeni.</p>
+            </div>
+          </div>
+          <div class="process-connector"></div>
+          <div class="process-step animate-on-scroll">
+            <div class="step-num">03</div>
+            <div class="step-content">
+              <h3>Web je online — začínáte získávat poptávky</h3>
+              <p>Spustím web na váší doméně nebo pomohu s registrací. První poptávky typicky přicházejí do 2 hodin od spuštění.</p>
+            </div>
+          </div>
+        </div>
+        <div class="process-cta-wrap">
+          <a href="#contact" class="btn btn-primary btn-lg">Začít teď — je to zdarma →</a>
+          <p class="process-note">Vyplnění formuláře vás k ničemu nezavazuje</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================== PORTFOLIO ======================== -->
+    <section class="section section-dark" id="portfolio">
+      <div class="container">
+        <div class="section-label">Ukázky práce</div>
+        <h2 class="section-title center">Weby, které jsem vytvořil<br><span class="gradient-text">pro malé firmy jako ta vaše</span></h2>
+        <div class="portfolio-grid">
+          <div class="portfolio-card animate-on-scroll">
+            <div class="portfolio-preview pf-1">
+              <div class="pf-mockup">
+                <div class="pfm-bar">
+                  <span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span>
+                </div>
+                <div class="pfm-content">
+                  <div class="pfm-hero orange-theme">
+                    <div class="pfm-h1"></div>
+                    <div class="pfm-sub"></div>
+                    <div class="pfm-cta-r"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="portfolio-info">
+              <h3>Instalatérská firma</h3>
+              <p>Lokální služby, Praha — spuštěno za 16 hodin</p>
+              <div class="portfolio-result">+340 % poptávek za 1. měsíc</div>
+            </div>
+          </div>
+          <div class="portfolio-card animate-on-scroll">
+            <div class="portfolio-preview pf-2">
+              <div class="pf-mockup">
+                <div class="pfm-bar">
+                  <span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span>
+                </div>
+                <div class="pfm-content">
+                  <div class="pfm-hero blue-theme">
+                    <div class="pfm-h1"></div>
+                    <div class="pfm-sub"></div>
+                    <div class="pfm-cta-r"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="portfolio-info">
+              <h3>Účetní poradenství</h3>
+              <p>B2B služby, Brno — spuštěno za 22 hodin</p>
+              <div class="portfolio-result">12 nových klientů za 3 měsíce</div>
+            </div>
+          </div>
+          <div class="portfolio-card animate-on-scroll">
+            <div class="portfolio-preview pf-3">
+              <div class="pf-mockup">
+                <div class="pfm-bar">
+                  <span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span>
+                </div>
+                <div class="pfm-content">
+                  <div class="pfm-hero green-theme">
+                    <div class="pfm-h1"></div>
+                    <div class="pfm-sub"></div>
+                    <div class="pfm-cta-r"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="portfolio-info">
+              <h3>Osobní trenér</h3>
+              <p>Fitness studio, Ostrava — spuštěno za 20 hodin</p>
+              <div class="portfolio-result">Plně obsazeno do 2 týdnů</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================== PRICING ======================== -->
+    <section class="section" id="pricing">
+      <div class="container">
+        <div class="section-label">Transparentní ceny</div>
+        <h2 class="section-title center">Agentury berou <span class="price-anchor-text">50 000–150 000 Kč.</span><br><span class="gradient-text">My 9 900 Kč.</span></h2>
+
+        <!-- PRICE ANCHORING -->
+        <div class="price-anchor-block animate-on-scroll">
+          <div class="price-anchor-item crossed">
+            <span class="pa-label">Typická agentura</span>
+            <span class="pa-price"><s>80 000 Kč</s></span>
+            <span class="pa-note">+ 2–4 měsíce čekání</span>
+          </div>
+          <div class="price-anchor-arrow">→</div>
+          <div class="price-anchor-item highlight">
+            <span class="pa-label">webdo24.cz</span>
+            <span class="pa-price">9 900 Kč</span>
+            <span class="pa-note">do 24 hodin</span>
+          </div>
+          <div class="savings-badge">
+            <span class="savings-text">Ušetříte až</span>
+            <span class="savings-amount">70 100 Kč</span>
+          </div>
+        </div>
+
+        <div class="pricing-grid">
+          <!-- STARTER -->
+          <div class="pricing-card animate-on-scroll">
+            <div class="pricing-name">Starter</div>
+            <div class="pricing-price">9 900 Kč</div>
+            <div class="pricing-note">Platíte až po schválení</div>
+            <ul class="pricing-features">
+              <li>✓ Konverzní landing page</li>
+              <li>✓ Mobilní verze</li>
+              <li>✓ Kontaktní formulář</li>
+              <li>✓ Spuštění do 24 hodin</li>
+              <li>✓ 30denní podpora zdarma</li>
+              <li>✓ 3 revize zdarma</li>
+            </ul>
+            <a href="#contact" class="btn btn-ghost">Objednat →</a>
+          </div>
+          <!-- PRO — featured -->
+          <div class="pricing-card pricing-featured animate-on-scroll">
+            <div class="pricing-badge">Nejoblíbenější</div>
+            <div class="pricing-name">Pro</div>
+            <div class="pricing-price">14 900 Kč</div>
+            <div class="pricing-note">Platíte až po schválení</div>
+            <ul class="pricing-features">
+              <li>✓ Vše ze Starter</li>
+              <li>✓ Více sekcí a stránek (až 5)</li>
+              <li>✓ Blog nebo galerie</li>
+              <li>✓ SEO optimalizace</li>
+              <li>✓ Google Analytics</li>
+              <li>✓ 60denní podpora</li>
+              <li>✓ Neomezené revize</li>
+            </ul>
+            <a href="#contact" class="btn btn-primary">Objednat →</a>
+          </div>
+          <!-- BUSINESS -->
+          <div class="pricing-card animate-on-scroll">
+            <div class="pricing-name">Business</div>
+            <div class="pricing-price">24 900 Kč</div>
+            <div class="pricing-note">Platíte až po schválení</div>
+            <ul class="pricing-features">
+              <li>✓ Vše z Pro</li>
+              <li>✓ E-shop nebo rezervační systém</li>
+              <li>✓ Napojení na CRM</li>
+              <li>✓ Email marketing</li>
+              <li>✓ A/B testování</li>
+              <li>✓ 90denní podpora VIP</li>
+            </ul>
+            <a href="#contact" class="btn btn-ghost">Objednat →</a>
+          </div>
+        </div>
+
+        <!-- RISK REVERSAL BLOCK -->
+        <div class="risk-block animate-on-scroll">
+          <h3 class="risk-title">Žádné riziko. Vůbec žádné.</h3>
+          <div class="risk-grid">
+            <div class="risk-item risk-bad">
+              <span class="risk-icon">❌</span>
+              <div>
+                <strong>Záloha předem</strong>
+                <p>U jiných agentur platíte tisíce Kč ještě než uvidíte jediný řádek kódu</p>
+              </div>
+            </div>
+            <div class="risk-item risk-good">
+              <span class="risk-icon">✓</span>
+              <div>
+                <strong>Záloha 0 Kč</strong>
+                <p>Začínáme bez platby. Fakturuju až tehdy, kdy jste 100 % spokojeni s výsledkem</p>
+              </div>
+            </div>
+            <div class="risk-item risk-bad">
+              <span class="risk-icon">❌</span>
+              <div>
+                <strong>Čekáte měsíce</strong>
+                <p>Průměrný web v agentuře trvá 2–4 měsíce — byznys mezitím přichází o zákazníky</p>
+              </div>
+            </div>
+            <div class="risk-item risk-good">
+              <span class="risk-icon">✓</span>
+              <div>
+                <strong>30denní garance vrácení peněz</strong>
+                <p>Není-li web přesně takový, jak jsme se dohodli, vracím celou částku. Bez řečí.</p>
+              </div>
+            </div>
+          </div>
+          <div class="risk-summary">
+            <span class="risk-badge">🛡️ Záloha 0 Kč. Platíte až po schválení webu.</span>
+            <span class="risk-badge">🔄 30denní garance spokojenosti nebo vrácení peněz.</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================== TESTIMONIALS ======================== -->
+    <section class="section section-dark" id="testimonials">
+      <div class="container">
+        <div class="section-label">Co říkají klienti</div>
+        <h2 class="section-title center">147 firem už má web,<br><span class="gradient-text">který jim přináší zákazníky</span></h2>
+        <div class="testimonials-grid">
+          <div class="testimonial-card animate-on-scroll">
+            <div class="testimonial-stars">★★★★★</div>
+            <p class="testimonial-text">"Web jsem potřeboval nutně — přišla mi poptávka na velkou zakázku a neměl jsem kde ukázat naše práce. Do 24 hodin jsem měl krásnou stránku s portfoliem. Zakázku jsem získal."</p>
+            <div class="testimonial-author">
+              <div class="author-avatar av-blue">TN</div>
+              <div>
+                <strong>Tomáš Novák</strong>
+                <span>Stavební firma, Praha</span>
+              </div>
+            </div>
+          </div>
+          <div class="testimonial-card animate-on-scroll">
+            <div class="testimonial-stars">★★★★★</div>
+            <p class="testimonial-text">"Čekala jsem, že bude trvat týdny než dostanu náhled. Web byl hotový za 18 hodin a byl přesně takový, jak jsem si představovala. První poptávka přišla ještě ten den."</p>
+            <div class="testimonial-author">
+              <div class="author-avatar av-purple">MK</div>
+              <div>
+                <strong>Markéta Kovářová</strong>
+                <span>Kosmetický salon, Brno</span>
+              </div>
+            </div>
+          </div>
+          <div class="testimonial-card animate-on-scroll">
+            <div class="testimonial-stars">★★★★★</div>
+            <p class="testimonial-text">"Přišel jsem sem skeptický — jak může být web za 9 900 Kč dobrý? Ukázal jsem výsledek kolegům a oni si mysleli, že jsem zaplatil 5× tolik. Skvělá investice."</p>
+            <div class="testimonial-author">
+              <div class="author-avatar av-green">RH</div>
+              <div>
+                <strong>Radek Horáček</strong>
+                <span>IT konzultant, Ostrava</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================== GUARANTEE ======================== -->
+    <section class="section guarantee-section" id="guarantee">
+      <div class="container">
+        <div class="guarantee-inner animate-on-scroll">
+          <div class="guarantee-icon">🛡️</div>
+          <div class="guarantee-content">
+            <h2>30denní garance spokojenosti</h2>
+            <p>Pokud nejste s webem spokojeni do 30 dní od spuštění — z jakéhokoli důvodu — vrátím vám celou částku. Žádné otázky, žádné podmínky.</p>
+            <p>A protože neplatíte zálohu, nemáte naprosto žádné finanční riziko při poptání webu.</p>
+            <a href="#contact" class="btn btn-primary">Chci web bez rizika →</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================== FAQ ======================== -->
+    <section class="section" id="faq">
+      <div class="container">
+        <div class="section-label">Časté otázky</div>
+        <h2 class="section-title center">Máte otázky?<br><span class="gradient-text">Tady jsou odpovědi.</span></h2>
+        <div class="faq-list" id="faqList">
+          <div class="faq-item">
+            <button class="faq-q">Jak může být web hotový za 24 hodin? <span class="faq-arrow">↓</span></button>
+            <div class="faq-a">
+              <p>Specializuji se výhradně na konverzní weby pro malé firmy. Mám propracovaný systém, AI nástrojek a lety zkušeností, díky kterým zvládnu za jeden den to, na co agentura potřebuje měsíce. Každý web je přitom unikátní — ne kopie šablony.</p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-q">Opravdu neplatím zálohu? <span class="faq-arrow">↓</span></button>
+            <div class="faq-a">
+              <p>Přesně tak. Fakturuju až poté, co schválíte výsledný web. Pokud se vám výsledek nebude líbit, neplatíte nic. Tohle je moje jistota, že odvedu co nejlepší práci.</p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-q">Co když nebudu spokojený? <span class="faq-arrow">↓</span></button>
+            <div class="faq-a">
+              <p>Nabízím 3 kola revizí zdarma (u Starter) a neomezené revize (Pro a výše). Navíc máte 30denní garanci — pokud do 30 dní od spuštění nebudete spokojeni, vrátím celou platbu.</p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-q">Potřebuji mít připravenou doménu a hosting? <span class="faq-arrow">↓</span></button>
+            <div class="faq-a">
+              <p>Ne. Postarám se o vše — pomůžu s registrací domény, nastavením hostingu i nasazením webu. Pokud doménu nebo hosting již máte, jednoduše je použijeme.</p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-q">Co přesně potřebujete ode mě? <span class="faq-arrow">↓</span></button>
+            <div class="faq-a">
+              <p>Jen vyplnit náš formulář — trvá přibližně 9 minut. Ptám se na váš byznys, zákazníky a cíle. Texty i grafiku vytvořím já. Pokud máte logo nebo fotky, skvěle — použijeme je. Ale není to podmínkou.</p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-q">Budu web moci sám upravovat? <span class="faq-arrow">↓</span></button>
+            <div class="faq-a">
+              <p>Záleží na zvoleném balíčku. U všech balíčků jsem k dispozici pro drobné úpravy v rámci doby podpory. Pro větší samostatnost nabízím web na WordPressu nebo na CMS dle vašeho výběru.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================== CONTACT / FORM ======================== -->
+    <section class="section contact-section" id="contact">
+      <div class="container">
+        <div class="section-label">Začínáme</div>
+        <h2 class="section-title center">Řekněte mi o svém byznysu.<br><span class="gradient-text">Web máte zítra.</span></h2>
+        <p class="section-sub center">Formulář trvá asi 9 minut. Žádná záloha, žádný závazek — jen vyplníte a já se ozvu.</p>
+
+        <!-- FORM WRAPPER -->
+        <div class="form-wrapper" id="formWrapper">
+          <!-- PROGRESS BAR -->
+          <div class="form-progress">
+            <div class="form-progress-bar" id="progressBar"></div>
+          </div>
+          <div class="form-step-label">
+            Krok <span id="currentStepNum">1</span> z <span id="totalSteps">9</span>
+          </div>
+
+          <form id="intakeForm" novalidate>
+
+            <!-- ===== STEP 1: IDENTITA ===== -->
+            <div class="form-step active" data-step="1">
+              <div class="step-header">
+                <div class="step-icon">🏢</div>
+                <h3 class="step-title">Identita firmy</h3>
+                <p class="step-desc">Začneme základy — kdo jste a co děláte.</p>
+              </div>
+              <div class="form-group">
+                <label for="q1">Název firmy nebo projektu <span class="req">*</span></label>
+                <input type="text" id="q1" name="q1" placeholder="např. Novák Stavby s.r.o." required>
+              </div>
+              <div class="form-group">
+                <label for="q2">Jednou větou — co děláte a pro koho <span class="req">*</span></label>
+                <input type="text" id="q2" name="q2" placeholder="např. Opravujeme kotle v Praze, pro majitele domů" required>
+              </div>
+              <div class="form-group">
+                <label>Kde působíte?</label>
+                <div class="pill-group" data-name="q3" data-single="true">
+                  <button type="button" class="pill" data-value="Praha">Praha</button>
+                  <button type="button" class="pill" data-value="Celá ČR">Celá ČR</button>
+                  <button type="button" class="pill" data-value="Online">Online</button>
+                  <button type="button" class="pill" data-value="Celý svět">Celý svět</button>
+                </div>
+                <input type="hidden" name="q3" id="q3">
+              </div>
+              <div class="form-nav">
+                <button type="button" class="btn btn-primary" onclick="goToStep(2)">Pokračovat →</button>
+              </div>
+            </div>
+
+            <!-- ===== STEP 2: UNIKÁTNÍ HODNOTA ===== -->
+            <div class="form-step" data-step="2">
+              <div class="step-header">
+                <div class="step-icon">💎</div>
+                <h3 class="step-title">Unikátní hodnota</h3>
+                <p class="step-desc">Proč si zákazníci vybírají vás a ne konkurenci?</p>
+              </div>
+              <div class="form-group">
+                <label for="q4">Proč si zákazníci vybírají VÁS a ne konkurenci? <span class="req">*</span></label>
+                <input type="text" id="q4" name="q4" placeholder="Co děláte jinak nebo lépe?" required>
+              </div>
+              <div class="form-group">
+                <label for="q5">Dokončete větu: "Jsme jediní, kdo…"</label>
+                <input type="text" id="q5" name="q5" placeholder="např. opravíme kotel i o víkendu bez příplatku">
+              </div>
+              <div class="form-nav">
+                <button type="button" class="btn btn-ghost" onclick="goToStep(1)">← Zpět</button>
+                <button type="button" class="btn btn-primary" onclick="goToStep(3)">Pokračovat →</button>
+              </div>
+            </div>
+
+            <!-- ===== STEP 3: ZÁKAZNÍK ===== -->
+            <div class="form-step" data-step="3">
+              <div class="step-header">
+                <div class="step-icon">👤</div>
+                <h3 class="step-title">Váš zákazník</h3>
+                <p class="step-desc">Kdo je váš typický zákazník a co ho trápí?</p>
+              </div>
+              <div class="form-group">
+                <label for="q6">Kdo je váš typický zákazník? <span class="req">*</span></label>
+                <input type="text" id="q6" name="q6" placeholder="věk, profese, situace — např. majitelé rodinných domů 35–55 let" required>
+              </div>
+              <div class="form-group">
+                <label for="q7">Jaký problém řeší PŘED spoluprací s vámi?</label>
+                <input type="text" id="q7" name="q7" placeholder="Co je trápí? Co hledají?">
+              </div>
+              <div class="form-group">
+                <label for="q8">Jak se cítí / co získá PO spolupráci s vámi?</label>
+                <input type="text" id="q8" name="q8" placeholder="Výsledek — co se změní?">
+              </div>
+              <div class="form-nav">
+                <button type="button" class="btn btn-ghost" onclick="goToStep(2)">← Zpět</button>
+                <button type="button" class="btn btn-primary" onclick="goToStep(4)">Pokračovat →</button>
+              </div>
+            </div>
+
+            <!-- ===== STEP 4: NABÍDKA ===== -->
+            <div class="form-step" data-step="4">
+              <div class="step-header">
+                <div class="step-icon">📦</div>
+                <h3 class="step-title">Vaše nabídka</h3>
+                <p class="step-desc">Co přesně prodáváte nebo nabízíte?</p>
+              </div>
+              <div class="form-group">
+                <label>3 hlavní věci, které nabízíte</label>
+                <input type="text" name="q9a" placeholder="1. např. Oprava kotlů" class="mb-8">
+                <input type="text" name="q9b" placeholder="2. např. Revize plynových zařízení" class="mb-8">
+                <input type="text" name="q9c" placeholder="3. např. Instalace nových kotlů">
+              </div>
+              <div class="form-group">
+                <label for="q10">Váš "hero offer" — co prodáváte nejčastěji? <span class="req">*</span></label>
+                <input type="text" id="q10" name="q10" placeholder="Nejprodávanější produkt nebo služba" required>
+              </div>
+              <div class="form-group">
+                <label>Cenové rozpětí</label>
+                <div class="pill-group" data-name="q11" data-single="true">
+                  <button type="button" class="pill" data-value="Do 5 000 Kč">Do 5 000 Kč</button>
+                  <button type="button" class="pill" data-value="5 000–15 000 Kč">5 000–15 000 Kč</button>
+                  <button type="button" class="pill" data-value="15 000–50 000 Kč">15 000–50 000 Kč</button>
+                  <button type="button" class="pill" data-value="50 000+ Kč">50 000+ Kč</button>
+                  <button type="button" class="pill" data-value="Dle rozsahu">Dle rozsahu</button>
+                </div>
+                <input type="hidden" name="q11" id="q11">
+              </div>
+              <div class="form-nav">
+                <button type="button" class="btn btn-ghost" onclick="goToStep(3)">← Zpět</button>
+                <button type="button" class="btn btn-primary" onclick="goToStep(5)">Pokračovat →</button>
+              </div>
+            </div>
+
+            <!-- ===== STEP 5: DŮVĚRA & SOCIAL PROOF ===== -->
+            <div class="form-step" data-step="5">
+              <div class="step-header">
+                <div class="step-icon">⭐</div>
+                <h3 class="step-title">Důvěra & social proof</h3>
+                <p class="step-desc">Čísla a reference, která přesvědčí návštěvníky webu.</p>
+              </div>
+              <div class="form-group">
+                <label for="q12">Vaše čísla</label>
+                <input type="text" id="q12" name="q12" placeholder="např. 10 let praxe, 500+ zákazníků, 98% spokojených">
+              </div>
+              <div class="form-group">
+                <label for="q13">Nejsilnější recenze nebo ocenění</label>
+                <textarea id="q13" name="q13" rows="3" placeholder="Citát od zákazníka, nebo certifikát/ocenění"></textarea>
+              </div>
+              <div class="form-nav">
+                <button type="button" class="btn btn-ghost" onclick="goToStep(4)">← Zpět</button>
+                <button type="button" class="btn btn-primary" onclick="goToStep(6)">Pokračovat →</button>
+              </div>
+            </div>
+
+            <!-- ===== STEP 6: KONVERZE ===== -->
+            <div class="form-step" data-step="6">
+              <div class="step-header">
+                <div class="step-icon">🎯</div>
+                <h3 class="step-title">Konverzní cíl</h3>
+                <p class="step-desc">Co chcete, aby návštěvník na webu udělal?</p>
+              </div>
+              <div class="form-group">
+                <label>Hlavní CTA — co má návštěvník udělat?</label>
+                <div class="pill-group" data-name="q14" data-single="true" data-auto-advance="false">
+                  <button type="button" class="pill" data-value="Zavolat">Zavolat</button>
+                  <button type="button" class="pill" data-value="Vyplnit formulář">Vyplnit formulář</button>
+                  <button type="button" class="pill" data-value="Koupit">Koupit</button>
+                  <button type="button" class="pill" data-value="WhatsApp">WhatsApp</button>
+                  <button type="button" class="pill" data-value="Napsat email">Napsat email</button>
+                </div>
+                <input type="text" name="q14_custom" placeholder="Nebo napište vlastní CTA text…" class="mt-8">
+                <input type="hidden" name="q14" id="q14">
+              </div>
+              <div class="form-group">
+                <label for="q15">Kontaktní údaje pro web <span class="req">*</span></label>
+                <input type="text" id="q15" name="q15" placeholder="Telefon, email, adresa…" required>
+              </div>
+              <div class="form-group">
+                <label for="q16">Vstupní nabídka pro nové zákazníky</label>
+                <input type="text" id="q16" name="q16" placeholder="Bezplatná konzultace? Sleva 10%? Trial?">
+              </div>
+              <div class="form-nav">
+                <button type="button" class="btn btn-ghost" onclick="goToStep(5)">← Zpět</button>
+                <button type="button" class="btn btn-primary" onclick="goToStep(7)">Pokračovat →</button>
+              </div>
+            </div>
+
+            <!-- ===== STEP 7: BRAND VOICE ===== -->
+            <div class="form-step" data-step="7">
+              <div class="step-header">
+                <div class="step-icon">🗣️</div>
+                <h3 class="step-title">Brand voice</h3>
+                <p class="step-desc">Jakým tónem chcete komunikovat se zákazníky?</p>
+              </div>
+              <div class="form-group">
+                <label>Tón komunikace</label>
+                <div class="pill-group" data-name="q17" data-single="true" data-auto-advance="true">
+                  <button type="button" class="pill" data-value="Přátelský a lidský">Přátelský a lidský</button>
+                  <button type="button" class="pill" data-value="Odborný a seriózní">Odborný a seriózní</button>
+                  <button type="button" class="pill" data-value="Motivující a energický">Motivující a energický</button>
+                  <button type="button" class="pill" data-value="Luxusní a exkluzivní">Luxusní a exkluzivní</button>
+                  <button type="button" class="pill" data-value="Vtipný a originální">Vtipný a originální</button>
+                </div>
+                <input type="hidden" name="q17" id="q17">
+              </div>
+              <div class="form-group" id="q17extraFields" style="display:none;">
+                <label for="q18">Tři slova popisující váš brand</label>
+                <input type="text" id="q18" name="q18" placeholder="např. rychlý, spolehlivý, lidský">
+                <label for="q19" class="mt-16">Čeho se chcete vyhnout na webu?</label>
+                <input type="text" id="q19" name="q19" placeholder="Co NECHCETE — formální jazyk? Složité texty?">
+              </div>
+              <div class="auto-advance-hint" id="step7hint" style="display:none;">
+                <span class="hint-dot"></span> Pokračuji automaticky…
+              </div>
+              <div class="form-nav" id="step7nav">
+                <button type="button" class="btn btn-ghost" onclick="goToStep(6)">← Zpět</button>
+                <button type="button" class="btn btn-primary" onclick="goToStep(8)">Pokračovat →</button>
+              </div>
+            </div>
+
+            <!-- ===== STEP 8: DESIGN ===== -->
+            <div class="form-step" data-step="8">
+              <div class="step-header">
+                <div class="step-icon">🎨</div>
+                <h3 class="step-title">Design & vizuál</h3>
+                <p class="step-desc">Jak chcete, aby váš web vypadal?</p>
+              </div>
+              <div class="form-group">
+                <label>Vizuální styl</label>
+                <div class="pill-group" data-name="q20" data-single="true" data-auto-advance="true">
+                  <button type="button" class="pill" data-value="Moderní dark">Moderní dark</button>
+                  <button type="button" class="pill" data-value="Světlý a čistý">Světlý a čistý</button>
+                  <button type="button" class="pill" data-value="Luxusní">Luxusní</button>
+                  <button type="button" class="pill" data-value="Hravý a barevný">Hravý a barevný</button>
+                  <button type="button" class="pill" data-value="Nevím">Nevím — navrhni ty</button>
+                </div>
+                <input type="hidden" name="q20" id="q20">
+              </div>
+              <div class="form-group">
+                <label for="q21">Máte web, který se vám líbí? (volitelné)</label>
+                <input type="url" id="q21" name="q21" placeholder="https://…">
+              </div>
+              <!-- UPLOAD ZONE -->
+              <div class="form-group">
+                <label>Nahrajte logo, fotky nebo jiné podklady <span class="label-hint">(volitelné · max 5 souborů · max 5 MB / soubor)</span></label>
+
+                <div class="upload-zone" id="uploadZone" role="button" tabindex="0" aria-label="Nahrát soubory">
+                  <input type="file" id="fileInput" multiple accept="image/*,.pdf,.svg"
+                    style="display:none" aria-hidden="true">
+                  <div class="uz-idle" id="uzIdle">
+                    <span class="uz-icon">📎</span>
+                    <p class="uz-text">Přetáhněte soubory sem nebo <span class="uz-link">vyberte ze zařízení</span></p>
+                    <p class="uz-hint">JPG, PNG, SVG, PDF — max 5 souborů, 5 MB / soubor</p>
+                  </div>
+                  <div class="uz-drag-over" id="uzDragOver" style="display:none">
+                    <span class="uz-icon">⬇️</span>
+                    <p class="uz-text">Pusťte pro nahrání</p>
+                  </div>
+                </div>
+
+                <!-- Preview list -->
+                <ul class="file-preview-list" id="filePreviewList" style="display:none"></ul>
+
+                <!-- Error message -->
+                <p class="upload-error" id="uploadError" style="display:none"></p>
+              </div>
+              <div class="auto-advance-hint" id="step8hint" style="display:none;">
+                <span class="hint-dot"></span> Pokračuji automaticky…
+              </div>
+              <div class="form-nav">
+                <button type="button" class="btn btn-ghost" onclick="goToStep(7)">← Zpět</button>
+                <button type="button" class="btn btn-primary" onclick="goToStep(9)">Pokračovat →</button>
+              </div>
+            </div>
+
+            <!-- ===== STEP 9: KONTAKT ===== -->
+            <div class="form-step" data-step="9">
+              <div class="step-header">
+                <div class="step-icon">📬</div>
+                <h3 class="step-title">Váš kontakt</h3>
+                <p class="step-desc">Jak vás mám kontaktovat s návrhem webu?</p>
+              </div>
+              <div class="form-group">
+                <label for="q_name">Vaše jméno <span class="req">*</span></label>
+                <input type="text" id="q_name" name="q_name" placeholder="Jméno a příjmení" required>
+              </div>
+              <div class="form-group">
+                <label for="q_email">Email <span class="req">*</span></label>
+                <input type="email" id="q_email" name="q_email" placeholder="vas@email.cz" required>
+              </div>
+              <div class="form-group">
+                <label for="q_phone">Telefon (volitelné)</label>
+                <input type="tel" id="q_phone" name="q_phone" placeholder="+420 XXX XXX XXX">
+              </div>
+              <div class="form-group">
+                <label>Jak rychle potřebujete web?</label>
+                <div class="pill-group" data-name="urgence" data-single="true">
+                  <button type="button" class="pill" data-value="Do 24 hodin">Do 24 hodin 🔥</button>
+                  <button type="button" class="pill active" data-value="Tento týden">Tento týden</button>
+                  <button type="button" class="pill" data-value="Tento měsíc">Tento měsíc</button>
+                  <button type="button" class="pill" data-value="Flexibilní">Flexibilní</button>
+                </div>
+                <input type="hidden" name="urgence" id="urgence" value="Tento týden">
+              </div>
+              <div class="form-nav">
+                <button type="button" class="btn btn-ghost" onclick="goToStep(8)">← Zpět</button>
+                <button type="submit" class="btn btn-primary btn-lg" id="submitBtn">
+                  <span id="submitText">Odeslat a získat web do 24 hodin →</span>
+                  <span id="submitSpinner" class="spinner" style="display:none;"></span>
+                </button>
+              </div>
+            </div>
+
+          </form>
+
+          <!-- SUCCESS STATE -->
+          <div class="form-success" id="formSuccess" style="display:none;">
+            <div class="success-icon">🎉</div>
+            <h3>Poptávka přijata! Ozvu se vám do 2 hodin.</h3>
+            <p>Zkontrolujte email — brzy vám pošlu první náhled webu.</p>
+            <details class="generated-prompt-wrap" id="promptDetails">
+              <summary>Zobrazit vygenerovaný AI prompt ↓</summary>
+              <div class="generated-prompt">
+                <pre id="generatedPromptText"></pre>
+                <button class="btn btn-ghost copy-btn" id="copyPromptBtn">Zkopírovat prompt</button>
+              </div>
+            </details>
+          </div>
+
+        </div><!-- /form-wrapper -->
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div class="footer-brand">
+        <a href="#hero" class="logo footer-logo">webdo<span class="logo-accent">24</span>.cz</a>
+        <p>Web pro vaši firmu do 24 hodin.<br>Pevná cena. Žádná záloha. Garance.</p>
+      </div>
+      <div class="footer-links">
+        <a href="#process">Jak to funguje</a>
+        <a href="#portfolio">Portfolio</a>
+        <a href="#pricing">Ceny</a>
+        <a href="#faq">FAQ</a>
+        <a href="#contact">Kontakt</a>
+      </div>
+      <div class="footer-contact">
+        <p>Máte dotaz? Napište:</p>
+        <a href="mailto:ahoj@webdo24.cz">ahoj@webdo24.cz</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="container">
+        <p>© 2024 webdo24.cz — Všechna práva vyhrazena</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

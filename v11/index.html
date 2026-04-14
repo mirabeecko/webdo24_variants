@@ -77,13 +77,9 @@ body{font-family:'Outfit',sans-serif;background-color:#0B3954;color:#fff;-webkit
 .mock-chrome{background:rgba(5,20,35,0.95);padding:10px 14px;display:flex;align-items:center;gap:6px;border-bottom:1px solid rgba(255,255,255,0.06)}
 .mock-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
 .mock-url{flex:1;background:rgba(255,255,255,0.06);border-radius:4px;height:18px;margin-left:8px}
-.mock-content{height:180px;position:relative;overflow:hidden}
-.mock-hero-bar{height:40%;position:relative;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:4px}
-.mock-text-line{background:rgba(255,255,255,0.25);border-radius:3px;height:6px}
-.mock-text-line-sm{background:rgba(255,255,255,0.12);border-radius:2px;height:4px;margin-top:3px}
-.mock-content-rows{padding:10px 12px;display:flex;flex-direction:column;gap:6px}
-.mock-row{display:flex;gap:6px}
-.mock-block{border-radius:4px;background:rgba(255,255,255,0.07)}
+.mock-content{height:220px;position:relative;overflow:hidden;background:#030f1a}
+.mock-content iframe{width:200%;height:200%;transform:scale(0.5);transform-origin:top left;border:none;pointer-events:none;display:block}
+.mock-content-overlay{position:absolute;inset:0;background:linear-gradient(to bottom,transparent 55%,rgba(3,15,26,0.6) 100%);pointer-events:none}
 .portfolio-card{display:none}
 .portfolio-card.visible{display:block}
 .tab-btn{padding:0.5rem 1.25rem;border-radius:100px;font-size:0.8125rem;font-weight:700;cursor:pointer;transition:all 0.2s;border:1px solid rgba(255,255,255,0.12);background:transparent;color:rgba(255,255,255,0.5);font-family:'Outfit',sans-serif}
@@ -593,111 +589,147 @@ body{font-family:'Outfit',sans-serif;background-color:#0B3954;color:#fff;-webkit
 
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6" id="portfolioGrid">
 
-      <div class="portfolio-card visible" data-cat="restaurace">
+      <!-- C1 — webdo24.cz 1 -->
+      <div class="portfolio-card visible" data-cat="remeslnici">
         <div class="mock-browser glow-t">
-          <div class="mock-chrome"><div class="mock-dot" style="background:#ff5f56"></div><div class="mock-dot" style="background:#ffbd2e"></div><div class="mock-dot" style="background:#27c93f"></div><div class="mock-url"></div></div>
-          <div class="mock-content" style="background:linear-gradient(160deg,#2d1a0a,#5c3317)">
-            <div class="mock-hero-bar" style="background:rgba(0,0,0,0.2)"><div class="mock-text-line" style="width:55%"></div><div class="mock-text-line-sm" style="width:35%"></div><div style="width:80px;height:22px;background:#FF3366;border-radius:5px;margin-top:8px"></div></div>
-            <div class="mock-content-rows"><div class="mock-row"><div class="mock-block" style="flex:1;height:32px"></div><div class="mock-block" style="flex:1;height:32px"></div><div class="mock-block" style="flex:1;height:32px"></div></div><div class="mock-row"><div class="mock-block" style="flex:2;height:22px"></div><div class="mock-block" style="flex:1;height:22px"></div></div></div>
+          <div class="mock-chrome">
+            <div class="mock-dot" style="background:#ff5f56"></div>
+            <div class="mock-dot" style="background:#ffbd2e"></div>
+            <div class="mock-dot" style="background:#27c93f"></div>
+            <div class="mock-url"></div>
+          </div>
+          <div class="mock-content">
+            <iframe src="../customers-webs/c1/index.html" loading="lazy" title="Demo web 1"></iframe>
+            <div class="mock-content-overlay"></div>
           </div>
         </div>
         <div class="mt-4 px-1">
           <div class="flex items-center justify-between mb-1">
-            <h4 class="font-black">Pekárna & Kavárna Novák</h4>
-            <span class="text-xs px-2.5 py-1 rounded-full font-bold" style="background:rgba(255,189,46,0.12);color:#ffbd2e">Restaurace</span>
+            <h4 class="font-black">Servis & Opravna Novák</h4>
+            <span class="text-xs px-2.5 py-1 rounded-full font-bold" style="background:rgba(0,196,181,0.1);color:#00C4B5">Řemeslník</span>
           </div>
-          <p class="text-xs" style="color:rgba(255,255,255,0.4)">Landing page · Rezervace termínů · Galerie</p>
+          <p class="text-xs" style="color:rgba(255,255,255,0.4)">Firemní web · Ceník · Kontaktní formulář</p>
           <p class="text-xs mt-1 font-bold" style="color:#00C4B5">Dodáno za 18 hodin</p>
         </div>
       </div>
 
-      <div class="portfolio-card visible" data-cat="remeslnici">
-        <div class="mock-browser">
-          <div class="mock-chrome"><div class="mock-dot" style="background:#ff5f56"></div><div class="mock-dot" style="background:#ffbd2e"></div><div class="mock-dot" style="background:#27c93f"></div><div class="mock-url"></div></div>
-          <div class="mock-content" style="background:linear-gradient(160deg,#0a1a2d,#1a3a5c)">
-            <div class="mock-hero-bar" style="background:rgba(0,196,181,0.15)"><div class="mock-text-line" style="width:60%"></div><div class="mock-text-line-sm" style="width:40%"></div><div style="width:80px;height:22px;background:#00C4B5;border-radius:5px;margin-top:8px"></div></div>
-            <div class="mock-content-rows"><div class="mock-row"><div class="mock-block" style="width:40%;height:50px"></div><div style="flex:1;padding-left:8px;display:flex;flex-direction:column;gap:5px"><div class="mock-block" style="height:10px;width:90%"></div><div class="mock-block" style="height:8px;width:70%"></div><div class="mock-block" style="height:8px;width:60%"></div></div></div></div>
-          </div>
-        </div>
-        <div class="mt-4 px-1">
-          <div class="flex items-center justify-between mb-1">
-            <h4 class="font-black">Instalatér Dvořák</h4>
-            <span class="text-xs px-2.5 py-1 rounded-full font-bold" style="background:rgba(0,196,181,0.1);color:#00C4B5">Řemeslník</span>
-          </div>
-          <p class="text-xs" style="color:rgba(255,255,255,0.4)">Firemní web · Kontaktní formulář · Ceník služeb</p>
-          <p class="text-xs mt-1 font-bold" style="color:#00C4B5">Dodáno za 22 hodin</p>
-        </div>
-      </div>
-
-      <div class="portfolio-card visible" data-cat="wellness">
-        <div class="mock-browser">
-          <div class="mock-chrome"><div class="mock-dot" style="background:#ff5f56"></div><div class="mock-dot" style="background:#ffbd2e"></div><div class="mock-dot" style="background:#27c93f"></div><div class="mock-url"></div></div>
-          <div class="mock-content" style="background:linear-gradient(160deg,#1a0a2e,#3d1a5c)">
-            <div class="mock-hero-bar" style="background:rgba(120,60,200,0.2)"><div class="mock-text-line" style="width:50%"></div><div class="mock-text-line-sm" style="width:38%"></div><div style="width:80px;height:22px;background:#a855f7;border-radius:5px;margin-top:8px"></div></div>
-            <div class="mock-content-rows"><div class="mock-row"><div class="mock-block" style="flex:1;height:28px"></div><div class="mock-block" style="flex:1;height:28px"></div></div><div class="mock-row"><div class="mock-block" style="flex:1;height:18px"></div><div class="mock-block" style="flex:2;height:18px"></div></div></div>
-          </div>
-        </div>
-        <div class="mt-4 px-1">
-          <div class="flex items-center justify-between mb-1">
-            <h4 class="font-black">Jooga Studio Praha</h4>
-            <span class="text-xs px-2.5 py-1 rounded-full font-bold" style="background:rgba(168,85,247,0.12);color:#a855f7">Wellness</span>
-          </div>
-          <p class="text-xs" style="color:rgba(255,255,255,0.4)">Rozvrhový systém · Online rezervace · Blog</p>
-          <p class="text-xs mt-1 font-bold" style="color:#00C4B5">Dodáno za 23 hodin</p>
-        </div>
-      </div>
-
+      <!-- C2 — webdo24.cz 2 -->
       <div class="portfolio-card visible" data-cat="firmy">
         <div class="mock-browser">
-          <div class="mock-chrome"><div class="mock-dot" style="background:#ff5f56"></div><div class="mock-dot" style="background:#ffbd2e"></div><div class="mock-dot" style="background:#27c93f"></div><div class="mock-url"></div></div>
-          <div class="mock-content" style="background:linear-gradient(160deg,#050f1a,#0a1f30)">
-            <div class="mock-hero-bar" style="background:rgba(255,255,255,0.04)"><div class="mock-text-line" style="width:65%;background:rgba(255,255,255,0.3)"></div><div class="mock-text-line-sm" style="width:42%"></div><div style="width:80px;height:22px;background:#FF3366;border-radius:5px;margin-top:8px"></div></div>
-            <div class="mock-content-rows"><div class="mock-row"><div class="mock-block" style="flex:1;height:20px"></div><div class="mock-block" style="flex:1;height:20px"></div><div class="mock-block" style="flex:1;height:20px"></div></div><div class="mock-row"><div class="mock-block" style="flex:3;height:28px"></div></div></div>
+          <div class="mock-chrome">
+            <div class="mock-dot" style="background:#ff5f56"></div>
+            <div class="mock-dot" style="background:#ffbd2e"></div>
+            <div class="mock-dot" style="background:#27c93f"></div>
+            <div class="mock-url"></div>
+          </div>
+          <div class="mock-content">
+            <iframe src="../customers-webs/c2/index.html" loading="lazy" title="Demo web 2"></iframe>
+            <div class="mock-content-overlay"></div>
           </div>
         </div>
         <div class="mt-4 px-1">
           <div class="flex items-center justify-between mb-1">
-            <h4 class="font-black">TechSolutions s.r.o.</h4>
+            <h4 class="font-black">Poradenská firma Dvořák</h4>
             <span class="text-xs px-2.5 py-1 rounded-full font-bold" style="background:rgba(255,51,102,0.1);color:#FF3366">B2B firma</span>
           </div>
-          <p class="text-xs" style="color:rgba(255,255,255,0.4)">Korporátní web · Case studies · Tým</p>
+          <p class="text-xs" style="color:rgba(255,255,255,0.4)">Prezentační web · Tým · Reference</p>
           <p class="text-xs mt-1 font-bold" style="color:#00C4B5">Dodáno za 21 hodin</p>
         </div>
       </div>
 
-      <div class="portfolio-card visible" data-cat="remeslnici">
+      <!-- C3 — webdo24.cz 3 -->
+      <div class="portfolio-card visible" data-cat="firmy">
         <div class="mock-browser">
-          <div class="mock-chrome"><div class="mock-dot" style="background:#ff5f56"></div><div class="mock-dot" style="background:#ffbd2e"></div><div class="mock-dot" style="background:#27c93f"></div><div class="mock-url"></div></div>
-          <div class="mock-content" style="background:linear-gradient(160deg,#1a1000,#3d2800)">
-            <div class="mock-hero-bar" style="background:rgba(255,150,0,0.1)"><div class="mock-text-line" style="width:55%;background:rgba(255,200,100,0.4)"></div><div class="mock-text-line-sm" style="width:38%"></div><div style="width:80px;height:22px;background:#f59e0b;border-radius:5px;margin-top:8px"></div></div>
-            <div class="mock-content-rows"><div class="mock-row"><div class="mock-block" style="flex:1;height:36px;background:rgba(245,158,11,0.1)"></div><div class="mock-block" style="flex:1;height:36px;background:rgba(245,158,11,0.1)"></div><div class="mock-block" style="flex:1;height:36px;background:rgba(245,158,11,0.1)"></div></div></div>
+          <div class="mock-chrome">
+            <div class="mock-dot" style="background:#ff5f56"></div>
+            <div class="mock-dot" style="background:#ffbd2e"></div>
+            <div class="mock-dot" style="background:#27c93f"></div>
+            <div class="mock-url"></div>
+          </div>
+          <div class="mock-content">
+            <iframe src="../customers-webs/c3/index.html" loading="lazy" title="Demo web 3"></iframe>
+            <div class="mock-content-overlay"></div>
           </div>
         </div>
         <div class="mt-4 px-1">
           <div class="flex items-center justify-between mb-1">
-            <h4 class="font-black">Truhlář Kratochvíl</h4>
-            <span class="text-xs px-2.5 py-1 rounded-full font-bold" style="background:rgba(245,158,11,0.1);color:#f59e0b">Řemeslník</span>
+            <h4 class="font-black">GrowthHub s.r.o.</h4>
+            <span class="text-xs px-2.5 py-1 rounded-full font-bold" style="background:rgba(255,51,102,0.1);color:#FF3366">B2B firma</span>
           </div>
-          <p class="text-xs" style="color:rgba(255,255,255,0.4)">Portfolio prací · Kalkulace · Kontakt</p>
+          <p class="text-xs" style="color:rgba(255,255,255,0.4)">Firemní web · n8n pipeline · ROI sekce</p>
+          <p class="text-xs mt-1 font-bold" style="color:#00C4B5">Dodáno za 20 hodin</p>
+        </div>
+      </div>
+
+      <!-- C4 — webdo24.cz 4 -->
+      <div class="portfolio-card visible" data-cat="restaurace">
+        <div class="mock-browser">
+          <div class="mock-chrome">
+            <div class="mock-dot" style="background:#ff5f56"></div>
+            <div class="mock-dot" style="background:#ffbd2e"></div>
+            <div class="mock-dot" style="background:#27c93f"></div>
+            <div class="mock-url"></div>
+          </div>
+          <div class="mock-content">
+            <iframe src="../customers-webs/c4/index.html" loading="lazy" title="Demo web 4"></iframe>
+            <div class="mock-content-overlay"></div>
+          </div>
+        </div>
+        <div class="mt-4 px-1">
+          <div class="flex items-center justify-between mb-1">
+            <h4 class="font-black">Kavárna &amp; Bistro Kratochvíl</h4>
+            <span class="text-xs px-2.5 py-1 rounded-full font-bold" style="background:rgba(255,189,46,0.12);color:#ffbd2e">Restaurace</span>
+          </div>
+          <p class="text-xs" style="color:rgba(255,255,255,0.4)">Landing page · Menu · Online rezervace</p>
+          <p class="text-xs mt-1 font-bold" style="color:#00C4B5">Dodáno za 22 hodin</p>
+        </div>
+      </div>
+
+      <!-- C5 — webdo24.cz 5 -->
+      <div class="portfolio-card visible" data-cat="wellness">
+        <div class="mock-browser">
+          <div class="mock-chrome">
+            <div class="mock-dot" style="background:#ff5f56"></div>
+            <div class="mock-dot" style="background:#ffbd2e"></div>
+            <div class="mock-dot" style="background:#27c93f"></div>
+            <div class="mock-url"></div>
+          </div>
+          <div class="mock-content">
+            <iframe src="../customers-webs/c5/index.html" loading="lazy" title="Demo web 5"></iframe>
+            <div class="mock-content-overlay"></div>
+          </div>
+        </div>
+        <div class="mt-4 px-1">
+          <div class="flex items-center justify-between mb-1">
+            <h4 class="font-black">Fitness Studio Praha</h4>
+            <span class="text-xs px-2.5 py-1 rounded-full font-bold" style="background:rgba(34,197,94,0.1);color:#22c55e">Sport</span>
+          </div>
+          <p class="text-xs" style="color:rgba(255,255,255,0.4)">Rozvrh tréninků · Členství · Online zápis</p>
           <p class="text-xs mt-1 font-bold" style="color:#00C4B5">Dodáno za 19 hodin</p>
         </div>
       </div>
 
+      <!-- C6 — webdo24.cz 6 -->
       <div class="portfolio-card visible" data-cat="wellness">
         <div class="mock-browser">
-          <div class="mock-chrome"><div class="mock-dot" style="background:#ff5f56"></div><div class="mock-dot" style="background:#ffbd2e"></div><div class="mock-dot" style="background:#27c93f"></div><div class="mock-url"></div></div>
-          <div class="mock-content" style="background:linear-gradient(160deg,#0a1f0f,#0f3318)">
-            <div class="mock-hero-bar" style="background:rgba(34,197,94,0.1)"><div class="mock-text-line" style="width:52%;background:rgba(134,239,172,0.35)"></div><div class="mock-text-line-sm" style="width:40%"></div><div style="width:80px;height:22px;background:#22c55e;border-radius:5px;margin-top:8px"></div></div>
-            <div class="mock-content-rows"><div class="mock-row"><div class="mock-block" style="flex:1;height:25px;background:rgba(34,197,94,0.08)"></div><div class="mock-block" style="flex:1;height:25px;background:rgba(34,197,94,0.08)"></div></div><div class="mock-row"><div class="mock-block" style="flex:1;height:18px"></div></div></div>
+          <div class="mock-chrome">
+            <div class="mock-dot" style="background:#ff5f56"></div>
+            <div class="mock-dot" style="background:#ffbd2e"></div>
+            <div class="mock-dot" style="background:#27c93f"></div>
+            <div class="mock-url"></div>
+          </div>
+          <div class="mock-content">
+            <iframe src="../customers-webs/c6/index.html" loading="lazy" title="Demo web 6"></iframe>
+            <div class="mock-content-overlay"></div>
           </div>
         </div>
         <div class="mt-4 px-1">
           <div class="flex items-center justify-between mb-1">
-            <h4 class="font-black">Fit & Health Centrum</h4>
-            <span class="text-xs px-2.5 py-1 rounded-full font-bold" style="background:rgba(34,197,94,0.1);color:#22c55e">Sport</span>
+            <h4 class="font-black">Yoga &amp; Wellness Centrum</h4>
+            <span class="text-xs px-2.5 py-1 rounded-full font-bold" style="background:rgba(168,85,247,0.12);color:#a855f7">Wellness</span>
           </div>
-          <p class="text-xs" style="color:rgba(255,255,255,0.4)">Rozvrh tréninků · Členství · Online zápis</p>
-          <p class="text-xs mt-1 font-bold" style="color:#00C4B5">Dodáno za 20 hodin</p>
+          <p class="text-xs" style="color:rgba(255,255,255,0.4)">Rozvrhový systém · Kurzy · Blog</p>
+          <p class="text-xs mt-1 font-bold" style="color:#00C4B5">Dodáno za 23 hodin</p>
         </div>
       </div>
 

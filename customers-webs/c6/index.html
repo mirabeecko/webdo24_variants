@@ -1,0 +1,885 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Neděláme weby. Budujeme revenue machines. Web do 24 hodin + měsíční optimalizace = první zákazníci do 30 dní. Garantovaně.">
+  <title>webdo24.cz — Neděláme weby. Budujeme revenue machines.</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- SOCIAL PROOF TOAST -->
+  <div class="sp-toast" id="spToast" aria-live="polite" aria-atomic="true">
+    <div class="sp-toast-avatar" id="spAvatar"></div>
+    <div class="sp-toast-body">
+      <div class="sp-toast-name" id="spName"></div>
+      <div class="sp-toast-msg" id="spMsg"></div>
+    </div>
+    <button class="sp-toast-close" id="spClose" aria-label="Zavřít">×</button>
+  </div>
+
+  <!-- ANNOUNCEMENT BAR -->
+  <div class="ann-bar" id="annBar">
+    <div class="ann-inner container">
+      <span class="ann-tag">NOVINKA</span>
+      <span class="ann-text">Balíček Scale — web + Google reklamy + SEO za pevnou měsíční platbu. Výsledky nebo peníze zpět.</span>
+      <a href="#pricing" class="ann-link">Zjistit více →</a>
+    </div>
+    <button class="ann-close" onclick="this.closest('.ann-bar').remove()" aria-label="Zavřít oznámení">×</button>
+  </div>
+
+  <!-- NAV -->
+  <nav class="nav" id="nav">
+    <div class="nav-inner container">
+      <a href="#hero" class="nav-logo">webdo<span>24</span>.cz</a>
+      <div class="nav-links" id="navLinks">
+        <a href="#why">Proč my</a>
+        <a href="#process">Jak to funguje</a>
+        <a href="#results">Výsledky</a>
+        <a href="#pricing">Ceny</a>
+        <a href="#faq">FAQ</a>
+      </div>
+      <div class="nav-actions">
+        <a href="tel:+420737000000" class="nav-tel">737 000 000</a>
+        <a href="#contact" class="btn btn-dark">Začít →</a>
+      </div>
+      <button class="nav-burger" id="navBurger" aria-label="Otevřít menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <main>
+
+    <!-- ══════════════════════════════════════════════
+         HERO
+    ══════════════════════════════════════════════ -->
+    <section class="hero" id="hero">
+      <div class="container hero-grid">
+
+        <div class="hero-left">
+          <div class="hero-tag">
+            <span class="tag-pulse"></span>
+            K dispozici ihned — spouštíme weby každý den
+          </div>
+
+          <h1 class="hero-h1">
+            Neděláme<br>
+            <em>weby.</em>
+          </h1>
+          <h1 class="hero-h1 hero-h1-orange">
+            Budujeme<br>
+            revenue<br>
+            machines.
+          </h1>
+
+          <p class="hero-sub">
+            Web do 24 hodin je jen začátek. Každý měsíc ho optimalizujeme,
+            testujeme a vylepšujeme — dokud nepřináší zákazníky. <strong>Garantovaně.</strong>
+          </p>
+
+          <div class="hero-ctas">
+            <a href="#contact" class="btn btn-orange btn-lg">Chci revenue machine →</a>
+            <a href="#why" class="btn btn-ghost btn-lg">Proč jinak ↓</a>
+          </div>
+
+          <div class="hero-stats">
+            <div class="hs-item">
+              <strong class="hs-num"><span class="counter" data-target="147">0</span>+</strong>
+              <span>klientů</span>
+            </div>
+            <div class="hs-sep"></div>
+            <div class="hs-item">
+              <strong class="hs-num"><span class="counter" data-target="23">0</span>M Kč</strong>
+              <span>vygenerováno</span>
+            </div>
+            <div class="hs-sep"></div>
+            <div class="hs-item">
+              <strong class="hs-num"><span class="counter" data-target="98">0</span>&nbsp;%</strong>
+              <span>spokojených</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-right" id="calculator">
+          <div class="calc-card">
+            <div class="calc-header">
+              <div class="calc-header-icon">📊</div>
+              <div>
+                <div class="calc-title">Kolik vydělá váš web?</div>
+                <div class="calc-subtitle">Vypočítejte svůj roční výnos</div>
+              </div>
+            </div>
+
+            <div class="calc-fields">
+              <div class="calc-field">
+                <div class="cf-label-row">
+                  <label for="calcValue">Průměrná hodnota zákazníka</label>
+                  <span class="cf-val"><span id="calcValueOut">8 000</span> Kč</span>
+                </div>
+                <input type="range" id="calcValue" min="500" max="50000" step="500" value="8000" class="range-input" aria-label="Hodnota zákazníka">
+                <div class="range-track-labels">
+                  <span>500 Kč</span>
+                  <span>50 000 Kč</span>
+                </div>
+              </div>
+
+              <div class="calc-field">
+                <div class="cf-label-row">
+                  <label for="calcClients">Noví zákazníci za měsíc (cíl)</label>
+                  <span class="cf-val"><span id="calcClientsOut">5</span> / měs</span>
+                </div>
+                <input type="range" id="calcClients" min="1" max="30" step="1" value="5" class="range-input" aria-label="Počet zákazníků">
+                <div class="range-track-labels">
+                  <span>1</span>
+                  <span>30</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="calc-result-box">
+              <div class="crb-label">Váš roční výnos navíc</div>
+              <div class="crb-amount" id="calcRevenue">480 000 Kč</div>
+              <div class="crb-meta">
+                <span>Investice: <strong>36 780 Kč/rok</strong></span>
+                <span class="crb-roi">ROI: <strong id="calcRoi">1 205 %</strong></span>
+              </div>
+            </div>
+
+            <a href="#contact" class="btn btn-orange btn-full">Chci tento výsledek →</a>
+            <p class="calc-note">Kalkulace: web 12 900 Kč + Růst optimalizace 1 990 Kč/měsíc × 12</p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════════════
+         LOGO STRIP
+    ══════════════════════════════════════════════ -->
+    <div class="logo-strip">
+      <div class="container">
+        <p class="ls-label">Tito podnikatelé s námi vydělávají víc každý měsíc</p>
+        <div class="ls-track">
+          <div class="ls-inner">
+            <div class="ls-item">Novák Instalace s.r.o.</div>
+            <div class="ls-item">Studio Kovář</div>
+            <div class="ls-item">Fitness Nova Praha</div>
+            <div class="ls-item">Účetní centrum Brno</div>
+            <div class="ls-item">IT Konzulting Horáček</div>
+            <div class="ls-item">Café Expres Ostrava</div>
+            <div class="ls-item">Opravna Šimánek</div>
+            <div class="ls-item">Právní poradna Novotný</div>
+            <!-- dupe for seamless loop -->
+            <div class="ls-item">Novák Instalace s.r.o.</div>
+            <div class="ls-item">Studio Kovář</div>
+            <div class="ls-item">Fitness Nova Praha</div>
+            <div class="ls-item">Účetní centrum Brno</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══════════════════════════════════════════════
+         PROBLEM → PŘÍLEŽITOST
+    ══════════════════════════════════════════════ -->
+    <section class="section section-alt" id="why">
+      <div class="container">
+        <div class="section-eyebrow">Skutečný problém</div>
+        <h2 class="section-h2">
+          Máte web.<br>Ale přináší vám zákazníky?
+        </h2>
+        <p class="section-p">
+          Průměrný český web má konverzi <strong>0,5 %</strong>. Naše weby mají průměrně <strong>2,8 %</strong>.
+          To je 5× více zákazníků ze stejného provozu. Zde je důvod.
+        </p>
+
+        <div class="opp-grid">
+          <div class="opp-card opp-bad">
+            <div class="opp-card-head">
+              <span class="opp-badge badge-red">Typický český web</span>
+              <div class="opp-big-num red-num">0,5 %</div>
+              <div class="opp-big-label">průměrná konverze</div>
+            </div>
+            <ul class="opp-list">
+              <li class="bad">Vytvořen jednou, nikdy neoptimalizován</li>
+              <li class="bad">Agentura ho po spuštění nechala být</li>
+              <li class="bad">Texty psány pro vás, ne pro zákazníka</li>
+              <li class="bad">Žádné A/B testování</li>
+              <li class="bad">Nikdo neví, proč zákazníci odcházejí</li>
+              <li class="bad">Investice 50–150 tis. Kč bez výsledků</li>
+            </ul>
+          </div>
+
+          <div class="opp-vs">
+            <div class="opp-vs-badge">VS</div>
+          </div>
+
+          <div class="opp-card opp-good">
+            <div class="opp-card-head">
+              <span class="opp-badge badge-orange">webdo24 revenue machine</span>
+              <div class="opp-big-num orange-num">2,8 %</div>
+              <div class="opp-big-label">průměrná konverze</div>
+            </div>
+            <ul class="opp-list">
+              <li class="good">Web do 24 h + měsíční optimalizace</li>
+              <li class="good">Přímá komunikace bez prostředníků</li>
+              <li class="good">Texty psané pro konverze (A/B testováno)</li>
+              <li class="good">Každý měsíc testujeme nové varianty</li>
+              <li class="good">Analytics report každý měsíc</li>
+              <li class="good">Investice od 12 900 Kč — platíte po schválení</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════════════
+         PROCESS
+    ══════════════════════════════════════════════ -->
+    <section class="section" id="process">
+      <div class="container">
+        <div class="section-eyebrow">Jak to funguje</div>
+        <h2 class="section-h2">
+          Od nuly k revenue machine<br>ve 4 krocích
+        </h2>
+
+        <div class="proc-steps">
+          <div class="proc-step reveal">
+            <div class="ps-number">01</div>
+            <div class="ps-icon-wrap">🎯</div>
+            <h3>Brief</h3>
+            <p>9minutový formulář o vašem byznysu. Ptám se na zákazníky, cíle a konkurenci — ne na technické věci.</p>
+            <div class="ps-time">9 minut</div>
+          </div>
+
+          <div class="proc-arrow">→</div>
+
+          <div class="proc-step reveal">
+            <div class="ps-number">02</div>
+            <div class="ps-icon-wrap">⚡</div>
+            <h3>Build</h3>
+            <p>Tvořím váš web — unikátní design, konverzní texty, mobilní verze. Náhled ke schválení do 24 hodin.</p>
+            <div class="ps-time">24 hodin</div>
+          </div>
+
+          <div class="proc-arrow">→</div>
+
+          <div class="proc-step reveal">
+            <div class="ps-number">03</div>
+            <div class="ps-icon-wrap">🚀</div>
+            <h3>Launch</h3>
+            <p>Web online na vaší doméně. Nastavíme Analytics, Search Console a začínáme sledovat výsledky.</p>
+            <div class="ps-time">Den 2</div>
+          </div>
+
+          <div class="proc-arrow">→</div>
+
+          <div class="proc-step proc-step-special reveal">
+            <div class="ps-number">04</div>
+            <div class="ps-icon-wrap">📈</div>
+            <h3>Grow</h3>
+            <p>Každý měsíc analyzujeme data, testujeme nové varianty a aktualizujeme obsah. Web roste donekonečna.</p>
+            <div class="ps-time">∞ každý měsíc</div>
+          </div>
+        </div>
+
+        <div class="proc-cta">
+          <a href="#contact" class="btn btn-orange btn-lg">Začít svůj projekt →</a>
+          <p class="proc-note">Záloha 0 Kč. Platíte až po schválení webu.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════════════
+         GROWTH SYSTEM
+    ══════════════════════════════════════════════ -->
+    <section class="section section-dark" id="growth">
+      <div class="container">
+        <div class="section-eyebrow light">Proč jsme jiní</div>
+        <h2 class="section-h2 light">
+          Jiné agentury dodají web.<br>
+          <span class="text-orange">My dodáme výsledky.</span>
+        </h2>
+        <p class="section-p light">Co se děje za zákulisím každý měsíc u našich Growth a Scale klientů:</p>
+
+        <div class="growth-grid">
+          <div class="growth-card reveal">
+            <div class="gc-icon">🔬</div>
+            <h3>Měsíční A/B testování</h3>
+            <p>Testujeme nové varianty nadpisů, CTA tlačítek a layoutu. Vítězná varianta zůstane, poražená se nahradí.</p>
+            <div class="gc-result">Průměrný nárůst konverze: +18 % / měsíc</div>
+          </div>
+          <div class="growth-card reveal">
+            <div class="gc-icon">📊</div>
+            <h3>Analytics report</h3>
+            <p>Každý měsíc přehledný report: kdo přišel, odkud, co dělal a kde odešel bez konverze.</p>
+            <div class="gc-result">Vidíte přesně, kde přicházíte o peníze</div>
+          </div>
+          <div class="growth-card reveal">
+            <div class="gc-icon">✍️</div>
+            <h3>Aktualizace obsahu</h3>
+            <p>Přidáme nové reference, ceny, sezónní akce. Web je vždy aktuální a relevantní.</p>
+            <div class="gc-result">2 aktualizace za měsíc v ceně</div>
+          </div>
+          <div class="growth-card reveal">
+            <div class="gc-icon">🔍</div>
+            <h3>SEO monitoring</h3>
+            <p>Sledujeme pozice ve vyhledávání a průběžně optimalizujeme meta tagy, rychlost a strukturu.</p>
+            <div class="gc-result">Organická návštěvnost roste každý měsíc</div>
+          </div>
+          <div class="growth-card reveal">
+            <div class="gc-icon">⚡</div>
+            <h3>Performance tuning</h3>
+            <p>Web, který se načte za 2 s, vydělá 2× více. Průběžně optimalizujeme Core Web Vitals.</p>
+            <div class="gc-result">Průměrné skóre: 95+ / 100</div>
+          </div>
+          <div class="growth-card reveal">
+            <div class="gc-icon">🎯</div>
+            <h3>CRO audit (čtvrtletně)</h3>
+            <p>Hloubkový audit konverzní cesty — kde přicházíte o zákazníky a jak to zlepšit.</p>
+            <div class="gc-result">Akční plán každé 3 měsíce</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════════════
+         VÝSLEDKY KLIENTŮ
+    ══════════════════════════════════════════════ -->
+    <section class="section" id="results">
+      <div class="container">
+        <div class="section-eyebrow">Výsledky klientů</div>
+        <h2 class="section-h2">
+          Čísla, která<br>mluví za vše
+        </h2>
+
+        <div class="results-grid">
+          <div class="result-card reveal">
+            <div class="rc-badge">Instalatér · Praha</div>
+            <div class="rc-metric">+340 %</div>
+            <div class="rc-metric-label">poptávek za 3 měsíce</div>
+            <blockquote class="rc-quote">
+              "Investoval jsem 9 900 Kč do webu a Growth subscripce. Za první rok mi web přinesl zakázky za <strong>890 000 Kč</strong>."
+            </blockquote>
+            <div class="rc-author">
+              <div class="rc-av" style="background:#FF4800">TN</div>
+              <div>
+                <strong>Tomáš Novák</strong>
+                <span>instalatér, Praha · zákazník 14 měsíců</span>
+              </div>
+            </div>
+            <div class="rc-roi-tag">ROI: 8 900 %</div>
+          </div>
+
+          <div class="result-card result-card-featured reveal">
+            <div class="rc-badge">Kosmetický salon · Brno</div>
+            <div class="rc-metric">Plně obsazen</div>
+            <div class="rc-metric-label">do 14 dní od spuštění</div>
+            <blockquote class="rc-quote">
+              "Měla jsem web od agentury za 60 000 Kč, který za rok nepřinesl jednoho zákazníka. Za 3 měsíce s webdo24 mám čekací listinu."
+            </blockquote>
+            <div class="rc-author">
+              <div class="rc-av" style="background:#7C3AED">MK</div>
+              <div>
+                <strong>Markéta Kovář</strong>
+                <span>kosmetický salon, Brno · Growth zákazník</span>
+              </div>
+            </div>
+            <div class="rc-roi-tag">+23 klientů za 14 dní</div>
+          </div>
+
+          <div class="result-card reveal">
+            <div class="rc-badge">IT konzultant · Ostrava</div>
+            <div class="rc-metric">12</div>
+            <div class="rc-metric-label">nových klientů za 3 měsíce</div>
+            <blockquote class="rc-quote">
+              "Každý klient mi přináší průměrně 25 000 Kč. 12 nových klientů = <strong>300 000 Kč</strong>. Web stál 9 900 Kč."
+            </blockquote>
+            <div class="rc-author">
+              <div class="rc-av" style="background:#059669">RH</div>
+              <div>
+                <strong>Radek Horáček</strong>
+                <span>IT konzultant, Ostrava · zákazník 8 měsíců</span>
+              </div>
+            </div>
+            <div class="rc-roi-tag">300 000 Kč za 3 měsíce</div>
+          </div>
+        </div>
+
+        <div class="results-summary">
+          <div class="rs-item">
+            <strong class="rs-num"><span class="counter" data-target="147">0</span>+</strong>
+            <span>aktivních klientů</span>
+          </div>
+          <div class="rs-sep"></div>
+          <div class="rs-item">
+            <strong class="rs-num"><span class="counter" data-target="23">0</span> M Kč</strong>
+            <span>vygenerovaný obrat</span>
+          </div>
+          <div class="rs-sep"></div>
+          <div class="rs-item">
+            <strong class="rs-num">4,97 / 5</strong>
+            <span>průměrné hodnocení</span>
+          </div>
+          <div class="rs-sep"></div>
+          <div class="rs-item">
+            <strong class="rs-num">18 hod</strong>
+            <span>průměrná dodávka webu</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════════════
+         PRICING
+    ══════════════════════════════════════════════ -->
+    <section class="section section-alt" id="pricing">
+      <div class="container">
+        <div class="section-eyebrow">Transparentní investice</div>
+        <h2 class="section-h2">
+          Vyberte si cestu<br>k online výsledkům
+        </h2>
+        <p class="section-p">
+          Všechny ceny jsou konečné. Záloha 0 Kč. Platíte až po schválení hotového webu.
+        </p>
+
+        <div class="pricing-grid">
+
+          <!-- ZÁKLAD -->
+          <div class="pricing-card reveal">
+            <div class="pc-header">
+              <div class="pc-name">Základ</div>
+              <div class="pc-desc">Rychlý start online</div>
+            </div>
+            <div class="pc-price-area">
+              <div class="pc-price">12 900 Kč</div>
+              <div class="pc-period">jednorázově · platíte po schválení</div>
+            </div>
+            <ul class="pc-features">
+              <li>✓ Konverzní landing page</li>
+              <li>✓ Mobilní verze (responsive)</li>
+              <li>✓ Kontaktní formulář</li>
+              <li>✓ Google Analytics</li>
+              <li>✓ Spuštění do 24 hodin</li>
+              <li>✓ 30 dní podpora</li>
+              <li>✓ 3 revize zdarma</li>
+              <li>✓ 7denní garance vrácení peněz</li>
+              <li class="pc-missing">✗ Měsíční optimalizace</li>
+              <li class="pc-missing">✗ Hosting v ceně</li>
+            </ul>
+            <a href="#contact" class="btn btn-outline btn-full">Objednat Základ →</a>
+          </div>
+
+          <!-- RŮST — featured -->
+          <div class="pricing-card pc-featured reveal">
+            <div class="pc-featured-badge">⭐ Nejpopulárnější</div>
+            <div class="pc-header">
+              <div class="pc-name">Růst</div>
+              <div class="pc-desc">Web + měsíční optimalizace</div>
+            </div>
+            <div class="pc-price-area">
+              <div class="pc-price">12 900 Kč</div>
+              <div class="pc-period-detail">
+                + <strong>1 990 Kč / měsíc</strong>
+              </div>
+            </div>
+            <ul class="pc-features">
+              <li>✓ Vše ze Základ</li>
+              <li>✓ Hosting zdarma</li>
+              <li>✓ Měsíční A/B testování</li>
+              <li>✓ Analytics report každý měsíc</li>
+              <li>✓ Aktualizace obsahu (2×/měsíc)</li>
+              <li>✓ SEO monitoring</li>
+              <li>✓ Neomezené revize</li>
+              <li>✓ Prioritní podpora</li>
+              <li>✓ Zrušení kdykoli</li>
+            </ul>
+            <a href="#contact" class="btn btn-orange btn-full">Začít s Růstem →</a>
+          </div>
+
+          <!-- SCALE -->
+          <div class="pricing-card reveal">
+            <div class="pc-header">
+              <div class="pc-name">Scale</div>
+              <div class="pc-desc">Kompletní digitální marketing</div>
+            </div>
+            <div class="pc-price-area">
+              <div class="pc-price">24 900 Kč</div>
+              <div class="pc-period-detail">
+                + <strong>2 990 Kč / měsíc</strong>
+              </div>
+            </div>
+            <ul class="pc-features">
+              <li>✓ Vše z Růst</li>
+              <li>✓ Google Ads správa</li>
+              <li>✓ On-page + off-page SEO</li>
+              <li>✓ Marketingová strategie</li>
+              <li>✓ E-shop nebo rezervační systém</li>
+              <li>✓ Čtvrtletní CRO audit</li>
+              <li>✓ VIP podpora (tel + chat)</li>
+              <li>✓ Dedikovaný account manager</li>
+              <li>✓ Zrušení kdykoli</li>
+            </ul>
+            <a href="#contact" class="btn btn-outline btn-full">Objednat Scale →</a>
+          </div>
+        </div>
+
+        <!-- RUSH FEE -->
+        <div class="risk-block" style="background:linear-gradient(135deg,rgba(255,72,0,.08),rgba(255,72,0,.03));border-color:rgba(255,72,0,.25);margin-bottom:16px">
+          <div class="rb-icon">⚡</div>
+          <div class="rb-content">
+            <h3>Potřebujete web do 8 hodin?</h3>
+            <p>Expresní přirážka <strong>3 000 Kč</strong> — web dodáme ještě dnes. Ideální před pitchem, otevřením nebo spuštěním kampaně. Uveďte v poptávce.</p>
+          </div>
+          <a href="#contact" class="btn btn-dark">Chci expresní dodání →</a>
+        </div>
+
+        <!-- RISK BLOCK -->
+        <div class="risk-block">
+          <div class="rb-icon">🛡️</div>
+          <div class="rb-content">
+            <h3>Žádné riziko — naprosto žádné</h3>
+            <p>Záloha 0 Kč. Platíte až po schválení webu. Není-li web přesně takový, jak jsme se dohodli do 7 dní, vrátíme celou platbu. Bez řečí, bez podmínek.</p>
+          </div>
+          <a href="#contact" class="btn btn-dark">Začít bez rizika →</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════════════
+         TESTIMONIALS
+    ══════════════════════════════════════════════ -->
+    <section class="section section-dark" id="testimonials">
+      <div class="container">
+        <div class="section-eyebrow light">Co říkají klienti</div>
+        <h2 class="section-h2 light">
+          147 podnikatelů si vybralo webdo24.<br>
+          <span class="text-orange">Tady je proč.</span>
+        </h2>
+
+        <div class="testi-grid">
+          <div class="testi-card reveal">
+            <div class="tc-stars">★★★★★</div>
+            <p class="tc-text">"Web jsem potřeboval urgentně — přišla mi poptávka na velkou zakázku a neměl jsem kde ukázat naši práci. Za 19 hodin jsem měl krásnou stránku. Zakázku jsem získal. ROI od prvního dne."</p>
+            <div class="tc-footer">
+              <div class="tc-av" style="background:#FF4800">TN</div>
+              <div>
+                <strong>Tomáš Novák</strong>
+                <span>Stavební firma, Praha</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="testi-card testi-featured reveal">
+            <div class="tc-stars">★★★★★</div>
+            <p class="tc-text">"Měla jsem web od agentury za 60 000 Kč, který za celý rok nepřinesl jednoho zákazníka. Se webdo24 mám za 3 měsíce plně obsazený salon a čekací listinu. Výsledek mluví za vše."</p>
+            <div class="tc-footer">
+              <div class="tc-av" style="background:#7C3AED">MK</div>
+              <div>
+                <strong>Markéta Kovář</strong>
+                <span>Kosmetický salon, Brno · Growth zákazník</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="testi-card reveal">
+            <div class="tc-stars">★★★★★</div>
+            <p class="tc-text">"Přišel jsem sem skeptický — jak může být dobrý web za 9 900 Kč? Ukázal jsem výsledek kolegům a mysleli si, že jsem zaplatil 5× tolik. A to ještě nevěděli o výsledcích."</p>
+            <div class="tc-footer">
+              <div class="tc-av" style="background:#059669">RH</div>
+              <div>
+                <strong>Radek Horáček</strong>
+                <span>IT konzultant, Ostrava</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="testi-card reveal">
+            <div class="tc-stars">★★★★★</div>
+            <p class="tc-text">"Nejlepší byznys rozhodnutí za poslední 3 roky. Čekala jsem na první zákazníky týdny. První poptávka přišla ten samý večer, kdy web spustili. Ještě dnes nevím jak to stihli za 24 hodin."</p>
+            <div class="tc-footer">
+              <div class="tc-av" style="background:#0EA5E9">LH</div>
+              <div>
+                <strong>Lucie Horáková</strong>
+                <span>Nutriční poradenství, Plzeň</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="testi-aggregate">
+          <div class="ta-stars">★★★★★</div>
+          <div class="ta-score">4.97 / 5</div>
+          <div class="ta-label">Průměrné hodnocení z 147 recenzí</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════════════
+         GARANCE
+    ══════════════════════════════════════════════ -->
+    <section class="section guarantee-section">
+      <div class="container">
+        <div class="guarantee-box">
+          <div class="gb-visual">
+            <div class="gb-shield-big">🛡️</div>
+            <div class="gb-guarantee-text">7denní<br>garance</div>
+          </div>
+          <div class="gb-content">
+            <div class="gb-eyebrow">100% bezpečná investice</div>
+            <h2>Pokud nejste spokojeni,<br>vrátíme každou korunu.</h2>
+            <p>
+              Záloha 0 Kč. Platíte až po schválení webu. A pokud do 7 dní od spuštění
+              nejste spokojeni — z jakéhokoli důvodu — vrátíme celou platbu.
+              Žádné otázky, žádné podmínky, žádné výjimky.
+            </p>
+            <div class="gb-points">
+              <div class="gb-point">
+                <span class="gb-tick">✓</span>
+                <span>Záloha 0 Kč — platíte po schválení</span>
+              </div>
+              <div class="gb-point">
+                <span class="gb-tick">✓</span>
+                <span>7denní garance vrácení peněz</span>
+              </div>
+              <div class="gb-point">
+                <span class="gb-tick">✓</span>
+                <span>Neomezené revize do vaší spokojenosti</span>
+              </div>
+              <div class="gb-point">
+                <span class="gb-tick">✓</span>
+                <span>Subscription lze kdykoli zrušit</span>
+              </div>
+            </div>
+            <a href="#contact" class="btn btn-orange btn-lg">Začít bez rizika →</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════════════
+         FAQ
+    ══════════════════════════════════════════════ -->
+    <section class="section section-alt" id="faq">
+      <div class="container faq-wrap">
+        <div class="faq-left">
+          <div class="section-eyebrow">Časté otázky</div>
+          <h2 class="section-h2">Máte otázky?<br>Tady jsou odpovědi.</h2>
+          <p class="section-p">Nenašli jste odpověď? Zavolejte přímo.</p>
+          <a href="tel:+420737000000" class="btn btn-dark">📞 737 000 000</a>
+        </div>
+        <div class="faq-right">
+          <div class="faq-list" id="faqList">
+
+            <div class="faq-item">
+              <button class="faq-q" aria-expanded="false">
+                Jak může být web hotový za 24 hodin?
+                <span class="faq-icon">+</span>
+              </button>
+              <div class="faq-a">
+                Specializuji se výhradně na konverzní weby pro malé firmy. Kombinuji vlastní systém, AI nástroje a roky zkušeností. Na co agentura potřebuje 3 měsíce, zvládnu za jeden pracovní den — a výsledek je měřitelně lepší.
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-q" aria-expanded="false">
+                Co přesně zahrnuje měsíční optimalizace?
+                <span class="faq-icon">+</span>
+              </button>
+              <div class="faq-a">
+                Každý měsíc: A/B test jednoho klíčového prvku (nadpis, CTA, layout), aktualizace 2 sekcí obsahu, SEO monitoring a report pozic, performance audit, a přehledný analytics report co fungovalo a co ne.
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-q" aria-expanded="false">
+                Opravdu neplatím zálohu?
+                <span class="faq-icon">+</span>
+              </button>
+              <div class="faq-a">
+                Přesně tak. Fakturuju až poté, co schválíte hotový web. Pokud se vám výsledek nebude líbit, neplatíte nic. Tohle je moje jistota, že odvedu co nejlepší práci — jinak jsem pracoval zdarma.
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-q" aria-expanded="false">
+                Mohu subscription kdykoli zrušit?
+                <span class="faq-icon">+</span>
+              </button>
+              <div class="faq-a">
+                Ano, bez sankcí a bez otázek. Stačí mi napsat 1 měsíc předem. Web zůstane váš navždy — i po zrušení subscripce. Nekrademe weby při odchodu.
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-q" aria-expanded="false">
+                Co potřebuji připravit?
+                <span class="faq-icon">+</span>
+              </button>
+              <div class="faq-a">
+                Jen 9 minut na vyplnění briefu. Texty, grafiku, fotky (ze stocku) a vše ostatní obstaram já. Pokud máte logo nebo vlastní fotografie, skvěle — použijeme je. Ale není to podmínka.
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-q" aria-expanded="false">
+                Jaký je rozdíl oproti klasické agentuře?
+                <span class="faq-icon">+</span>
+              </button>
+              <div class="faq-a">
+                Agentura: 50–150 000 Kč, 2–4 měsíce čekání, pak vás nechá být. webdo24: 12 900 Kč, 24 hodin, a pak každý měsíc web zlepšujeme. Zaplatíte 10× méně, dostanete výsledky 5× rychleji — a web se nezastaví v čase.
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════════════
+         CONTACT
+    ══════════════════════════════════════════════ -->
+    <section class="section contact-section" id="contact">
+      <div class="container contact-grid">
+
+        <div class="contact-left">
+          <div class="section-eyebrow">Začínáme</div>
+          <h2 class="section-h2">
+            Pojďme vybudovat<br>
+            váš revenue machine.
+          </h2>
+          <p class="section-p">
+            Vyplňte formulář — trvá to 9 minut. Bez zálohy, bez závazku. Ozvu se do 2 hodin.
+          </p>
+
+          <div class="contact-perks">
+            <div class="cperc-item">
+              <span class="cp-icon">⚡</span>
+              <div>
+                <strong>Web do 24 hodin</strong>
+                <span>Od formuláře ke spuštěnému webu za méně než den</span>
+              </div>
+            </div>
+            <div class="cperc-item">
+              <span class="cp-icon">📊</span>
+              <div>
+                <strong>Výsledky garantované</strong>
+                <span>7denní garance nebo vrátíme celou platbu</span>
+              </div>
+            </div>
+            <div class="cperc-item">
+              <span class="cp-icon">🤝</span>
+              <div>
+                <strong>Přímá komunikace</strong>
+                <span>Mluvíte přímo s tvůrcem — bez projektových manažerů</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="contact-tel-block">
+            <a href="tel:+420737000000" class="contact-tel-link">📞 737 000 000</a>
+            <span class="contact-tel-hours">Dostupný Po–Pá 8:00–20:00</span>
+          </div>
+        </div>
+
+        <div class="contact-right">
+          <form class="contact-form" id="contactForm" novalidate>
+            <div class="form-row-2">
+              <div class="form-group">
+                <label for="fName">Jméno a příjmení <span class="req">*</span></label>
+                <input type="text" id="fName" name="name" placeholder="Jan Novák" required autocomplete="name">
+              </div>
+              <div class="form-group">
+                <label for="fEmail">Email <span class="req">*</span></label>
+                <input type="email" id="fEmail" name="email" placeholder="jan@firma.cz" required autocomplete="email">
+              </div>
+            </div>
+            <div class="form-row-2">
+              <div class="form-group">
+                <label for="fPhone">Telefon</label>
+                <input type="tel" id="fPhone" name="phone" placeholder="+420 777 123 456" autocomplete="tel">
+              </div>
+              <div class="form-group">
+                <label for="fBusiness">Čím se zabýváte? <span class="req">*</span></label>
+                <input type="text" id="fBusiness" name="business" placeholder="Instalatér, kosmetika…" required>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="fPlan">Jaký balíček vás zajímá?</label>
+              <select id="fPlan" name="plan">
+                <option value="">Nevím ještě — poradíte mi?</option>
+                <option value="zaklad">Základ — 12 900 Kč (web do 24 h)</option>
+                <option value="rust">Růst — 12 900 Kč + 1 990/měs (doporučujeme)</option>
+                <option value="scale">Scale — 24 900 Kč + 2 990/měs (kompletní marketing)</option>
+                <option value="express">Expresní dodání do 8h — příplatek 3 000 Kč</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="fMsg">Řekněte mi o svém byznysu</label>
+              <textarea id="fMsg" name="message" rows="4" placeholder="Co děláte, kdo jsou vaši zákazníci, co od webu očekáváte…"></textarea>
+            </div>
+            <button type="submit" class="btn btn-orange btn-full btn-submit" id="submitBtn">
+              Odeslat poptávku — ozvu se do 2 hodin →
+            </button>
+            <p class="form-gdpr">Odesláním souhlasíte se zpracováním osobních údajů za účelem zodpovězení poptávky. Žádný spam.</p>
+          </form>
+
+          <div class="form-success" id="formSuccess" hidden>
+            <div class="fs-check">✓</div>
+            <h3>Poptávka odeslána!</h3>
+            <p>Ozvu se vám do 2 hodin — sledujte prosím email i telefon.</p>
+            <p class="fs-meta">Mezitím si prohlédněte <a href="#results">výsledky klientů →</a></p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <div class="footer-logo">webdo<span>24</span>.cz</div>
+          <p class="footer-tagline">Neděláme weby. Budujeme revenue machines.</p>
+        </div>
+        <div class="footer-nav-group">
+          <strong>Služby</strong>
+          <a href="#why">Proč my</a>
+          <a href="#process">Jak to funguje</a>
+          <a href="#growth">Growth systém</a>
+          <a href="#pricing">Ceny</a>
+        </div>
+        <div class="footer-nav-group">
+          <strong>Výsledky</strong>
+          <a href="#results">Případové studie</a>
+          <a href="#testimonials">Recenze</a>
+          <a href="#faq">FAQ</a>
+        </div>
+        <div class="footer-nav-group">
+          <strong>Kontakt</strong>
+          <a href="tel:+420737000000">737 000 000</a>
+          <a href="mailto:info@webdo24.cz">info@webdo24.cz</a>
+          <a href="#contact">Poptávka →</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2025 webdo24.cz — Všechna práva vyhrazena</span>
+        <div class="footer-legal-links">
+          <a href="#">Ochrana osobních údajů</a>
+          <a href="#">Obchodní podmínky</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
