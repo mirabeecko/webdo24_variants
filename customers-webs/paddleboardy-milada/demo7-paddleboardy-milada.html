@@ -1617,6 +1617,125 @@
       .moto-grid { grid-template-columns: 1fr; }
       .special-cards-grid { grid-template-columns: 1fr; }
     }
+
+    /* ══════════════════════════════════════════════
+       MOBILNÍ RESPONZIVITA
+       ══════════════════════════════════════════════ */
+
+    /* Hamburger tlačítko */
+    .nav-toggle {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 6px;
+      border: none;
+      background: transparent;
+      margin-left: auto;
+      flex-shrink: 0;
+    }
+    .nav-toggle span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--deep);
+      border-radius: 2px;
+      transition: transform .25s, opacity .2s;
+    }
+    .nav-toggle.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .nav-toggle.open span:nth-child(2) { opacity: 0; }
+    .nav-toggle.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    /* Price table scroll na mobilu */
+    .price-table-scroll {
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      border-radius: 14px;
+    }
+    .price-table-scroll > div { min-width: 400px; }
+
+    @media (max-width: 720px) {
+      /* Nav – hamburger */
+      .nav-toggle { display: flex; }
+      .nav-inner {
+        flex-direction: row;
+        flex-wrap: wrap;
+        align-items: center;
+        padding: 14px 0;
+      }
+      .nav-links {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        gap: 2px;
+        padding: 8px 0 12px;
+        font-size: 1rem;
+      }
+      .nav-links.open { display: flex; }
+      .nav-links a {
+        padding: 10px 12px;
+        border-radius: 8px;
+        display: block;
+      }
+      .nav-call {
+        margin-top: 6px;
+        width: 100%;
+        text-align: center;
+        border-radius: 8px;
+      }
+    }
+
+    @media (max-width: 900px) {
+      /* Inline 2-col gridy → 1-col */
+      div[style*="grid-template-columns:1fr 1fr"] {
+        grid-template-columns: 1fr !important;
+        gap: 32px !important;
+      }
+      /* Specials 1fr 1fr se zápisem s mezerou */
+      div[style*="grid-template-columns:1fr 1fr;gap:24px"] {
+        grid-template-columns: 1fr !important;
+      }
+
+      /* Inline 4-col → 2-col */
+      div[style*="grid-template-columns:repeat(4,1fr)"] {
+        grid-template-columns: repeat(2,1fr) !important;
+        gap: 14px !important;
+      }
+
+      /* Inline 3-col → 2-col */
+      div[style*="grid-template-columns:repeat(3,1fr)"] {
+        grid-template-columns: repeat(2,1fr) !important;
+      }
+
+      /* Section padding zmenseni */
+      section[style*="padding:96px 0"] {
+        padding: 60px 0 !important;
+      }
+      div[style*="margin-top:72px;padding-top:64px"] {
+        margin-top: 40px !important;
+        padding-top: 36px !important;
+      }
+    }
+
+    @media (max-width: 540px) {
+      /* 4-col a 3-col → 1-col na malom telefonu */
+      div[style*="grid-template-columns:repeat(4,1fr)"],
+      div[style*="grid-template-columns:repeat(3,1fr)"] {
+        grid-template-columns: 1fr !important;
+      }
+      /* Yoga inner 2-col small → 1-col */
+      div[style*="grid-template-columns:1fr 1fr;gap:14px"] {
+        grid-template-columns: 1fr !important;
+      }
+      /* Mensi font pro inline headings */
+      section[style*="padding"] h2[style*="font-size:2.2rem"] {
+        font-size: 1.6rem !important;
+      }
+      section[style*="padding"] h2[style*="font-size:2rem"] {
+        font-size: 1.5rem !important;
+      }
+    }
+
   </style>
 </head>
 <body>
@@ -1642,6 +1761,9 @@
         <a href="#kontakt">Kontakt</a>
         <a class="nav-call" href="tel:+420722169349">Rezervovat telefonicky</a>
       </div>
+      <button class="nav-toggle" id="navToggle" aria-label="Otevřít menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
     </div>
   </nav>
 
@@ -1764,7 +1886,7 @@
             <p style="color:rgba(255,255,255,.6);font-size:1rem;line-height:1.65;margin-bottom:28px">Pádlo, vesta a instrukce jsou vždy v ceně. Vyrazte sami, ve dvou nebo celá parta na mega boardu.</p>
 
             <!-- tabulka cen -->
-            <div style="border-radius:14px;overflow:hidden;background:#fff">
+            <div class="price-table-scroll"><div style="border-radius:14px;overflow:hidden;background:#fff">
               <!-- hlavička -->
               <div style="display:grid;grid-template-columns:1fr 90px 100px 120px;background:#0a2e3a;color:#fff;font-weight:800;font-size:.73rem;text-transform:uppercase;letter-spacing:.05em">
                 <div style="padding:11px 14px">Vybavení</div>
@@ -2265,6 +2387,24 @@
   <script>
     const nav = document.querySelector('.site-nav');
     const revealItems = document.querySelectorAll('.reveal');
+
+    // Hamburger
+    const navToggle = document.getElementById('navToggle');
+    const navLinks = document.querySelector('.nav-links');
+    if (navToggle && navLinks) {
+      navToggle.addEventListener('click', () => {
+        const open = navLinks.classList.toggle('open');
+        navToggle.classList.toggle('open', open);
+        navToggle.setAttribute('aria-expanded', open);
+      });
+      navLinks.querySelectorAll('a').forEach(a => {
+        a.addEventListener('click', () => {
+          navLinks.classList.remove('open');
+          navToggle.classList.remove('open');
+          navToggle.setAttribute('aria-expanded', 'false');
+        });
+      });
+    }
 
     window.addEventListener('scroll', () => {
       nav.classList.toggle('scrolled', window.scrollY > 10);
