@@ -1530,6 +1530,93 @@
       .brand-main { font-size: .98rem; }
       .price { font-size: 2.2rem; }
     }
+
+    /* ── Nabídka školám ── */
+    .school-new { padding: 96px 0; background: linear-gradient(140deg,#0b2d38 0%,#123c4a 60%,#0e3040 100%); }
+    .school-new-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; }
+    .school-new-eyebrow { display: flex; align-items: center; gap: 8px; font-weight: 800; font-size: .78rem; text-transform: uppercase; letter-spacing: .07em; color: rgba(250,204,21,.85); margin-bottom: 16px; }
+    .school-new-eyebrow-pip { width: 10px; height: 10px; border-radius: 50%; background: #facc15; flex: 0 0 auto; display: inline-block; }
+    .school-new h2 { font-family: var(--font-heading); font-size: 2rem; font-weight: 900; line-height: 1.15; color: #fff; margin: 0 0 16px; }
+    .school-price-badge { display: inline-flex; align-items: baseline; gap: 5px; background: var(--sun); color: var(--deep); padding: 10px 18px; border-radius: 10px; font-family: var(--font-heading); font-size: 1.5rem; font-weight: 900; margin-bottom: 22px; }
+    .school-price-badge span { font-size: 1rem; font-weight: 700; }
+    .school-chips { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 22px; }
+    .school-chip-item { display: inline-flex; align-items: center; gap: 8px; padding: 9px 14px; border-radius: 8px; background: rgba(255,255,255,.12); border: 1px solid rgba(255,255,255,.22); font-weight: 800; font-size: .88rem; color: #fff; }
+    .school-checklist { display: grid; gap: 10px; margin-bottom: 22px; }
+    .school-check { display: flex; align-items: flex-start; gap: 10px; color: rgba(255,255,255,.8); font-size: .95rem; line-height: 1.55; }
+    .school-check svg { flex: 0 0 auto; margin-top: 3px; color: #facc15; }
+    .school-urgency-note { color: rgba(255,255,255,.45); font-size: .85rem; font-style: italic; margin-bottom: 22px; }
+    .school-new-photo { border-radius: 20px; overflow: hidden; box-shadow: 0 32px 80px rgba(0,0,0,.3); position: relative; }
+    .school-new-photo img { width: 100%; aspect-ratio: 3/2; object-fit: cover; display: block; }
+    .school-new-photo-badge { position: absolute; left: 18px; bottom: 18px; background: #facc15; color: #1a1a2e; font-weight: 900; font-size: .88rem; padding: 8px 14px; border-radius: 10px; }
+
+    /* ── Ceník – barevné pásy ── */
+    .pband { padding: 96px 0; }
+    .pband--boards   { background: #eaf9ff; }
+    .pband--karts    { background: #fff5eb; }
+    .pband--specials { background: #0d1a26; }
+    .pband-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; }
+    .pband-layout--flip .pband-photo { order: -1; }
+    .pband-eyebrow { display: flex; align-items: center; gap: 8px; font-weight: 800; font-size: .78rem; text-transform: uppercase; letter-spacing: .07em; margin-bottom: 14px; }
+    .pband-pip { width: 10px; height: 10px; border-radius: 50%; flex: 0 0 auto; }
+    .pband-heading { font-family: var(--font-heading); font-size: 2rem; font-weight: 900; line-height: 1.1; margin: 0 0 12px; color: var(--deep); }
+    .pband-desc { color: var(--muted); font-size: 1.02rem; line-height: 1.65; margin-bottom: 28px; }
+    .pband-photo { border-radius: 20px; overflow: hidden; box-shadow: 0 32px 80px rgba(0,0,0,.15); position: relative; }
+    .pband-photo img { width: 100%; aspect-ratio: 3/2; object-fit: cover; display: block; }
+    .pband-photo-badge { position: absolute; left: 18px; bottom: 18px; background: var(--sun); color: var(--deep); font-weight: 900; font-size: .88rem; padding: 8px 14px; border-radius: 10px; }
+
+    /* ── Ceník tabulka ── */
+    .price-table-wrap { border-radius: 16px; overflow: hidden; border: 1px solid var(--line); box-shadow: var(--soft-shadow); background: var(--white); }
+    .price-table-head { display: grid; grid-template-columns: 1fr 100px 110px 130px; background: var(--deep); color: var(--white); font-weight: 800; font-size: .76rem; text-transform: uppercase; letter-spacing: .05em; }
+    .price-table-head > div, .pt-row > div { padding: 12px 14px; }
+    .pt-row { display: grid; grid-template-columns: 1fr 100px 110px 130px; border-bottom: 1px solid var(--line); align-items: center; }
+    .pt-row:last-child { border-bottom: none; }
+    .pt-product strong { display: block; font-weight: 800; color: var(--deep); }
+    .pt-product small { color: var(--muted); font-size: .78rem; }
+    .pt-price { font-family: var(--font-heading); font-weight: 900; font-size: 1.25rem; color: var(--water-dark); }
+    .pt-unit { font-size: .75rem; color: var(--muted); }
+
+    /* ── Motokáry ── */
+    .moto-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 16px; margin-top: 28px; }
+    .moto-card { padding: 26px 22px; border-radius: 14px; background: var(--white); border: 1px solid rgba(251,146,60,.2); box-shadow: 0 8px 22px rgba(251,146,60,.07); }
+    .moto-badge { display: inline-block; padding: 4px 10px; border-radius: 20px; background: #fff3e0; color: #d97706; font-size: .75rem; font-weight: 800; text-transform: uppercase; letter-spacing: .04em; margin-bottom: 8px; }
+    .moto-name { font-family: var(--font-heading); font-weight: 900; font-size: 1.1rem; color: var(--deep); }
+    .moto-sub { color: var(--muted); font-size: .88rem; margin: 2px 0 12px; }
+    .moto-price-val { font-family: var(--font-heading); font-size: 2rem; font-weight: 900; color: #b45309; }
+    .moto-price-val span { font-size: 1rem; font-weight: 700; color: var(--muted); }
+
+    /* ── Speciální nabídky ── */
+    .special-cards-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 24px; }
+    .scard { border-radius: 20px; padding: 36px 30px; overflow: hidden; box-shadow: 0 20px 48px rgba(0,0,0,.22); color: var(--white); position: relative; }
+    .scard--night { background: linear-gradient(140deg,#040c1e 0%,#08183a 50%,#0a2f50 100%); }
+    .scard--wing  { background: linear-gradient(140deg,#006d84 0%,#00a9b7 50%,#22c3d5 100%); }
+    .scard-pill { display: inline-block; padding: 5px 12px; border-radius: 20px; background: rgba(255,255,255,.12); border: 1px solid rgba(255,255,255,.2); font-size: .78rem; font-weight: 700; color: rgba(255,255,255,.72); margin-bottom: 18px; }
+    .scard-icon { width: 44px; height: 44px; border-radius: 12px; background: rgba(255,255,255,.1); display: flex; align-items: center; justify-content: center; margin-bottom: 14px; }
+    .scard h3 { font-size: 1.4rem; color: #fff; margin-bottom: 10px; }
+    .scard p { color: rgba(255,255,255,.72); font-size: .95rem; line-height: 1.6; margin-bottom: 18px; }
+    .scard-price { font-family: var(--font-heading); font-size: 2.4rem; font-weight: 900; color: var(--sun); line-height: 1; }
+    .scard-price-note { color: rgba(255,255,255,.5); font-size: .85rem; margin: 4px 0 14px; }
+    .scard-hint { color: rgba(255,255,255,.42); font-size: .83rem; font-style: italic; margin-bottom: 16px; }
+    .scard-corner { position: absolute; top: 20px; right: 20px; font-size: .82rem; font-weight: 700; color: rgba(255,255,255,.3); }
+
+    /* ── Night section upgrade ── */
+    .night-price-badge { display: inline-flex; align-items: baseline; gap: 6px; background: rgba(250,204,21,.12); border: 1px solid rgba(250,204,21,.32); border-radius: 12px; padding: 14px 20px; font-family: var(--font-heading); font-size: 2.2rem; font-weight: 900; color: var(--sun); margin: 16px 0 12px; }
+    .night-price-badge span { font-size: 1rem; font-weight: 700; color: rgba(255,255,255,.5); }
+    .night-fish-tags { display: flex; flex-wrap: wrap; gap: 8px; margin: 10px 0 16px; }
+    .night-fish-tag { padding: 6px 12px; border-radius: 20px; background: rgba(125,249,255,.08); border: 1px solid rgba(125,249,255,.18); color: rgba(255,255,255,.7); font-size: .84rem; font-weight: 700; }
+
+    /* ── CTA buttony (tmavé pozadí) ── */
+    .btn-white-call { display: inline-flex; align-items: center; gap: 8px; padding: 13px 20px; border-radius: var(--r); font-weight: 900; background: #fff; color: var(--water-dark); box-shadow: 0 8px 24px rgba(0,0,0,.18); text-decoration: none; }
+    .btn-ghost-mail { display: inline-flex; align-items: center; gap: 8px; padding: 11px 18px; border-radius: var(--r); font-weight: 700; background: rgba(255,255,255,.1); border: 1.5px solid rgba(255,255,255,.25); color: rgba(255,255,255,.85); text-decoration: none; }
+
+    @media (max-width: 900px) {
+      .school-new { padding: 64px 0; }
+      .school-new-layout { grid-template-columns: 1fr; gap: 36px; }
+      .pband { padding: 64px 0; }
+      .pband-layout { grid-template-columns: 1fr; gap: 36px; }
+      .pband-layout--flip .pband-photo { order: 0; }
+      .moto-grid { grid-template-columns: 1fr; }
+      .special-cards-grid { grid-template-columns: 1fr; }
+    }
   </style>
 </head>
 <body>
@@ -1578,7 +1665,7 @@
         <p class="hero-lead">Půjčovna paddleboardů na jezeře Milada pro jednotlivce, páry, rodiny, přátele i školy. Přijeďte si užít čistou vodu, krásné prostředí a aktivní odpočinek kousek od Ústí nad Labem.</p>
         <div class="hero-actions">
           <a class="btn btn-primary" href="tel:+420722169349">Zavolat</a>
-          <a class="btn btn-secondary" href="mailto:paddleboardtrips@gmail.com">Napsat e-mail</a>
+          <a class="btn btn-secondary" href="mailto:supustinadlabem@gmail.com">Napsat e-mail</a>
           <a class="btn btn-secondary" href="#rychly-vyber">Vybrat zážitek</a>
         </div>
         <div class="hero-facts" aria-label="Rychlé informace">
@@ -1624,103 +1711,377 @@
       </div>
     </section>
 
-    <section class="section" id="skoly">
+    <!-- Nabídka školám -->
+    <section id="skoly" style="background:linear-gradient(140deg,#0b2d38 0%,#123c4a 60%,#0e3040 100%);padding:96px 0">
       <div class="container">
-        <div class="school-block reveal">
-          <div class="school-content">
-            <span class="eyebrow">Hlavní produkt pro školy</span>
-            <h2>Sportovní den u vody, který bude třídu bavit</h2>
-            <p>Žádné “děti, dneska si zaběháme kolečko kolem hřiště”. Tady třída stojí po kolena ve vodě, směje se, učí se spolupracovat a domů odjíždí s historkou, kterou nejde napsat do sešitu.</p>
-            <p>Paddleboarding na Miladě je venkovní program pro učitele a organizátory, kteří chtějí pohyb, společný zážitek a den mimo lavice. Termín a možnosti pro skupinu domluvíme telefonicky nebo e-mailem.</p>
-            <div class="cta-row">
-              <a class="btn btn-primary" href="tel:+420722169349">Rezervovat telefonicky</a>
-              <a class="btn btn-secondary" href="mailto:paddleboardtrips@gmail.com">Napsat e-mail</a>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center">
+          <div>
+            <p style="display:flex;align-items:center;gap:8px;font-weight:800;font-size:.78rem;text-transform:uppercase;letter-spacing:.07em;color:rgba(250,204,21,.85);margin:0 0 16px">
+              <span style="width:10px;height:10px;border-radius:50%;background:#facc15;display:inline-block;flex:0 0 auto"></span>
+              Nabídka školám · Dopoledne u vody
+            </p>
+            <h2 style="font-family:'Nunito',sans-serif;font-size:2rem;font-weight:900;color:#fff;line-height:1.15;margin:0 0 16px">Paddleboarding pro celou třídu — zážitek, na který se nezapomíná</h2>
+            <div style="display:inline-flex;align-items:baseline;gap:6px;background:#facc15;color:#123c4a;padding:10px 18px;border-radius:10px;font-family:'Nunito',sans-serif;font-size:1.5rem;font-weight:900;margin-bottom:22px">180 Kč <span style="font-size:1rem;font-weight:700">/ osoba</span></div>
+            <div style="display:flex;flex-wrap:wrap;gap:10px;margin-bottom:22px">
+              <span style="display:inline-flex;align-items:center;gap:7px;padding:8px 14px;border-radius:8px;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);font-weight:800;font-size:.87rem;color:#fff"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>9:00–13:00</span>
+              <span style="display:inline-flex;align-items:center;gap:7px;padding:8px 14px;border-radius:8px;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);font-weight:800;font-size:.87rem;color:#fff"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>Vesty v ceně</span>
+              <span style="display:inline-flex;align-items:center;gap:7px;padding:8px 14px;border-radius:8px;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);font-weight:800;font-size:.87rem;color:#fff"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg>Možnost občerstvení</span>
+              <span style="display:inline-flex;align-items:center;gap:7px;padding:8px 14px;border-radius:8px;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);font-weight:800;font-size:.87rem;color:#fff"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>Celá třída najednou</span>
+            </div>
+            <div style="display:grid;gap:10px;margin-bottom:22px">
+              <div style="display:flex;align-items:flex-start;gap:10px;color:rgba(255,255,255,.8);font-size:.95rem;line-height:1.55"><svg style="flex:0 0 auto;margin-top:3px;color:#facc15" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Bezpečnostní briefing a instruktáž pádlování přímo na místě — žádná předchozí zkušenost není nutná.</div>
+              <div style="display:flex;align-items:flex-start;gap:10px;color:rgba(255,255,255,.8);font-size:.95rem;line-height:1.55"><svg style="flex:0 0 auto;margin-top:3px;color:#facc15" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Třída se rozdělí do skupin — každá dostane paddleboard nebo mega board a vyrazí na vodu s instruktorem.</div>
+              <div style="display:flex;align-items:flex-start;gap:10px;color:rgba(255,255,255,.8);font-size:.95rem;line-height:1.55"><svg style="flex:0 0 auto;margin-top:3px;color:#facc15" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Mega board pojme celou skupinu najednou — ideální pro týmovou spolupráci a smích zaručen.</div>
+              <div style="display:flex;align-items:flex-start;gap:10px;color:rgba(255,255,255,.8);font-size:.95rem;line-height:1.55"><svg style="flex:0 0 auto;margin-top:3px;color:#facc15" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Záchranné vesty, pádla i vybavení jsou zahrnuty v ceně — škola nemusí nic zajišťovat.</div>
+              <div style="display:flex;align-items:flex-start;gap:10px;color:rgba(255,255,255,.8);font-size:.95rem;line-height:1.55"><svg style="flex:0 0 auto;margin-top:3px;color:#facc15" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Po programu možnost občerstvení přímo u jezera. Termín domluvíme dopředu dle vašeho rozvrhu.</div>
+            </div>
+            <p style="color:rgba(255,255,255,.42);font-size:.85rem;font-style:italic;margin-bottom:22px">Volná místa se obsazují — zavolejte nebo napište pro rezervaci termínu.</p>
+            <div style="display:flex;flex-wrap:wrap;gap:12px">
+              <a href="tel:+420722169349" style="display:inline-flex;align-items:center;gap:8px;padding:13px 22px;border-radius:8px;font-weight:900;background:#fff;color:#007c95;box-shadow:0 8px 24px rgba(0,0,0,.22);text-decoration:none"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.41 2 2 0 0 1 3.6 1.22h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.82a16 16 0 0 0 6.29 6.29l.96-.95a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>Rezervovat termín</a>
+              <a href="mailto:supustinadlabem@gmail.com" style="display:inline-flex;align-items:center;gap:8px;padding:12px 20px;border-radius:8px;font-weight:700;background:rgba(255,255,255,.1);border:1.5px solid rgba(255,255,255,.25);color:rgba(255,255,255,.88);text-decoration:none"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>Více informací e-mailem</a>
             </div>
           </div>
-          <div class="school-visual" aria-label="Skupina dětí u vody na jezeře Milada">
-            <figure class="school-photo">
-              <img src="images/skupina-u-vody.jpg" alt="Skupina dětí se směje ve vodě s paddleboardy na jezeře Milada" loading="lazy">
-            </figure>
-            <span class="school-note one">Tělocvik, který nechce konec hodiny.</span>
-            <span class="school-note two">Smích: splněno. Pohyb: taky.</span>
-            <svg class="school-board-illo" viewBox="0 0 260 92" aria-hidden="true">
-              <path d="M20 54C57 12 199 8 238 43c9 8 8 22-4 29C188 101 58 88 20 67c-8-4-8-8 0-13Z" fill="currentColor"/>
-              <path d="M70 54c44 13 100 12 138-2" fill="none" stroke="#fff" stroke-width="8" stroke-linecap="round"/>
-              <path d="M124 25l18 45" fill="none" stroke="#123c4a" stroke-width="6" stroke-linecap="round"/>
-            </svg>
+          <div style="border-radius:20px;overflow:hidden;box-shadow:0 32px 80px rgba(0,0,0,.35);position:relative">
+            <img src="images/skoly-instruktaz.jpg" alt="Instruktáž dětí v záchranných vestách před paddleboardingem" loading="lazy" style="width:100%;aspect-ratio:3/2;object-fit:cover;display:block">
+            <div style="position:absolute;left:18px;bottom:18px;background:#facc15;color:#0a2e3a;font-weight:900;font-size:.88rem;padding:8px 14px;border-radius:10px">9:00–13:00 · 180 Kč/osoba</div>
           </div>
         </div>
       </div>
     </section>
 
-    <section class="section alt" id="cenik">
+    <!-- Ceník: Půjčovna paddleboardů -->
+    <section id="cenik" style="background:#08364f;padding:96px 0">
       <div class="container">
-        <div class="section-header reveal">
-          <span class="eyebrow">Ceník</span>
-          <h2>Přehledné ceny bez složitostí</h2>
-          <p>Vyberte si délku půjčení podle toho, kolik času chcete na vodě strávit.</p>
-        </div>
-        <div class="pricing">
-          <article class="price-card reveal">
-            <h3>1 hodina</h3>
-            <div class="price">150 <span>Kč</span></div>
-            <p class="price-note">Krátká projížďka nebo první vyzkoušení.</p>
-          </article>
-          <article class="price-card reveal">
-            <h3>2 hodiny</h3>
-            <div class="price">280 <span>Kč</span></div>
-            <p class="price-note">Více času na pohodu, pohyb i fotky u vody.</p>
-          </article>
-          <article class="price-card featured reveal">
-            <h3>Celý den</h3>
-            <div class="price">380 <span>Kč</span></div>
-            <p class="price-note">9:00-19:30 pro dlouhý letní den na Miladě.</p>
-          </article>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center">
+
+          <!-- obsah -->
+          <div>
+            <p style="display:flex;align-items:center;gap:8px;font-weight:800;font-size:.78rem;text-transform:uppercase;letter-spacing:.07em;color:#7dd3fc;margin:0 0 14px">
+              <span style="width:10px;height:10px;border-radius:50%;background:#38bdf8;display:inline-block;flex:0 0 auto"></span>
+              Půjčovna · Paddleboardy
+            </p>
+            <h2 style="font-family:'Nunito',sans-serif;font-size:2.2rem;font-weight:900;color:#fff;line-height:1.1;margin:0 0 14px">Paddleboard nebo Mega board — od hodiny po celý den</h2>
+            <p style="color:rgba(255,255,255,.6);font-size:1rem;line-height:1.65;margin-bottom:28px">Pádlo, vesta a instrukce jsou vždy v ceně. Vyrazte sami, ve dvou nebo celá parta na mega boardu.</p>
+
+            <!-- tabulka cen -->
+            <div style="border-radius:14px;overflow:hidden;background:#fff">
+              <!-- hlavička -->
+              <div style="display:grid;grid-template-columns:1fr 90px 100px 120px;background:#0a2e3a;color:#fff;font-weight:800;font-size:.73rem;text-transform:uppercase;letter-spacing:.05em">
+                <div style="padding:11px 14px">Vybavení</div>
+                <div style="padding:11px 8px">1 hod.</div>
+                <div style="padding:11px 8px">2 hod.</div>
+                <div style="padding:11px 8px;color:#facc15">Celý den ★</div>
+              </div>
+              <!-- řádek 1 -->
+              <div style="display:grid;grid-template-columns:1fr 90px 100px 120px;border-bottom:1px solid #e0f0f5;align-items:center">
+                <div style="padding:14px 14px">
+                  <strong style="display:block;color:#0a2e3a;font-weight:800">Paddleboard</strong>
+                  <small style="color:#54737a;font-size:.78rem">pádlo + vesta v ceně</small>
+                </div>
+                <div style="padding:14px 8px"><span style="font-family:'Nunito',sans-serif;font-weight:900;font-size:1.3rem;color:#007c95">180</span> <span style="font-size:.75rem;color:#54737a">Kč</span></div>
+                <div style="padding:14px 8px"><span style="font-family:'Nunito',sans-serif;font-weight:900;font-size:1.3rem;color:#007c95">280</span> <span style="font-size:.75rem;color:#54737a">Kč</span></div>
+                <div style="padding:14px 8px"><span style="font-family:'Nunito',sans-serif;font-weight:900;font-size:1.5rem;color:#007c95">450</span> <span style="font-size:.75rem;color:#54737a">Kč</span></div>
+              </div>
+              <!-- řádek 2 -->
+              <div style="display:grid;grid-template-columns:1fr 90px 100px 120px;align-items:center">
+                <div style="padding:14px 14px">
+                  <strong style="display:block;color:#0a2e3a;font-weight:800">Mega board</strong>
+                  <small style="color:#54737a;font-size:.78rem">pro skupiny, až 4–6 osob</small>
+                </div>
+                <div style="padding:14px 8px"><span style="font-family:'Nunito',sans-serif;font-weight:900;font-size:1.3rem;color:#007c95">350</span> <span style="font-size:.75rem;color:#54737a">Kč</span></div>
+                <div style="padding:14px 8px"><span style="font-family:'Nunito',sans-serif;font-weight:900;font-size:1.3rem;color:#007c95">500</span> <span style="font-size:.75rem;color:#54737a">Kč</span></div>
+                <div style="padding:14px 8px"><span style="font-family:'Nunito',sans-serif;font-weight:900;font-size:1.5rem;color:#007c95">700</span> <span style="font-size:.75rem;color:#54737a">Kč</span></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- fotka -->
+          <div style="border-radius:20px;overflow:hidden;box-shadow:0 32px 80px rgba(0,0,0,.4);position:relative">
+            <img src="images/sdafdaf.jpeg" alt="Kluk na paddleboardu na jezeře Milada" loading="lazy" style="width:100%;aspect-ratio:3/2;object-fit:cover;display:block">
+            <div style="position:absolute;left:18px;bottom:18px;background:#facc15;color:#0a2e3a;font-weight:900;font-size:.88rem;padding:8px 14px;border-radius:10px">Od 180 Kč / hodina</div>
+          </div>
+
         </div>
       </div>
     </section>
 
-    <section class="section" id="o-nas">
-      <div class="container two-col">
-        <div class="section-header reveal">
-          <span class="eyebrow">O nás a o místě</span>
-          <h2>Milada je skvělé místo, když chcete vypnout a přitom se hýbat</h2>
+    <!-- Ceník: Šlapací motokáry -->
+    <section id="motokary" style="background:#fdf3e3;padding:96px 0">
+      <div class="container">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center">
+
+          <!-- fotka vlevo -->
+          <div style="border-radius:20px;overflow:hidden;box-shadow:0 32px 80px rgba(0,0,0,.12);position:relative">
+            <img src="images/WhatsApp Image 2026-04-20 at 11.02.32.jpeg" alt="Dívky na double motokáře u jezera Milada" loading="lazy" style="width:100%;aspect-ratio:3/2;object-fit:cover;display:block">
+            <div style="position:absolute;left:18px;bottom:18px;background:#f97316;color:#fff;font-weight:900;font-size:.88rem;padding:8px 14px;border-radius:10px">Od 150 Kč</div>
+          </div>
+
+          <!-- obsah vpravo -->
+          <div>
+            <p style="display:flex;align-items:center;gap:8px;font-weight:800;font-size:.78rem;text-transform:uppercase;letter-spacing:.07em;color:#b45309;margin:0 0 14px">
+              <span style="width:10px;height:10px;border-radius:50%;background:#f59e0b;display:inline-block;flex:0 0 auto"></span>
+              Šlapací motokáry · U jezera
+            </p>
+            <h2 style="font-family:'Nunito',sans-serif;font-size:2.2rem;font-weight:900;color:#1a0d00;line-height:1.1;margin:0 0 14px">Šlapací motokáry — zábava pro děti i dospělé</h2>
+            <p style="color:#6b4c2a;font-size:1rem;line-height:1.65;margin-bottom:28px">Ujeďte pár kol po břehu Milady. Jedno místo, dva zážitky — na vodě i na suchu.</p>
+
+            <!-- 3 karty -->
+            <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:14px">
+              <div style="background:#fff;border-radius:14px;padding:22px 18px;border:1px solid #fcd9a0;box-shadow:0 6px 18px rgba(251,146,60,.12)">
+                <div style="display:inline-block;padding:3px 10px;border-radius:20px;background:#fff3e0;color:#d97706;font-size:.72rem;font-weight:800;text-transform:uppercase;margin-bottom:8px">Duo</div>
+                <div style="font-family:'Nunito',sans-serif;font-weight:900;font-size:1rem;color:#1a0d00">Double</div>
+                <div style="color:#6b4c2a;font-size:.82rem;margin:2px 0 10px">2 osoby</div>
+                <div style="font-family:'Nunito',sans-serif;font-size:1.8rem;font-weight:900;color:#b45309">300 <span style="font-size:.9rem;color:#6b4c2a">Kč</span></div>
+              </div>
+              <div style="background:#fff;border-radius:14px;padding:22px 18px;border:1px solid #fcd9a0;box-shadow:0 6px 18px rgba(251,146,60,.12)">
+                <div style="display:inline-block;padding:3px 10px;border-radius:20px;background:#fff3e0;color:#d97706;font-size:.72rem;font-weight:800;text-transform:uppercase;margin-bottom:8px">Solo</div>
+                <div style="font-family:'Nunito',sans-serif;font-weight:900;font-size:1rem;color:#1a0d00">Single velká</div>
+                <div style="color:#6b4c2a;font-size:.82rem;margin:2px 0 10px">1 osoba</div>
+                <div style="font-family:'Nunito',sans-serif;font-size:1.8rem;font-weight:900;color:#b45309">200 <span style="font-size:.9rem;color:#6b4c2a">Kč</span></div>
+              </div>
+              <div style="background:#fff;border-radius:14px;padding:22px 18px;border:1px solid #fcd9a0;box-shadow:0 6px 18px rgba(251,146,60,.12)">
+                <div style="display:inline-block;padding:3px 10px;border-radius:20px;background:#fff3e0;color:#d97706;font-size:.72rem;font-weight:800;text-transform:uppercase;margin-bottom:8px">Děti</div>
+                <div style="font-family:'Nunito',sans-serif;font-weight:900;font-size:1rem;color:#1a0d00">Single malá</div>
+                <div style="color:#6b4c2a;font-size:.82rem;margin:2px 0 10px">pro děti</div>
+                <div style="font-family:'Nunito',sans-serif;font-size:1.8rem;font-weight:900;color:#b45309">150 <span style="font-size:.9rem;color:#6b4c2a">Kč</span></div>
+              </div>
+            </div>
+          </div>
+
         </div>
-        <div class="copy-block reveal">
-          <p>Paddleboardy Milada je půjčovna paddleboardů na jezeře Milada v Ústeckém kraji. Přijedete k vodě, vezmete prkno a můžete vyrazit na klidnou projížďku, lehký trénink nebo společný výlet s rodinou.</p>
-          <p>Jezero Milada láká čistou vodou, otevřeným prostorem a letní atmosférou. Paddleboard je ideální aktivita i pro začátečníky, protože spojuje sport, relax a zábavu bez složité přípravy.</p>
+
+        <!-- Jóga a pilates -->
+        <div style="margin-top:72px;padding-top:64px;border-top:2px solid #e8f8f5">
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center">
+
+            <!-- obsah vlevo -->
+            <div>
+              <p style="display:flex;align-items:center;gap:8px;font-weight:800;font-size:.78rem;text-transform:uppercase;letter-spacing:.07em;color:#007c95;margin:0 0 14px">
+                <span style="width:10px;height:10px;border-radius:50%;background:#00a9b7;display:inline-block;flex:0 0 auto"></span>
+                Jóga a pilates · Na paddleboardu
+              </p>
+              <h2 style="font-family:'Nunito',sans-serif;font-size:2.2rem;font-weight:900;color:#123c4a;line-height:1.1;margin:0 0 14px">SUP jóga a pilates<br>na hladině Milady</h2>
+              <p style="color:#2e6b7a;font-size:1rem;line-height:1.65;margin-bottom:28px">Skupinová lekce jógy nebo pilates přímo na paddleboardu. Klid vody, příroda kolem a pohyb v rovnováze — zážitek, který nezapomenete.</p>
+
+              <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px">
+                <div style="background:#fff;border-radius:14px;padding:22px 18px;border:1px solid #c9edf0;box-shadow:0 6px 18px rgba(0,169,183,.12)">
+                  <div style="display:inline-block;padding:3px 10px;border-radius:20px;background:#d9fbf3;color:#007c95;font-size:.72rem;font-weight:800;text-transform:uppercase;margin-bottom:8px">Skupinová lekce</div>
+                  <div style="font-family:'Nunito',sans-serif;font-weight:900;font-size:1rem;color:#123c4a">Jóga / Pilates</div>
+                  <div style="color:#54737a;font-size:.82rem;margin:2px 0 10px">na paddleboardu · skupinově</div>
+                  <div style="font-family:'Nunito',sans-serif;font-size:1.8rem;font-weight:900;color:#007c95">100 <span style="font-size:.9rem;color:#54737a">Kč / hod.</span></div>
+                </div>
+                <div style="background:linear-gradient(135deg,#00a9b7 0%,#007c95 100%);border-radius:14px;padding:22px 18px;display:flex;flex-direction:column;justify-content:center;gap:10px">
+                  <div style="color:rgba(255,255,255,.75);font-size:.82rem;font-weight:600">Rezervace &amp; info</div>
+                  <a href="tel:+420722169349" style="display:inline-flex;align-items:center;gap:7px;padding:11px 16px;border-radius:8px;font-weight:900;background:#fff;color:#007c95;text-decoration:none;font-size:.88rem">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.41 2 2 0 0 1 3.6 1.22h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.82a16 16 0 0 0 6.29 6.29l.96-.95a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                    Zavolat
+                  </a>
+                  <a href="mailto:supustinadlabem@gmail.com" style="display:inline-flex;align-items:center;gap:7px;padding:9px 14px;border-radius:8px;font-weight:700;background:rgba(255,255,255,.15);border:1.5px solid rgba(255,255,255,.3);color:#fff;text-decoration:none;font-size:.85rem">
+                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+                    E-mail
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <!-- fotka vpravo -->
+            <div style="border-radius:20px;overflow:hidden;box-shadow:0 32px 80px rgba(0,169,183,.2);position:relative">
+              <img src="images/WhatsApp Image 2026-04-20 at 15.06.59.jpeg" alt="Skupinová jóga na paddleboardech na jezeře Milada" loading="lazy" style="width:100%;aspect-ratio:3/2;object-fit:cover;display:block">
+              <div style="position:absolute;left:18px;bottom:18px;background:#00a9b7;color:#fff;font-weight:900;font-size:.88rem;padding:8px 14px;border-radius:10px">100 Kč / hodina</div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <section class="night-section" id="nocni-jizda">
+      <div class="container night-layout">
+        <div class="night-copy reveal">
+          <span class="eyebrow">Noční plavba po Miladě</span>
+          <h2>Světla pod prknem, ticho na hladině a ryby přímo u vás</h2>
+          <p>Cca 2 hodiny na osvětlených paddleboardech po klidné hladině jezera Milada. Speciální LED osvětlení propouští světlo až ke dnu — pozorujete noční život přímo pod prknem.</p>
+          <div class="night-fish-tags" aria-label="Ryby v jezeře Milada">
+            <span class="night-fish-tag">🐟 Štiky</span>
+            <span class="night-fish-tag">🐠 Sumci</span>
+            <span class="night-fish-tag">🐡 Líni</span>
+            <span class="night-fish-tag">🦈 Okouni</span>
+            <span class="night-fish-tag">🦞 Raci</span>
+          </div>
+          <div class="night-price-badge">499 <span>Kč / osoba</span></div>
+          <div class="night-tags" aria-label="Detaily noční jízdy">
+            <span>~2 hodiny</span>
+            <span>LED osvětlení prkna</span>
+            <span>po domluvě</span>
+          </div>
+          <p style="color:rgba(255,255,255,.45);font-size:.88rem;font-style:italic;margin-top:6px">Místa jsou omezená — zavolejte a zajistěte si termín ještě dnes.</p>
+          <div style="display:flex;flex-wrap:wrap;gap:12px;margin-top:18px">
+            <a class="btn-white-call" href="tel:+420722169349">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.41 2 2 0 0 1 3.6 1.22h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.82a16 16 0 0 0 6.29 6.29l.96-.95a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+              +420 722 169 349
+            </a>
+            <a class="btn-ghost-mail" href="mailto:supustinadlabem@gmail.com">Napsat e-mail</a>
+          </div>
+        </div>
+        <div class="night-stage reveal" aria-label="Noční glow plavba na Miladě">
+          <figure class="night-card main">
+            <img src="images/nocni-glow-ride.png" alt="Skupina na osvětlených paddleboardech při noční plavbě po jezeře Milada" loading="lazy">
+          </figure>
+          <figure class="night-card side">
+            <img src="images/nocni-atmosfera.jpg" alt="Nasvícený paddleboard na tmavé hladině jezera" loading="lazy">
+          </figure>
+          <figure class="night-card wide">
+            <img src="images/soumrak-na-jezere.jpg" alt="Soumrak nad jezerem Milada" loading="lazy">
+          </figure>
+          <span class="night-glow-line" aria-hidden="true"></span>
+          <div class="night-badge">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#facc15" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="margin-bottom:3px"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+            Glow ride Milada<br>Zážitek, na který se nezapomíná.
+          </div>
         </div>
       </div>
     </section>
 
-    <section class="section alt" id="pro-koho">
+
+
+    <!-- Speciální nabídky -->
+    <section id="specials" style="background:#0d1a26;padding:96px 0">
       <div class="container">
-        <div class="section-header reveal">
-          <span class="eyebrow">Pro koho</span>
-          <h2>Na vodu můžete sami, ve dvou i s celou partou</h2>
-          <p>Stačí chuť vyrazit ven. Paddleboard se hodí pro klidnou projížďku, aktivní odpoledne i program pro skupinu.</p>
+        <p style="display:flex;align-items:center;gap:8px;font-weight:800;font-size:.78rem;text-transform:uppercase;letter-spacing:.07em;color:rgba(250,204,21,.85);margin:0 0 36px">
+          <span style="width:10px;height:10px;border-radius:50%;background:#facc15;display:inline-block;flex:0 0 auto"></span>
+          Speciální nabídky · Zážitky navíc
+        </p>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px">
+
+          <!-- Noční plavba -->
+          <div style="border-radius:20px;padding:36px 30px;background:linear-gradient(140deg,#040c1e 0%,#08183a 50%,#0a2f50 100%);box-shadow:0 20px 48px rgba(0,0,0,.3);position:relative">
+            <div style="position:absolute;top:20px;right:20px;font-size:.82rem;font-weight:700;color:rgba(255,255,255,.3)">🌙 Glow ride</div>
+            <div style="display:inline-block;padding:5px 12px;border-radius:20px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.18);font-size:.78rem;font-weight:700;color:rgba(255,255,255,.7);margin-bottom:18px">Special — večerní zážitek</div>
+            <div style="width:44px;height:44px;border-radius:12px;background:rgba(255,255,255,.1);display:flex;align-items:center;justify-content:center;margin-bottom:14px">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color:#fff"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+            </div>
+            <h3 style="font-family:'Nunito',sans-serif;font-size:1.4rem;font-weight:900;color:#fff;margin:0 0 10px">Noční plavba po Miladě</h3>
+            <p style="color:rgba(255,255,255,.7);font-size:.95rem;line-height:1.6;margin-bottom:18px">Cca 2 hodiny na osvětlených paddleboardech. Pozorujete ryby přímo pod prknem — štiky, sumce, líny, okouny i raky.</p>
+            <div style="font-family:'Nunito',sans-serif;font-size:2.4rem;font-weight:900;color:#facc15;line-height:1">499 Kč</div>
+            <div style="color:rgba(255,255,255,.45);font-size:.85rem;margin:4px 0 14px">/ osoba · ~2 hodiny</div>
+            <p style="color:rgba(255,255,255,.38);font-size:.83rem;font-style:italic;margin-bottom:16px">Večerní termíny obsazují rychle — zavolejte a zajistěte si místo ještě dnes.</p>
+            <div style="display:flex;flex-wrap:wrap;gap:10px">
+              <a href="tel:+420722169349" style="display:inline-flex;align-items:center;gap:7px;padding:12px 18px;border-radius:8px;font-weight:900;background:#fff;color:#007c95;text-decoration:none;font-size:.9rem"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.41 2 2 0 0 1 3.6 1.22h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.82a16 16 0 0 0 6.29 6.29l.96-.95a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>Zavolat a rezervovat</a>
+              <a href="mailto:supustinadlabem@gmail.com" style="display:inline-flex;align-items:center;gap:7px;padding:11px 16px;border-radius:8px;font-weight:700;background:rgba(255,255,255,.1);border:1.5px solid rgba(255,255,255,.22);color:rgba(255,255,255,.85);text-decoration:none;font-size:.9rem"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>Napsat e-mail</a>
+            </div>
+          </div>
+
+          <!-- Kurz Wing -->
+          <div style="border-radius:20px;padding:36px 30px;background:linear-gradient(140deg,#006d84 0%,#00a9b7 50%,#22c3d5 100%);box-shadow:0 20px 48px rgba(0,0,0,.3);position:relative">
+            <div style="position:absolute;top:20px;right:20px;font-size:.82rem;font-weight:700;color:rgba(255,255,255,.3)">🪁 Wing</div>
+            <div style="display:inline-block;padding:5px 12px;border-radius:20px;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);font-size:.78rem;font-weight:700;color:rgba(255,255,255,.75);margin-bottom:18px">Kurz — 2 dny</div>
+            <div style="width:44px;height:44px;border-radius:12px;background:rgba(255,255,255,.12);display:flex;align-items:center;justify-content:center;margin-bottom:14px">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color:#fff"><path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z"/></svg>
+            </div>
+            <h3 style="font-family:'Nunito',sans-serif;font-size:1.4rem;font-weight:900;color:#fff;margin:0 0 10px">Kurz Wing</h3>
+            <p style="color:rgba(255,255,255,.75);font-size:.95rem;line-height:1.6;margin-bottom:18px">Kompletní kurz wingboardingu za 2 dny pod vedením instruktora. Pro naprosté začátečníky i ty, kteří chtějí posunout techniku.</p>
+            <div style="font-family:'Nunito',sans-serif;font-size:2.4rem;font-weight:900;color:#fff;line-height:1">2 000 Kč</div>
+            <div style="color:rgba(255,255,255,.5);font-size:.85rem;margin:4px 0 14px">/ kurz · 2 dny</div>
+            <p style="color:rgba(255,255,255,.42);font-size:.83rem;font-style:italic;margin-bottom:16px">Termíny se obsazují rychle — zavolejte pro aktuální volné místo v kurzu.</p>
+            <div style="display:flex;flex-wrap:wrap;gap:10px">
+              <a href="tel:+420722169349" style="display:inline-flex;align-items:center;gap:7px;padding:12px 18px;border-radius:8px;font-weight:900;background:#fff;color:#007c95;text-decoration:none;font-size:.9rem"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.41 2 2 0 0 1 3.6 1.22h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.82a16 16 0 0 0 6.29 6.29l.96-.95a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>Zavolat a přihlásit se</a>
+              <a href="mailto:supustinadlabem@gmail.com" style="display:inline-flex;align-items:center;gap:7px;padding:11px 16px;border-radius:8px;font-weight:700;background:rgba(255,255,255,.12);border:1.5px solid rgba(255,255,255,.25);color:rgba(255,255,255,.9);text-decoration:none;font-size:.9rem"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>Napsat e-mail</a>
+            </div>
+          </div>
+
         </div>
-        <div class="grid">
-          <article class="card reveal">
-            <div class="icon">1</div>
-            <h3>Veřejnost</h3>
-            <p>Přijďte si půjčit paddleboard a užijte si Miladu vlastním tempem.</p>
-          </article>
-          <article class="card reveal">
-            <div class="icon">2</div>
-            <h3>Parta přátel</h3>
-            <p>Lehký pohyb, voda, smích a dobrý plán na společné letní odpoledne.</p>
-          </article>
-          <article class="card reveal">
-            <div class="icon">3</div>
-            <h3>Rodiny</h3>
-            <p>Příjemný výlet k vodě pro rodiče i děti, kteří chtějí zažít něco aktivního.</p>
-          </article>
-          <article class="card reveal">
-            <div class="icon">4</div>
-            <h3>Školy a skupiny</h3>
-            <p>Možnost domluvit skupinovou aktivitu, sportovní den nebo program u vody.</p>
-          </article>
+      </div>
+    </section>
+
+    <section class="section" id="o-nas" style="padding:96px 0">
+      <div class="container">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center">
+
+          <!-- fotka vlevo -->
+          <div style="border-radius:20px;overflow:hidden;box-shadow:0 32px 80px rgba(0,0,0,.12);position:relative">
+            <img src="images/dsafdf.jpeg" alt="Skupina dětí na mega paddleboardu na jezeře Milada" loading="lazy" style="width:100%;aspect-ratio:4/3;object-fit:cover;display:block">
+            <div style="position:absolute;left:18px;bottom:18px;background:#00a9b7;color:#fff;font-weight:900;font-size:.88rem;padding:8px 14px;border-radius:10px">Jezero Milada · Ústecký kraj</div>
+          </div>
+
+          <!-- obsah vpravo -->
+          <div>
+            <p style="display:flex;align-items:center;gap:8px;font-weight:800;font-size:.78rem;text-transform:uppercase;letter-spacing:.07em;color:#007c95;margin:0 0 14px">
+              <span style="width:10px;height:10px;border-radius:50%;background:#00a9b7;display:inline-block;flex:0 0 auto"></span>
+              O nás a o místě
+            </p>
+            <h2 style="font-family:'Nunito',sans-serif;font-size:2.2rem;font-weight:900;color:#123c4a;line-height:1.1;margin:0 0 16px">Milada — skvělé místo,<br>kde se vypne i pohne</h2>
+            <p style="color:#2e6b7a;font-size:1rem;line-height:1.65;margin-bottom:14px">Paddleboardy Milada je půjčovna na jezeře Milada v Ústeckém kraji. Přijedete k vodě, vezmete prkno a vyrazíte — na klidnou projížďku, lehký trénink nebo společný výlet s rodinou.</p>
+            <p style="color:#2e6b7a;font-size:1rem;line-height:1.65;margin-bottom:28px">Jezero Milada láká čistou vodou, otevřeným prostorem a letní atmosférou. Paddleboard zvládnete i bez zkušeností — sport, relax a zábava v jednom.</p>
+
+            <div style="display:flex;flex-wrap:wrap;gap:10px">
+              <span style="display:inline-flex;align-items:center;gap:6px;padding:8px 14px;border-radius:20px;background:#d9fbf3;color:#007c95;font-size:.82rem;font-weight:700">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                Čistá voda
+              </span>
+              <span style="display:inline-flex;align-items:center;gap:6px;padding:8px 14px;border-radius:20px;background:#d9fbf3;color:#007c95;font-size:.82rem;font-weight:700">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                Skupiny i jednotlivci
+              </span>
+              <span style="display:inline-flex;align-items:center;gap:6px;padding:8px 14px;border-radius:20px;background:#d9fbf3;color:#007c95;font-size:.82rem;font-weight:700">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                Sezóna: jaro–podzim
+              </span>
+              <span style="display:inline-flex;align-items:center;gap:6px;padding:8px 14px;border-radius:20px;background:#d9fbf3;color:#007c95;font-size:.82rem;font-weight:700">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+                Od 180 Kč / hodina
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section alt" id="pro-koho" style="background:#e9fbf8;padding:96px 0">
+      <div class="container">
+        <div style="text-align:center;max-width:640px;margin:0 auto 48px">
+          <p style="display:inline-flex;align-items:center;gap:8px;font-weight:800;font-size:.78rem;text-transform:uppercase;letter-spacing:.07em;color:#007c95;margin:0 0 14px">
+            <span style="width:10px;height:10px;border-radius:50%;background:#00a9b7;display:inline-block"></span>
+            Pro koho
+          </p>
+          <h2 style="font-family:'Nunito',sans-serif;font-size:2.2rem;font-weight:900;color:#123c4a;line-height:1.1;margin:0 0 14px">Na vodu můžete sami, ve dvou i s celou partou</h2>
+          <p style="color:#2e6b7a;font-size:1rem;line-height:1.65">Stačí chuť vyrazit ven. Paddleboard se hodí pro klidnou projížďku, aktivní odpoledne i program pro skupinu.</p>
+        </div>
+
+        <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:20px">
+
+          <div style="background:#fff;border-radius:18px;padding:28px 22px;border:1px solid #c9edf0;box-shadow:0 6px 24px rgba(0,169,183,.09)" class="reveal">
+            <div style="width:48px;height:48px;border-radius:14px;background:linear-gradient(135deg,#00a9b7,#007c95);display:flex;align-items:center;justify-content:center;margin-bottom:16px">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+            </div>
+            <h3 style="font-family:'Nunito',sans-serif;font-size:1.1rem;font-weight:900;color:#123c4a;margin:0 0 8px">Veřejnost</h3>
+            <p style="color:#54737a;font-size:.9rem;line-height:1.6;margin:0">Přijďte si půjčit paddleboard a užijte si Miladu vlastním tempem.</p>
+          </div>
+
+          <div style="background:#fff;border-radius:18px;padding:28px 22px;border:1px solid #c9edf0;box-shadow:0 6px 24px rgba(0,169,183,.09)" class="reveal">
+            <div style="width:48px;height:48px;border-radius:14px;background:linear-gradient(135deg,#00a9b7,#007c95);display:flex;align-items:center;justify-content:center;margin-bottom:16px">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+            </div>
+            <h3 style="font-family:'Nunito',sans-serif;font-size:1.1rem;font-weight:900;color:#123c4a;margin:0 0 8px">Parta přátel</h3>
+            <p style="color:#54737a;font-size:.9rem;line-height:1.6;margin:0">Lehký pohyb, voda, smích a dobrý plán na společné letní odpoledne.</p>
+          </div>
+
+          <div style="background:#fff;border-radius:18px;padding:28px 22px;border:1px solid #c9edf0;box-shadow:0 6px 24px rgba(0,169,183,.09)" class="reveal">
+            <div style="width:48px;height:48px;border-radius:14px;background:linear-gradient(135deg,#00a9b7,#007c95);display:flex;align-items:center;justify-content:center;margin-bottom:16px">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+            </div>
+            <h3 style="font-family:'Nunito',sans-serif;font-size:1.1rem;font-weight:900;color:#123c4a;margin:0 0 8px">Rodiny</h3>
+            <p style="color:#54737a;font-size:.9rem;line-height:1.6;margin:0">Příjemný výlet k vodě pro rodiče i děti, kteří chtějí zažít něco aktivního.</p>
+          </div>
+
+          <div style="background:#fff;border-radius:18px;padding:28px 22px;border:1px solid #c9edf0;box-shadow:0 6px 24px rgba(0,169,183,.09)" class="reveal">
+            <div style="width:48px;height:48px;border-radius:14px;background:linear-gradient(135deg,#00a9b7,#007c95);display:flex;align-items:center;justify-content:center;margin-bottom:16px">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+            </div>
+            <h3 style="font-family:'Nunito',sans-serif;font-size:1.1rem;font-weight:900;color:#123c4a;margin:0 0 8px">Školy a skupiny</h3>
+            <p style="color:#54737a;font-size:.9rem;line-height:1.6;margin:0">Program pro třídu, sportovní den nebo skupinovou aktivitu u vody.</p>
+          </div>
+
         </div>
       </div>
     </section>
@@ -1749,50 +2110,6 @@
       </div>
     </section>
 
-    <section class="section" id="proc-milada">
-      <div class="container two-col">
-        <div class="highlight-panel reveal">
-          <strong>Proč si vybrat Miladu?</strong>
-          <p>Protože výlet k vodě může být jednoduchý, dostupný a plný pohybu. Milada nabízí příjemné prostředí pro sport i relax a paddleboard přidá přesně tu správnou dávku zážitku.</p>
-          <ul class="mini-list">
-            <li>hezké prostředí u jezera</li>
-            <li>aktivní zábava pro jednotlivce, páry i rodiny</li>
-            <li>vhodné i pro začátečníky</li>
-            <li>dobrý tip na výlet v Ústeckém kraji</li>
-          </ul>
-        </div>
-        <div class="reasons">
-          <div class="reason reveal">
-            <div class="icon">≈</div>
-            <div>
-              <b>Voda a klid</b>
-              <p>Čistá voda, otevřený prostor a letní atmosféra bez zbytečného spěchu.</p>
-            </div>
-          </div>
-          <div class="reason reveal">
-            <div class="icon">☀</div>
-            <div>
-              <b>Aktivní odpočinek</b>
-              <p>Pohyb na čerstvém vzduchu, který může být pohodový i svižný.</p>
-            </div>
-          </div>
-          <div class="reason reveal">
-            <div class="icon">✓</div>
-            <div>
-              <b>Dobré pro začátek</b>
-              <p>Paddleboard je přístupná aktivita, kterou si užijí i nováčci.</p>
-            </div>
-          </div>
-          <div class="reason reveal">
-            <div class="icon">→</div>
-            <div>
-              <b>Tip na výlet</b>
-              <p>Ideální plán pro teplý den v okolí Ústí nad Labem.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
 
     <section class="section alt" id="galerie">
       <div class="container">
@@ -1826,37 +2143,6 @@
       </div>
     </section>
 
-    <section class="night-section" id="nocni-jizda">
-      <div class="container night-layout">
-        <div class="night-copy reveal">
-          <span class="eyebrow">Noční jízda na Miladě</span>
-          <h2>Světla pod prknem, tichá hladina a úplně jiný zážitek z jezera</h2>
-          <p>Když se Milada ztiší, voda dostane filmovou atmosféru. Noční jízdu s nasvícenými paddleboardy berte jako speciální zážitek k domluvě, ideální pro partu, skupinu nebo večer, který má mít něco navíc.</p>
-          <div class="night-tags" aria-label="Noční jízda">
-            <span>světla na vodě</span>
-            <span>večerní atmosféra</span>
-            <span>skupina po domluvě</span>
-          </div>
-          <div class="cta-row">
-            <a class="btn btn-primary" href="tel:+420722169349">Zeptat se telefonicky</a>
-            <a class="btn btn-secondary" href="mailto:paddleboardtrips@gmail.com">Domluvit e-mailem</a>
-          </div>
-        </div>
-        <div class="night-stage reveal" aria-label="Fotky z noční jízdy na Miladě">
-          <figure class="night-card main">
-            <img src="images/soumrak-na-jezere.jpg" alt="Paddleboardy se světly na jezeře při soumraku" loading="lazy">
-          </figure>
-          <figure class="night-card side">
-            <img src="images/nocni-atmosfera.jpg" alt="Nasvícený paddleboard na tmavé hladině jezera" loading="lazy">
-          </figure>
-          <figure class="night-card wide">
-            <img src="images/vecerni-voda.jpg" alt="Noční jízda na paddleboardech na jezeře Milada" loading="lazy">
-          </figure>
-          <span class="night-glow-line" aria-hidden="true"></span>
-          <div class="night-badge">Glow ride Milada. Zážitek, na který se nezapomíná.</div>
-        </div>
-      </div>
-    </section>
 
     <section class="section map-section" id="mapa">
       <div class="container map-layout">
@@ -1867,7 +2153,7 @@
           <div class="map-actions">
             <a class="btn btn-primary" href="https://www.google.com/maps/dir/?api=1&amp;destination=50.6474905%2C13.9721083&amp;destination_place_id=ChIJx-0fe_uFCUcRXSAYOCpKl4c" target="_blank" rel="noopener">Spustit navigaci</a>
             <a class="btn btn-secondary" href="tel:+420722169349">Zavolat cestou</a>
-            <a class="btn btn-secondary" href="mailto:paddleboardtrips@gmail.com">Napsat e-mail</a>
+            <a class="btn btn-secondary" href="mailto:supustinadlabem@gmail.com">Napsat e-mail</a>
           </div>
           <span class="map-small">Paddleboardy Milada, 50.6474905, 13.9721083</span>
         </div>
@@ -1882,23 +2168,82 @@
       </div>
     </section>
 
-    <section class="section" id="kontakt">
-      <div class="container contact-layout">
-        <div class="contact-box reveal">
-          <span class="eyebrow">Kontakt</span>
-          <h2>Chcete na vodu? Zavolejte nebo napište</h2>
-          <p>Nejrychlejší cesta k rezervaci je telefon. Pokud řešíte školu nebo skupinu, napište e-mail s krátkou představou termínu a počtu lidí.</p>
-          <div class="contact-list">
-            <a href="tel:+420722169349"><span>Telefon</span><strong>+420 722 169 349</strong></a>
-            <a href="mailto:paddleboardtrips@gmail.com"><span>E-mail</span><strong>paddleboardtrips@gmail.com</strong></a>
-            <span><span>Lokalita</span><strong>Jezero Milada, 401 00 Ústí nad Labem</strong></span>
+    <section class="section" id="kontakt" style="padding:96px 0">
+      <div class="container">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start">
+
+          <!-- Kontaktní info -->
+          <div>
+            <p style="display:flex;align-items:center;gap:8px;font-weight:800;font-size:.78rem;text-transform:uppercase;letter-spacing:.07em;color:#007c95;margin:0 0 14px">
+              <span style="width:10px;height:10px;border-radius:50%;background:#00a9b7;display:inline-block;flex:0 0 auto"></span>
+              Kontakt
+            </p>
+            <h2 style="font-family:'Nunito',sans-serif;font-size:2.2rem;font-weight:900;color:#123c4a;line-height:1.1;margin:0 0 16px">Chcete na vodu?<br>Zavolejte nebo napište</h2>
+            <p style="color:#2e6b7a;font-size:1rem;line-height:1.65;margin-bottom:28px">Nejrychlejší cesta k rezervaci je telefon. Skupiny a školy — napište e-mail s termínem a počtem lidí.</p>
+
+            <div style="display:flex;flex-direction:column;gap:14px">
+              <a href="tel:+420722169349" style="display:flex;align-items:center;gap:16px;padding:18px 20px;border-radius:14px;background:#d9fbf3;border:1px solid #c9edf0;text-decoration:none">
+                <div style="width:42px;height:42px;border-radius:12px;background:#00a9b7;display:flex;align-items:center;justify-content:center;flex:0 0 auto">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.41 2 2 0 0 1 3.6 1.22h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.82a16 16 0 0 0 6.29 6.29l.96-.95a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                </div>
+                <div>
+                  <div style="font-size:.75rem;font-weight:700;color:#54737a;text-transform:uppercase;letter-spacing:.05em;margin-bottom:2px">Telefon</div>
+                  <div style="font-family:'Nunito',sans-serif;font-weight:900;font-size:1.1rem;color:#007c95">+420 722 169 349</div>
+                </div>
+              </a>
+
+              <a href="mailto:supustinadlabem@gmail.com" style="display:flex;align-items:center;gap:16px;padding:18px 20px;border-radius:14px;background:#d9fbf3;border:1px solid #c9edf0;text-decoration:none">
+                <div style="width:42px;height:42px;border-radius:12px;background:#00a9b7;display:flex;align-items:center;justify-content:center;flex:0 0 auto">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+                </div>
+                <div>
+                  <div style="font-size:.75rem;font-weight:700;color:#54737a;text-transform:uppercase;letter-spacing:.05em;margin-bottom:2px">E-mail</div>
+                  <div style="font-family:'Nunito',sans-serif;font-weight:900;font-size:1rem;color:#007c95">supustinadlabem@gmail.com</div>
+                </div>
+              </a>
+            </div>
           </div>
-        </div>
-        <div class="contact-box contact-cta reveal">
-          <h3>Rezervovat telefonicky</h3>
-          <p>Domluvte si paddleboard na Miladě a vyrazte za vodou, sluncem a aktivním odpočinkem.</p>
-          <a class="btn btn-primary" href="tel:+420722169349">Zavolat +420 722 169 349</a>
-          <a class="btn btn-secondary" href="mailto:paddleboardtrips@gmail.com">Napsat e-mail</a>
+
+          <!-- Jak nás najít -->
+          <div style="background:#f0faf9;border-radius:20px;padding:32px;border:1px solid #c9edf0">
+            <h3 style="font-family:'Nunito',sans-serif;font-size:1.2rem;font-weight:900;color:#123c4a;margin:0 0 24px">Jak nás najít</h3>
+
+            <div style="display:flex;flex-direction:column;gap:20px">
+              <div style="display:flex;align-items:flex-start;gap:14px">
+                <div style="width:38px;height:38px;border-radius:10px;background:#00a9b7;display:flex;align-items:center;justify-content:center;flex:0 0 auto;margin-top:1px">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                </div>
+                <div>
+                  <div style="font-size:.75rem;font-weight:700;color:#54737a;text-transform:uppercase;letter-spacing:.05em;margin-bottom:3px">Lokalita</div>
+                  <div style="font-weight:700;color:#123c4a">Jezero Milada</div>
+                  <div style="color:#54737a;font-size:.9rem">401 00 Ústí nad Labem, Ústecký kraj</div>
+                </div>
+              </div>
+
+              <div style="display:flex;align-items:flex-start;gap:14px">
+                <div style="width:38px;height:38px;border-radius:10px;background:#00a9b7;display:flex;align-items:center;justify-content:center;flex:0 0 auto;margin-top:1px">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                </div>
+                <div>
+                  <div style="font-size:.75rem;font-weight:700;color:#54737a;text-transform:uppercase;letter-spacing:.05em;margin-bottom:3px">Provozní doba</div>
+                  <div style="font-weight:700;color:#123c4a">Jaro až podzim</div>
+                  <div style="color:#54737a;font-size:.9rem">Termíny po dohodě — volejte nebo pište</div>
+                </div>
+              </div>
+
+              <div style="display:flex;align-items:flex-start;gap:14px">
+                <div style="width:38px;height:38px;border-radius:10px;background:#00a9b7;display:flex;align-items:center;justify-content:center;flex:0 0 auto;margin-top:1px">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 10c-.83 0-1.5-.67-1.5-1.5v-5c0-.83.67-1.5 1.5-1.5s1.5.67 1.5 1.5v5c0 .83-.67 1.5-1.5 1.5z"/><path d="M20.5 10H19V8.5c0-.83.67-1.5 1.5-1.5s1.5.67 1.5 1.5-.67 1.5-1.5 1.5z"/><path d="M9.5 14c.83 0 1.5.67 1.5 1.5v5c0 .83-.67 1.5-1.5 1.5S8 21.33 8 20.5v-5c0-.83.67-1.5 1.5-1.5z"/><path d="M3.5 14H5v1.5c0 .83-.67 1.5-1.5 1.5S2 16.33 2 15.5 2.67 14 3.5 14z"/><path d="M14 14.5c0-.83.67-1.5 1.5-1.5h5c.83 0 1.5.67 1.5 1.5s-.67 1.5-1.5 1.5h-5c-.83 0-1.5-.67-1.5-1.5z"/><path d="M15.5 19H14v1.5c0 .83.67 1.5 1.5 1.5s1.5-.67 1.5-1.5-.67-1.5-1.5-1.5z"/><path d="M10 9.5C10 8.67 9.33 8 8.5 8H3.5C2.67 8 2 8.67 2 9.5S2.67 11 3.5 11h5c.83 0 1.5-.67 1.5-1.5z"/><path d="M8.5 5H10V3.5C10 2.67 9.33 2 8.5 2S7 2.67 7 3.5 7.67 5 8.5 5z"/></svg>
+                </div>
+                <div>
+                  <div style="font-size:.75rem;font-weight:700;color:#54737a;text-transform:uppercase;letter-spacing:.05em;margin-bottom:3px">Rezervace</div>
+                  <div style="font-weight:700;color:#123c4a">Nejrychleji telefonem</div>
+                  <div style="color:#54737a;font-size:.9rem">Skupiny a školy — e-mailem</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
         </div>
       </div>
     </section>
@@ -1911,7 +2256,7 @@
         <span>Půjčovna paddleboardů na jezeře Milada</span>
       </div>
       <div>
-        <span>+420 722 169 349 | paddleboardtrips@gmail.com</span><br>
+        <span>+420 722 169 349 | supustinadlabem@gmail.com</span><br>
         <span>Jezero Milada, 401 00 Ústí nad Labem, Ústecký kraj</span>
       </div>
     </div>
