@@ -283,6 +283,12 @@
     .badge-v9  { background: rgba(0,196,181,.2); color: #5eead4; border: 1px solid rgba(0,196,181,.3); }
     .badge-v10 { background: rgba(255,51,102,.2); color: #fca5a5; border: 1px solid rgba(255,51,102,.3); }
     .badge-v11 { background: rgba(139,92,246,.2); color: #c4b5fd; border: 1px solid rgba(139,92,246,.3); }
+    .badge-c1  { background: rgba(16,185,129,.2); color: #6ee7b7; border: 1px solid rgba(16,185,129,.3); }
+    .badge-c2  { background: rgba(20,184,166,.2); color: #5eead4; border: 1px solid rgba(20,184,166,.3); }
+    .badge-c3  { background: rgba(14,165,233,.2); color: #7dd3fc; border: 1px solid rgba(14,165,233,.3); }
+    .badge-c4  { background: rgba(99,102,241,.2); color: #a5b4fc; border: 1px solid rgba(99,102,241,.3); }
+    .badge-c5  { background: rgba(244,63,94,.2);  color: #fda4af; border: 1px solid rgba(244,63,94,.3); }
+    .badge-c6  { background: rgba(245,158,11,.2); color: #fcd34d; border: 1px solid rgba(245,158,11,.3); }
 
     /* ── EMPTY STATE ── */
     .empty { text-align: center; padding: 60px; color: var(--muted); }
@@ -294,7 +300,7 @@
   <header class="header">
     <div class="header-logo">webdo<span>24</span> <span style="color:var(--muted);font-weight:400;font-size:.9rem">— Dashboard variant</span></div>
     <div class="header-tabs">
-      <button class="tab-btn all-btn active" onclick="filterVariants('all')">Všechny (11)</button>
+      <button class="tab-btn all-btn active" onclick="filterVariants('all')">Všechny (17)</button>
       <button class="tab-btn" onclick="filterVariants('v1')">V1</button>
       <button class="tab-btn" onclick="filterVariants('v2')">V2</button>
       <button class="tab-btn" onclick="filterVariants('v3')">V3</button>
@@ -306,6 +312,14 @@
       <button class="tab-btn" onclick="filterVariants('v9')">V9</button>
       <button class="tab-btn" onclick="filterVariants('v10')">V10</button>
       <button class="tab-btn" onclick="filterVariants('v11')">V11</button>
+      <button class="tab-btn" style="border-color:rgba(16,185,129,.4);color:#6ee7b7" onclick="filterVariants('c1')">C1</button>
+      <button class="tab-btn" style="border-color:rgba(20,184,166,.4);color:#5eead4" onclick="filterVariants('c2')">C2</button>
+      <button class="tab-btn" style="border-color:rgba(14,165,233,.4);color:#7dd3fc" onclick="filterVariants('c3')">C3</button>
+      <button class="tab-btn" style="border-color:rgba(99,102,241,.4);color:#a5b4fc" onclick="filterVariants('c4')">C4</button>
+      <button class="tab-btn" style="border-color:rgba(244,63,94,.4);color:#fda4af"  onclick="filterVariants('c5')">C5</button>
+      <button class="tab-btn" style="border-color:rgba(245,158,11,.4);color:#fcd34d" onclick="filterVariants('c6')">C6</button>
+      <a href="v2.1/index.html" style="padding:7px 16px;border-radius:8px;font-size:.82rem;font-weight:700;border:1px solid rgba(124,58,237,.4);background:rgba(124,58,237,.15);color:#a78bfa;text-decoration:none;white-space:nowrap;display:flex;align-items:center;gap:5px">v2.1 →</a>
+      <a href="weby.html" style="padding:7px 16px;border-radius:8px;font-size:.82rem;font-weight:700;border:1px solid rgba(255,255,255,.15);background:rgba(255,255,255,.06);color:#f1f5f9;text-decoration:none;white-space:nowrap;display:flex;align-items:center;gap:5px">Ukázky webů →</a>
     </div>
   </header>
 
@@ -314,9 +328,9 @@
     <!-- HERO SUMMARY -->
     <div class="dash-hero">
       <h1>Varianty webu webdo24.cz</h1>
-      <p>11 různých verzí landing page — různý positioning, cílová skupina, obchodní model a cenová strategie. Porovnejte, vyberte, spusťte.</p>
+      <p>17 verzí landing page — různý positioning, cílová skupina, obchodní model a cenová strategie. V1–V11 jsou SPA verze, C1–C6 jsou multi-file verze.</p>
       <div class="dash-stats">
-        <div class="ds-item"><span class="ds-num" style="color:var(--primary)">11</span><span class="ds-label">variant</span></div>
+        <div class="ds-item"><span class="ds-num" style="color:var(--primary)">17</span><span class="ds-label">variant</span></div>
         <div class="ds-item"><span class="ds-num" style="color:var(--accent)">4</span><span class="ds-label">obchodní modely</span></div>
         <div class="ds-item"><span class="ds-num" style="color:var(--orange)">24 900 Kč</span><span class="ds-label">max. základní cena (V9–V11)</span></div>
         <div class="ds-item"><span class="ds-num" style="color:var(--blue)">V10</span><span class="ds-label">nejkomplexnější varianta</span></div>
@@ -952,6 +966,329 @@
         </div>
       </div>
 
+      <!-- C1 -->
+      <div class="variant-card" data-variant="c1">
+        <div class="vc-preview">
+          <iframe src="customers-webs/c1/index.html" loading="lazy" title="Varianta C1"></iframe>
+          <div class="vc-preview-overlay"></div>
+          <span class="vc-badge badge-c1">C1</span>
+          <a href="customers-webs/c1/index.html" target="_blank" class="vc-open-btn">Otevřít →</a>
+        </div>
+        <div class="vc-body">
+          <div>
+            <div class="vc-version">Varianta C1 · Multi-file klasická <span class="badge" style="background:rgba(16,185,129,.15);color:#6ee7b7;border:1px solid rgba(16,185,129,.3)">webdo24.cz 1</span></div>
+            <div class="vc-title">Profesionální web do 24 hodin</div>
+            <div class="vc-subtitle">Původní multi-file verze — urgency bar, countdown, srovnávací tabulka agentura vs. DIY</div>
+          </div>
+          <div class="vc-target">
+            <div class="vc-target-label">Cílová skupina</div>
+            <div class="vc-target-text">Živnostníci, řemeslníci, malé firmy. Přímá konkurence agenturám — levnější, rychlejší, přímá komunikace.</div>
+          </div>
+          <div class="vc-tags">
+            <span class="vc-tag">Multi-file (CSS/JS)</span>
+            <span class="vc-tag">Urgency countdown</span>
+            <span class="vc-tag">30denní garance</span>
+            <span class="vc-tag">9 900 Kč</span>
+          </div>
+          <div>
+            <div style="font-size:.7rem;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;margin-bottom:4px">Cena</div>
+            <div class="vc-price" style="color:#6ee7b7">9 900 Kč <small style="color:var(--text2)">· jednorázově</small></div>
+          </div>
+          <div class="vc-pros-cons">
+            <div class="pros">
+              <div class="vc-list-label">Silné stránky</div>
+              <ul class="vc-list">
+                <li>Urgency countdown tlačí k akci</li>
+                <li>Srovnávací tabulka agentura vs. DIY</li>
+                <li>Oddělené CSS/JS soubory = snazší úpravy</li>
+                <li>Klasický, důvěryhodný layout</li>
+              </ul>
+            </div>
+            <div class="cons">
+              <div class="vc-list-label">Slabé stránky</div>
+              <ul class="vc-list">
+                <li>Multi-file = složitější deploy</li>
+                <li>Bez subscription modelu</li>
+                <li>Žádný AI/Hold prvek</li>
+              </ul>
+            </div>
+          </div>
+          <div class="vc-footer">
+            <a href="customers-webs/c1/index.html" target="_blank" class="btn-primary" style="background:#10b981">Otevřít C1</a>
+            <a href="#" class="btn-ghost-sm" onclick="openDetail('c1');return false">Detailní náhled</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- C2 -->
+      <div class="variant-card" data-variant="c2">
+        <div class="vc-preview">
+          <iframe src="customers-webs/c2/index.html" loading="lazy" title="Varianta C2"></iframe>
+          <div class="vc-preview-overlay"></div>
+          <span class="vc-badge badge-c2">C2</span>
+          <a href="customers-webs/c2/index.html" target="_blank" class="vc-open-btn">Otevřít →</a>
+        </div>
+        <div class="vc-body">
+          <div>
+            <div class="vc-version">Varianta C2 · Multi-file klasická II <span class="badge" style="background:rgba(20,184,166,.15);color:#5eead4;border:1px solid rgba(20,184,166,.3)">webdo24.cz 2</span></div>
+            <div class="vc-title">Profesionální web do 24 hodin</div>
+            <div class="vc-subtitle">Vylepšená multi-file varianta C1 — hamburger menu, mobilní optimalizace, čistší kód</div>
+          </div>
+          <div class="vc-target">
+            <div class="vc-target-label">Cílová skupina</div>
+            <div class="vc-target-text">Stejná jako C1 — živnostníci a malé firmy. Lepší mobilní zážitek pro zákazníky na telefonu.</div>
+          </div>
+          <div class="vc-tags">
+            <span class="vc-tag">Multi-file (CSS/JS)</span>
+            <span class="vc-tag">Mobilní hamburger menu</span>
+            <span class="vc-tag">30denní garance</span>
+            <span class="vc-tag">9 900 Kč</span>
+          </div>
+          <div>
+            <div style="font-size:.7rem;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;margin-bottom:4px">Cena</div>
+            <div class="vc-price" style="color:#14b8a6">9 900 Kč <small style="color:var(--text2)">· jednorázově</small></div>
+          </div>
+          <div class="vc-pros-cons">
+            <div class="pros">
+              <div class="vc-list-label">Silné stránky</div>
+              <ul class="vc-list">
+                <li>Hamburger menu = lepší UX na mobilu</li>
+                <li>Oddělené soubory = snadné přizpůsobení</li>
+                <li>Urgency countdown zachován</li>
+                <li>A/B test mobilního UX vs. C1</li>
+              </ul>
+            </div>
+            <div class="cons">
+              <div class="vc-list-label">Slabé stránky</div>
+              <ul class="vc-list">
+                <li>Identický positioning jako C1</li>
+                <li>Žádný subscription ani Hold prvek</li>
+                <li>Multi-file deploy</li>
+              </ul>
+            </div>
+          </div>
+          <div class="vc-footer">
+            <a href="customers-webs/c2/index.html" target="_blank" class="btn-primary" style="background:#0d9488">Otevřít C2</a>
+            <a href="#" class="btn-ghost-sm" onclick="openDetail('c2');return false">Detailní náhled</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- C3 -->
+      <div class="variant-card" data-variant="c3">
+        <div class="vc-preview">
+          <iframe src="customers-webs/c3/index.html" loading="lazy" title="Varianta C3"></iframe>
+          <div class="vc-preview-overlay"></div>
+          <span class="vc-badge badge-c3">C3</span>
+          <a href="customers-webs/c3/index.html" target="_blank" class="vc-open-btn">Otevřít →</a>
+        </div>
+        <div class="vc-body">
+          <div>
+            <div class="vc-version">Varianta C3 · Multi-file výsledková + n8n <span class="badge" style="background:rgba(14,165,233,.15);color:#7dd3fc;border:1px solid rgba(14,165,233,.3)">webdo24.cz 3</span></div>
+            <div class="vc-title">Za 24 hodin budete mít web, který vydělává</div>
+            <div class="vc-subtitle">Výsledkový messaging + n8n workflow + AI prompt šablona — kompletní automatizační balík</div>
+          </div>
+          <div class="vc-target">
+            <div class="vc-target-label">Cílová skupina</div>
+            <div class="vc-target-text">ROI-orientovaní podnikatelé, kteří chtějí výsledky, ne jen "pěkný web". Techničtější audience rozumí n8n automatizaci.</div>
+          </div>
+          <div class="vc-tags">
+            <span class="vc-tag">n8n workflow v balíku</span>
+            <span class="vc-tag">AI prompt šablona</span>
+            <span class="vc-tag">Multi-file</span>
+            <span class="vc-tag">9 900 Kč</span>
+          </div>
+          <div>
+            <div style="font-size:.7rem;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;margin-bottom:4px">Cena</div>
+            <div class="vc-price" style="color:#0ea5e9">9 900 Kč <small style="color:var(--text2)">· platba po schválení</small></div>
+          </div>
+          <div class="vc-pros-cons">
+            <div class="pros">
+              <div class="vc-list-label">Silné stránky</div>
+              <ul class="vc-list">
+                <li>"Web, který vydělává" = nejsilnější messaging</li>
+                <li>Součástí balíku je n8n-workflow.json</li>
+                <li>PROMPT-SABLONA.md = okamžitý brief</li>
+                <li>Platba po schválení jako garance</li>
+              </ul>
+            </div>
+            <div class="cons">
+              <div class="vc-list-label">Slabé stránky</div>
+              <ul class="vc-list">
+                <li>Vyžaduje n8n instanci pro plný provoz</li>
+                <li>Multi-file = složitější hosting</li>
+                <li>Bez subscription modelu</li>
+              </ul>
+            </div>
+          </div>
+          <div class="vc-footer">
+            <a href="customers-webs/c3/index.html" target="_blank" class="btn-primary" style="background:#0284c7">Otevřít C3</a>
+            <a href="#" class="btn-ghost-sm" onclick="openDetail('c3');return false">Detailní náhled</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- C4 -->
+      <div class="variant-card" data-variant="c4">
+        <div class="vc-preview">
+          <iframe src="customers-webs/c4/index.html" loading="lazy" title="Varianta C4"></iframe>
+          <div class="vc-preview-overlay"></div>
+          <span class="vc-badge badge-c4">C4</span>
+          <a href="customers-webs/c4/index.html" target="_blank" class="vc-open-btn">Otevřít →</a>
+        </div>
+        <div class="vc-body">
+          <div>
+            <div class="vc-version">Varianta C4 · Multi-file startup <span class="badge" style="background:rgba(99,102,241,.15);color:#a5b4fc;border:1px solid rgba(99,102,241,.3)">webdo24.cz 4</span></div>
+            <div class="vc-title">Web pro tvůj startup — online zítra</div>
+            <div class="vc-subtitle">Startup a founder positioning — italic hero font, 9krokový formulář, platba po schválení</div>
+          </div>
+          <div class="vc-target">
+            <div class="vc-target-label">Cílová skupina</div>
+            <div class="vc-target-text">Zakladatelé startupů, freelanceři, growth-oriented founders. Věk 25–40. Technicky zdatní, oceňují rychlost a kvalitu.</div>
+          </div>
+          <div class="vc-tags">
+            <span class="vc-tag">Startup / Founders</span>
+            <span class="vc-tag">9krokový formulář</span>
+            <span class="vc-tag">Italic hero design</span>
+            <span class="vc-tag">9 900 Kč</span>
+          </div>
+          <div>
+            <div style="font-size:.7rem;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;margin-bottom:4px">Cena</div>
+            <div class="vc-price" style="color:#818cf8">9 900 Kč <small style="color:var(--text2)">· platba po schválení</small></div>
+          </div>
+          <div class="vc-pros-cons">
+            <div class="pros">
+              <div class="vc-list-label">Silné stránky</div>
+              <ul class="vc-list">
+                <li>Startup tón = premium niche feeling</li>
+                <li>9krokový formulář kvalifikuje zákazníka</li>
+                <li>Italic Inter = výrazná typografie</li>
+                <li>Multi-file = snazší stylová customizace</li>
+              </ul>
+            </div>
+            <div class="cons">
+              <div class="vc-list-label">Slabé stránky</div>
+              <ul class="vc-list">
+                <li>Užší audience než C1/C2</li>
+                <li>Dlouhý formulář = vyšší drop-off</li>
+                <li>Bez subscription ani Hold modelu</li>
+              </ul>
+            </div>
+          </div>
+          <div class="vc-footer">
+            <a href="customers-webs/c4/index.html" target="_blank" class="btn-primary" style="background:#4f46e5">Otevřít C4</a>
+            <a href="#" class="btn-ghost-sm" onclick="openDetail('c4');return false">Detailní náhled</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- C5 -->
+      <div class="variant-card" data-variant="c5">
+        <div class="vc-preview">
+          <iframe src="customers-webs/c5/index.html" loading="lazy" title="Varianta C5"></iframe>
+          <div class="vc-preview-overlay"></div>
+          <span class="vc-badge badge-c5">C5 ⭐</span>
+          <a href="customers-webs/c5/index.html" target="_blank" class="vc-open-btn">Otevřít →</a>
+        </div>
+        <div class="vc-body">
+          <div>
+            <div class="vc-version">Varianta C5 · Multi-file Revenue Machine <span class="badge" style="background:rgba(244,63,94,.15);color:#fda4af;border:1px solid rgba(244,63,94,.3)">webdo24.cz 5</span></div>
+            <div class="vc-title">Neděláme weby. Budujeme revenue machines.</div>
+            <div class="vc-subtitle">Plus Jakarta Sans, social proof toasts, subscription MRR, announcement bar, Scale balíček</div>
+          </div>
+          <div class="vc-target">
+            <div class="vc-target-label">Cílová skupina</div>
+            <div class="vc-target-text">Podnikatelé orientovaní na výsledky a opakující se příjem. Ocenění prémiového designu a MRR myšlení.</div>
+          </div>
+          <div class="vc-tags">
+            <span class="vc-tag">Plus Jakarta Sans</span>
+            <span class="vc-tag">Social proof toasts</span>
+            <span class="vc-tag">Subscription MRR</span>
+            <span class="vc-tag">Scale balíček</span>
+          </div>
+          <div>
+            <div style="font-size:.7rem;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;margin-bottom:4px">Cena</div>
+            <div class="vc-price" style="color:#fb7185">od 9 900 Kč <small style="color:var(--text2)">+ měsíční Scale balíček</small></div>
+          </div>
+          <div class="vc-pros-cons">
+            <div class="pros">
+              <div class="vc-list-label">Silné stránky</div>
+              <ul class="vc-list">
+                <li>Plus Jakarta Sans = nejmodernější typografie</li>
+                <li>Social proof toasts = živá aktivita</li>
+                <li>Announcement bar = novinka Scale balíčku</li>
+                <li>Subscription MRR upsell</li>
+                <li>Nejsilnější brand positioning ze všech</li>
+              </ul>
+            </div>
+            <div class="cons">
+              <div class="vc-list-label">Slabé stránky</div>
+              <ul class="vc-list">
+                <li>Multi-file = více souborů k nasazení</li>
+                <li>Scale slib vyžaduje delivery systém</li>
+                <li>Komplexnější obsah = delší prodejní cyklus</li>
+              </ul>
+            </div>
+          </div>
+          <div class="vc-footer">
+            <a href="customers-webs/c5/index.html" target="_blank" class="btn-primary" style="background:#e11d48">Otevřít C5 ⭐</a>
+            <a href="#" class="btn-ghost-sm" onclick="openDetail('c5');return false">Detailní náhled</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- C6 -->
+      <div class="variant-card" data-variant="c6">
+        <div class="vc-preview">
+          <iframe src="customers-webs/c6/index.html" loading="lazy" title="Varianta C6"></iframe>
+          <div class="vc-preview-overlay"></div>
+          <span class="vc-badge badge-c6">C6</span>
+          <a href="customers-webs/c6/index.html" target="_blank" class="vc-open-btn">Otevřít →</a>
+        </div>
+        <div class="vc-body">
+          <div>
+            <div class="vc-version">Varianta C6 · Multi-file Revenue Machine II <span class="badge" style="background:rgba(245,158,11,.15);color:#fcd34d;border:1px solid rgba(245,158,11,.3)">webdo24.cz 6</span></div>
+            <div class="vc-title">Neděláme weby. Budujeme revenue machines.</div>
+            <div class="vc-subtitle">A/B varianta k C5 — identický brand, separátní source tracking pro split test kanálů</div>
+          </div>
+          <div class="vc-target">
+            <div class="vc-target-label">Cílová skupina</div>
+            <div class="vc-target-text">Stejná jako C5. Slouží k testování různých marketingových kanálů se stejným obsahem Revenue Machine.</div>
+          </div>
+          <div class="vc-tags">
+            <span class="vc-tag">A/B varianta k C5</span>
+            <span class="vc-tag">Source tracking</span>
+            <span class="vc-tag">Plus Jakarta Sans</span>
+            <span class="vc-tag">Revenue Machine</span>
+          </div>
+          <div>
+            <div style="font-size:.7rem;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;margin-bottom:4px">Cena</div>
+            <div class="vc-price" style="color:#f59e0b">od 9 900 Kč <small style="color:var(--text2)">+ měsíční Scale balíček</small></div>
+          </div>
+          <div class="vc-pros-cons">
+            <div class="pros">
+              <div class="vc-list-label">Silné stránky</div>
+              <ul class="vc-list">
+                <li>Vše z C5 zachováno</li>
+                <li>Oddělený source tracking pro analytics</li>
+                <li>Ideální pro split test kanálů</li>
+              </ul>
+            </div>
+            <div class="cons">
+              <div class="vc-list-label">Slabé stránky</div>
+              <ul class="vc-list">
+                <li>Identický obsah s C5</li>
+                <li>Smysluplný pouze při různých UTM zdrojích</li>
+              </ul>
+            </div>
+          </div>
+          <div class="vc-footer">
+            <a href="customers-webs/c6/index.html" target="_blank" class="btn-primary" style="background:#d97706">Otevřít C6</a>
+            <a href="#" class="btn-ghost-sm" onclick="openDetail('c6');return false">Detailní náhled</a>
+          </div>
+        </div>
+      </div>
+
     </div><!-- /overview-grid -->
 
     <!-- ══════════ COMPARE VIEW ══════════ -->
@@ -1276,6 +1613,12 @@
         <button class="dnav-btn" onclick="loadDetail('v9')">V9</button>
         <button class="dnav-btn" onclick="loadDetail('v10')">V10 ⭐</button>
         <button class="dnav-btn" onclick="loadDetail('v11')">V11</button>
+        <button class="dnav-btn" style="border-color:rgba(16,185,129,.4);color:#6ee7b7" onclick="loadDetail('c1')">C1</button>
+        <button class="dnav-btn" style="border-color:rgba(20,184,166,.4);color:#5eead4" onclick="loadDetail('c2')">C2</button>
+        <button class="dnav-btn" style="border-color:rgba(14,165,233,.4);color:#7dd3fc" onclick="loadDetail('c3')">C3</button>
+        <button class="dnav-btn" style="border-color:rgba(99,102,241,.4);color:#a5b4fc" onclick="loadDetail('c4')">C4</button>
+        <button class="dnav-btn" style="border-color:rgba(244,63,94,.4);color:#fda4af"  onclick="loadDetail('c5')">C5 ⭐</button>
+        <button class="dnav-btn" style="border-color:rgba(245,158,11,.4);color:#fcd34d" onclick="loadDetail('c6')">C6</button>
       </div>
       <div class="detail-iframe-wrap">
         <div class="detail-iframe-bar">
@@ -1525,6 +1868,120 @@
         ],
         verdict: 'Nasaďte jako A/B test k V10 přes jiný marketingový kanál.',
       },
+      c1: {
+        label: 'C1 — Multi-file klasická (webdo24.cz 1)',
+        useCase: 'Urgency countdown, srovnání s agenturou, classic multi-file build',
+        audience: 'Živnostníci, řemeslníci, malé firmy — věk 35–55',
+        pricing: '9 900 Kč jednorázově',
+        model: 'One-time payment',
+        pros: [
+          'Urgency countdown tlačí k okamžité akci',
+          'Srovnávací tabulka agentura vs. DIY',
+          'Oddělené CSS/JS soubory = snazší customizace',
+          'Klasický, důvěryhodný layout bez designových rizik',
+          '30denní garance jako pojistka',
+        ],
+        cons: [
+          'Multi-file build = složitější deploy oproti SPA',
+          'Bez subscription ani Hold modelu',
+          'Žádný AI ani automatizační prvek',
+        ],
+        verdict: 'Vhodné pro klasické lokální podnikání. Snazší k úpravám než SPA verze V1.',
+      },
+      c2: {
+        label: 'C2 — Multi-file klasická II (webdo24.cz 2)',
+        useCase: 'Hamburger nav, vylepšené mobilní UX, A/B test k C1',
+        audience: 'Stejná jako C1 — živnostníci, malé firmy',
+        pricing: '9 900 Kč jednorázově',
+        model: 'One-time payment',
+        pros: [
+          'Hamburger menu = lepší UX na mobilních zařízeních',
+          'Urgency countdown zachován',
+          'Čistší mobilní layout',
+          'Vhodný jako A/B test mobilního UX vs. C1',
+        ],
+        cons: [
+          'Identický positioning jako C1',
+          'Bez subscription ani Hold modelu',
+          'Multi-file deploy',
+        ],
+        verdict: 'Nasaďte jako mobilní A/B test k C1.',
+      },
+      c3: {
+        label: 'C3 — Multi-file výsledková + n8n (webdo24.cz 3)',
+        useCase: '"Web, který vydělává" + n8n workflow v balíku + AI prompt šablona',
+        audience: 'ROI-orientovaní podnikatelé, techničtější audience',
+        pricing: '9 900 Kč · platba po schválení',
+        model: 'One-time payment + n8n backend',
+        pros: [
+          '"Web, který vydělává" = nejsilnější výsledkový messaging',
+          'n8n-workflow.json součástí repozitáře',
+          'PROMPT-SABLONA.md = okamžitý AI brief',
+          'Platba po schválení = nulové riziko zákazníka',
+        ],
+        cons: [
+          'Vyžaduje n8n instanci pro plný provoz',
+          'Multi-file = složitější hosting',
+          'Žádný subscription model',
+        ],
+        verdict: 'Nejlepší multi-file varianta pro automatizovaný pipeline.',
+      },
+      c4: {
+        label: 'C4 — Multi-file startup (webdo24.cz 4)',
+        useCase: 'Startup a founder niche — italic hero, 9krokový formulář, platba po schválení',
+        audience: 'Zakladatelé startupů, freelanceři — věk 25–40',
+        pricing: '9 900 Kč · platba po schválení',
+        model: 'One-time payment',
+        pros: [
+          'Startup tón = prémiové niche feeling',
+          '9krokový formulář = výborná kvalifikace zákazníka',
+          'Italic Inter font = výrazná, zapamatovatelná typografie',
+          'Multi-file = snadná stylová customizace pro brand',
+        ],
+        cons: [
+          'Užší audience než C1/C2',
+          'Dlouhý formulář = vyšší drop-off',
+          'Bez subscription ani Hold modelu',
+        ],
+        verdict: 'Ideální pro startup a B2B founders. Technicky snazší úpravy než V4 SPA.',
+      },
+      c5: {
+        label: 'C5 — Multi-file Revenue Machine ⭐ (webdo24.cz 5)',
+        useCase: 'Revenue machine brand, social proof toasts, subscription MRR, Scale balíček',
+        audience: 'Podnikatelé orientovaní na výsledky a MRR, věk 28–50',
+        pricing: 'od 9 900 Kč + měsíční Scale balíček',
+        model: 'Premium + Subscription MRR',
+        pros: [
+          'Plus Jakarta Sans = nejmodernější typografie ze všech variant',
+          'Social proof toasts = živá aktivita na stránce',
+          'Announcement bar Scale balíčku = upsell v záhlaví',
+          'Subscription MRR = opakující se příjem',
+          'Nejsilnější brand positioning — "revenue machines"',
+        ],
+        cons: [
+          'Multi-file = více souborů k nasazení a údržbě',
+          'Scale slib vyžaduje skutečný delivery systém',
+          'Komplexnější obsah = delší rozhodovací cyklus',
+        ],
+        verdict: 'Nejsilnější multi-file varianta pro premium trh. Ideální pro brand s MRR ambicemi.',
+      },
+      c6: {
+        label: 'C6 — Multi-file Revenue Machine II (webdo24.cz 6)',
+        useCase: 'A/B varianta k C5 — identický brand, separátní source pro analytics',
+        audience: 'Stejná jako C5',
+        pricing: 'od 9 900 Kč + měsíční Scale balíček',
+        model: 'Premium + Subscription MRR (identické s C5)',
+        pros: [
+          'Kompletní obsah C5 zachován beze změny',
+          'Oddělený source tracking pro A/B test',
+          'Ideální pro split test kanálů nebo reklamních kreativ',
+        ],
+        cons: [
+          'Identický obsah s C5 — žádný nový konverzní prvek',
+          'Smysluplný pouze při různých UTM zdrojích',
+        ],
+        verdict: 'Nasaďte jako A/B test k C5 přes jiný marketingový kanál.',
+      },
     };
 
     // ── VIEW SWITCHING ────────────────────────────────────────────
@@ -1563,11 +2020,11 @@
 
     // ── DETAIL ───────────────────────────────────────────────────
     function loadDetail(v) {
-      const keys = ['v1','v2','v3','v4','v5','v6','v7','v8','v9','v10','v11'];
+      const keys = ['v1','v2','v3','v4','v5','v6','v7','v8','v9','v10','v11','c1','c2','c3','c4','c5','c6'];
       document.querySelectorAll('.dnav-btn').forEach((b, i) => {
         b.classList.toggle('active', keys[i] === v);
       });
-      const src = `${v}/index.html`;
+      const src = v.startsWith('c') ? `customers-webs/${v}/index.html` : `${v}/index.html`;
       document.getElementById('detailIframe').src = src;
       document.getElementById('detailUrl').textContent = src;
       document.getElementById('detailOpenLink').href = src;

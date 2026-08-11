@@ -1,0 +1,517 @@
+<!-- ══════════════════════════════════════════════════════════════
+     WEBDO24.CZ — LANDING PAGE v6 "BRUTAL"
+     MiLO Grafik · 2026-07-29 · MIL-193
+     Styl: Brutalist / High-Impact · Bold type · Raw energy · Industrial
+     ══════════════════════════════════════════════════════════════ -->
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta name="description" content="WebDo24.cz — Web, který přivede zákazníky. Hotový do 24 hodin. 340+ webů, 47 oborů, 4.9/5 hodnocení.">
+<title>WebDo24.cz — Web do 24 hodin | Brutal Style</title>
+<style>
+/* ═══════ RESET & ROOT ═══════ */
+:root {
+  --bg: #000;
+  --bg2: #0a0a0a;
+  --card: #0d0d0d;
+  --card2: #111;
+  --border: #2a2a2a;
+  --border2: #3d3d3d;
+  --text: #ccc;
+  --text-hi: #fff;
+  --muted: #777;
+  --green: #0f0;
+  --green2: #00ff41;
+  --cyan: #0ff;
+  --magenta: #f0f;
+  --yellow: #ff0;
+  --red: #f33;
+  --font: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --mono: 'JetBrains Mono', 'SF Mono', 'Fira Code', 'Courier New', monospace;
+  --transition: 0.1s linear;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&family=JetBrains+Mono:wght@400;700;800&display=swap');
+
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:64px}
+body{
+  font-family:var(--font);
+  background:var(--bg);
+  color:var(--text);
+  min-height:100vh;
+  line-height:1.5;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+
+/* ═══════ SCANLINE OVERLAY ═══════ */
+.scanlines{
+  position:fixed;inset:0;z-index:9999;pointer-events:none;
+  background:repeating-linear-gradient(0deg,transparent,transparent 2px,rgba(0,0,0,0.03) 2px,rgba(0,0,0,0.03) 4px);
+  opacity:0.3;
+}
+
+.wrap{position:relative;z-index:1;max-width:1200px;margin:0 auto;padding:0 28px}
+
+/* ═══════ NAV — raw bar ═══════ */
+.nav{
+  position:sticky;top:0;z-index:100;
+  background:var(--bg);border-bottom:3px solid var(--border2);
+}
+.nav-inner{
+  max-width:1200px;margin:0 auto;padding:0 28px;
+  display:flex;align-items:center;justify-content:space-between;height:54px;
+}
+.nav-logo{
+  display:flex;align-items:center;gap:10px;font-weight:900;font-size:1.05rem;
+  letter-spacing:-0.5px;color:var(--text-hi);text-decoration:none;
+  font-family:var(--mono);text-transform:uppercase;
+}
+.nav-logo-mark{
+  font-family:var(--mono);font-weight:900;font-size:0.9rem;
+  background:var(--green);color:var(--bg);padding:4px 8px;
+}
+.nav-links{display:flex;align-items:center;gap:0}
+.nav-links a{
+  padding:6px 14px;text-decoration:none;color:var(--muted);
+  font-size:0.72rem;font-weight:700;text-transform:uppercase;
+  letter-spacing:1px;transition:var(--transition);
+  font-family:var(--mono);border-left:1px solid transparent;
+}
+.nav-links a:hover{color:var(--green);border-left-color:var(--green)}
+.nav-cta{
+  margin-left:4px;color:var(--bg)!important;background:var(--green)!important;
+  font-weight:800!important;text-transform:uppercase!important;
+  padding:8px 18px!important;
+}
+.nav-cta:hover{background:var(--green2)!important;color:var(--bg)!important;border-left-color:transparent!important}
+.nav-mobile-toggle{display:none;background:none;border:none;color:var(--green);font-size:1.4rem;cursor:pointer;font-family:var(--mono)}
+
+/* ═══════ HERO — MASSIVE TYPE ═══════ */
+.hero{padding:72px 0 40px;position:relative}
+.hero-grid{display:grid;grid-template-columns:1fr auto;gap:40px;align-items:end;margin-bottom:28px}
+.hero h1{
+  font-size:clamp(2.8rem,7vw,5.5rem);font-weight:900;
+  letter-spacing:-2px;line-height:0.95;color:var(--text-hi);
+  text-transform:uppercase;
+}
+.hero h1 .strike{
+  background:var(--green);color:var(--bg);padding:0 8px;
+  display:inline-block;
+}
+.hero .hero-side{
+  text-align:right;font-family:var(--mono);font-size:0.72rem;
+  color:var(--green);text-transform:uppercase;letter-spacing:1px;
+  border-right:3px solid var(--green);padding-right:16px;line-height:1.8;
+}
+.hero-sub{
+  font-size:1.1rem;color:var(--muted);max-width:700px;
+  margin-bottom:32px;line-height:1.55;font-family:var(--mono);
+  border-left:3px solid var(--border2);padding-left:20px;
+}
+.hero-cta-group{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:12px}
+.hero-note{font-size:0.7rem;color:var(--muted);font-family:var(--mono);text-transform:uppercase;letter-spacing:1px}
+
+/* ═══════ BUTTONS — chunky ═══════ */
+.btn{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:14px 32px;font-size:0.8rem;font-weight:800;
+  cursor:pointer;text-decoration:none;transition:var(--transition);
+  border:3px solid var(--border2);font-family:var(--mono);
+  text-transform:uppercase;letter-spacing:1px;color:var(--text-hi);
+}
+.btn-primary{
+  background:var(--green);color:var(--bg);border-color:var(--green);
+}
+.btn-primary:hover{background:var(--green2);border-color:var(--green2)}
+.btn-outline{background:transparent;color:var(--green);border-color:var(--green)}
+.btn-outline:hover{background:var(--green);color:var(--bg)}
+.btn-black{background:var(--bg);color:var(--text-hi);border-color:var(--border2)}
+.btn-black:hover{border-color:var(--green);color:var(--green)}
+.btn-sm{padding:10px 22px;font-size:0.68rem}
+
+/* ═══════ STATS — metric blocks ═══════ */
+.stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border:3px solid var(--border2);margin-bottom:56px}
+.stat-block{padding:28px 20px;text-align:center;border-right:3px solid var(--border2);background:var(--card);transition:var(--transition)}
+.stat-block:last-child{border-right:none}
+.stat-block:hover{background:var(--card2)}
+.stat-val{font-size:2.8rem;font-weight:900;letter-spacing:-2px;line-height:1;color:var(--green);font-family:var(--mono)}
+.stat-label{font-size:0.65rem;color:var(--muted);text-transform:uppercase;letter-spacing:1.5px;margin-top:6px;font-weight:700;font-family:var(--mono)}
+
+/* ═══════ SECTIONS ═══════ */
+.section{padding:48px 0}
+.section-header{margin-bottom:36px;border-bottom:3px solid var(--border2);padding-bottom:20px}
+.section-label{font-family:var(--mono);font-size:0.62rem;color:var(--green);text-transform:uppercase;letter-spacing:2px;margin-bottom:8px;font-weight:700}
+.section h2{font-size:2.2rem;font-weight:900;letter-spacing:-1px;color:var(--text-hi);text-transform:uppercase;margin-bottom:8px}
+.section-desc{font-size:0.88rem;color:var(--muted);max-width:680px;font-family:var(--mono)}
+
+/* ═══════ STEPS — big numbered ═══════ */
+.steps-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0}
+.step-block{border:3px solid var(--border2);padding:36px 24px;transition:var(--transition);background:var(--card);margin-right:-3px;margin-bottom:-3px}
+.step-block:hover{background:var(--card2);border-color:var(--green)}
+.step-num{font-family:var(--mono);font-size:4rem;font-weight:900;color:var(--green);line-height:1;margin-bottom:12px;letter-spacing:-3px}
+.step-block h3{font-size:1.1rem;font-weight:800;margin-bottom:8px;color:var(--text-hi);text-transform:uppercase}
+.step-block p{font-size:0.82rem;color:var(--muted);line-height:1.55}
+
+/* ═══════ TRUST ═══════ */
+.trust-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:0}
+.trust-block{border:3px solid var(--border2);padding:24px 18px;text-align:center;background:var(--card);margin-right:-3px;margin-bottom:-3px;transition:var(--transition)}
+.trust-block:hover{background:var(--card2);border-color:var(--green)}
+.trust-icon{font-size:2rem;margin-bottom:10px;display:block}
+.trust-block h4{font-size:0.85rem;font-weight:800;margin-bottom:6px;color:var(--text-hi);text-transform:uppercase}
+.trust-block p{font-size:0.72rem;color:var(--muted);line-height:1.5}
+
+/* ═══════ PORTFOLIO ═══════ */
+.portfolio-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0}
+.portfolio-block{border:3px solid var(--border2);background:var(--card);overflow:hidden;transition:var(--transition);text-decoration:none;color:var(--text);display:block;margin-right:-3px;margin-bottom:-3px}
+.portfolio-block:hover{border-color:var(--green);z-index:2}
+.portfolio-thumb{height:180px;background:var(--card2);display:flex;align-items:center;justify-content:center;font-size:3rem;border-bottom:3px solid var(--border2);position:relative}
+.portfolio-thumb::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,transparent 50%,rgba(0,0,0,0.7) 100%)}
+.portfolio-time{position:absolute;bottom:8px;right:12px;z-index:2;font-family:var(--mono);font-size:0.62rem;color:var(--green);font-weight:800;text-transform:uppercase;background:var(--bg);padding:3px 10px;border:1px solid var(--green)}
+.portfolio-info{padding:14px 16px}
+.portfolio-info h4{font-size:0.9rem;font-weight:800;margin-bottom:2px;color:var(--text-hi);text-transform:uppercase}
+.portfolio-info span{font-family:var(--mono);font-size:0.65rem;color:var(--muted);text-transform:uppercase;letter-spacing:1px}
+
+/* ═══════ CALCULATOR ═══════ */
+.calc-block{border:3px solid var(--border2);padding:0;display:grid;grid-template-columns:1fr 1fr;background:var(--card)}
+.calc-inputs{padding:28px 24px;border-right:3px solid var(--border2)}
+.calc-inputs label{display:flex;justify-content:space-between;font-family:var(--mono);font-size:0.65rem;color:var(--muted);margin-bottom:6px;text-transform:uppercase;letter-spacing:1px;font-weight:700}
+.calc-inputs label strong{color:var(--green);font-size:0.85rem}
+.calc-inputs input[type=range]{width:100%;margin-bottom:20px;height:6px;-webkit-appearance:none;appearance:none;background:var(--border2);outline:none}
+.calc-inputs input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:24px;height:24px;background:var(--green);cursor:pointer;border:3px solid var(--bg)}
+.calc-result{padding:28px 24px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center}
+.calc-big{font-family:var(--mono);font-size:3rem;font-weight:900;color:var(--green);letter-spacing:-2px;line-height:1.1}
+.calc-sub{font-family:var(--mono);font-size:0.68rem;color:var(--muted);margin-top:8px;text-transform:uppercase;letter-spacing:1px}
+
+/* ═══════ PRICING ═══════ */
+.pricing-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0}
+.price-block{border:3px solid var(--border2);padding:30px 24px;background:var(--card);transition:var(--transition);display:flex;flex-direction:column;margin-right:-3px;margin-bottom:-3px}
+.price-block:hover{background:var(--card2)}
+.price-block.featured{border-color:var(--green);background:var(--card2);position:relative}
+.price-badge{position:absolute;top:-14px;left:50%;transform:translateX(-50%);background:var(--green);color:var(--bg);font-family:var(--mono);font-size:0.58rem;font-weight:900;padding:5px 16px;text-transform:uppercase;letter-spacing:1px;border:2px solid var(--bg)}
+.price-name{font-size:1.1rem;font-weight:900;margin-bottom:6px;color:var(--text-hi);text-transform:uppercase;font-family:var(--mono)}
+.price-desc{font-family:var(--mono);font-size:0.65rem;color:var(--muted);margin-bottom:16px;text-transform:uppercase;letter-spacing:1px}
+.price-amount{font-family:var(--mono);font-size:2.2rem;font-weight:900;color:var(--green);margin-bottom:18px;letter-spacing:-1px}
+.price-amount small{font-size:0.65rem;color:var(--muted);font-weight:400;display:block;margin-top:4px}
+.price-features{list-style:none;margin-bottom:20px;flex:1}
+.price-features li{padding:8px 0;font-size:0.75rem;color:var(--muted);border-bottom:1px solid var(--border);display:flex;align-items:center;gap:8px;font-family:var(--mono)}
+.price-features li:last-child{border-bottom:none}
+.price-features li::before{content:'>';color:var(--green);font-weight:900}
+.price-block .btn{width:100%;justify-content:center}
+
+/* ═══════ TESTIMONIALS ═══════ */
+.testimonials-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0}
+.testimonial-block{border:3px solid var(--border2);padding:22px 18px;background:var(--card);transition:var(--transition);margin-right:-3px;margin-bottom:-3px}
+.testimonial-block:hover{background:var(--card2);border-color:var(--green)}
+.testimonial-stars{color:var(--yellow);font-size:0.8rem;margin-bottom:10px;letter-spacing:2px;font-family:var(--mono)}
+.testimonial-text{font-size:0.82rem;color:var(--text);line-height:1.55;margin-bottom:14px}
+.testimonial-author{display:flex;align-items:center;gap:10px}
+.testimonial-avatar{width:36px;height:36px;background:var(--green);color:var(--bg);display:flex;align-items:center;justify-content:center;font-family:var(--mono);font-weight:900;font-size:0.7rem}
+.testimonial-name{font-size:0.78rem;font-weight:800;color:var(--text-hi);text-transform:uppercase}
+.testimonial-role{font-family:var(--mono);font-size:0.62rem;color:var(--muted);text-transform:uppercase;letter-spacing:1px}
+
+/* ═══════ FAQ ═══════ */
+.faq-list{border:3px solid var(--border2)}
+.faq-item{border-bottom:3px solid var(--border2);background:var(--card)}
+.faq-item:last-child{border-bottom:none}
+.faq-q{padding:16px 20px;font-weight:800;font-size:0.88rem;cursor:pointer;display:flex;justify-content:space-between;align-items:center;user-select:none;color:var(--text-hi);font-family:var(--mono);text-transform:uppercase;letter-spacing:1px}
+.faq-q:hover{background:var(--card2);color:var(--green)}
+.faq-q .indicator{font-size:1.2rem;color:var(--green);transition:transform 0.2s}
+.faq-a{max-height:0;overflow:hidden;transition:max-height 0.3s ease;font-size:0.78rem;color:var(--muted);line-height:1.6}
+.faq-a-inner{padding:0 20px 16px}
+.faq-item.open .faq-a{max-height:180px}
+.faq-item.open{background:var(--card2)}
+
+/* ═══════ FORM ═══════ */
+.form-block{border:3px solid var(--border2);padding:30px 26px;background:var(--card);max-width:600px;margin:0 auto}
+.form-group{margin-bottom:18px}
+.form-group label{display:block;font-family:var(--mono);font-size:0.62rem;color:var(--green);margin-bottom:6px;font-weight:700;text-transform:uppercase;letter-spacing:1.5px}
+.form-group input,.form-group textarea{width:100%;padding:12px 14px;background:var(--bg);border:3px solid var(--border2);color:var(--text);font-size:0.85rem;font-family:var(--mono);transition:var(--transition)}
+.form-group input:focus,.form-group textarea:focus{outline:none;border-color:var(--green)}
+.form-group textarea{min-height:90px;resize:vertical}
+
+/* ═══════ CTA ═══════ */
+.cta-block{border:3px solid var(--green);padding:48px 36px;text-align:center;margin:48px 0;background:var(--card);position:relative}
+.cta-block::before{content:'///';position:absolute;top:12px;left:16px;font-family:var(--mono);color:var(--green);font-size:0.65rem;letter-spacing:4px;opacity:0.4}
+.cta-block::after{content:'///';position:absolute;bottom:12px;right:16px;font-family:var(--mono);color:var(--green);font-size:0.65rem;letter-spacing:4px;opacity:0.4}
+.cta-block h3{font-size:1.8rem;font-weight:900;margin-bottom:10px;color:var(--text-hi);text-transform:uppercase;font-family:var(--mono)}
+.cta-block p{color:var(--muted);margin-bottom:24px;font-family:var(--mono);font-size:0.8rem;text-transform:uppercase;letter-spacing:1px}
+
+/* ═══════ FOOTER ═══════ */
+.footer{border-top:3px solid var(--border2);padding:32px 0;display:flex;justify-content:space-between;align-items:center;font-family:var(--mono);font-size:0.62rem;color:var(--muted);text-transform:uppercase;letter-spacing:1px;flex-wrap:wrap;gap:16px}
+.footer-links{display:flex;gap:24px}
+.footer-links a{color:var(--muted);text-decoration:none;transition:var(--transition)}
+.footer-links a:hover{color:var(--green)}
+
+/* ═══════ MARQUEE ═══════ */
+.marquee{border-top:3px solid var(--green);border-bottom:3px solid var(--green);padding:10px 0;margin-bottom:0;overflow:hidden;background:var(--card)}
+.marquee-inner{display:flex;animation:marquee 20s linear infinite;width:max-content}
+.marquee span{font-family:var(--mono);font-size:0.75rem;font-weight:800;color:var(--green);text-transform:uppercase;letter-spacing:2px;white-space:nowrap;padding:0 24px}
+@keyframes marquee{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+
+/* ═══════ RESPONSIVE ═══════ */
+@media(max-width:900px){
+  .hero-grid{grid-template-columns:1fr}
+  .hero .hero-side{text-align:left;border-right:none;border-bottom:3px solid var(--green);padding:0 0 12px}
+  .stats-grid{grid-template-columns:repeat(2,1fr)}
+  .steps-grid{grid-template-columns:1fr}
+  .trust-grid{grid-template-columns:repeat(2,1fr)}
+  .portfolio-grid{grid-template-columns:repeat(2,1fr)}
+  .testimonials-grid{grid-template-columns:1fr}
+  .calc-block{grid-template-columns:1fr}
+  .calc-inputs{border-right:none;border-bottom:3px solid var(--border2)}
+  .pricing-grid{grid-template-columns:1fr;max-width:420px;margin:0 auto}
+}
+@media(max-width:600px){
+  .nav-links a:not(.nav-cta){display:none}
+  .nav-mobile-toggle{display:block}
+  .hero{padding:40px 0 28px}
+  .hero h1{font-size:2rem}
+  .hero-sub{font-size:0.9rem}
+  .hero-cta-group{flex-direction:column}
+  .stats-grid{grid-template-columns:1fr}
+  .stat-block{border-right:none;border-bottom:3px solid var(--border2)}
+  .stat-block:last-child{border-bottom:none}
+  .trust-grid{grid-template-columns:1fr}
+  .portfolio-grid{grid-template-columns:1fr}
+  .section h2{font-size:1.5rem}
+  .cta-block h3{font-size:1.3rem}
+  .footer{flex-direction:column;text-align:center}
+}
+</style>
+</head>
+<body>
+<div class="scanlines"></div>
+
+<!-- ═══════ NAV ═══════ -->
+<nav class="nav" id="nav">
+  <div class="nav-inner">
+    <a href="#" class="nav-logo"><span class="nav-logo-mark">24</span>WebDo24</a>
+    <button class="nav-mobile-toggle" onclick="document.getElementById('nav').classList.toggle('open')" aria-label="MENU">[=]</button>
+    <div class="nav-links">
+      <a href="#proces">Proces</a>
+      <a href="#ukazky">Ukázky</a>
+      <a href="#cenik">Ceník</a>
+      <a href="#reference">Ref</a>
+      <a href="#faq">FAQ</a>
+      <a href="#objednat" class="nav-cta">Objednat</a>
+    </div>
+  </div>
+</nav>
+
+<div class="wrap">
+
+<!-- ═══════ MARQUEE ═══════ -->
+<div class="marquee">
+  <div class="marquee-inner">
+    <span>▸ WEB DO 24 HODIN</span><span>▸ 340+ WEBŮ</span><span>▸ 47 OBORŮ</span><span>▸ 4.9/5 HODNOCENÍ</span><span>▸ 100% GARANCE</span>
+    <span>▸ WEB DO 24 HODIN</span><span>▸ 340+ WEBŮ</span><span>▸ 47 OBORŮ</span><span>▸ 4.9/5 HODNOCENÍ</span><span>▸ 100% GARANCE</span>
+  </div>
+</div>
+
+<!-- ═══════ HERO ═══════ -->
+<section class="hero">
+  <div class="hero-grid">
+    <h1>Web<br>do <span class="strike">24h</span></h1>
+    <div class="hero-side">
+      HOTOVO<br>ZA DEN<br>ŽÁDNÉ<br>ČEKÁNÍ<br><span style="color:var(--muted)">SERIÓZNĚ</span>
+    </div>
+  </div>
+  <p class="hero-sub">Moderní web na míru pro řemeslníky, živnostníky a malé firmy. Od zadání po spuštění do 24 hodin. Bez výmluv. Bez průtahů. Výsledek.</p>
+  <div class="hero-cta-group">
+    <a href="#objednat" class="btn btn-primary">[ Objednat web do 24h ]</a>
+    <a href="#ukazky" class="btn btn-outline">[ Prohlédnout ukázky ]</a>
+  </div>
+  <p class="hero-note">✓ 100% garance vrácení peněz &nbsp;|&nbsp; Odpovídáme do 1 hodiny</p>
+</section>
+
+<!-- ═══════ STATS ═══════ -->
+<div class="stats-grid">
+  <div class="stat-block"><div class="stat-val">340+</div><div class="stat-label">Spuštěno</div></div>
+  <div class="stat-block"><div class="stat-val">24h</div><div class="stat-label">Garance</div></div>
+  <div class="stat-block"><div class="stat-val">47</div><div class="stat-label">Oborů</div></div>
+  <div class="stat-block"><div class="stat-val">4.9</div><div class="stat-label">Hodnocení</div></div>
+</div>
+
+<!-- ═══════ PROCESS ═══════ -->
+<section class="section" id="proces">
+  <div class="section-header">
+    <div class="section-label">[ Proces ]</div>
+    <h2>Od zadání k webu</h2>
+    <p class="section-desc">Žádná schůzka. Žádné čekání. Vyplníte formulář — do 24 hodin jste online.</p>
+  </div>
+  <div class="steps-grid">
+    <div class="step-block"><div class="step-num">01</div><h3>Zadání</h3><p>Formulář nebo telefon. Stačí pár vět — obor, lokalita, co děláte. Rozumíme 47 oborům.</p></div>
+    <div class="step-block"><div class="step-num">02</div><h3>Výběr</h3><p>Start, Business, Automation. Jednorázově nebo 12 splátek bez navýšení. Web je váš od první minuty.</p></div>
+    <div class="step-block"><div class="step-num">03</div><h3>Spuštění</h3><p>Doladíme, spustíme, předáme. Do 24 hodin. Nestihneme? Vracíme 100 %. Žádné výjimky.</p></div>
+  </div>
+</section>
+
+<!-- ═══════ TRUST ═══════ -->
+<section class="section">
+  <div class="section-header">
+    <div class="section-label">[ Důvěra ]</div>
+    <h2>Proč nám věřit</h2>
+    <p class="section-desc">Jasné podmínky. Konkrétní termíny. Plná transparentnost. Žádné plané sliby.</p>
+  </div>
+  <div class="trust-grid">
+    <div class="trust-block"><span class="trust-icon">🛡️</span><h4>Bez rizika</h4><p>Nestihneme 24h? Vrátíme peníze. 14 dní na odstoupení.</p></div>
+    <div class="trust-block"><span class="trust-icon">🔑</span><h4>Web je váš</h4><p>Doména, hosting, kód. Vše patří vám. Žádný lock-in.</p></div>
+    <div class="trust-block"><span class="trust-icon">🇨🇿</span><h4>Česká podpora</h4><p>Telefon, e-mail, WhatsApp. Do 1 hodiny. Česky.</p></div>
+    <div class="trust-block"><span class="trust-icon">📊</span><h4>Transparentní ceny</h4><p>Jednorázově nebo splátky. Žádné skryté poplatky.</p></div>
+  </div>
+</section>
+
+<!-- ═══════ PORTFOLIO ═══════ -->
+<section class="section" id="ukazky">
+  <div class="section-header">
+    <div class="section-label">[ Portfolio ]</div>
+    <h2>Naše práce</h2>
+    <p class="section-desc">Každý web na míru oboru. Moderní. Rychlý. Responzivní. Takhle vypadá výsledek.</p>
+  </div>
+  <div class="portfolio-grid">
+    <a href="https://sheskates.cz" target="_blank" rel="noopener" class="portfolio-block">
+      <div class="portfolio-thumb">⛷️<span class="portfolio-time">16h</span></div><div class="portfolio-info"><h4>SheSkates</h4><span>Prodej kurzů</span></div></a>
+    <a href="https://paddleboardy-milada.cz" target="_blank" rel="noopener" class="portfolio-block">
+      <div class="portfolio-thumb">🏄<span class="portfolio-time">23h</span></div><div class="portfolio-info"><h4>Paddleboardy</h4><span>Rezervace+platby</span></div></a>
+    <a href="https://ninja-tyden.cz" target="_blank" rel="noopener" class="portfolio-block">
+      <div class="portfolio-thumb">🥷<span class="portfolio-time">17h</span></div><div class="portfolio-info"><h4>Ninja Den</h4><span>Registrace</span></div></a>
+    <a href="https://truhlarstvi-drevorez.webdo24.cz" target="_blank" rel="noopener" class="portfolio-block">
+      <div class="portfolio-thumb">🪚<span class="portfolio-time">18h</span></div><div class="portfolio-info"><h4>Dřevořez</h4><span>Řemeslník</span></div></a>
+    <a href="https://dousa-elektro.cz" target="_blank" rel="noopener" class="portfolio-block">
+      <div class="portfolio-thumb">⚡<span class="portfolio-time">20h</span></div><div class="portfolio-info"><h4>Douša Elektro</h4><span>Elektrikář</span></div></a>
+    <a href="https://autoservis.webdo24.cz" target="_blank" rel="noopener" class="portfolio-block">
+      <div class="portfolio-thumb">🔧<span class="portfolio-time">19h</span></div><div class="portfolio-info"><h4>Autoservis</h4><span>Autoservis</span></div></a>
+  </div>
+</section>
+
+<!-- ═══════ CALCULATOR ═══════ -->
+<section class="section" id="kalkulacka">
+  <div class="section-header">
+    <div class="section-label">[ ROI ]</div>
+    <h2>Kolik stojí nemít web?</h2>
+    <p class="section-desc">Spočítejte si, kolik objednávek a obratu můžete získat online.</p>
+  </div>
+  <div class="calc-block">
+    <div class="calc-inputs">
+      <label>Průměrná zakázka: <strong id="zakazka-val">25 000 Kč</strong></label>
+      <input type="range" min="5000" max="100000" step="1000" value="25000" id="zakazka" oninput="updateCalc()">
+      <label>Objednávek / měsíc: <strong id="objednavky-val">5</strong></label>
+      <input type="range" min="2" max="30" step="1" value="5" id="objednavky" oninput="updateCalc()">
+      <label>Konverze: <strong id="konverze-val">30 %</strong></label>
+      <input type="range" min="10" max="80" step="5" value="30" id="konverze" oninput="updateCalc()">
+    </div>
+    <div class="calc-result">
+      <div style="font-family:var(--mono);font-size:0.62rem;color:var(--muted);text-transform:uppercase;letter-spacing:1px;margin-bottom:4px">Měsíční obrat z webu</div>
+      <div class="calc-big" id="calc-out">37 500</div>
+      <div style="font-family:var(--mono);font-size:0.72rem;color:var(--green);font-weight:700">Kč</div>
+      <div class="calc-sub" id="calc-payback">Návratnost za 0,4 měsíce</div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ PRICING ═══════ -->
+<section class="section" id="cenik">
+  <div class="section-header">
+    <div class="section-label">[ Ceník ]</div>
+    <h2>Vyberte balíček</h2>
+    <p class="section-desc">Jednorázově nebo 12 splátek bez navýšení.</p>
+  </div>
+  <div class="pricing-grid">
+    <div class="price-block">
+      <div class="price-name">Start</div><div class="price-desc">Pro řemeslníky</div>
+      <div class="price-amount">14 900<small>CZK jednorázově</small></div>
+      <ul class="price-features"><li>Web na míru do 24 hodin</li><li>SEO + Google Business</li><li>Kontaktní formuláře</li><li>1 rok hostingu</li><li>2 kola úprav</li></ul>
+      <a href="#objednat" class="btn btn-outline">Vybrat</a>
+    </div>
+    <div class="price-block featured">
+      <div class="price-badge">TOP</div>
+      <div class="price-name">Business</div><div class="price-desc">AI · Odpovědi 24/7</div>
+      <div class="price-amount">29 900<small>CZK jednorázově</small></div>
+      <ul class="price-features"><li>Vše ze Start</li><li>AI odpovědi 24/7</li><li>CRM + objednávky</li><li>Platební brána</li><li>Auto e-maily</li></ul>
+      <a href="#objednat" class="btn btn-primary">Vybrat</a>
+    </div>
+    <div class="price-block">
+      <div class="price-name">Automation</div><div class="price-desc">Pro větší firmy</div>
+      <div class="price-amount">59 900<small>CZK jednorázově</small></div>
+      <ul class="price-features"><li>Vše z Business</li><li>Workflow</li><li>Rezervační systém</li><li>API integrace</li><li>Auto faktury</li></ul>
+      <a href="#objednat" class="btn btn-outline">Vybrat</a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ TESTIMONIALS ═══════ -->
+<section class="section" id="reference">
+  <div class="section-header">
+    <div class="section-label">[ Reference ]</div>
+    <h2>Co říkají klienti</h2>
+    <p class="section-desc">340+ webů. 47 oborů. Tohle jsou jejich slova.</p>
+  </div>
+  <div class="testimonials-grid">
+    <div class="testimonial-block"><div class="testimonial-stars">★★★★★</div><p class="testimonial-text">WebDo24 mi udělalo web za 18 hodin. Druhý den mi začali chodit první zákazníci z Googlu.</p><div class="testimonial-author"><div class="testimonial-avatar">JT</div><div><div class="testimonial-name">Jan Trávníček</div><div class="testimonial-role">Elektrikář</div></div></div></div>
+    <div class="testimonial-block"><div class="testimonial-stars">★★★★★</div><p class="testimonial-text">Dodání do 24h znělo jako sci-fi, ale fakt to vyšlo. Web krásně sedí na mobilu.</p><div class="testimonial-author"><div class="testimonial-avatar">MK</div><div><div class="testimonial-name">Markéta Králová</div><div class="testimonial-role">Paddleboardy</div></div></div></div>
+    <div class="testimonial-block"><div class="testimonial-stars">★★★★★</div><p class="testimonial-text">Jsem truhlář, ne ajťák. Dali mi web, který si můžu sám upravovat. 12 objednávek za 14 dní.</p><div class="testimonial-author"><div class="testimonial-avatar">PD</div><div><div class="testimonial-name">Petr Dvořák</div><div class="testimonial-role">Truhlářství</div></div></div></div>
+    <div class="testimonial-block"><div class="testimonial-stars">★★★★★</div><p class="testimonial-text">Nejlepší investice. AI asistent odpovídá zákazníkům i v noci. Už nemusím být na telefonu.</p><div class="testimonial-author"><div class="testimonial-avatar">LK</div><div><div class="testimonial-name">Lucie Konečná</div><div class="testimonial-role">SheSkates</div></div></div></div>
+    <div class="testimonial-block"><div class="testimonial-stars">★★★★★</div><p class="testimonial-text">Autoservis včetně rezervačního systému. Do 24 hodin hotovo, všechno funkční.</p><div class="testimonial-author"><div class="testimonial-avatar">MH</div><div><div class="testimonial-name">Martin Horák</div><div class="testimonial-role">Autoservis</div></div></div></div>
+    <div class="testimonial-block"><div class="testimonial-stars">★★★★★</div><p class="testimonial-text">Ninja den pro děti — web s přihláškami a platbami. Dva dny po spuštění plno.</p><div class="testimonial-author"><div class="testimonial-avatar">TN</div><div><div class="testimonial-name">Tomáš Novotný</div><div class="testimonial-role">Ninja Den</div></div></div></div>
+  </div>
+</section>
+
+<!-- ═══════ FAQ ═══════ -->
+<section class="section" id="faq">
+  <div class="section-header"><div class="section-label">[ FAQ ]</div><h2>Časté dotazy</h2></div>
+  <div class="faq-list">
+    <div class="faq-item" onclick="this.classList.toggle('open')"><div class="faq-q">Co když nevím, co napsat? <span class="indicator">+</span></div><div class="faq-a"><div class="faq-a-inner">Řekněte nám obor a lokalitu. Texty připravíme my — máme zkušenosti ze 47 oborů.</div></div></div>
+    <div class="faq-item" onclick="this.classList.toggle('open')"><div class="faq-q">Opravdu 24 hodin? <span class="indicator">+</span></div><div class="faq-a"><div class="faq-a-inner">Ano. Od zaplacení a zadání požadavků do 24 hodin. Nestihneme? 100 % ceny zpět. Bez výjimek.</div></div></div>
+    <div class="faq-item" onclick="this.classList.toggle('open')"><div class="faq-q">Komu web patří? <span class="indicator">+</span></div><div class="faq-a"><div class="faq-a-inner">Vám. Doména, kód, obsah — všechno je vaše od první minuty. Předáme všechny přístupy.</div></div></div>
+    <div class="faq-item" onclick="this.classList.toggle('open')"><div class="faq-q">Hosting v ceně? <span class="indicator">+</span></div><div class="faq-a"><div class="faq-a-inner">Ano — 1 rok zdarma. EU servery, SSL certifikát, denní zálohy. Vše v ceně.</div></div></div>
+    <div class="faq-item" onclick="this.classList.toggle('open')"><div class="faq-q">Splátky? <span class="indicator">+</span></div><div class="faq-a"><div class="faq-a-inner">Ano. 12 měsíčních splátek bez navýšení u každého balíčku.</div></div></div>
+  </div>
+</section>
+
+<!-- ═══════ ORDER FORM ═══════ -->
+<section class="section" id="objednat">
+  <div class="section-header"><div class="section-label">[ Objednávka ]</div><h2>Začněte ještě dnes</h2><p class="section-desc">Vyplňte formulář — ozveme se do 1 hodiny. Web spustíme do 24 hodin.</p></div>
+  <div class="form-block">
+    <div class="form-group"><label>E-mail nebo telefon *</label><input type="text" placeholder="jan.novak@email.cz"></div>
+    <div class="form-group"><label>Jméno / firma *</label><input type="text" placeholder="Jan Novák — Elektrikář Praha"></div>
+    <div class="form-group"><label>Čím se zabýváte? *</label><textarea placeholder="Stručně popište vaši firmu a co od webu očekáváte..."></textarea></div>
+    <button class="btn btn-primary" style="width:100%;justify-content:center;padding:16px;font-size:0.85rem">[ Odeslat objednávku ]</button>
+    <p style="text-align:center;margin-top:14px;font-family:var(--mono);font-size:0.6rem;color:var(--muted);text-transform:uppercase;letter-spacing:1px">Odpovídáme do 1 hodiny · Údaje nikam nepředáváme</p>
+  </div>
+</section>
+
+<!-- ═══════ CTA ═══════ -->
+<div class="cta-block">
+  <h3>Web do 24 hodin</h3>
+  <p>Bez starostí. Bez čekání. Výsledek.</p>
+  <a href="#objednat" class="btn btn-primary">[ Objednat — 735 847 185 ]</a>
+</div>
+
+<!-- ═══════ FOOTER ═══════ -->
+<footer class="footer">
+  <div>© 2025 WebDo24.cz</div>
+  <div class="footer-links"><a href="tel:+420735847185">735 847 185</a><a href="mailto:info@webdo24.cz">info@webdo24.cz</a><a href="#reference">Reference</a><a href="#faq">FAQ</a></div>
+</footer>
+
+</div><!-- .wrap -->
+
+<script>
+function updateCalc(){
+  const z=parseInt(document.getElementById('zakazka').value);
+  const o=parseInt(document.getElementById('objednavky').value);
+  const k=parseInt(document.getElementById('konverze').value)/100;
+  const out=Math.round(z*o*k);
+  document.getElementById('zakazka-val').textContent=(z/1000).toFixed(0).replace('.',' ')+' 000 Kč';
+  document.getElementById('objednavky-val').textContent=o;
+  document.getElementById('konverze-val').textContent=Math.round(k*100)+' %';
+  document.getElementById('calc-out').textContent=out.toLocaleString('cs-CZ');
+  const payback=(14900/out).toFixed(1);
+  document.getElementById('calc-payback').textContent='Návratnost za '+payback+' měs. · Ročně: '+(out*12).toLocaleString('cs-CZ')+' Kč';
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,1088 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>WebDo24 — Svůj nový web uvidíte za 24 hodin. Zdarma.</title>
+<meta name="description" content="Řeknete nám, co děláte. Do 24 hodin uvidíte skutečný návrh svého webu — zdarma a nezávazně. Platíte, až když se vám líbí. Pak se o web staráme za vás: úpravy, doména, hosting, obsah.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://webdo24.cz/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="WebDo24 — web do 24 hodin. Platíte, až když se vám líbí.">
+<meta property="og:description" content="Web jako služba pro české podnikatele. Návrh zdarma do 24 hodin, pak jedna měsíční platba a žádné starosti.">
+<meta property="og:locale" content="cs_CZ">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,62..125,100..900;1,62..125,100..900&family=IBM+Plex+Mono:wght@400;500;600&family=Instrument+Sans:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
+<style>
+/* ═══════════════════════════════════════════════════════════
+   WebDo24 — jednosouborová verze (fable_webdo24)
+   Design: paper / ink / accent, Archivo + Instrument Sans + Plex Mono
+   ═══════════════════════════════════════════════════════════ */
+:root {
+  --color-ink: #17264a;
+  --color-ink-deep: #0e1a38;
+  --color-ink-soft: #46557a;
+  --color-paper: #eef1f6;
+  --color-card: #ffffff;
+  --color-accent: #ff5a1f;
+  --color-accent-deep: #e64a10;
+  --color-line: #d4dbe7;
+  --color-tint: #dce6f5;
+  --font-sans: "Instrument Sans", system-ui, sans-serif;
+  --font-display: "Archivo", system-ui, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, monospace;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: var(--color-paper);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection { background: var(--color-accent); color: #fff; }
+
+/* ── Display type — signage voice: Archivo, expanded, tight ── */
+.display {
+  font-family: var(--font-display);
+  font-stretch: 115%;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  line-height: 1.02;
+  text-wrap: balance;
+}
+
+.display-label {
+  font-family: var(--font-mono);
+  font-size: 0.8125rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+/* ── Layout ── */
+.flex { display: flex; }
+.flex-col { flex-direction: column; }
+.flex-wrap { flex-wrap: wrap; }
+.flex-1 { flex: 1 1 0%; }
+.grid { display: grid; }
+.block { display: block; }
+.inline-block { display: inline-block; }
+.hidden { display: none; }
+.items-center { align-items: center; }
+.items-baseline { align-items: baseline; }
+.items-start { align-items: flex-start; }
+.justify-between { justify-content: space-between; }
+.justify-center { justify-content: center; }
+.shrink-0 { flex-shrink: 0; }
+.relative { position: relative; }
+.absolute { position: absolute; }
+.sticky { position: sticky; }
+.top-0 { top: 0; }
+.z-50 { z-index: 50; }
+.z-10 { z-index: 10; }
+.mx-auto { margin-left: auto; margin-right: auto; }
+.text-left { text-align: left; }
+.text-center { text-align: center; }
+.text-right { text-align: right; }
+
+/* ── Widths / heights ── */
+.w-full { width: 100%; }
+.w-14 { width: 3.5rem; }
+.w-16 { width: 4rem; }
+.w-2 { width: 0.5rem; }
+.w-3 { width: 0.75rem; }
+.w-0\.5 { width: 0.125rem; }
+.h-16 { height: 4rem; }
+.h-full { height: 100%; }
+.h-2 { height: 0.5rem; }
+.h-3 { height: 0.75rem; }
+.h-1 { height: 0.25rem; }
+.min-h-screen { min-height: 100vh; }
+.max-w-6xl { max-width: 72rem; }
+.max-w-3xl { max-width: 48rem; }
+.max-w-2xl { max-width: 42rem; }
+.max-w-xl { max-width: 36rem; }
+.max-w-lg { max-width: 32rem; }
+.max-w-md { max-width: 28rem; }
+.max-w-xs { max-width: 20rem; }
+
+/* ── Spacing ── */
+.px-3 { padding-left: 0.75rem; padding-right: 0.75rem; }
+.px-4 { padding-left: 1rem; padding-right: 1rem; }
+.px-5 { padding-left: 1.25rem; padding-right: 1.25rem; }
+.px-6 { padding-left: 1.5rem; padding-right: 1.5rem; }
+.px-8 { padding-left: 2rem; padding-right: 2rem; }
+.py-1 { padding-top: 0.25rem; padding-bottom: 0.25rem; }
+.py-2\.5 { padding-top: 0.625rem; padding-bottom: 0.625rem; }
+.py-3 { padding-top: 0.75rem; padding-bottom: 0.75rem; }
+.py-3\.5 { padding-top: 0.875rem; padding-bottom: 0.875rem; }
+.py-4 { padding-top: 1rem; padding-bottom: 1rem; }
+.py-5 { padding-top: 1.25rem; padding-bottom: 1.25rem; }
+.py-6 { padding-top: 1.5rem; padding-bottom: 1.5rem; }
+.py-7 { padding-top: 1.75rem; padding-bottom: 1.75rem; }
+.py-8 { padding-top: 2rem; padding-bottom: 2rem; }
+.py-12 { padding-top: 3rem; padding-bottom: 3rem; }
+.py-14 { padding-top: 3.5rem; padding-bottom: 3.5rem; }
+.py-20 { padding-top: 5rem; padding-bottom: 5rem; }
+.py-24 { padding-top: 6rem; padding-bottom: 6rem; }
+.pt-0\.5 { padding-top: 0.125rem; }
+.pt-2 { padding-top: 0.5rem; }
+.pt-4 { padding-top: 1rem; }
+.pt-5 { padding-top: 1.25rem; }
+.pt-6 { padding-top: 1.5rem; }
+.pt-16 { padding-top: 4rem; }
+.pb-5 { padding-bottom: 1.25rem; }
+.pb-20 { padding-bottom: 5rem; }
+.pb-10 { padding-bottom: 2.5rem; }
+.mt-1 { margin-top: 0.25rem; }
+.mt-1\.5 { margin-top: 0.375rem; }
+.mt-2 { margin-top: 0.5rem; }
+.mt-2\.5 { margin-top: 0.625rem; }
+.mt-3 { margin-top: 0.75rem; }
+.mt-4 { margin-top: 1rem; }
+.mt-5 { margin-top: 1.25rem; }
+.mt-6 { margin-top: 1.5rem; }
+.mt-7 { margin-top: 1.75rem; }
+.mt-8 { margin-top: 2rem; }
+.mt-9 { margin-top: 2.25rem; }
+.mt-12 { margin-top: 3rem; }
+.mt-14 { margin-top: 3.5rem; }
+.mb-1\.5 { margin-bottom: 0.375rem; }
+.mb-2 { margin-bottom: 0.5rem; }
+.mb-4 { margin-bottom: 1rem; }
+.mb-8 { margin-bottom: 2rem; }
+.-mt-1 { margin-top: -0.25rem; }
+.-top-3 { top: -0.75rem; }
+.-right-3 { right: -0.75rem; }
+.left-8 { left: 2rem; }
+.bottom-4 { bottom: 1rem; }
+.top-2 { top: 0.5rem; }
+
+/* ── Gap / space-y ── */
+.gap-0\.5 { gap: 0.125rem; }
+.gap-1\.5 { gap: 0.375rem; }
+.gap-2 { gap: 0.5rem; }
+.gap-2\.5 { gap: 0.625rem; }
+.gap-3 { gap: 0.75rem; }
+.gap-4 { gap: 1rem; }
+.gap-5 { gap: 1.25rem; }
+.gap-6 { gap: 1.5rem; }
+.gap-7 { gap: 1.75rem; }
+.gap-10 { gap: 2.5rem; }
+.gap-12 { gap: 3rem; }
+.gap-14 { gap: 3.5rem; }
+.gap-16 { gap: 4rem; }
+.space-y-2 > * + * { margin-top: 0.5rem; }
+.space-y-2\.5 > * + * { margin-top: 0.625rem; }
+.space-y-3 > * + * { margin-top: 0.75rem; }
+.space-y-4 > * + * { margin-top: 1rem; }
+.space-y-5 > * + * { margin-top: 1.25rem; }
+.space-y-6 > * + * { margin-top: 1.5rem; }
+.space-y-7 > * + * { margin-top: 1.75rem; }
+
+/* ── Typography ── */
+.text-xs { font-size: 0.75rem; }
+.text-sm { font-size: 0.875rem; }
+.text-base { font-size: 1rem; }
+.text-lg { font-size: 1.125rem; }
+.text-xl { font-size: 1.25rem; }
+.text-2xl { font-size: 1.5rem; }
+.text-3xl { font-size: 1.875rem; }
+.text-4xl { font-size: 2.25rem; }
+.text-5xl { font-size: 3rem; }
+.text-\[15px\] { font-size: 15px; }
+.text-\[11px\] { font-size: 11px; }
+.font-mono { font-family: var(--font-mono); }
+.font-medium { font-weight: 500; }
+.font-semibold { font-weight: 600; }
+.font-bold { font-weight: 700; }
+.tracking-wide { letter-spacing: 0.025em; }
+.tracking-widest { letter-spacing: 0.1em; }
+.tracking-tight { letter-spacing: -0.025em; }
+.uppercase { text-transform: uppercase; }
+.leading-none { line-height: 1; }
+.leading-relaxed { line-height: 1.625; }
+.leading-tight { line-height: 1.25; }
+
+/* ── Text colors ── */
+.text-ink { color: var(--color-ink); }
+.text-ink-deep { color: var(--color-ink-deep); }
+.text-ink-soft { color: var(--color-ink-soft); }
+.text-accent { color: var(--color-accent); }
+.text-accent-deep { color: var(--color-accent-deep); }
+.text-white { color: #fff; }
+.text-white\/40 { color: rgba(255,255,255,0.4); }
+.text-white\/45 { color: rgba(255,255,255,0.45); }
+.text-white\/55 { color: rgba(255,255,255,0.55); }
+.text-white\/60 { color: rgba(255,255,255,0.6); }
+.text-white\/65 { color: rgba(255,255,255,0.65); }
+.text-white\/75 { color: rgba(255,255,255,0.75); }
+.text-white\/85 { color: rgba(255,255,255,0.85); }
+.text-line { color: var(--color-line); }
+
+/* ── Backgrounds ── */
+.bg-paper { background-color: var(--color-paper); }
+.bg-paper\/90 { background-color: rgba(238,241,246,0.9); }
+.bg-card { background-color: var(--color-card); }
+.bg-card\/80 { background-color: rgba(255,255,255,0.8); }
+.bg-ink { background-color: var(--color-ink); }
+.bg-ink-deep { background-color: var(--color-ink-deep); }
+.bg-accent { background-color: var(--color-accent); }
+.bg-accent\/10 { background-color: rgba(255,90,31,0.1); }
+.bg-tint { background-color: var(--color-tint); }
+.bg-line { background-color: var(--color-line); }
+.bg-white\/5 { background-color: rgba(255,255,255,0.05); }
+
+/* ── Borders ── */
+.border { border: 1px solid var(--color-line); }
+.border-2 { border-width: 2px; }
+.border-\[3px\] { border-width: 3px; }
+.border-t { border-top: 1px solid var(--color-line); }
+.border-b { border-bottom: 1px solid var(--color-line); }
+.border-y { border-top: 1px solid var(--color-line); border-bottom: 1px solid var(--color-line); }
+.border-t-2 { border-top-width: 2px; }
+.border-dashed { border-style: dashed; }
+.border-line { border-color: var(--color-line); }
+.border-ink { border-color: var(--color-ink); }
+.border-accent { border-color: var(--color-accent); }
+.border-white\/15 { border-color: rgba(255,255,255,0.15); }
+.border-white\/25 { border-color: rgba(255,255,255,0.25); }
+.rounded-sm { border-radius: 0.125rem; }
+.rounded-md { border-radius: 0.375rem; }
+.rounded-lg { border-radius: 0.5rem; }
+.rounded-full { border-radius: 9999px; }
+
+/* ── Shadows / effects ── */
+.shadow-sm { box-shadow: 0 1px 2px 0 rgba(0,0,0,0.05); }
+.shadow-md { box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -2px rgba(0,0,0,0.1); }
+.shadow-lg { box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -4px rgba(0,0,0,0.1); }
+.shadow-ticket { box-shadow: 0 24px 60px -24px rgba(14,26,56,0.35); }
+.shadow-block { box-shadow: 6px 6px 0 0 var(--color-ink); }
+.backdrop-blur-md { -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px); }
+.scroll-mt-20 { scroll-margin-top: 5rem; }
+.rotate-1 { transform: rotate(1deg); }
+.-rotate-3 { transform: rotate(-3deg); }
+
+/* ── Interactive / links ── */
+a { color: inherit; text-decoration: inherit; }
+button { font-family: inherit; color: inherit; background: none; border: none; cursor: pointer; }
+input, textarea { font-family: inherit; }
+
+.transition-colors { transition: color 0.15s ease, background-color 0.15s ease, border-color 0.15s ease; }
+
+.hover\:text-ink:hover { color: var(--color-ink); }
+.hover\:text-white:hover { color: #fff; }
+.hover\:text-accent:hover { color: var(--color-accent); }
+.hover\:bg-ink-deep:hover { background-color: var(--color-ink-deep); }
+.hover\:bg-accent-deep:hover { background-color: var(--color-accent-deep); }
+.hover\:border-ink-soft:hover { border-color: var(--color-ink-soft); }
+.hover\:border-accent:hover { border-color: var(--color-accent); }
+.hover\:border-ink:hover { border-color: var(--color-ink); }
+
+.disabled\:opacity-60:disabled { opacity: 0.6; }
+
+/* ── Form ── */
+.input {
+  width: 100%;
+  border-radius: 0.375rem;
+  border: 1px solid var(--color-line);
+  background-color: var(--color-card);
+  padding: 0.75rem 1rem;
+  font-size: 15px;
+  color: var(--color-ink);
+}
+.input::placeholder { color: rgba(70,85,122,0.5); }
+.input:focus { outline: none; border-color: var(--color-ink-soft); }
+
+/* ── Strikethrough that draws itself on reveal ── */
+.strike-item { position: relative; }
+.strike-item::after {
+  content: "";
+  position: absolute;
+  left: -2px;
+  right: -2px;
+  top: 50%;
+  height: 2px;
+  background: var(--color-accent);
+}
+@media (scripting: enabled) {
+  .strike-item::after {
+    right: 100%;
+    transition: right 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+    transition-delay: var(--strike-delay, 0ms);
+  }
+  .is-visible .strike-item::after { right: -2px; }
+}
+
+/* ── Timeline spine that draws on scroll ── */
+.timeline-spine {
+  background: linear-gradient(
+    to bottom,
+    var(--color-accent) 0%,
+    var(--color-accent) calc(var(--spine-progress, 0) * 100%),
+    var(--color-line) calc(var(--spine-progress, 0) * 100%),
+    var(--color-line) 100%
+  );
+}
+
+/* ── Hero ticket stamp ── */
+@keyframes stamp-in {
+  0% { opacity: 0; transform: rotate(-8deg) scale(1.6); }
+  100% { opacity: 1; transform: rotate(-8deg) scale(1); }
+}
+.stamp {
+  animation: stamp-in 0.4s cubic-bezier(0.22, 1, 0.36, 1) 0.9s both;
+}
+
+@keyframes ticket-pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.35; }
+}
+.ticket-dot { animation: ticket-pulse 1.6s ease-in-out infinite; }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .strike-item::after { right: -2px; transition: none; }
+  .stamp { animation: none; opacity: 1; transform: rotate(-8deg); }
+  .ticket-dot { animation: none; }
+}
+
+/* ── Visible keyboard focus ── */
+:focus-visible {
+  outline: 3px solid var(--color-accent);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+/* ── Responsive ── */
+@media (min-width: 640px) {
+  .sm\:pt-24 { padding-top: 6rem; }
+  .sm\:text-5xl { font-size: 3rem; }
+  .sm\:text-4xl { font-size: 2.25rem; }
+  .sm\:text-3xl { font-size: 1.875rem; }
+  .sm\:grid-cols-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .sm\:p-10 { padding: 2.5rem; }
+  .sm\:gap-10 { gap: 2.5rem; }
+  .sm\:left-\[5\.4rem\] { left: 5.4rem; }
+  .sm\:w-16 { width: 4rem; }
+}
+@media (min-width: 768px) {
+  .md\:flex { display: flex; }
+  .md\:flex-row { flex-direction: row; }
+  .md\:items-start { align-items: flex-start; }
+  .md\:justify-between { justify-content: space-between; }
+  .md\:grid-cols-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+@media (min-width: 1024px) {
+  .lg\:grid-cols-\[1\.15fr_1fr\] { grid-template-columns: 1.15fr 1fr; }
+  .lg\:grid-cols-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .lg\:grid-cols-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .lg\:grid-cols-\[1fr_360px\] { grid-template-columns: 1fr 360px; }
+  .lg\:gap-10 { gap: 2.5rem; }
+  .lg\:gap-20 { gap: 5rem; }
+  .lg\:text-\[3\.4rem\] { font-size: 3.4rem; }
+  .lg\:sticky { position: sticky; }
+  .lg\:top-8 { top: 2rem; }
+}
+</style>
+</head>
+<body id="top">
+
+<!-- ══════════════ HEADER ══════════════ -->
+<header class="sticky top-0 z-50 border-b border-line bg-paper/90 backdrop-blur-md">
+  <div class="mx-auto flex h-16 max-w-6xl items-center justify-between px-5">
+    <a href="#top" class="flex items-center gap-0.5" aria-label="WebDo24 — úvodní stránka">
+      <span class="display text-xl tracking-tight text-ink">WebDo</span>
+      <span class="display rounded-sm bg-accent px-1.5 py-0.5 text-xl leading-none text-ink-deep">24</span>
+    </a>
+    <nav class="hidden items-center gap-7 md:flex" aria-label="Hlavní navigace">
+      <a href="#jak" class="text-sm font-medium text-ink-soft transition-colors hover:text-ink">Jak to funguje</a>
+      <a href="#sluzba" class="text-sm font-medium text-ink-soft transition-colors hover:text-ink">Co dostanete</a>
+      <a href="#cenik" class="text-sm font-medium text-ink-soft transition-colors hover:text-ink">Ceník</a>
+      <a href="#otazky" class="text-sm font-medium text-ink-soft transition-colors hover:text-ink">Otázky</a>
+    </nav>
+    <a href="#start" class="rounded-md bg-accent px-4 py-2.5 text-sm font-semibold text-ink-deep shadow-sm transition-colors hover:bg-accent-deep hover:text-white">
+      Ukažte mi můj web
+    </a>
+  </div>
+</header>
+
+<main class="flex-1">
+
+  <!-- ══════════════ HERO ══════════════ -->
+  <section class="mx-auto grid max-w-6xl items-center gap-14 px-5 pb-20 pt-16 sm:pt-24 lg:grid-cols-[1.15fr_1fr] lg:gap-10">
+    <div>
+      <p class="display-label text-accent-deep">Web jako služba pro české podnikatele</p>
+      <h1 class="display mt-5 text-4xl sm:text-5xl lg:text-[3.4rem]">
+        Svůj nový web uvidíte za&nbsp;24&nbsp;hodin.
+        <span class="mt-2 block text-accent-deep">Platíte, až když se vám líbí.</span>
+      </h1>
+      <p class="mt-6 max-w-lg text-lg leading-relaxed text-ink-soft">
+        Řeknete nám, co děláte — zabere to pět minut. My do 24 hodin
+        připravíme skutečný návrh vašeho webu. Když se vám bude líbit,
+        spustíme ho a dál se o něj staráme. Když ne, nic neplatíte.
+      </p>
+      <div class="mt-8 flex flex-wrap items-center gap-4">
+        <a href="#start" class="rounded-md bg-accent px-6 py-3.5 text-base font-semibold text-ink-deep shadow-md transition-colors hover:bg-accent-deep hover:text-white">
+          Ukažte mi můj web zdarma
+        </a>
+        <a href="#jak" class="rounded-md border border-line bg-card px-6 py-3.5 text-base font-semibold transition-colors hover:border-ink-soft">
+          Jak to funguje
+        </a>
+      </div>
+      <p class="mt-5 font-mono text-xs tracking-wide text-ink-soft">
+        BEZ PLATBY PŘEDEM &nbsp;·&nbsp; BEZ ZÁVAZKU &nbsp;·&nbsp; NÁVRH DO 24 HODIN
+      </p>
+    </div>
+
+    <!-- Zakázkový lístek -->
+    <div aria-hidden="true" class="relative mx-auto w-full max-w-md rotate-1 rounded-lg border border-line bg-card shadow-ticket">
+      <div class="flex items-center justify-between border-b border-dashed border-line px-6 py-4">
+        <span class="font-mono text-xs font-semibold tracking-widest text-ink">ZAKÁZKOVÝ LÍSTEK Č. 0001</span>
+      </div>
+      <div class="space-y-4 px-6 py-6">
+        <div class="flex justify-between gap-4">
+          <div>
+            <p class="font-mono text-[11px] uppercase tracking-widest text-ink-soft">Přijato</p>
+            <p class="font-mono text-sm font-semibold">dnes 09:14</p>
+          </div>
+          <div class="text-right">
+            <p class="font-mono text-[11px] uppercase tracking-widest text-ink-soft">Návrh hotov</p>
+            <p class="font-mono text-sm font-semibold text-accent-deep">zítra 09:14</p>
+          </div>
+        </div>
+        <div class="rounded-md bg-paper px-4 py-3">
+          <p class="font-mono text-[11px] uppercase tracking-widest text-ink-soft">Zákazník</p>
+          <p class="mt-1 text-sm font-medium">Pekařství U Marka, Beroun</p>
+          <p class="mt-0.5 text-sm text-ink-soft">„Pečeme kváskový chleba. Chceme, aby nás lidi našli a věděli, kdy máme otevřeno.“</p>
+        </div>
+        <ul class="space-y-2 text-sm">
+          <li class="flex items-center justify-between"><span>Texty webu</span><span class="flex items-center gap-2 font-mono text-xs text-ink-soft"><span class="ticket-dot inline-block h-2 w-2 rounded-full bg-accent"></span>píšeme</span></li>
+          <li class="flex items-center justify-between"><span>Design na míru oboru</span><span class="font-mono text-xs text-ink-soft">připravujeme</span></li>
+          <li class="flex items-center justify-between"><span>Mobilní verze</span><span class="font-mono text-xs text-ink-soft">v plánu</span></li>
+          <li class="flex items-center justify-between"><span>Kontrola kvality</span><span class="font-mono text-xs text-ink-soft">v plánu</span></li>
+        </ul>
+      </div>
+      <div class="border-t border-dashed border-line px-6 py-4">
+        <p class="font-mono text-[11px] text-ink-soft">Platba: 0 Kč — zákazník platí, až když se mu návrh líbí</p>
+      </div>
+      <span class="stamp display absolute -right-3 -top-3 rounded border-[3px] border-accent bg-card/80 px-3 py-1 text-lg uppercase text-accent">Ve výrobě</span>
+    </div>
+  </section>
+
+  <!-- ══════════════ ŠKRTNUTÝ SEZNAM ══════════════ -->
+  <section class="border-y border-line bg-card">
+    <div class="mx-auto grid max-w-6xl gap-12 px-5 py-20 lg:grid-cols-2 lg:gap-20">
+      <div>
+        <p class="display-label text-accent-deep">Tvorba webu postaru</p>
+        <h2 class="display mt-4 max-w-md text-3xl sm:text-4xl">Takhle vypadá pořízení webu. Škrtli jsme ho za&nbsp;vás.</h2>
+        <p class="mt-5 max-w-md text-ink-soft">
+          Malá firma nepotřebuje projekt na tři měsíce a pět dodavatelů.
+          Potřebuje výsledek. Proto jsme celý seznam vzali na sebe.
+        </p>
+        <div class="mt-8">
+          <ul id="crosslist" class="space-y-3">
+            <li class="flex items-center gap-3 text-[15px] text-ink-soft sm:text-base"><span class="font-mono text-sm text-accent-deep/70" aria-hidden="true">✕</span><span class="strike-item" style="--strike-delay: 0ms">Najít spolehlivého dodavatele</span></li>
+            <li class="flex items-center gap-3 text-[15px] text-ink-soft sm:text-base"><span class="font-mono text-sm text-accent-deep/70" aria-hidden="true">✕</span><span class="strike-item" style="--strike-delay: 90ms">Vysvětlovat, co vlastně děláte</span></li>
+            <li class="flex items-center gap-3 text-[15px] text-ink-soft sm:text-base"><span class="font-mono text-sm text-accent-deep/70" aria-hidden="true">✕</span><span class="strike-item" style="--strike-delay: 180ms">Napsat texty na web</span></li>
+            <li class="flex items-center gap-3 text-[15px] text-ink-soft sm:text-base"><span class="font-mono text-sm text-accent-deep/70" aria-hidden="true">✕</span><span class="strike-item" style="--strike-delay: 270ms">Sehnat fotky a logo</span></li>
+            <li class="flex items-center gap-3 text-[15px] text-ink-soft sm:text-base"><span class="font-mono text-sm text-accent-deep/70" aria-hidden="true">✕</span><span class="strike-item" style="--strike-delay: 360ms">Vybrat šablonu a barvy</span></li>
+            <li class="flex items-center gap-3 text-[15px] text-ink-soft sm:text-base"><span class="font-mono text-sm text-accent-deep/70" aria-hidden="true">✕</span><span class="strike-item" style="--strike-delay: 450ms">Vyřešit doménu a hosting</span></li>
+            <li class="flex items-center gap-3 text-[15px] text-ink-soft sm:text-base"><span class="font-mono text-sm text-accent-deep/70" aria-hidden="true">✕</span><span class="strike-item" style="--strike-delay: 540ms">Nastavit zabezpečení</span></li>
+            <li class="flex items-center gap-3 text-[15px] text-ink-soft sm:text-base"><span class="font-mono text-sm text-accent-deep/70" aria-hidden="true">✕</span><span class="strike-item" style="--strike-delay: 630ms">Zkontrolovat mobilní verzi</span></li>
+            <li class="flex items-center gap-3 text-[15px] text-ink-soft sm:text-base"><span class="font-mono text-sm text-accent-deep/70" aria-hidden="true">✕</span><span class="strike-item" style="--strike-delay: 720ms">Vyřešit SEO</span></li>
+            <li class="flex items-center gap-3 text-[15px] text-ink-soft sm:text-base"><span class="font-mono text-sm text-accent-deep/70" aria-hidden="true">✕</span><span class="strike-item" style="--strike-delay: 810ms">Hlídat aktualizace</span></li>
+            <li class="flex items-center gap-3 text-[15px] text-ink-soft sm:text-base"><span class="font-mono text-sm text-accent-deep/70" aria-hidden="true">✕</span><span class="strike-item" style="--strike-delay: 900ms">Shánět někoho na každou změnu</span></li>
+          </ul>
+        </div>
+      </div>
+      <div class="flex items-center">
+        <div class="rounded-lg border-2 border-ink bg-paper p-8 shadow-block">
+          <p class="display-label text-ink-soft">Váš jediný úkol</p>
+          <p class="display mt-3 text-2xl sm:text-3xl">Pět minut nám povídejte o&nbsp;své firmě.</p>
+          <p class="mt-4 text-ink-soft">
+            Co děláte, pro koho a jak vás mají zákazníci zastihnout.
+            Žádné technické otázky — všechno ostatní je naše práce.
+          </p>
+          <a href="#start" class="mt-6 inline-block rounded-md bg-ink px-5 py-3 text-sm font-semibold text-white transition-colors hover:bg-ink-deep">
+            Začít těch 5 minut
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════ JAK TO FUNGUJE ══════════════ -->
+  <section id="jak" class="mx-auto max-w-6xl scroll-mt-20 px-5 py-20">
+    <p class="display-label text-accent-deep">Jak to funguje</p>
+    <h2 class="display mt-4 max-w-2xl text-3xl sm:text-4xl">Tři kroky. Jen ten první je váš.</h2>
+    <div class="mt-12 grid gap-6 md:grid-cols-3">
+      <div class="h-full rounded-lg border border-line bg-card p-7">
+        <p class="font-mono text-xs font-semibold uppercase tracking-widest text-accent-deep">Krok 1 · vy</p>
+        <h3 class="display mt-4 text-xl">Řeknete nám o sobě</h3>
+        <p class="mt-3 text-[15px] leading-relaxed text-ink-soft">Pět minut, žádné technické otázky. Co děláte, pro koho a jak vás mají zákazníci kontaktovat.</p>
+      </div>
+      <div class="h-full rounded-lg border border-line bg-card p-7">
+        <p class="font-mono text-xs font-semibold uppercase tracking-widest text-accent-deep">Krok 2 · my</p>
+        <h3 class="display mt-4 text-xl">Do 24 hodin máte návrh</h3>
+        <p class="mt-3 text-[15px] leading-relaxed text-ink-soft">Skutečný, proklikatelný web s texty a designem na míru vašemu oboru. Ne skica, ne nabídka v PDF.</p>
+      </div>
+      <div class="h-full rounded-lg border border-line bg-card p-7">
+        <p class="font-mono text-xs font-semibold uppercase tracking-widest text-accent-deep">Krok 3 · společně</p>
+        <h3 class="display mt-4 text-xl">Schválíte — a web žije</h3>
+        <p class="mt-3 text-[15px] leading-relaxed text-ink-soft">Zařídíme doménu, spuštění i všechno technické. Od té chvíle se o web staráme my.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════ 24H OSA ══════════════ -->
+  <section class="border-y border-line bg-card py-20">
+    <div class="mx-auto max-w-6xl px-5">
+      <div class="mx-auto max-w-2xl text-center">
+        <p class="display-label text-accent-deep">Hodina po hodině</p>
+        <h2 class="display mt-4 text-3xl sm:text-4xl">Co se s vaším webem děje během 24&nbsp;hodin</h2>
+        <p class="mt-4 text-ink-soft">Žádná černá skříňka. Takhle vypadá den, kdy pro vás pracujeme.</p>
+      </div>
+      <div class="mt-14">
+        <ol id="timeline" class="relative mx-auto max-w-2xl" style="--spine-progress: 0">
+          <span aria-hidden="true" class="timeline-spine absolute bottom-4 left-[4.4rem] top-2 w-0.5 sm:left-[5.4rem]"></span>
+          <li class="relative flex gap-6 pb-10 last:pb-0 sm:gap-10">
+            <span class="w-14 shrink-0 pt-0.5 text-right font-mono text-sm font-semibold text-accent-deep sm:w-16">0:00</span>
+            <span aria-hidden="true" class="relative z-10 mt-1.5 h-3 w-3 shrink-0 rounded-full border-2 border-accent bg-paper"></span>
+            <div><h3 class="display text-lg">Zadání přijato</h3><p class="mt-1.5 max-w-md text-[15px] leading-relaxed text-ink-soft">Potvrdíme e-mailem, že máme všechno. Kdyby něco chybělo, ozveme se hned — ať 24 hodin běží naplno.</p></div>
+          </li>
+          <li class="relative flex gap-6 pb-10 last:pb-0 sm:gap-10">
+            <span class="w-14 shrink-0 pt-0.5 text-right font-mono text-sm font-semibold text-accent-deep sm:w-16">1:00</span>
+            <span aria-hidden="true" class="relative z-10 mt-1.5 h-3 w-3 shrink-0 rounded-full border-2 border-accent bg-paper"></span>
+            <div><h3 class="display text-lg">Poznáváme vaši firmu</h3><p class="mt-1.5 max-w-md text-[15px] leading-relaxed text-ink-soft">Projdeme váš obor, okolí i to, co vaši zákazníci hledají. Web pekárny má říkat něco jiného než web autoservisu.</p></div>
+          </li>
+          <li class="relative flex gap-6 pb-10 last:pb-0 sm:gap-10">
+            <span class="w-14 shrink-0 pt-0.5 text-right font-mono text-sm font-semibold text-accent-deep sm:w-16">4:00</span>
+            <span aria-hidden="true" class="relative z-10 mt-1.5 h-3 w-3 shrink-0 rounded-full border-2 border-accent bg-paper"></span>
+            <div><h3 class="display text-lg">Struktura a texty</h3><p class="mt-1.5 max-w-md text-[15px] leading-relaxed text-ink-soft">Navrhneme stránky a napíšeme texty, které mluví za vás. Česky, lidsky, bez frází.</p></div>
+          </li>
+          <li class="relative flex gap-6 pb-10 last:pb-0 sm:gap-10">
+            <span class="w-14 shrink-0 pt-0.5 text-right font-mono text-sm font-semibold text-accent-deep sm:w-16">10:00</span>
+            <span aria-hidden="true" class="relative z-10 mt-1.5 h-3 w-3 shrink-0 rounded-full border-2 border-accent bg-paper"></span>
+            <div><h3 class="display text-lg">Design na míru</h3><p class="mt-1.5 max-w-md text-[15px] leading-relaxed text-ink-soft">Web dostane vzhled odpovídající vašemu řemeslu. Žádná univerzální šablona.</p></div>
+          </li>
+          <li class="relative flex gap-6 pb-10 last:pb-0 sm:gap-10">
+            <span class="w-14 shrink-0 pt-0.5 text-right font-mono text-sm font-semibold text-accent-deep sm:w-16">18:00</span>
+            <span aria-hidden="true" class="relative z-10 mt-1.5 h-3 w-3 shrink-0 rounded-full border-2 border-accent bg-paper"></span>
+            <div><h3 class="display text-lg">Kontrola kvality</h3><p class="mt-1.5 max-w-md text-[15px] leading-relaxed text-ink-soft">Mobilní telefony, rychlost, pravopis, kontakty, mapa. Všechno projde kontrolou, než to uvidíte.</p></div>
+          </li>
+          <li class="relative flex gap-6 pb-10 last:pb-0 sm:gap-10">
+            <span class="w-14 shrink-0 pt-0.5 text-right font-mono text-sm font-semibold text-accent-deep sm:w-16">24:00</span>
+            <span aria-hidden="true" class="relative z-10 mt-1.5 h-3 w-3 shrink-0 rounded-full border-2 border-accent bg-paper"></span>
+            <div><h3 class="display text-lg">Návrh je u vás</h3><p class="mt-1.5 max-w-md text-[15px] leading-relaxed text-ink-soft">V e-mailu najdete odkaz na svůj web. Proklikejte si ho, ukažte ho komukoli chcete. Pak se rozhodnete.</p></div>
+          </li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════ SLUŽBA / CO DOSTANETE ══════════════ -->
+  <section id="sluzba" class="mx-auto max-w-6xl scroll-mt-20 px-5 py-20">
+    <p class="display-label text-accent-deep">Co dostanete</p>
+    <h2 class="display mt-4 max-w-2xl text-3xl sm:text-4xl">Web, který předáním nekončí.</h2>
+    <p class="mt-5 max-w-2xl text-ink-soft">
+      Většina webů zestárne, protože se o ně po spuštění nikdo nestará.
+      Váš web má od prvního dne svůj tým — lidi i AI, kteří ho udržují
+      aktuální a pomáhají mu přivádět zákazníky.
+    </p>
+    <div class="mt-12 grid gap-x-10 gap-y-10 sm:grid-cols-2 lg:grid-cols-3">
+      <div class="border-t-2 border-ink pt-5"><h3 class="display text-lg">Úpravy do 24 hodin</h3><p class="mt-2.5 text-[15px] leading-relaxed text-ink-soft">Nový ceník? Jiná otevírací doba? Pošlete zprávu lidskou řečí a do 24 hodin je změněno. Bez faktury navíc.</p></div>
+      <div class="border-t-2 border-ink pt-5"><h3 class="display text-lg">Vše technické v ceně</h3><p class="mt-2.5 text-[15px] leading-relaxed text-ink-soft">Doména, hosting, zabezpečení, zálohy, certifikáty. Nemusíte vědět, co ta slova znamenají — od toho jsme tu my.</p></div>
+      <div class="border-t-2 border-ink pt-5"><h3 class="display text-lg">Texty a obsah</h3><p class="mt-2.5 text-[15px] leading-relaxed text-ink-soft">Nové texty, novinky, sezónní nabídky. S rychlostí nám pomáhá AI, výsledek vždy kontroluje člověk.</p></div>
+      <div class="border-t-2 border-ink pt-5"><h3 class="display text-lg">Aby vás lidé našli</h3><p class="mt-2.5 text-[15px] leading-relaxed text-ink-soft">Web stavíme tak, aby se zobrazoval lidem, kteří hledají přesně to, co děláte — ve vašem městě a okolí.</p></div>
+      <div class="border-t-2 border-ink pt-5"><h3 class="display text-lg">Přehled, kterému rozumíte</h3><p class="mt-2.5 text-[15px] leading-relaxed text-ink-soft">Jednou měsíčně stručně: kolik lidí přišlo, co je zajímalo a co zlepšíme. Žádné grafy pro analytiky.</p></div>
+      <div class="border-t-2 border-ink pt-5"><h3 class="display text-lg">Roste s vaší firmou</h3><p class="mt-2.5 text-[15px] leading-relaxed text-ink-soft">Nová stránka, fotogalerie, rezervace, další jazyk… Řeknete si a my přidáme. Web roste s vámi.</p></div>
+    </div>
+  </section>
+
+  <!-- ══════════════ CENÍK ══════════════ -->
+  <section id="cenik" class="scroll-mt-20 border-y border-line bg-ink-deep py-20 text-white">
+    <div class="mx-auto max-w-6xl px-5">
+      <p class="display-label text-accent">Ceník</p>
+      <h2 class="display mt-4 max-w-2xl text-3xl sm:text-4xl">Jedna měsíční platba. Žádné překvapení.</h2>
+      <p class="mt-5 max-w-2xl text-white/65">
+        Nový web běžně stojí desítky tisíc předem — a pak stejně platíte
+        za každou změnu. My to počítáme jinak: web je u nás služba, jako
+        paušál za telefon. Vytvoření a spuštění webu neplatíte vůbec.
+      </p>
+
+      <div class="mt-12 grid gap-6 lg:grid-cols-2">
+
+        <!-- Tier: Web -->
+        <div class="flex h-full flex-col rounded-lg border border-white/15 bg-white/5 p-8">
+          <p class="display text-xl">Web</p>
+          <p class="mt-1 text-sm text-white/55">Profesionální web bez starostí</p>
+          <p class="mt-6">
+            <span class="display text-4xl">1 190 Kč</span>
+            <span class="ml-2 text-sm text-white/55">měsíčně bez DPH</span>
+          </p>
+          <ul class="mt-7 flex-1 space-y-3 text-[15px] text-white/85">
+            <li class="flex gap-3"><span class="font-mono text-accent" aria-hidden="true">✓</span>Web na míru vašemu oboru — vytvoření v ceně</li>
+            <li class="flex gap-3"><span class="font-mono text-accent" aria-hidden="true">✓</span>Doména, hosting, zabezpečení a zálohy</li>
+            <li class="flex gap-3"><span class="font-mono text-accent" aria-hidden="true">✓</span>Úpravy obsahu do 24 hodin</li>
+            <li class="flex gap-3"><span class="font-mono text-accent" aria-hidden="true">✓</span>Technický dohled a aktualizace</li>
+            <li class="flex gap-3"><span class="font-mono text-accent" aria-hidden="true">✓</span>Podpora e-mailem</li>
+          </ul>
+          <a href="#start" class="mt-8 rounded-md border border-white/25 px-5 py-3 text-center text-sm font-semibold transition-colors hover:border-accent hover:text-accent">Začít návrhem zdarma</a>
+        </div>
+
+        <!-- Tier: Web + Růst -->
+        <div class="relative flex h-full flex-col rounded-lg border-2 border-accent bg-white/5 p-8">
+          <span class="display-label absolute -top-3 left-8 rounded-sm bg-accent px-2 py-1 text-[11px] text-ink-deep">Nejčastější volba</span>
+          <p class="display text-xl">Web + Růst</p>
+          <p class="mt-1 text-sm text-white/55">Web, který aktivně přivádí zákazníky</p>
+          <p class="mt-6">
+            <span class="display text-4xl">2 490 Kč</span>
+            <span class="ml-2 text-sm text-white/55">měsíčně bez DPH</span>
+          </p>
+          <ul class="mt-7 flex-1 space-y-3 text-[15px] text-white/85">
+            <li class="flex gap-3"><span class="font-mono text-accent" aria-hidden="true">✓</span>Vše z balíčku Web</li>
+            <li class="flex gap-3"><span class="font-mono text-accent" aria-hidden="true">✓</span>Nový obsah každý měsíc — texty, novinky, sezónní nabídky</li>
+            <li class="flex gap-3"><span class="font-mono text-accent" aria-hidden="true">✓</span>Průběžná práce na viditelnosti ve vyhledávání</li>
+            <li class="flex gap-3"><span class="font-mono text-accent" aria-hidden="true">✓</span>Měsíční přehled výsledků srozumitelnou řečí</li>
+            <li class="flex gap-3"><span class="font-mono text-accent" aria-hidden="true">✓</span>Přednostní vyřízení požadavků</li>
+            <li class="flex gap-3"><span class="font-mono text-accent" aria-hidden="true">✓</span>Aktivní návrhy, co na webu zlepšit</li>
+          </ul>
+          <a href="#start" class="mt-8 rounded-md bg-accent px-5 py-3 text-center text-sm font-semibold text-ink-deep transition-colors hover:bg-accent-deep hover:text-white">Začít návrhem zdarma</a>
+        </div>
+      </div>
+
+      <p class="mt-8 max-w-2xl font-mono text-xs leading-relaxed text-white/45">
+        BEZ ZÁVAZKU — SLUŽBU ZRUŠÍTE KDYKOLI KE KONCI MĚSÍCE. WEB SI
+        ODNESETE S SEBOU: PŘI ODCHODU DOSTANETE KOMPLETNÍ EXPORT.
+      </p>
+    </div>
+  </section>
+
+  <!-- ══════════════ BEZ RIZIKA ══════════════ -->
+  <section class="mx-auto max-w-6xl px-5 py-20">
+    <p class="display-label text-accent-deep">Kde je háček?</p>
+    <h2 class="display mt-4 max-w-2xl text-3xl sm:text-4xl">Není. Riziko jsme vzali na&nbsp;sebe.</h2>
+    <div class="mt-12 grid gap-6 sm:grid-cols-2">
+      <div class="h-full rounded-lg border border-line bg-card p-7"><h3 class="display text-lg">Nejdřív vidíte, pak platíte</h3><p class="mt-2.5 text-[15px] leading-relaxed text-ink-soft">Návrh webu dostanete do 24 hodin zdarma a k ničemu vás nezavazuje. Rozhodujete se nad hotovou věcí, ne nad slibem.</p></div>
+      <div class="h-full rounded-lg border border-line bg-card p-7"><h3 class="display text-lg">Bez závazku</h3><p class="mt-2.5 text-[15px] leading-relaxed text-ink-soft">Služba běží měsíc po měsíci. Žádná smlouva na dva roky, žádná výpovědní lhůta, žádné doplatky.</p></div>
+      <div class="h-full rounded-lg border border-line bg-card p-7"><h3 class="display text-lg">Web je váš</h3><p class="mt-2.5 text-[15px] leading-relaxed text-ink-soft">Doména se registruje na vás. Když odejdete, dostanete kompletní export webu. Nedržíme zákazníky jako rukojmí.</p></div>
+      <div class="h-full rounded-lg border border-line bg-card p-7"><h3 class="display text-lg">Ceny bez hvězdiček</h3><p class="mt-2.5 text-[15px] leading-relaxed text-ink-soft">Všechno běžné je v měsíční platbě. Kdyby něco v ceně nebylo, dozvíte se to předem — ne z faktury.</p></div>
+    </div>
+  </section>
+
+  <!-- ══════════════ FAQ ══════════════ -->
+  <section id="otazky" class="scroll-mt-20 border-t border-line bg-card py-20">
+    <div class="mx-auto max-w-6xl px-5">
+      <div class="mx-auto max-w-2xl text-center">
+        <p class="display-label text-accent-deep">Časté otázky</p>
+        <h2 class="display mt-4 text-3xl sm:text-4xl">Na co se ptají podnikatelé jako&nbsp;vy</h2>
+      </div>
+      <div class="mt-12">
+        <div id="faq" class="mx-auto max-w-2xl divide-y divide-line border-y border-line"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════ ZÁVĚREČNÉ CTA ══════════════ -->
+  <section class="bg-ink-deep py-24 text-white">
+    <div class="mx-auto max-w-6xl px-5 text-center">
+      <p class="display-label text-accent">První krok zabere 5 minut</p>
+      <h2 class="display mx-auto mt-5 max-w-3xl text-4xl sm:text-5xl">Zítra touhle dobou můžete mít&nbsp;web.</h2>
+      <p class="mx-auto mt-5 max-w-xl text-lg text-white/65">
+        Nezávazně a zdarma uvidíte, jak by váš web vypadal. Pak se
+        rozhodnete — a ať to dopadne jakkoli, o nic nepřijdete.
+      </p>
+      <a href="#start" class="mt-9 inline-block rounded-md bg-accent px-8 py-4 text-lg font-semibold text-ink-deep shadow-lg transition-colors hover:bg-accent-deep hover:text-white">
+        Ukažte mi můj web zdarma
+      </a>
+      <p class="mt-6 font-mono text-xs tracking-wide text-white/40">BEZ PLATBY PŘEDEM · BEZ ZÁVAZKU · NÁVRH DO 24 HODIN</p>
+    </div>
+  </section>
+
+  <!-- ══════════════ START — FORMULÁŘ (bývalá stránka /start) ══════════════ -->
+  <section id="start" class="scroll-mt-20 border-t border-line bg-paper">
+    <div class="mx-auto grid w-full max-w-6xl flex-1 gap-12 px-5 py-12 lg:grid-cols-[1fr_360px] lg:gap-20">
+
+      <div class="max-w-xl">
+        <div id="form-root">
+
+          <!-- progress -->
+          <div class="mb-8">
+            <p id="step-label" class="font-mono text-xs font-semibold tracking-widest text-accent-deep">KROK 1/3 — CO DĚLÁTE</p>
+            <div class="mt-3 flex gap-1.5" aria-hidden="true">
+              <span id="prog-0" class="h-1 flex-1 rounded-full bg-accent"></span>
+              <span id="prog-1" class="h-1 flex-1 rounded-full bg-line"></span>
+              <span id="prog-2" class="h-1 flex-1 rounded-full bg-line"></span>
+            </div>
+          </div>
+
+          <!-- krok 0 -->
+          <fieldset id="step-0" class="space-y-5">
+            <legend class="display mb-2 text-2xl sm:text-3xl">Povídejte — co děláte?</legend>
+            <label class="block">
+              <span class="mb-1.5 block text-sm font-medium">Čím se zabýváte? <span class="text-accent-deep" aria-hidden="true">*</span></span>
+              <input type="text" id="f-field" class="input" placeholder="Např. kadeřnictví, autoservis, účetnictví, penzion…">
+            </label>
+            <label class="block">
+              <span class="mb-1.5 block text-sm font-medium">Název firmy nebo jméno, pod kterým podnikáte</span>
+              <input type="text" id="f-business" class="input" placeholder="Např. Pekařství U Marka">
+            </label>
+            <label class="block">
+              <span class="mb-1.5 block text-sm font-medium">Napište pár vět o své firmě <span class="text-accent-deep" aria-hidden="true">*</span></span>
+              <textarea id="f-description" rows="5" class="input" placeholder="Vlastními slovy: co děláte, pro koho, kde působíte a čím jste jiní. Klidně neformálně — my už to učešeme."></textarea>
+            </label>
+          </fieldset>
+
+          <!-- krok 1 -->
+          <fieldset id="step-1" class="space-y-5" hidden>
+            <legend class="display mb-2 text-2xl sm:text-3xl">Co od webu čekáte?</legend>
+            <div class="space-y-2.5">
+              <button type="button" data-goal="Získávat poptávky a zakázky" class="goal flex w-full items-center gap-3 rounded-md border border-line bg-card px-4 py-3 text-left text-[15px] transition-colors hover:border-ink-soft"><span class="goal-mark font-mono text-sm text-line">○</span>Získávat poptávky a zakázky</button>
+              <button type="button" data-goal="Rezervace nebo objednávky" class="goal flex w-full items-center gap-3 rounded-md border border-line bg-card px-4 py-3 text-left text-[15px] transition-colors hover:border-ink-soft"><span class="goal-mark font-mono text-sm text-line">○</span>Rezervace nebo objednávky</button>
+              <button type="button" data-goal="Ukázat moji práci a reference" class="goal flex w-full items-center gap-3 rounded-md border border-line bg-card px-4 py-3 text-left text-[15px] transition-colors hover:border-ink-soft"><span class="goal-mark font-mono text-sm text-line">○</span>Ukázat moji práci a reference</button>
+              <button type="button" data-goal="Otevírací doba, kontakt, kde nás najdete" class="goal flex w-full items-center gap-3 rounded-md border border-line bg-card px-4 py-3 text-left text-[15px] transition-colors hover:border-ink-soft"><span class="goal-mark font-mono text-sm text-line">○</span>Otevírací doba, kontakt, kde nás najdete</button>
+              <button type="button" data-goal="Prodávat online" class="goal flex w-full items-center gap-3 rounded-md border border-line bg-card px-4 py-3 text-left text-[15px] transition-colors hover:border-ink-soft"><span class="goal-mark font-mono text-sm text-line">○</span>Prodávat online</button>
+              <button type="button" data-goal="Ještě nevím — poraďte mi" class="goal flex w-full items-center gap-3 rounded-md border border-line bg-card px-4 py-3 text-left text-[15px] transition-colors hover:border-ink-soft"><span class="goal-mark font-mono text-sm text-line">○</span>Ještě nevím — poraďte mi</button>
+            </div>
+            <label class="block pt-2">
+              <span class="mb-1.5 block text-sm font-medium">Máte už nějaký web? (nepovinné)</span>
+              <input type="text" id="f-website" class="input" placeholder="www.vase-adresa.cz — použijeme ho jako podklad">
+            </label>
+          </fieldset>
+
+          <!-- krok 2 -->
+          <fieldset id="step-2" class="space-y-5" hidden>
+            <legend class="display mb-2 text-2xl sm:text-3xl">Kam pošleme hotový návrh?</legend>
+            <label class="block">
+              <span class="mb-1.5 block text-sm font-medium">Vaše jméno <span class="text-accent-deep" aria-hidden="true">*</span></span>
+              <input type="text" id="f-name" class="input" autocomplete="name">
+            </label>
+            <label class="block">
+              <span class="mb-1.5 block text-sm font-medium">E-mail <span class="text-accent-deep" aria-hidden="true">*</span></span>
+              <input type="email" id="f-email" class="input" autocomplete="email" placeholder="Sem přijde odkaz na váš web">
+            </label>
+            <label class="block">
+              <span class="mb-1.5 block text-sm font-medium">Telefon (nepovinné)</span>
+              <input type="tel" id="f-phone" class="input" autocomplete="tel" placeholder="Kdybychom se potřebovali rychle doptat">
+            </label>
+            <p class="text-xs leading-relaxed text-ink-soft">
+              Odesláním nám dáváte souhlas ozvat se vám kvůli návrhu webu. Nic
+              víc — žádný newsletter, žádné obvolávání.
+            </p>
+          </fieldset>
+
+          <p id="form-error" role="alert" class="mt-5 hidden rounded-md bg-accent/10 px-4 py-3 text-sm font-medium text-accent-deep"></p>
+
+          <div class="mt-8 flex items-center justify-between">
+            <button type="button" id="btn-back" class="text-sm font-medium text-ink-soft hover:text-ink">← Zpět</button>
+            <button type="button" id="btn-next" class="rounded-md bg-ink px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-ink-deep">Pokračovat →</button>
+            <button type="button" id="btn-submit" class="rounded-md bg-accent px-6 py-3.5 text-base font-semibold text-ink-deep shadow-md transition-colors hover:bg-accent-deep hover:text-white disabled:opacity-60" hidden>Chci návrh do 24 hodin</button>
+          </div>
+
+        </div>
+      </div>
+
+      <aside>
+        <div class="rounded-lg border border-line bg-card p-6 lg:sticky lg:top-8">
+          <p class="display-label text-accent-deep">Co bude dál</p>
+          <ul class="mt-4 space-y-4 text-sm leading-relaxed text-ink-soft">
+            <li class="flex gap-3"><span class="font-mono font-semibold text-ink">1.</span>Vyplníte tenhle formulář. Zabere to zhruba pět minut a nic neplatíte.</li>
+            <li class="flex gap-3"><span class="font-mono font-semibold text-ink">2.</span>Do 24 hodin dostanete e-mailem odkaz na skutečný návrh svého webu.</li>
+            <li class="flex gap-3"><span class="font-mono font-semibold text-ink">3.</span>Když se vám bude líbit, spustíme ho. Když ne, nic se neděje — a nic nedlužíte.</li>
+          </ul>
+          <p class="mt-6 border-t border-line pt-4 font-mono text-[11px] leading-relaxed tracking-wide text-ink-soft">
+            BEZ PLATBY PŘEDEM · BEZ ZÁVAZKU<br>NÁVRH DO 24 HODIN ZDARMA
+          </p>
+        </div>
+      </aside>
+
+    </div>
+  </section>
+
+</main>
+
+<!-- ══════════════ FOOTER ══════════════ -->
+<footer class="border-t border-line bg-ink-deep text-white">
+  <div class="mx-auto max-w-6xl px-5 py-14">
+    <div class="flex flex-col gap-10 md:flex-row md:items-start md:justify-between">
+      <div class="max-w-xs">
+        <a href="#top" class="flex items-center gap-0.5" aria-label="WebDo24 — úvodní stránka">
+          <span class="display text-xl tracking-tight text-white">WebDo</span>
+          <span class="display rounded-sm bg-accent px-1.5 py-0.5 text-xl leading-none text-ink-deep">24</span>
+        </a>
+        <p class="mt-4 text-sm leading-relaxed text-white/60">
+          Web jako služba pro české podnikatele. Vy podnikáte, my se
+          staráme o váš web — každý den, ne jen při předání.
+        </p>
+      </div>
+      <div class="flex gap-16">
+        <div>
+          <p class="display-label mb-4 text-white/40">Web</p>
+          <ul class="space-y-2.5 text-sm text-white/75">
+            <li><a href="#jak" class="hover:text-white">Jak to funguje</a></li>
+            <li><a href="#sluzba" class="hover:text-white">Co dostanete</a></li>
+            <li><a href="#cenik" class="hover:text-white">Ceník</a></li>
+            <li><a href="#otazky" class="hover:text-white">Časté otázky</a></li>
+          </ul>
+        </div>
+        <div>
+          <p class="display-label mb-4 text-white/40">Kontakt</p>
+          <ul class="space-y-2.5 text-sm text-white/75">
+            <li><a href="mailto:ahoj@webdo24.cz" class="hover:text-white">ahoj@webdo24.cz</a></li>
+            <li><a href="#start" class="font-medium text-accent hover:text-white">Chci návrh webu zdarma</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="mt-12 flex flex-col gap-2 border-t border-white/10 pt-6 text-xs text-white/40 md:flex-row md:justify-between">
+      <p>© <span id="year">2026</span> WebDo24.cz</p>
+      <p class="font-mono">NÁVRH DO 24 HODIN · BEZ PLATBY PŘEDEM · BEZ ZÁVAZKU</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function () {
+  "use strict";
+
+  /* ── Rok v patičce ── */
+  document.getElementById("year").textContent = new Date().getFullYear();
+
+  /* ── FAQ accordion ── */
+  var faqItems = [
+    { q: "Opravdu to stihnete za 24 hodin?", a: "Ano. Čas počítáme od chvíle, kdy máme vaše zadání kompletní — proto ho hned po odeslání projdeme a případně se doptáme. U rozsáhlejších projektů (třeba e-shopu) řekneme reálný termín předem, ne až po lhůtě." },
+    { q: "Co když se mi návrh nebude líbit?", a: "Řeknete nám, co změnit — úpravy návrhu jsou samozřejmá součást procesu, ne vícepráce. A pokud nebudete chtít pokračovat vůbec, prostě to napíšete. Neplatíte nic a nikdo vás nebude přemlouvat." },
+    { q: "Musím si připravit texty a fotky?", a: "Nemusíte. Texty napíšeme z vašeho zadání my, fotografie vybereme z prověřených legálních zdrojů. Vlastní fotky nebo logo kdykoli doplníme — stačí je poslat e-mailem." },
+    { q: "Komu patří web a doména?", a: "Doména se registruje na vás nebo vaši firmu — je vaše od prvního dne. A pokud byste od nás někdy odešli, dostanete kompletní export webu. Nikoho nedržíme jako rukojmí." },
+    { q: "Jak fungují úpravy webu?", a: "Napíšete nám lidskou řečí — „změňte otevírací dobu“, „přidejte fotky z poslední zakázky“ — a do 24 hodin je hotovo. Běžné úpravy obsahu jsou v měsíční ceně, žádné faktury navíc." },
+    { q: "Dělá ty weby AI?", a: "AI používáme intenzivně — díky ní jsme rychlejší a levnější než klasická agentura. Každý web ale prochází lidskou kontrolou, než ho uvidíte vy nebo vaši zákazníci. Kupujete výsledek, ne technologii." },
+    { q: "Už web mám. Má to pro mě smysl?", a: "Ano — současný web je skvělý podklad. Vytvoříme nový návrh, a když se vám bude líbit víc, převedeme na něj vaši adresu. Přechod zařídíme my, návštěvníci nic nepoznají." },
+    { q: "Můžu službu zrušit?", a: "Kdykoli, vždy ke konci měsíce. Žádná výpovědní lhůta, žádné doplatky. Při odchodu dostanete export webu, abyste mohli pokračovat kdekoli jinde." }
+  ];
+
+  var faqRoot = document.getElementById("faq");
+  var openIndex = 0;
+
+  function renderFaq() {
+    faqRoot.innerHTML = "";
+    faqItems.forEach(function (item, i) {
+      var isOpen = openIndex === i;
+      var wrap = document.createElement("div");
+      var btn = document.createElement("button");
+      btn.type = "button";
+      btn.setAttribute("aria-expanded", String(isOpen));
+      btn.className = "flex w-full items-baseline justify-between gap-6 py-5 text-left";
+      var q = document.createElement("span");
+      q.className = "display text-base sm:text-lg";
+      q.textContent = item.q;
+      var mark = document.createElement("span");
+      mark.setAttribute("aria-hidden", "true");
+      mark.className = "font-mono text-lg leading-none text-accent-deep";
+      mark.textContent = isOpen ? "–" : "+";
+      btn.appendChild(q);
+      btn.appendChild(mark);
+      btn.addEventListener("click", function () {
+        openIndex = isOpen ? -1 : i;
+        renderFaq();
+      });
+      wrap.appendChild(btn);
+      if (isOpen) {
+        var p = document.createElement("p");
+        p.className = "-mt-1 max-w-xl pb-5 text-[15px] leading-relaxed text-ink-soft";
+        p.textContent = item.a;
+        wrap.appendChild(p);
+      }
+      faqRoot.appendChild(wrap);
+    });
+  }
+  renderFaq();
+
+  /* ── Škrtnutý seznam — reveal na scroll ── */
+  var crosslist = document.getElementById("crosslist");
+  if ("IntersectionObserver" in window && crosslist) {
+    var obs = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          crosslist.classList.add("is-visible");
+          obs.disconnect();
+        }
+      });
+    }, { threshold: 0.3 });
+    obs.observe(crosslist);
+  } else if (crosslist) {
+    crosslist.classList.add("is-visible");
+  }
+
+  /* ── Timeline spine — progress podle scrollu ── */
+  var timeline = document.getElementById("timeline");
+  if (timeline) {
+    var reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (reduced) {
+      timeline.style.setProperty("--spine-progress", "1");
+    } else {
+      var raf = 0;
+      function updateTimeline() {
+        var rect = timeline.getBoundingClientRect();
+        var viewport = window.innerHeight;
+        var progress = Math.min(1, Math.max(0, (viewport * 0.75 - rect.top) / rect.height));
+        timeline.style.setProperty("--spine-progress", progress.toFixed(3));
+        raf = 0;
+      }
+      function onScroll() {
+        if (!raf) raf = requestAnimationFrame(updateTimeline);
+      }
+      updateTimeline();
+      window.addEventListener("scroll", onScroll, { passive: true });
+      window.addEventListener("resize", onScroll);
+    }
+  }
+
+  /* ── Formulář — 3 kroky ── */
+  var state = {
+    businessName: "", field: "", description: "", goals: [],
+    currentWebsite: "", name: "", email: "", phone: ""
+  };
+  var step = 0;
+  var steps = ["Co děláte", "Co má web umět", "Kam pošleme návrh"];
+  var sending = false;
+
+  var elStep0 = document.getElementById("step-0");
+  var elStep1 = document.getElementById("step-1");
+  var elStep2 = document.getElementById("step-2");
+  var elLabel = document.getElementById("step-label");
+  var elError = document.getElementById("form-error");
+  var btnBack = document.getElementById("btn-back");
+  var btnNext = document.getElementById("btn-next");
+  var btnSubmit = document.getElementById("btn-submit");
+
+  function showError(msg) {
+    elError.textContent = msg;
+    elError.classList.remove("hidden");
+  }
+  function clearError() {
+    elError.textContent = "";
+    elError.classList.add("hidden");
+  }
+  function syncInputs() {
+    document.getElementById("f-field").value = state.field;
+    document.getElementById("f-business").value = state.businessName;
+    document.getElementById("f-description").value = state.description;
+    document.getElementById("f-website").value = state.currentWebsite;
+    document.getElementById("f-name").value = state.name;
+    document.getElementById("f-email").value = state.email;
+    document.getElementById("f-phone").value = state.phone;
+  }
+  function readInputs() {
+    state.field = document.getElementById("f-field").value;
+    state.businessName = document.getElementById("f-business").value;
+    state.description = document.getElementById("f-description").value;
+    state.currentWebsite = document.getElementById("f-website").value;
+    state.name = document.getElementById("f-name").value;
+    state.email = document.getElementById("f-email").value;
+    state.phone = document.getElementById("f-phone").value;
+  }
+
+  function renderStep() {
+    readInputs();
+    clearError();
+    elStep0.hidden = step !== 0;
+    elStep1.hidden = step !== 1;
+    elStep2.hidden = step !== 2;
+    elLabel.textContent = "KROK " + (step + 1) + "/3 — " + steps[step].toUpperCase();
+    for (var i = 0; i < 3; i++) {
+      document.getElementById("prog-" + i).className =
+        "h-1 flex-1 rounded-full " + (i <= step ? "bg-accent" : "bg-line");
+    }
+    btnBack.style.visibility = step > 0 ? "visible" : "hidden";
+    btnNext.hidden = step === 2;
+    btnSubmit.hidden = step !== 2;
+  }
+
+  btnBack.addEventListener("click", function () {
+    if (step > 0) { step--; renderStep(); window.scrollTo({ top: 0 }); }
+  });
+  btnNext.addEventListener("click", function () {
+    readInputs();
+    if (step === 0 && (!state.field.trim() || !state.description.trim())) {
+      showError("Vyplňte prosím, co děláte — bez toho návrh nevytvoříme.");
+      return;
+    }
+    step++;
+    renderStep();
+    window.scrollTo({ top: 0 });
+  });
+  btnSubmit.addEventListener("click", function () {
+    readInputs();
+    if (!state.name.trim() || !/^\S+@\S+\.\S+$/.test(state.email)) {
+      showError("Vyplňte prosím jméno a platný e-mail — tam pošleme návrh.");
+      return;
+    }
+    sending = true;
+    btnSubmit.disabled = true;
+    btnSubmit.textContent = "Odesílám…";
+    clearError();
+    fetch("/api/lead", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(state)
+    }).then(function (res) {
+      if (!res.ok) throw new Error();
+      done();
+    }).catch(function () {
+      showError("Odeslání se nepovedlo. Zkuste to prosím znovu, nebo nám napište na ahoj@webdo24.cz.");
+      btnSubmit.disabled = false;
+      btnSubmit.textContent = "Chci návrh do 24 hodin";
+    }).finally(function () {
+      sending = false;
+    });
+  });
+
+  function done() {
+    var root = document.getElementById("form-root");
+    var firstName = (state.name.split(" ")[0] || "");
+    root.innerHTML =
+      '<div class="rounded-lg border-2 border-ink bg-card p-8 shadow-block sm:p-10">' +
+        '<span class="display inline-block -rotate-3 rounded border-[3px] border-accent px-3 py-1 text-lg uppercase text-accent">Zadání přijato</span>' +
+        '<h1 class="display mt-6 text-3xl">Díky, ' + firstName.replace(/[<>&"]/g, "") + '. Teď pracujeme my.</h1>' +
+        '<p class="mt-4 text-ink-soft">Do 24 hodin pošleme na <strong class="text-ink">' + (state.email.replace(/[<>&"]/g, "")) + '</strong> odkaz na návrh vašeho webu. Pokud nám v zadání bude něco chybět, ozveme se dřív.</p>' +
+        '<ul class="mt-8 space-y-3 border-t border-line pt-6 font-mono text-sm">' +
+          '<li class="flex gap-4"><span class="w-14 shrink-0 font-semibold text-accent-deep">TEĎ</span>Projdeme vaše zadání a pustíme se do práce.</li>' +
+          '<li class="flex gap-4"><span class="w-14 shrink-0 font-semibold text-accent-deep">+24 H</span>V e-mailu máte odkaz na svůj web.</li>' +
+          '<li class="flex gap-4"><span class="w-14 shrink-0 font-semibold text-accent-deep">PAK</span>Rozhodnete se. Do té doby neplatíte nic.</li>' +
+        '</ul>' +
+      '</div>';
+    window.scrollTo({ top: 0 });
+  }
+
+  /* ── Goal toggles ── */
+  document.querySelectorAll(".goal").forEach(function (btn) {
+    btn.addEventListener("click", function () {
+      var goal = btn.getAttribute("data-goal");
+      var idx = state.goals.indexOf(goal);
+      if (idx >= 0) { state.goals.splice(idx, 1); } else { state.goals.push(goal); }
+      var active = state.goals.indexOf(goal) >= 0;
+      btn.className = "goal flex w-full items-center gap-3 rounded-md border px-4 py-3 text-left text-[15px] transition-colors " +
+        (active ? "border-ink bg-tint font-medium" : "border-line bg-card hover:border-ink-soft");
+      btn.querySelector(".goal-mark").textContent = active ? "✓" : "○";
+      btn.querySelector(".goal-mark").className = "goal-mark font-mono text-sm " + (active ? "text-accent-deep" : "text-line");
+    });
+  });
+
+  renderStep();
+  syncInputs();
+})();
+</script>
+</body>
+</html>
