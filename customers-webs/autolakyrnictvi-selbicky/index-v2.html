@@ -1,0 +1,1538 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Šelbický LAK — Autolakýrnictví Krupka</title>
+<meta name="description" content="Autolakýrnictví Šelbický Krupka — profesionální lakování vozidel. Pod Stadionem 48. Tel: 730 983 254">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,400;0,600;0,700;0,800;0,900;1,800;1,900&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&display=swap" rel="stylesheet">
+
+<style>
+/* ═══════════════════════════════
+   RESET
+═══════════════════════════════ */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;font-size:16px}
+body{
+  font-family:'DM Sans',sans-serif;
+  background:#060606;color:#fff;
+  overflow-x:hidden;cursor:none;
+  -webkit-font-smoothing:antialiased;
+}
+::-webkit-scrollbar{width:2px}
+::-webkit-scrollbar-track{background:#060606}
+::-webkit-scrollbar-thumb{background:#e63000}
+img{display:block;max-width:100%}
+a{text-decoration:none;color:inherit}
+
+/* ═══════════════════════════════
+   TOKENS
+═══════════════════════════════ */
+:root{
+  --o:#e63000;   /* orange-red */
+  --o2:#ff5500;
+  --o3:#ff8c00;
+  --ink:#060606;
+  --ink2:#0d0d0d;
+  --ink3:#141414;
+  --ink4:#1c1c1c;
+  --ink5:#242424;
+  --grey:#888;
+  --lt:#c8c8c8;
+  --border:rgba(230,48,0,.14);
+  --bordw:rgba(255,255,255,.07);
+  --glow:0 0 40px rgba(230,48,0,.35);
+}
+
+/* ═══════════════════════════════
+   CURSOR
+═══════════════════════════════ */
+#c{position:fixed;z-index:9999;pointer-events:none;
+  width:10px;height:10px;background:var(--o);
+  border-radius:50%;transform:translate(-50%,-50%);
+  transition:transform .12s,width .25s,height .25s,background .25s}
+#cr{position:fixed;z-index:9998;pointer-events:none;
+  width:40px;height:40px;border:1px solid rgba(230,48,0,.5);
+  border-radius:50%;transform:translate(-50%,-50%);
+  transition:transform .05s}
+body.hov #c{width:60px;height:60px;background:transparent;border:1.5px solid var(--o)}
+body.hov #cr{opacity:0}
+
+/* ═══════════════════════════════
+   PROGRESS BAR
+═══════════════════════════════ */
+#prog{
+  position:fixed;top:0;left:0;height:2px;z-index:1000;
+  background:linear-gradient(90deg,var(--o),var(--o3));
+  width:0%;transition:width .1s linear;
+}
+
+/* ═══════════════════════════════
+   NAV
+═══════════════════════════════ */
+#nav{
+  position:fixed;inset:0 0 auto;z-index:500;
+  height:66px;padding:0 clamp(1.5rem,5vw,4rem);
+  display:flex;align-items:center;justify-content:space-between;
+  transition:background .35s,border-color .35s;
+  border-bottom:1px solid transparent;
+}
+#nav.up{background:rgba(6,6,6,.93);backdrop-filter:blur(24px);border-color:var(--bordw)}
+
+.brand{display:flex;align-items:center;gap:12px}
+.brand-mark{
+  width:42px;height:42px;
+  background:linear-gradient(145deg,#ff6a00 0%,#e63000 48%,#2b0800 100%);
+  border:1px solid rgba(255,255,255,.22);
+  box-shadow:0 0 0 1px rgba(230,48,0,.35),0 12px 32px rgba(230,48,0,.38),inset 0 1px 0 rgba(255,255,255,.35);
+  clip-path:polygon(0 0,100% 0,100% 72%,72% 100%,0 100%);
+  display:flex;align-items:center;justify-content:center;
+  position:relative;overflow:hidden;
+  font-family:'Barlow Condensed',sans-serif;
+  font-size:.82rem;font-weight:900;letter-spacing:.08em;
+  text-transform:uppercase;flex-shrink:0;transition:transform .3s,box-shadow .3s;
+}
+.brand-mark::before,.ft-logo-m::before{
+  content:'';position:absolute;inset:-40% 30% -40% auto;width:18px;
+  background:rgba(255,255,255,.38);transform:rotate(24deg);
+}
+.brand-mark::after,.ft-logo-m::after{
+  content:'';position:absolute;left:7px;right:13px;bottom:8px;height:2px;
+  background:#fff;border-radius:2px;opacity:.85;
+}
+.brand:hover .brand-mark{transform:rotate(-8deg) scale(1.12);box-shadow:0 0 0 1px rgba(255,255,255,.35),0 18px 44px rgba(230,48,0,.5),inset 0 1px 0 rgba(255,255,255,.45)}
+.brand-text{line-height:1.1}
+.brand-text em{
+  display:block;
+  font-family:'Barlow Condensed',sans-serif;
+  font-style:normal;font-weight:800;
+  font-size:1.1rem;letter-spacing:.06em;text-transform:uppercase;
+}
+.brand-text small{
+  display:block;font-size:.62rem;
+  color:var(--o);font-weight:600;letter-spacing:.18em;text-transform:uppercase;
+}
+.nav-mid{display:flex;gap:2rem;list-style:none}
+@media(max-width:900px){.nav-mid{display:none}}
+.nav-mid a{
+  font-size:.72rem;font-weight:600;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--grey);
+  transition:color .2s;position:relative;padding-bottom:2px;
+}
+.nav-mid a::after{
+  content:'';position:absolute;bottom:0;left:0;width:0;height:1px;
+  background:var(--o);transition:width .3s;
+}
+.nav-mid a:hover{color:#fff}
+.nav-mid a:hover::after{width:100%}
+.nav-right{display:flex;align-items:center;gap:1rem}
+.nav-tel{
+  font-family:'Barlow Condensed',sans-serif;
+  font-weight:700;font-size:1.1rem;letter-spacing:.04em;
+  color:var(--o);border:1px solid var(--border);
+  padding:.45rem 1.1rem;border-radius:5px;
+  transition:all .25s;cursor:none;
+}
+.nav-tel:hover{background:var(--o);color:#fff;border-color:var(--o);box-shadow:var(--glow)}
+.brgr{display:none;flex-direction:column;gap:4px;cursor:none}
+.brgr span{width:20px;height:1.5px;background:#fff;border-radius:2px;transition:all .3s}
+@media(max-width:900px){.brgr{display:flex}.nav-tel{display:none}}
+
+/* ── mobile overlay ── */
+#mov{
+  display:none;position:fixed;inset:0;z-index:490;
+  background:#060606;
+  flex-direction:column;align-items:flex-start;justify-content:center;
+  padding:0 clamp(1.5rem,8vw,5rem);gap:1rem;
+}
+#mov.on{display:flex}
+#mov a{
+  font-family:'Barlow Condensed',sans-serif;
+  font-size:clamp(2.5rem,8vw,4.5rem);
+  font-weight:900;letter-spacing:.02em;text-transform:uppercase;
+  color:rgba(255,255,255,.15);transition:color .2s,transform .2s;
+  transform:translateX(-8px);
+}
+#mov a:hover{color:#fff;transform:translateX(0)}
+#mov a.mob-tel{color:var(--o);margin-top:1.5rem;font-size:clamp(1.5rem,5vw,2.5rem)}
+
+/* ═══════════════════════════════
+   HERO
+═══════════════════════════════ */
+.hero{
+  min-height:100vh;display:flex;align-items:flex-end;
+  position:relative;overflow:hidden;
+  padding:0 clamp(1.5rem,5vw,4rem) clamp(3rem,8vh,5rem);
+}
+
+/* Animated gradient orb */
+.hero-orb{
+  position:absolute;width:700px;height:700px;border-radius:50%;
+  background:radial-gradient(circle,rgba(230,48,0,.12) 0%,transparent 70%);
+  top:50%;right:5%;transform:translateY(-50%);
+  animation:orb 8s ease-in-out infinite alternate;
+}
+@keyframes orb{from{transform:translateY(-50%) scale(1)}to{transform:translateY(-55%) scale(1.1)}}
+
+/* Grid texture */
+.hero-grid{
+  position:absolute;inset:0;
+  background-image:linear-gradient(rgba(230,48,0,.03) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(230,48,0,.03) 1px,transparent 1px);
+  background-size:60px 60px;
+  mask-image:radial-gradient(ellipse 90% 90% at 60% 50%,black 20%,transparent 100%);
+}
+
+/* Vertical rule */
+.hero-rule{
+  position:absolute;left:clamp(1.5rem,5vw,4rem);
+  top:0;bottom:0;width:1px;
+  background:linear-gradient(to bottom,transparent,rgba(230,48,0,.3) 30%,rgba(230,48,0,.3) 70%,transparent);
+}
+
+.hero-inner{
+  position:relative;z-index:2;width:100%;max-width:1300px;margin:0 auto;
+  display:grid;grid-template-columns:1fr auto;gap:2rem;align-items:flex-end;
+  padding-top:8rem;
+}
+@media(max-width:900px){.hero-inner{grid-template-columns:1fr}}
+
+.hero-txt{}
+
+/* Giant stacked headline */
+.h-eyebrow{
+  display:flex;align-items:center;gap:10px;margin-bottom:1.5rem;
+}
+.h-eyebrow-line{width:40px;height:1px;background:var(--o)}
+.h-eyebrow span{
+  font-size:.65rem;font-weight:700;letter-spacing:.25em;
+  text-transform:uppercase;color:var(--o);
+}
+.h-eyebrow-loc{
+  margin-left:.5rem;font-size:.65rem;font-weight:500;
+  letter-spacing:.1em;color:var(--grey);text-transform:uppercase;
+}
+
+.hero-headline{
+  font-family:'Barlow Condensed',sans-serif;
+  font-weight:900;font-style:italic;
+  font-size:clamp(5rem,14vw,13rem);
+  line-height:.88;letter-spacing:-.01em;
+  text-transform:uppercase;
+  margin-bottom:2.5rem;
+}
+.hl-stroke{
+  color:transparent;
+  -webkit-text-stroke:1.5px rgba(255,255,255,.13);
+  display:block;
+}
+.hl-fill{
+  display:block;
+  background:linear-gradient(100deg,#fff 30%,var(--lt) 100%);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+  background-clip:text;
+}
+.hl-red{
+  display:block;
+  background:linear-gradient(100deg,var(--o),var(--o3));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+  background-clip:text;
+  filter:drop-shadow(0 0 30px rgba(230,48,0,.4));
+}
+
+.hero-body{
+  display:flex;align-items:flex-start;gap:3rem;flex-wrap:wrap;
+}
+.hero-desc{
+  font-size:1rem;color:var(--grey);line-height:1.8;
+  max-width:380px;
+}
+.hero-btns{display:flex;flex-direction:column;gap:.75rem;flex-shrink:0}
+
+.btn-primary{
+  display:inline-flex;align-items:center;gap:.75rem;
+  background:var(--o);color:#fff;
+  padding:.85rem 1.75rem;border-radius:4px;
+  font-family:'Barlow Condensed',sans-serif;
+  font-weight:700;font-size:1rem;letter-spacing:.1em;text-transform:uppercase;
+  transition:all .3s;cursor:none;position:relative;overflow:hidden;
+  box-shadow:0 2px 20px rgba(230,48,0,.3);
+}
+.btn-primary::after{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(135deg,rgba(255,255,255,.15),transparent);
+  opacity:0;transition:opacity .3s;
+}
+.btn-primary:hover::after{opacity:1}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 8px 35px rgba(230,48,0,.5)}
+.btn-secondary{
+  display:inline-flex;align-items:center;gap:.75rem;
+  color:var(--grey);
+  padding:.85rem 1.75rem;border-radius:4px;
+  border:1px solid var(--bordw);
+  font-family:'Barlow Condensed',sans-serif;
+  font-weight:700;font-size:1rem;letter-spacing:.1em;text-transform:uppercase;
+  transition:all .3s;cursor:none;
+}
+.btn-secondary:hover{color:#fff;border-color:rgba(255,255,255,.2)}
+
+.hero-stats{
+  display:flex;flex-direction:column;gap:.5rem;
+  border-left:1px solid var(--border);padding-left:2.5rem;
+  align-self:flex-end;
+}
+@media(max-width:900px){.hero-stats{display:none}}
+.hstat{text-align:right}
+.hstat-n{
+  font-family:'Barlow Condensed',sans-serif;
+  font-weight:900;font-size:2.8rem;line-height:1;
+  color:var(--o);letter-spacing:-.02em;
+}
+.hstat-l{font-size:.6rem;color:var(--grey);text-transform:uppercase;letter-spacing:.14em}
+
+/* scroll hint */
+.hero-scroll{
+  position:absolute;bottom:2.5rem;left:50%;transform:translateX(-50%);
+  display:flex;flex-direction:column;align-items:center;gap:.5rem;
+  opacity:.3;
+}
+.scroll-line{
+  width:1px;height:60px;background:linear-gradient(to bottom,#fff,transparent);
+  animation:scrollline 1.8s ease-in-out infinite;
+}
+@keyframes scrollline{
+  0%{transform:scaleY(0);transform-origin:top}
+  50%{transform:scaleY(1);transform-origin:top}
+  51%{transform:scaleY(1);transform-origin:bottom}
+  100%{transform:scaleY(0);transform-origin:bottom}
+}
+.scroll-txt{font-size:.55rem;letter-spacing:.2em;color:#fff;text-transform:uppercase;writing-mode:vertical-rl}
+
+/* ═══════════════════════════════
+   TICKER
+═══════════════════════════════ */
+.ticker{
+  position:relative;overflow:hidden;
+  border-top:1px solid var(--bordw);
+  border-bottom:1px solid var(--bordw);
+  padding:.6rem 0;background:var(--ink2);
+}
+.tk-inner{
+  display:inline-flex;white-space:nowrap;
+  animation:tk 22s linear infinite;
+}
+.tk-inner:hover{animation-play-state:paused}
+.tk-i{
+  font-family:'Barlow Condensed',sans-serif;
+  font-size:.8rem;font-weight:700;letter-spacing:.16em;
+  text-transform:uppercase;color:#333;padding:0 1.75rem;
+  transition:color .2s;
+}
+.tk-i.hi{color:var(--o)}
+.tk-i.dot{color:rgba(230,48,0,.2)}
+@keyframes tk{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* ═══════════════════════════════
+   SECTION BASE
+═══════════════════════════════ */
+.sec{padding:clamp(4rem,10vw,8rem) clamp(1.5rem,5vw,4rem)}
+.con{max-width:1200px;margin:0 auto}
+
+.label{
+  display:inline-flex;align-items:center;gap:8px;
+  font-size:.62rem;font-weight:700;letter-spacing:.22em;
+  text-transform:uppercase;color:var(--o);margin-bottom:1.5rem;
+}
+.label::before{content:'';width:20px;height:1px;background:var(--o)}
+
+h2.display{
+  font-family:'Barlow Condensed',sans-serif;
+  font-weight:900;font-style:italic;
+  font-size:clamp(2.5rem,6vw,5rem);
+  line-height:.95;letter-spacing:-.01em;
+  text-transform:uppercase;margin-bottom:1.25rem;
+}
+h2.display .accent{
+  background:linear-gradient(90deg,var(--o),var(--o3));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+  background-clip:text;
+}
+.body-txt{font-size:.95rem;color:var(--grey);line-height:1.85;max-width:520px}
+
+/* ═══════════════════════════════
+   SERVICES — Horizontal tabs
+═══════════════════════════════ */
+.svc-sec{background:var(--ink2)}
+.svc-top{
+  display:grid;grid-template-columns:1fr auto;
+  align-items:flex-end;gap:2rem;margin-bottom:3rem;
+}
+@media(max-width:700px){.svc-top{grid-template-columns:1fr}}
+.svc-tabs{
+  display:flex;gap:0;border:1px solid var(--bordw);
+  border-radius:6px;overflow:hidden;flex-shrink:0;
+}
+.svc-tab{
+  font-family:'Barlow Condensed',sans-serif;
+  font-weight:700;font-size:.85rem;letter-spacing:.1em;text-transform:uppercase;
+  padding:.6rem 1.25rem;background:transparent;border:none;color:var(--grey);
+  cursor:none;transition:all .25s;font-family:'DM Sans',sans-serif;
+}
+.svc-tab.active{background:var(--o);color:#fff}
+.svc-tab:hover:not(.active){color:#fff;background:rgba(255,255,255,.05)}
+
+/* Service panels */
+.svc-panel{display:none}
+.svc-panel.on{display:grid}
+.svc-panel-inner{
+  grid-template-columns:1fr 1fr;
+  gap:1px;background:var(--bordw);
+  border:1px solid var(--bordw);border-radius:12px;overflow:hidden;
+}
+@media(max-width:700px){.svc-panel-inner{grid-template-columns:1fr}}
+.svc-item{
+  background:var(--ink2);padding:2.25rem 2rem;
+  position:relative;overflow:hidden;transition:background .25s;
+}
+.svc-item:hover{background:var(--ink3)}
+.svc-item-n{
+  font-family:'Barlow Condensed',sans-serif;
+  font-size:5rem;font-weight:900;line-height:1;
+  color:rgba(230,48,0,.05);position:absolute;top:.5rem;right:1rem;
+  letter-spacing:-.04em;
+}
+.svc-ico2{font-size:1.8rem;margin-bottom:1rem;display:block}
+.svc-item h3{
+  font-family:'Barlow Condensed',sans-serif;
+  font-weight:800;font-size:1.4rem;letter-spacing:.02em;
+  text-transform:uppercase;margin-bottom:.5rem;
+}
+.svc-item p{font-size:.85rem;color:var(--grey);line-height:1.7}
+.svc-pill{
+  display:inline-block;margin-top:.875rem;
+  font-size:.62rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;
+  background:rgba(230,48,0,.1);border:1px solid rgba(230,48,0,.2);
+  color:var(--o);padding:.25rem .65rem;border-radius:3px;
+}
+
+/* ═══════════════════════════════
+   ABOUT — Magazine layout
+═══════════════════════════════ */
+.about{background:var(--ink)}
+.about-grid{
+  display:grid;
+  grid-template-columns:auto 1fr;
+  grid-template-rows:auto auto;
+  gap:0;
+}
+@media(max-width:860px){.about-grid{grid-template-columns:1fr}}
+.about-sidebar{
+  writing-mode:vertical-rl;
+  transform:rotate(180deg);
+  padding:0 1.5rem 0 0;
+  border-right:1px solid var(--bordw);
+  margin-right:3rem;
+  display:flex;align-items:center;justify-content:center;
+  grid-row:span 2;
+}
+@media(max-width:860px){.about-sidebar{display:none}}
+.about-sidebar span{
+  font-family:'Barlow Condensed',sans-serif;
+  font-size:.7rem;font-weight:700;letter-spacing:.25em;
+  text-transform:uppercase;color:var(--grey);white-space:nowrap;
+}
+.about-top{
+  display:grid;grid-template-columns:1fr 1fr;gap:4rem;
+  align-items:center;padding-bottom:3rem;
+  border-bottom:1px solid var(--bordw);margin-bottom:3rem;
+}
+@media(max-width:700px){.about-top{grid-template-columns:1fr;gap:2rem}}
+.about-big-n{
+  font-family:'Barlow Condensed',sans-serif;
+  font-size:clamp(6rem,18vw,14rem);font-weight:900;
+  line-height:.85;letter-spacing:-.04em;
+  background:linear-gradient(135deg,var(--o),rgba(230,48,0,.1));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+  background-clip:text;
+  filter:drop-shadow(0 0 50px rgba(230,48,0,.2));
+}
+.about-facts{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem}
+.af{border-left:2px solid var(--o);padding-left:1rem}
+.af-n{
+  font-family:'Barlow Condensed',sans-serif;
+  font-size:2.2rem;font-weight:900;line-height:1;color:#fff;
+  letter-spacing:-.02em;
+}
+.af-l{font-size:.7rem;color:var(--grey);text-transform:uppercase;letter-spacing:.12em;margin-top:2px}
+.about-bottom{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--bordw);border:1px solid var(--bordw);border-radius:10px;overflow:hidden}
+@media(max-width:700px){.about-bottom{grid-template-columns:1fr 1fr}}
+.ab-card{
+  background:var(--ink);padding:1.75rem 1.5rem;transition:background .25s;
+}
+.ab-card:hover{background:var(--ink3)}
+.ab-ico{font-size:1.6rem;margin-bottom:.875rem}
+.ab-card h4{
+  font-family:'Barlow Condensed',sans-serif;
+  font-weight:800;font-size:1.1rem;letter-spacing:.04em;
+  text-transform:uppercase;margin-bottom:.4rem;
+}
+.ab-card p{font-size:.8rem;color:var(--grey);line-height:1.65}
+
+/* ═══════════════════════════════
+   PROCESS — stepped timeline
+═══════════════════════════════ */
+.proc{background:var(--ink2)}
+.proc-list{margin-top:3.5rem;display:flex;flex-direction:column;gap:0}
+.proc-row{
+  display:grid;grid-template-columns:80px 1fr;gap:2rem;
+  padding:2rem 0;border-bottom:1px solid var(--bordw);
+  align-items:start;transition:background .2s;
+  border-radius:6px;padding-left:1rem;padding-right:1rem;
+  margin:0 -1rem;
+}
+.proc-row:last-child{border-bottom:none}
+.proc-row:hover{background:rgba(230,48,0,.03)}
+.proc-step-n{
+  font-family:'Barlow Condensed',sans-serif;
+  font-weight:900;font-size:3.5rem;line-height:1;
+  letter-spacing:-.03em;color:rgba(230,48,0,.18);
+  transition:color .3s;padding-top:.2rem;
+}
+.proc-row:hover .proc-step-n{color:rgba(230,48,0,.5)}
+.proc-content{}
+.proc-content h3{
+  font-family:'Barlow Condensed',sans-serif;
+  font-weight:800;font-size:1.5rem;letter-spacing:.04em;
+  text-transform:uppercase;margin-bottom:.4rem;
+}
+.proc-content p{font-size:.88rem;color:var(--grey);line-height:1.75}
+.proc-tag{
+  display:inline-block;margin-top:.75rem;
+  font-size:.62rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;
+  border:1px solid var(--bordw);color:var(--grey);
+  padding:.22rem .65rem;border-radius:3px;
+}
+
+/* ═══════════════════════════════
+   BEFORE / AFTER
+═══════════════════════════════ */
+.baf{background:var(--ink)}
+.baf-wrap{
+  display:grid;grid-template-columns:1fr 1fr;gap:2px;
+  border-radius:14px;overflow:hidden;margin-top:3.5rem;
+  border:1px solid var(--bordw);
+}
+@media(max-width:600px){.baf-wrap{grid-template-columns:1fr}}
+.baf-side{position:relative;min-height:340px;overflow:hidden}
+.baf-bg{
+  position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
+  flex-direction:column;gap:.5rem;
+}
+.baf-bg img,.baf-car-img img{
+  width:100%;height:100%;object-fit:cover;
+}
+.baf-bg::after,.baf-car-img::after{
+  content:'';position:absolute;inset:0;pointer-events:none;
+  background:linear-gradient(to top,rgba(0,0,0,.58),rgba(0,0,0,.08) 55%,rgba(255,255,255,.08));
+}
+.baf-before .baf-bg{
+  filter:grayscale(1);
+}
+.baf-after .baf-bg{background:#120500}
+.baf-ico{font-size:4rem;opacity:.15}
+.baf-label{
+  position:absolute;top:1rem;left:1rem;
+  font-family:'Barlow Condensed',sans-serif;
+  font-weight:800;font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;
+  padding:.3rem .7rem;border-radius:3px;
+}
+.baf-before .baf-label{background:rgba(255,255,255,.07);color:#888}
+.baf-after .baf-label{background:var(--o);color:#fff}
+.baf-after-glow{
+  position:absolute;inset:0;
+  background:radial-gradient(ellipse 80% 70% at 50% 45%,rgba(230,48,0,.2),transparent 65%);
+  mix-blend-mode:screen;
+}
+.baf-cars{
+  display:flex;gap:1rem;margin-top:3.5rem;overflow-x:auto;padding-bottom:.5rem;
+  scrollbar-width:thin;scrollbar-color:var(--o) transparent;
+}
+.baf-car{
+  flex-shrink:0;border:1px solid var(--bordw);border-radius:10px;
+  overflow:hidden;width:280px;transition:border-color .3s;cursor:none;
+}
+.baf-car:hover{border-color:var(--border)}
+.baf-car-img{
+  position:relative;overflow:hidden;
+  height:150px;display:flex;align-items:center;justify-content:center;
+  background:var(--ink3);font-size:2.5rem;
+}
+.baf-car-info{padding:1rem}
+.baf-car-info h4{
+  font-family:'Barlow Condensed',sans-serif;
+  font-weight:800;font-size:1.1rem;letter-spacing:.04em;text-transform:uppercase;
+}
+.baf-car-info p{font-size:.78rem;color:var(--grey);margin-top:2px}
+.baf-car-tag{
+  display:inline-block;margin-top:.6rem;
+  font-size:.6rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
+  background:rgba(230,48,0,.1);border:1px solid rgba(230,48,0,.2);
+  color:var(--o);padding:.2rem .55rem;border-radius:3px;
+}
+
+/* ═══════════════════════════════
+   REVIEWS — big quote style
+═══════════════════════════════ */
+.rev{background:var(--ink3)}
+.rev-hero{
+  padding:4rem 0;border-bottom:1px solid var(--bordw);margin-bottom:3rem;
+  position:relative;
+}
+.rev-q-big{
+  font-family:'Barlow Condensed',sans-serif;
+  font-weight:700;font-style:italic;
+  font-size:clamp(1.5rem,4vw,2.8rem);
+  line-height:1.25;letter-spacing:.01em;
+  color:rgba(255,255,255,.75);
+  max-width:900px;
+}
+.rev-q-big::before{
+  content:'"';display:block;
+  font-size:clamp(5rem,15vw,12rem);line-height:.7;
+  color:rgba(230,48,0,.12);font-style:italic;
+  font-family:'Barlow Condensed',sans-serif;font-weight:900;
+  margin-bottom:.25rem;letter-spacing:-.04em;
+}
+.rev-author-hero{
+  display:flex;align-items:center;gap:1rem;margin-top:2rem;
+}
+.rev-av-hero{
+  width:48px;height:48px;border-radius:50%;
+  background:linear-gradient(135deg,rgba(230,48,0,.4),rgba(230,48,0,.1));
+  border:1px solid rgba(230,48,0,.3);
+  display:flex;align-items:center;justify-content:center;
+  font-weight:800;font-size:.95rem;color:var(--o);
+}
+.rev-meta-hero strong{display:block;font-size:.9rem}
+.rev-meta-hero span{font-size:.75rem;color:var(--grey)}
+.rev-stars-hero{display:flex;gap:3px;margin-top:3px}
+.star{
+  width:12px;height:12px;background:var(--o);
+  clip-path:polygon(50% 0%,61% 35%,98% 35%,68% 57%,79% 91%,50% 70%,21% 91%,32% 57%,2% 35%,39% 35%);
+}
+.rev-grid-small{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
+@media(max-width:860px){.rev-grid-small{grid-template-columns:1fr 1fr}}
+@media(max-width:560px){.rev-grid-small{grid-template-columns:1fr}}
+.rev-card-sm{
+  background:var(--ink2);border:1px solid var(--bordw);
+  border-radius:10px;padding:1.5rem;transition:all .25s;
+}
+.rev-card-sm:hover{border-color:rgba(230,48,0,.2);transform:translateY(-3px)}
+.rev-card-sm .stars{display:flex;gap:2px;margin-bottom:.75rem}
+.rev-txt{font-size:.85rem;color:var(--lt);line-height:1.75;font-style:italic;margin-bottom:1.25rem}
+.rev-person{display:flex;align-items:center;gap:.75rem}
+.rev-av-sm{
+  width:36px;height:36px;border-radius:50%;flex-shrink:0;
+  background:var(--ink4);border:1px solid var(--bordw);
+  display:flex;align-items:center;justify-content:center;
+  font-size:.75rem;font-weight:700;color:var(--o);
+}
+.rev-nm{font-size:.82rem;font-weight:600}
+.rev-car{font-size:.72rem;color:var(--grey)}
+
+/* ═══════════════════════════════
+   CONTACT + MAP
+═══════════════════════════════ */
+.contact{background:var(--ink)}
+.contact-wrap{
+  display:grid;grid-template-columns:1fr 1.35fr;
+  gap:3rem;align-items:start;
+}
+@media(max-width:900px){.contact-wrap{grid-template-columns:1fr}}
+
+.ci-list{display:flex;flex-direction:column;gap:1px;margin-top:2rem}
+.ci{
+  display:flex;align-items:center;gap:1rem;
+  background:var(--ink2);border:1px solid var(--bordw);
+  padding:1.1rem 1.4rem;transition:background .2s;
+}
+.ci:first-child{border-radius:8px 8px 0 0}
+.ci:last-child{border-radius:0 0 8px 8px}
+.ci:hover{background:var(--ink3)}
+.ci-ico{
+  width:38px;height:38px;flex-shrink:0;
+  background:rgba(230,48,0,.07);border:1px solid rgba(230,48,0,.12);
+  border-radius:7px;display:flex;align-items:center;justify-content:center;font-size:1rem;
+}
+.ci-lbl{font-size:.6rem;color:var(--grey);text-transform:uppercase;letter-spacing:.12em}
+.ci-val{font-size:.92rem;font-weight:600}
+.ci-val a{color:#fff;transition:color .2s}
+.ci-val a:hover{color:var(--o)}
+
+.hrs{
+  background:var(--ink2);border:1px solid var(--bordw);
+  border-radius:8px;padding:1.5rem;margin-top:1.5rem;
+}
+.hrs-title{
+  font-size:.62rem;font-weight:700;letter-spacing:.18em;
+  text-transform:uppercase;color:var(--o);margin-bottom:1rem;
+}
+.hr{
+  display:flex;justify-content:space-between;
+  padding:.5rem 0;border-bottom:1px solid var(--bordw);font-size:.85rem;
+}
+.hr:last-child{border-bottom:none}
+.hr-day{color:var(--grey)}
+.hr-t{font-weight:600}
+.hr-t.cl{color:var(--o);opacity:.5}
+
+/* Form */
+.cform{
+  background:var(--ink2);border:1px solid var(--bordw);
+  border-radius:12px;padding:2rem;margin-top:1.5rem;
+}
+.cform-lbl{font-size:.62rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--o);margin-bottom:1.25rem}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+@media(max-width:480px){.row2{grid-template-columns:1fr}}
+.fg{margin-bottom:.875rem}
+.fg label{display:block;font-size:.62rem;color:#3a3a3a;text-transform:uppercase;letter-spacing:.12em;margin-bottom:.35rem;font-weight:600}
+.fg input,.fg textarea,.fg select{
+  width:100%;padding:.75rem 1rem;
+  background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.06);
+  border-radius:6px;color:#fff;
+  font-size:.88rem;outline:none;font-family:'DM Sans',sans-serif;
+  transition:border-color .2s;
+}
+.fg input::placeholder,.fg textarea::placeholder{color:#282828}
+.fg input:focus,.fg textarea:focus,.fg select:focus{border-color:rgba(230,48,0,.35)}
+.fg select option{background:#111}
+.fg textarea{resize:vertical;min-height:85px}
+.sub{
+  width:100%;padding:.85rem;
+  background:var(--o);color:#fff;border:none;
+  border-radius:6px;font-family:'Barlow Condensed',sans-serif;
+  font-size:1.05rem;font-weight:800;letter-spacing:.12em;
+  text-transform:uppercase;cursor:none;transition:all .25s;
+  position:relative;overflow:hidden;
+}
+.sub::before{
+  content:'';position:absolute;inset:0;
+  background:rgba(255,255,255,.12);transform:translateX(-100%);transition:transform .4s;
+}
+.sub:hover::before{transform:translateX(100%)}
+.sub:hover{box-shadow:var(--glow);transform:translateY(-1px)}
+
+/* Map */
+.map-wrap{border-radius:12px;overflow:hidden;border:1px solid var(--border);position:relative}
+.map-wrap iframe{
+  width:100%;height:400px;display:block;border:none;
+  filter:grayscale(100%) invert(90%) hue-rotate(185deg) brightness(.75) contrast(1.15);
+}
+.map-pin{
+  position:absolute;bottom:1rem;left:1rem;
+  background:rgba(6,6,6,.92);backdrop-filter:blur(16px);
+  border:1px solid var(--border);border-radius:8px;
+  padding:.8rem 1.1rem;display:flex;align-items:center;gap:.75rem;
+}
+.pin-dot{
+  width:8px;height:8px;border-radius:50%;
+  background:var(--o);box-shadow:0 0 8px var(--o);flex-shrink:0;
+  animation:ping 2s ease infinite;
+}
+@keyframes ping{0%,100%{box-shadow:0 0 0 0 rgba(230,48,0,.5)}50%{box-shadow:0 0 0 6px rgba(230,48,0,0)}}
+.pin-t b{display:block;font-size:.85rem;font-weight:700}
+.pin-t small{font-size:.68rem;color:var(--grey)}
+.nav-link{
+  display:inline-flex;align-items:center;gap:.5rem;
+  color:var(--o);font-size:.78rem;font-weight:600;
+  text-transform:uppercase;letter-spacing:.1em;
+  margin-top:.875rem;transition:gap .2s;
+}
+.nav-link:hover{gap:.75rem}
+
+/* ═══════════════════════════════
+   CTA BAND
+═══════════════════════════════ */
+.cta-band{
+  padding:clamp(4rem,10vw,7rem) clamp(1.5rem,5vw,4rem);
+  background:var(--ink2);
+  border-top:1px solid var(--bordw);
+  border-bottom:1px solid var(--bordw);
+  position:relative;overflow:hidden;
+}
+.cta-band::before{
+  content:'';position:absolute;inset:0;
+  background:radial-gradient(ellipse 60% 80% at 50% 100%,rgba(230,48,0,.06),transparent);
+}
+.cta-inner{
+  max-width:1200px;margin:0 auto;
+  display:flex;align-items:center;justify-content:space-between;
+  gap:2rem;flex-wrap:wrap;position:relative;
+}
+.cta-headline{
+  font-family:'Barlow Condensed',sans-serif;
+  font-weight:900;font-style:italic;
+  font-size:clamp(2.5rem,6vw,5.5rem);
+  line-height:.92;letter-spacing:-.01em;text-transform:uppercase;
+}
+.cta-headline .red{color:var(--o)}
+.cta-actions{display:flex;flex-direction:column;gap:.75rem;flex-shrink:0}
+
+/* ═══════════════════════════════
+   FOOTER
+═══════════════════════════════ */
+footer{
+  background:var(--ink2);
+  padding:3rem clamp(1.5rem,5vw,4rem) 2rem;
+}
+.ft{max-width:1200px;margin:0 auto}
+.ft-top{
+  display:grid;grid-template-columns:1.8fr 1fr 1fr;gap:3rem;
+  padding-bottom:2rem;border-bottom:1px solid var(--bordw);
+}
+@media(max-width:800px){.ft-top{grid-template-columns:1fr 1fr}}
+@media(max-width:480px){.ft-top{grid-template-columns:1fr}}
+.ft-logo{
+  display:flex;align-items:center;gap:10px;margin-bottom:.875rem;
+}
+.ft-logo-m{
+  width:34px;height:34px;
+  background:linear-gradient(145deg,#ff6a00 0%,#e63000 48%,#2b0800 100%);
+  border:1px solid rgba(255,255,255,.18);
+  box-shadow:0 0 0 1px rgba(230,48,0,.28),0 10px 24px rgba(230,48,0,.32),inset 0 1px 0 rgba(255,255,255,.3);
+  clip-path:polygon(0 0,100% 0,100% 75%,75% 100%,0 100%);
+  display:flex;align-items:center;justify-content:center;
+  position:relative;overflow:hidden;
+  font-family:'Barlow Condensed',sans-serif;font-size:.7rem;font-weight:900;letter-spacing:.08em;
+}
+.ft-logo em{
+  font-family:'Barlow Condensed',sans-serif;font-style:normal;
+  font-weight:800;font-size:1rem;letter-spacing:.06em;text-transform:uppercase;
+}
+.ft-brand p{font-size:.82rem;color:#333;line-height:1.75;max-width:280px}
+.ft-col h4{
+  font-size:.6rem;font-weight:700;letter-spacing:.2em;
+  text-transform:uppercase;color:var(--o);margin-bottom:.875rem;
+}
+.ft-col ul{list-style:none}
+.ft-col li{margin-bottom:.5rem}
+.ft-col a{font-size:.82rem;color:#333;transition:color .2s}
+.ft-col a:hover{color:#fff}
+.ft-bot{
+  display:flex;justify-content:space-between;align-items:center;
+  padding-top:1.5rem;gap:.5rem;flex-wrap:wrap;
+}
+.ft-bot p{font-size:.72rem;color:#222}
+.ft-bot span{color:var(--o)}
+
+/* ═══════════════════════════════
+   UTILS & ANIMATIONS
+═══════════════════════════════ */
+.sr{opacity:0;transform:translateY(36px);transition:opacity .7s ease,transform .7s ease}
+.sr.in{opacity:1;transform:translateY(0)}
+.sr.d1{transition-delay:.1s}.sr.d2{transition-delay:.2s}
+.sr.d3{transition-delay:.3s}.sr.d4{transition-delay:.4s}
+.sr-x{opacity:0;transform:translateX(-30px);transition:opacity .7s,transform .7s}
+.sr-x.in{opacity:1;transform:translateX(0)}
+
+@media(max-width:600px){
+  .sec{padding:4rem 1.5rem}
+}
+</style>
+</head>
+<body>
+
+<!-- progress bar -->
+<div id="prog"></div>
+<!-- cursor -->
+<div id="c"></div>
+<div id="cr"></div>
+
+<!-- ══════════ NAV ══════════ -->
+<nav id="nav">
+  <a href="#" class="brand">
+    <div class="brand-mark">LAK</div>
+    <div class="brand-text">
+      <em>Šelbický</em>
+      <small>Autolakýrnictví · Krupka</small>
+    </div>
+  </a>
+  <ul class="nav-mid">
+    <li><a href="#sluzby">Služby</a></li>
+    <li><a href="#o-nas">O nás</a></li>
+    <li><a href="#prace">Práce</a></li>
+    <li><a href="#reference">Reviews</a></li>
+    <li><a href="#kontakt">Kontakt</a></li>
+  </ul>
+  <div class="nav-right">
+    <a href="tel:+420730983254" class="nav-tel">730 983 254</a>
+    <div class="brgr" id="brgr" onclick="toggleNav()">
+      <span></span><span></span><span></span>
+    </div>
+  </div>
+</nav>
+
+<!-- mobile nav -->
+<div id="mov">
+  <a href="#sluzby" onclick="toggleNav()">Služby</a>
+  <a href="#o-nas" onclick="toggleNav()">O nás</a>
+  <a href="#prace" onclick="toggleNav()">Práce</a>
+  <a href="#reference" onclick="toggleNav()">Reviews</a>
+  <a href="#kontakt" onclick="toggleNav()">Kontakt</a>
+  <a href="tel:+420730983254" onclick="toggleNav()" class="mob-tel">730 983 254 →</a>
+</div>
+
+<!-- ══════════ HERO ══════════ -->
+<section class="hero">
+  <div class="hero-orb"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-rule"></div>
+
+  <div class="hero-inner">
+    <div class="hero-txt sr">
+      <div class="h-eyebrow">
+        <div class="h-eyebrow-line"></div>
+        <span>Autolakýrnictví</span>
+        <span class="h-eyebrow-loc">/ Krupka · Nové Modlany</span>
+      </div>
+
+      <h1 class="hero-headline">
+        <span class="hl-stroke">tvoje</span>
+        <span class="hl-fill">auto.</span>
+        <span class="hl-red">dokonalý lak.</span>
+      </h1>
+
+      <div class="hero-body">
+        <p class="hero-desc">
+          Profesionální lakování vozidel v Krupce. Přelakování, lokální opravy, keramická ochrana — výsledky, které mluví za sebe.
+        </p>
+        <div class="hero-btns">
+          <a href="#kontakt" class="btn-primary">Poptávka zdarma →</a>
+          <a href="tel:+420730983254" class="btn-secondary">📞 730 983 254</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-stats sr d3">
+      <div class="hstat">
+        <div class="hstat-n" data-count="15">0</div>
+        <div class="hstat-l">let praxe</div>
+      </div>
+      <div class="hstat" style="margin-top:1.5rem">
+        <div class="hstat-n" data-count="1200">0</div>
+        <div class="hstat-l">vozidel</div>
+      </div>
+      <div class="hstat" style="margin-top:1.5rem">
+        <div class="hstat-n">4.9★</div>
+        <div class="hstat-l">Google</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero-scroll">
+    <div class="scroll-line"></div>
+    <span class="scroll-txt">scroll</span>
+  </div>
+</section>
+
+<!-- ══════════ TICKER ══════════ -->
+<div class="ticker">
+  <div class="tk-inner">
+    <span class="tk-i hi">Šelbický</span><span class="tk-i dot">✦</span>
+    <span class="tk-i">Přelakování vozidel</span><span class="tk-i dot">✦</span>
+    <span class="tk-i">Lokální opravy laku</span><span class="tk-i dot">✦</span>
+    <span class="tk-i hi">Krupka</span><span class="tk-i dot">✦</span>
+    <span class="tk-i">Keramická ochrana</span><span class="tk-i dot">✦</span>
+    <span class="tk-i">Opravy po nehodách</span><span class="tk-i dot">✦</span>
+    <span class="tk-i">Antikorozní ošetření</span><span class="tk-i dot">✦</span>
+    <span class="tk-i hi">730 983 254</span><span class="tk-i dot">✦</span>
+    <span class="tk-i">Nové Modlany</span><span class="tk-i dot">✦</span>
+    <span class="tk-i">Leštění & detailing</span><span class="tk-i dot">✦</span>
+    <!-- repeat -->
+    <span class="tk-i hi">Šelbický</span><span class="tk-i dot">✦</span>
+    <span class="tk-i">Přelakování vozidel</span><span class="tk-i dot">✦</span>
+    <span class="tk-i">Lokální opravy laku</span><span class="tk-i dot">✦</span>
+    <span class="tk-i hi">Krupka</span><span class="tk-i dot">✦</span>
+    <span class="tk-i">Keramická ochrana</span><span class="tk-i dot">✦</span>
+    <span class="tk-i">Opravy po nehodách</span><span class="tk-i dot">✦</span>
+    <span class="tk-i">Antikorozní ošetření</span><span class="tk-i dot">✦</span>
+    <span class="tk-i hi">730 983 254</span><span class="tk-i dot">✦</span>
+    <span class="tk-i">Nové Modlany</span><span class="tk-i dot">✦</span>
+    <span class="tk-i">Leštění & detailing</span><span class="tk-i dot">✦</span>
+  </div>
+</div>
+
+<!-- ══════════ SERVICES ══════════ -->
+<section class="sec svc-sec" id="sluzby">
+  <div class="con">
+    <div class="svc-top">
+      <div class="sr">
+        <div class="label">Co umíme</div>
+        <h2 class="display">Naše <span class="accent">služby.</span></h2>
+      </div>
+      <div class="svc-tabs sr d2">
+        <button class="svc-tab active" onclick="switchTab(0)">Lakování</button>
+        <button class="svc-tab" onclick="switchTab(1)">Ochrana</button>
+        <button class="svc-tab" onclick="switchTab(2)">Ostatní</button>
+      </div>
+    </div>
+
+    <!-- Tab 0 -->
+    <div class="svc-panel on sr" id="tab0">
+      <div class="svc-panel-inner">
+        <div class="svc-item">
+          <span class="svc-item-n">01</span>
+          <span class="svc-ico2">🎨</span>
+          <h3>Přelakování celého vozu</h3>
+          <p>Kompletní přelakování s precizní přípravou — broušení, tmelení, plnění, finální lak v kabině. Výsledek jako z továrny.</p>
+          <span class="svc-pill">Osobní · Dodávky · Veteráni</span>
+        </div>
+        <div class="svc-item">
+          <span class="svc-item-n">02</span>
+          <span class="svc-ico2">🔧</span>
+          <h3>Lokální opravy laku</h3>
+          <p>Škrábance, parkovací poškození, díly. Barva namíchána přesně dle kódu vozu — nepoznáš, kde to bylo.</p>
+          <span class="svc-pill">Spot repair · Rychlé termíny</span>
+        </div>
+        <div class="svc-item">
+          <span class="svc-item-n">03</span>
+          <span class="svc-ico2">🚗</span>
+          <h3>Opravy po nehodách</h3>
+          <p>Spolupracujeme s pojišťovnami. Karosářské opravy, rovnání a lakování — kompletní servis pod jednou střechou.</p>
+          <span class="svc-pill">Pojišťovny · Dokumentace</span>
+        </div>
+        <div class="svc-item">
+          <span class="svc-item-n">04</span>
+          <span class="svc-ico2">🏎️</span>
+          <h3>Veteráni & youngtimery</h3>
+          <p>Rekonstrukce původního laku, historické barvy, ruční práce. Zkušenosti s obnovou vzácných vozidel.</p>
+          <span class="svc-pill">Historické barvy · Ruční</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Tab 1 -->
+    <div class="svc-panel" id="tab1">
+      <div class="svc-panel-inner">
+        <div class="svc-item">
+          <span class="svc-item-n">01</span>
+          <span class="svc-ico2">💎</span>
+          <h3>Keramická ochrana</h3>
+          <p>Vícevrstvá keramická ochrana laku. Extrémní lesk, hydrofobní vlastnosti, odolnost vůči vrypům na roky.</p>
+          <span class="svc-pill">Premium · Prémiové vozy</span>
+        </div>
+        <div class="svc-item">
+          <span class="svc-item-n">02</span>
+          <span class="svc-ico2">🛡️</span>
+          <h3>Antikorozní ošetření</h3>
+          <p>Podvozek, dutiny, sváry — vosková, Dinitrol nebo PUR ochrana. Prodlouží život karoserie o desítky let.</p>
+          <span class="svc-pill">Podvozek · Dutiny</span>
+        </div>
+        <div class="svc-item">
+          <span class="svc-item-n">03</span>
+          <span class="svc-ico2">🔥</span>
+          <h3>Paint Protection Film</h3>
+          <p>Samoopravná fólie PPF na exponovaná místa — kapota, nárazník, zrcátka. Neviditelná ochrana.</p>
+          <span class="svc-pill">PPF · Neviditelná ochrana</span>
+        </div>
+        <div class="svc-item">
+          <span class="svc-item-n">04</span>
+          <span class="svc-ico2">✨</span>
+          <h3>Nano ochrana laku</h3>
+          <p>Nano-keramické přípravky pro každodenní ochranu. Odolnost vůči UV záření, vodě a nečistotám.</p>
+          <span class="svc-pill">UV ochrana · Hydrofobnost</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Tab 2 -->
+    <div class="svc-panel" id="tab2">
+      <div class="svc-panel-inner">
+        <div class="svc-item">
+          <span class="svc-item-n">01</span>
+          <span class="svc-ico2">✨</span>
+          <h3>Strojní leštění</h3>
+          <p>Odstranění hologramů, jemných rýh, oxidace. Obnovení původního lesku laku. Příprava na prodej nebo výstavu.</p>
+          <span class="svc-pill">Detailing · Prodej auta</span>
+        </div>
+        <div class="svc-item">
+          <span class="svc-item-n">02</span>
+          <span class="svc-ico2">🎯</span>
+          <h3>Barevné poradenství</h3>
+          <p>Chceš jiný odstín, custom barvu nebo efekt? Poradíme, namícháme, realizujeme.</p>
+          <span class="svc-pill">Custom · Unikátní barvy</span>
+        </div>
+        <div class="svc-item">
+          <span class="svc-item-n">03</span>
+          <span class="svc-ico2">📋</span>
+          <h3>Příprava podkladů</h3>
+          <p>Odstranění rzi, tmelení, plnění, základová vrstva. Perfektní příprava jako základ kvalitního výsledku.</p>
+          <span class="svc-pill">Základ výsledku</span>
+        </div>
+        <div class="svc-item">
+          <span class="svc-item-n">04</span>
+          <span class="svc-ico2">🔍</span>
+          <h3>Bezplatná konzultace</h3>
+          <p>Přijď nebo pošli fotky. Prohlédneme vůz, sdělíme cenu a doporučíme nejlepší postup — zdarma, bez závazků.</p>
+          <span class="svc-pill">Zdarma · Bez závazků</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ══════════ ABOUT ══════════ -->
+<section class="sec about" id="o-nas">
+  <div class="con">
+    <div class="about-grid">
+      <div class="about-sidebar">
+        <span>Autolakýrnictví Šelbický — Krupka, Ústecký kraj</span>
+      </div>
+      <div>
+        <div class="label sr">O nás</div>
+        <div class="about-top sr">
+          <div>
+            <h2 class="display" style="font-size:clamp(2rem,5vw,4rem)">
+              Řemeslo<br>bez <span class="accent">kompromisů.</span>
+            </h2>
+            <p class="body-txt">
+              Rodinná firma v Krupce. Přes 15 let lakujeme auta pro zákazníky z celého Ústeckého kraje. Záleží nám na každém detailu — od přípravy povrchu až po finální leštění. Bez zkratek.
+            </p>
+          </div>
+          <div class="about-big-n" id="big-counter">15+</div>
+        </div>
+        <div class="about-facts sr d2" style="margin-bottom:3rem">
+          <div class="af">
+            <div class="af-n" data-count="1200">0</div>
+            <div class="af-l">nalakovaných vozidel</div>
+          </div>
+          <div class="af">
+            <div class="af-n">4.9</div>
+            <div class="af-l">hvězdiček na Google</div>
+          </div>
+          <div class="af">
+            <div class="af-n">100%</div>
+            <div class="af-l">garance kvality</div>
+          </div>
+          <div class="af">
+            <div class="af-n">24h</div>
+            <div class="af-l">odpověď na poptávku</div>
+          </div>
+        </div>
+        <div class="about-bottom sr d3">
+          <div class="ab-card">
+            <div class="ab-ico">🎯</div>
+            <h4>Digitální míchání</h4>
+            <p>Spektrofotometr = 100% shoda s originálním lakem vašeho vozu.</p>
+          </div>
+          <div class="ab-card">
+            <div class="ab-ico">🤝</div>
+            <h4>Pojišťovny</h4>
+            <p>Zkušenosti s likvidací — pomůžeme s dokumentací i komunikací.</p>
+          </div>
+          <div class="ab-card">
+            <div class="ab-ico">🏆</div>
+            <h4>Záruka práce</h4>
+            <p>Za výsledkem si stojíme. Každé auto prochází kontrolou kvality.</p>
+          </div>
+          <div class="ab-card">
+            <div class="ab-ico">📍</div>
+            <h4>Lokální firma</h4>
+            <p>Krupka — víme, co pro nás zákazníci znamenají. Bráno osobně.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ PROCESS ══════════ -->
+<section class="sec proc" id="postup">
+  <div class="con">
+    <div class="sr" style="display:grid;grid-template-columns:1fr 1fr;gap:2rem;align-items:end;margin-bottom:0">
+      <div>
+        <div class="label">Jak pracujeme</div>
+        <h2 class="display">4 kroky<br>k <span class="accent">dokonalosti.</span></h2>
+      </div>
+      <p class="body-txt" style="max-width:360px">Transparentní proces — víte přesně, co se s vaším autem děje od příjmu až po předání.</p>
+    </div>
+    <div class="proc-list sr">
+      <div class="proc-row">
+        <div class="proc-step-n">01</div>
+        <div class="proc-content">
+          <h3>Prohlídka & nabídka</h3>
+          <p>Přijeďte nebo pošlete fotky. Bezplatná prohlídka, přesná cenová nabídka — bez skrytých položek, bez překvapení.</p>
+          <span class="proc-tag">Zdarma · Do 24 hodin</span>
+        </div>
+      </div>
+      <div class="proc-row">
+        <div class="proc-step-n">02</div>
+        <div class="proc-content">
+          <h3>Příprava povrchu</h3>
+          <p>Broušení, tmelení, plnění. Tato fáze tvoří 60 % finální kvality laku — věnujeme jí maximum času a péče.</p>
+          <span class="proc-tag">Základ výsledku</span>
+        </div>
+      </div>
+      <div class="proc-row">
+        <div class="proc-step-n">03</div>
+        <div class="proc-content">
+          <h3>Lakování v kabině</h3>
+          <p>Klimatizovaná lakovací kabina, přesně namíchaná barva dle kódu vozu. Vrstva po vrstvě, bez kompromisů.</p>
+          <span class="proc-tag">Klimatizovaná kabina</span>
+        </div>
+      </div>
+      <div class="proc-row">
+        <div class="proc-step-n">04</div>
+        <div class="proc-content">
+          <h3>Leštění & předání</h3>
+          <p>Finální strojní leštění, kontrola kvality, předání. Odjíždíte s autem, na které budete hrdí.</p>
+          <span class="proc-tag">Kontrola · Záruka</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ BEFORE / AFTER ══════════ -->
+<section class="sec baf" id="prace">
+  <div class="con">
+    <div class="sr" style="display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:1rem;margin-bottom:3.5rem">
+      <div>
+        <div class="label">Ukázky</div>
+        <h2 class="display">Před &<br><span class="accent">po.</span></h2>
+      </div>
+      <p class="body-txt" style="max-width:300px;text-align:right">Reálné výsledky z naší dílny. Fotky přibývají — pracujeme každý den.</p>
+    </div>
+    <div class="baf-wrap sr">
+      <div class="baf-side baf-before">
+        <div class="baf-bg">
+          <img src="https://images.pexels.com/photos/6870296/pexels-photo-6870296.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1400" alt="Rozleštění poškozeného laku na černém voze">
+        </div>
+        <div class="baf-label">Před</div>
+      </div>
+      <div class="baf-side baf-after">
+        <div class="baf-bg">
+          <img src="https://images.pexels.com/photos/17992463/pexels-photo-17992463.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1400" alt="Výrazně červeně nalakovaná karoserie v lakovacím boxu">
+        </div>
+        <div class="baf-after-glow"></div>
+        <div class="baf-label">Po</div>
+      </div>
+    </div>
+    <div class="baf-cars sr d2">
+      <div class="baf-car">
+        <div class="baf-car-img"><img src="https://images.pexels.com/photos/6870314/pexels-photo-6870314.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=900" alt="Lakování vozu pistolí v lakovacím boxu"></div>
+        <div class="baf-car-info">
+          <h4>BMW 5 Series</h4>
+          <p>Kompletní přelakování · metalíza Arctic Silver</p>
+          <span class="baf-car-tag">Přelakování</span>
+        </div>
+      </div>
+      <div class="baf-car">
+        <div class="baf-car-img"><img src="https://images.pexels.com/photos/11349965/pexels-photo-11349965.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=900" alt="Leštění oranžového laku elektrickou leštičkou"></div>
+        <div class="baf-car-info">
+          <h4>Škoda Octavia</h4>
+          <p>Lokální oprava nárazníku · spot repair</p>
+          <span class="baf-car-tag">Lokální oprava</span>
+        </div>
+      </div>
+      <div class="baf-car">
+        <div class="baf-car-img"><img src="https://images.pexels.com/photos/5233262/pexels-photo-5233262.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=900" alt="Leštění červeného laku karoserie"></div>
+        <div class="baf-car-info">
+          <h4>Audi A4</h4>
+          <p>Keramická ochrana laku · Ceramic Pro</p>
+          <span class="baf-car-tag">Keramická ochrana</span>
+        </div>
+      </div>
+      <div class="baf-car">
+        <div class="baf-car-img"><img src="https://images.pexels.com/photos/30250199/pexels-photo-30250199.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=900" alt="Profesionální lakování nárazníku v ochranném obleku"></div>
+        <div class="baf-car-info">
+          <h4>VW Transporter</h4>
+          <p>Oprava po nehodě · pojišťovna Allianz</p>
+          <span class="baf-car-tag">Po nehodě</span>
+        </div>
+      </div>
+      <div class="baf-car">
+        <div class="baf-car-img"><img src="https://images.pexels.com/photos/10126663/pexels-photo-10126663.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=900" alt="Aplikace ochranné fólie na světlý vůz"></div>
+        <div class="baf-car-info">
+          <h4>Škoda 120 L</h4>
+          <p>Renovace · původní barva, ručně</p>
+          <span class="baf-car-tag">Veterán</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ REVIEWS ══════════ -->
+<section class="sec rev" id="reference">
+  <div class="con">
+    <div class="label sr">Co říkají zákazníci</div>
+    <div class="rev-hero sr">
+      <p class="rev-q-big">
+        „Přelakoval jsem u nich celé auto po nehodě. Výsledek naprosto perfektní — barva sedí přesně, lak rovný. Jinam bych nejel."
+      </p>
+      <div class="rev-author-hero">
+        <div class="rev-av-hero">D</div>
+        <div class="rev-meta-hero">
+          <strong>Dan</strong>
+          <span>VW Passat · Teplice</span>
+          <div class="rev-stars-hero">
+            <div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="rev-grid-small">
+      <div class="rev-card-sm sr d1">
+        <div class="stars"><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div></div>
+        <p class="rev-txt">„Lokální oprava nárazníku — nepoznáte, kde to bylo. Férová cena, hotovo do 2 dnů. Dan dělá řemeslo poctivě."</p>
+        <div class="rev-person">
+          <div class="rev-av-sm">D</div>
+          <div><div class="rev-nm">Dan</div><div class="rev-car">Škoda Superb · Krupka</div></div>
+        </div>
+      </div>
+      <div class="rev-card-sm sr d2">
+        <div class="stars"><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div></div>
+        <p class="rev-txt">„Antikorozní ošetření na mém veteránovi — neskutečná práce. Dostupná cena a přístup jako k prémiové zakázce."</p>
+        <div class="rev-person">
+          <div class="rev-av-sm">D</div>
+          <div><div class="rev-nm">Dan</div><div class="rev-car">Škoda 120 · Most</div></div>
+        </div>
+      </div>
+      <div class="rev-card-sm sr d3">
+        <div class="stars"><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div></div>
+        <p class="rev-txt">„Keramická ochrana na novém autě — perfektní práce, povrch jako zrcadlo. Viditelně i hmatatelně jiné auto."</p>
+        <div class="rev-person">
+          <div class="rev-av-sm">D</div>
+          <div><div class="rev-nm">Dan</div><div class="rev-car">Audi A4 · Ústí n. L.</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ CONTACT ══════════ -->
+<section class="sec contact" id="kontakt">
+  <div class="con">
+    <div class="sr" style="margin-bottom:3rem">
+      <div class="label">Kontakt</div>
+      <h2 class="display">Kde nás<br><span class="accent">najdete.</span></h2>
+      <p class="body-txt">Zavolejte, napište nebo rovnou přijeďte. Bezplatná prohlídka kdykoli.</p>
+    </div>
+    <div class="contact-wrap">
+      <div class="sr">
+        <div class="ci-list">
+          <div class="ci">
+            <div class="ci-ico">📞</div>
+            <div><div class="ci-lbl">Telefon</div><div class="ci-val"><a href="tel:+420730983254">730 983 254</a></div></div>
+          </div>
+          <div class="ci">
+            <div class="ci-ico">📍</div>
+            <div><div class="ci-lbl">Adresa</div><div class="ci-val">Pod Stadionem 48<br><span style="font-size:.8rem;color:var(--grey)">417 42 Krupka 1 – Nové Modlany</span></div></div>
+          </div>
+          <div class="ci">
+            <div class="ci-ico">🗺️</div>
+            <div><div class="ci-lbl">Okres</div><div class="ci-val">Teplice, Ústecký kraj</div></div>
+          </div>
+        </div>
+        <div class="hrs">
+          <div class="hrs-title">Otevírací doba</div>
+          <div class="hr"><span class="hr-day">Pondělí – Pátek</span><span class="hr-t">7:00 – 17:00</span></div>
+          <div class="hr"><span class="hr-day">Sobota</span><span class="hr-t">8:00 – 12:00</span></div>
+          <div class="hr"><span class="hr-day">Neděle</span><span class="hr-t cl">Zavřeno</span></div>
+        </div>
+        <div class="cform">
+          <div class="cform-lbl">Poptávka zdarma</div>
+          <form onsubmit="onSub(event)">
+            <div class="row2">
+              <div class="fg"><label>Jméno</label><input type="text" placeholder="Dan" required></div>
+              <div class="fg"><label>Telefon</label><input type="tel" placeholder="730 983 254" required></div>
+            </div>
+            <div class="fg"><label>Vozidlo</label><input type="text" placeholder="Škoda Octavia 2020, červená"></div>
+            <div class="fg">
+              <label>Typ práce</label>
+              <select>
+                <option>Přelakování celého vozu</option>
+                <option>Lokální oprava laku</option>
+                <option>Oprava po nehodě</option>
+                <option>Keramická ochrana</option>
+                <option>Antikorozní ošetření</option>
+                <option>Leštění & detailing</option>
+                <option>Konzultace / jiné</option>
+              </select>
+            </div>
+            <div class="fg"><label>Popis (nepovinné)</label><textarea placeholder="Co se stalo, co potřebujete..."></textarea></div>
+            <button type="submit" class="sub">Odeslat poptávku →</button>
+          </form>
+        </div>
+      </div>
+      <div class="sr d2">
+        <div class="map-wrap">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2494.5!2d13.8579!3d50.6798!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2sPod+Stadionem+48%2C+417+42+Krupka!5e0!3m2!1scs!2scz!4v1700000000000"
+            allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+            title="Šelbický Autolakýrnictví Krupka">
+          </iframe>
+          <div class="map-pin">
+            <div class="pin-dot"></div>
+            <div class="pin-t">
+              <b>Autolakýrnictví Šelbický</b>
+              <small>Pod Stadionem 48, Krupka · 730 983 254</small>
+            </div>
+          </div>
+        </div>
+        <a href="https://www.google.com/maps/dir/?api=1&destination=Pod+Stadionem+48,+417+42+Krupka" target="_blank" rel="noopener" class="nav-link">
+          → Navigovat na adresu
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ CTA BAND ══════════ -->
+<div class="cta-band">
+  <div class="cta-inner">
+    <h2 class="cta-headline sr">
+      Tvoje auto<br>si to <span class="red">zaslouží.</span>
+    </h2>
+    <div class="cta-actions sr d2">
+      <a href="tel:+420730983254" class="btn-primary" style="font-size:1.15rem;padding:1rem 2rem">📞 730 983 254</a>
+      <a href="#kontakt" class="btn-secondary">Poslat poptávku →</a>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════ FOOTER ══════════ -->
+<footer>
+  <div class="ft">
+    <div class="ft-top">
+      <div class="ft-brand">
+        <div class="ft-logo">
+          <div class="ft-logo-m">LAK</div>
+          <em style="font-family:'Barlow Condensed',sans-serif;font-style:normal;font-weight:800;font-size:1rem;letter-spacing:.06em;text-transform:uppercase">Autolakýrnictví Šelbický</em>
+        </div>
+        <p>Profesionální lakování vozidel v Krupce a okolí. Rodinná firma s tradicí — precizní přístup ke každé zakázce.</p>
+      </div>
+      <div class="ft-col">
+        <h4>Služby</h4>
+        <ul>
+          <li><a href="#sluzby">Přelakování vozu</a></li>
+          <li><a href="#sluzby">Lokální opravy</a></li>
+          <li><a href="#sluzby">Nehody & pojišťovny</a></li>
+          <li><a href="#sluzby">Keramická ochrana</a></li>
+          <li><a href="#sluzby">Antikoroze</a></li>
+          <li><a href="#sluzby">Leštění</a></li>
+        </ul>
+      </div>
+      <div class="ft-col">
+        <h4>Kontakt</h4>
+        <ul>
+          <li><a href="tel:+420730983254">📞 730 983 254</a></li>
+          <li><a href="#kontakt">Pod Stadionem 48</a></li>
+          <li><a href="#kontakt">417 42 Krupka</a></li>
+          <li><a href="#kontakt">Po–Pá: 7:00–17:00</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="ft-bot">
+      <p>© 2024 Autolakýrnictví Šelbický · Krupka · Ústecký kraj</p>
+      <p>Made with <span>♥</span> & fire</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* ── Cursor ── */
+const dot = document.getElementById('c');
+const ring = document.getElementById('cr');
+let mx=0,my=0,rx=0,ry=0;
+document.addEventListener('mousemove', e => {
+  mx = e.clientX; my = e.clientY;
+  dot.style.left = mx+'px'; dot.style.top = my+'px';
+});
+(function loop(){
+  rx += (mx-rx)*.1; ry += (my-ry)*.1;
+  ring.style.left = rx+'px'; ring.style.top = ry+'px';
+  requestAnimationFrame(loop);
+})();
+document.querySelectorAll('a,button,.svc-item,.ab-card,.proc-row,.rev-card-sm,.baf-car').forEach(el => {
+  el.addEventListener('mouseenter', () => document.body.classList.add('hov'));
+  el.addEventListener('mouseleave', () => document.body.classList.remove('hov'));
+});
+
+/* ── Scroll progress ── */
+const prog = document.getElementById('prog');
+window.addEventListener('scroll', () => {
+  const p = scrollY / (document.body.scrollHeight - innerHeight);
+  prog.style.width = (p*100) + '%';
+});
+
+/* ── Nav ── */
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => nav.classList.toggle('up', scrollY > 50));
+
+/* ── Mobile menu ── */
+function toggleNav(){
+  document.getElementById('mov').classList.toggle('on');
+}
+
+/* ── Service tabs ── */
+function switchTab(i){
+  document.querySelectorAll('.svc-tab').forEach((t,j) => t.classList.toggle('active', i===j));
+  document.querySelectorAll('.svc-panel').forEach((p,j) => p.classList.toggle('on', i===j));
+}
+
+/* ── Count-up ── */
+function countUp(el, target, suffix=''){
+  let s=0;
+  (function step(ts){
+    if(!s) s=ts;
+    const p = Math.min((ts-s)/1600, 1);
+    const e = 1-Math.pow(1-p,4);
+    el.textContent = Math.floor(e*target) + (p>=1 ? suffix : '');
+    if(p<1) requestAnimationFrame(step);
+  })(performance.now());
+}
+const co = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if(e.isIntersecting){
+      const t = +e.target.dataset.count;
+      const s = t===1200 ? '+' : t===15 ? '+' : '';
+      countUp(e.target, t, s);
+      co.unobserve(e.target);
+    }
+  });
+}, {threshold:.5});
+document.querySelectorAll('[data-count]').forEach(el => co.observe(el));
+
+/* ── Scroll reveal ── */
+const ro = new IntersectionObserver(entries => {
+  entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add('in'); ro.unobserve(e.target); } });
+}, {threshold:.07});
+document.querySelectorAll('.sr,.sr-x').forEach(el => ro.observe(el));
+
+/* ── Form ── */
+function onSub(e){
+  e.preventDefault();
+  const btn = e.target.querySelector('.sub');
+  btn.textContent = '✓ Odesláno — ozveme se brzy!';
+  btn.style.background = '#1d3a25';
+  btn.disabled = true;
+}
+
+/* ── Smooth scroll ── */
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    const t = document.querySelector(a.getAttribute('href'));
+    if(t){ e.preventDefault(); t.scrollIntoView({behavior:'smooth'}); }
+  });
+});
+</script>
+  <!-- webdo24.cz badge -->
+  <style>#wd24-bar{position:fixed;bottom:0;left:0;right:0;z-index:99999;display:flex;align-items:center;justify-content:center;gap:8px;background:rgba(15,23,42,.88);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-top:1px solid rgba(255,255,255,.08);padding:10px 20px;font-family:-apple-system,'Inter',sans-serif;font-size:11px;font-weight:500;color:rgba(255,255,255,.5);box-shadow:0 -4px 16px rgba(0,0,0,.2)}#wd24-bar a{color:rgba(255,255,255,.85);text-decoration:none;font-weight:800;letter-spacing:-.02em;font-size:13px}#wd24-bar a span{color:#f97316}#wd24-bar a:hover{color:#fff}</style>
+  <div id="wd24-bar">Web&nbsp;vytvořil&nbsp;<a href="https://webyprobyznys.cz" target="_blank" rel="noopener">WebyPro<span>Byznys</span>.cz</a>&nbsp;·&nbsp;Profesionální web do 24&nbsp;hodin</div>
+</body>
+</html>

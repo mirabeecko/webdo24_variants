@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Autoservis Procházka | Rychlý a spolehlivý servis v Mostě</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --primary: #d62828;
+    --primary-dark: #b01e1e;
+    --secondary: #1a1a2e;
+    --accent: #f77f00;
+    --text: #1a1a2e;
+    --muted: #6b7280;
+    --light: #f9fafb;
+    --white: #ffffff;
+    --border: #e5e7eb;
+  }
+
+  body {
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    color: var(--text);
+    background: var(--white);
+    line-height: 1.6;
+  }
+
+  /* NAV */
+  nav {
+    position: sticky; top: 0; z-index: 100;
+    background: var(--secondary);
+    padding: 1rem 2rem;
+    display: flex; justify-content: space-between; align-items: center;
+  }
+  .logo {
+    font-weight: 900; font-size: 1.3rem; color: white;
+    display: flex; align-items: center; gap: 0.5rem;
+  }
+  .logo span { color: var(--primary); }
+  .nav-phone {
+    color: white; text-decoration: none;
+    font-weight: 700; font-size: 1.1rem;
+    display: flex; align-items: center; gap: 0.5rem;
+  }
+  .nav-phone:hover { color: var(--accent); }
+
+  /* HERO */
+  .hero {
+    background: linear-gradient(135deg, #0d0d1a 0%, #1a1a2e 100%);
+    padding: 5rem 2rem;
+    position: relative; overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute; top: 0; right: 0; bottom: 0; width: 45%;
+    background: linear-gradient(135deg, transparent, rgba(214,40,40,0.08));
+  }
+  .hero-inner {
+    max-width: 1100px; margin: 0 auto;
+    display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center;
+  }
+  @media(max-width:800px){ .hero-inner { grid-template-columns:1fr; } }
+  .hero-text {}
+  .location-badge {
+    display: inline-flex; align-items: center; gap: 0.4rem;
+    background: rgba(214,40,40,0.2); border: 1px solid rgba(214,40,40,0.4);
+    color: #f87171; padding: 0.4rem 1rem; border-radius: 100px;
+    font-size: 0.85rem; font-weight: 600; margin-bottom: 1.5rem;
+  }
+  .hero h1 {
+    font-size: clamp(2rem, 5vw, 3.2rem);
+    font-weight: 900; color: white; line-height: 1.15;
+    margin-bottom: 1rem;
+  }
+  .hero h1 em { color: var(--primary); font-style: normal; }
+  .hero-sub { color: #9ca3af; font-size: 1.1rem; margin-bottom: 2rem; }
+  .hero-ctas { display: flex; gap: 1rem; flex-wrap: wrap; }
+  .btn-red {
+    background: var(--primary); color: white;
+    padding: 0.875rem 2rem; border-radius: 10px;
+    font-weight: 700; text-decoration: none; font-size: 1rem;
+    transition: all 0.2s; display: inline-flex; align-items: center; gap: 0.5rem;
+    box-shadow: 0 4px 15px rgba(214,40,40,0.35);
+  }
+  .btn-red:hover { background: var(--primary-dark); transform: translateY(-2px); }
+  .btn-ghost {
+    background: transparent; color: white;
+    padding: 0.875rem 2rem; border-radius: 10px;
+    font-weight: 700; text-decoration: none; font-size: 1rem;
+    border: 2px solid rgba(255,255,255,0.3);
+    transition: all 0.2s; display: inline-flex; align-items: center; gap: 0.5rem;
+  }
+  .btn-ghost:hover { border-color: white; }
+  .hero-stats {
+    display: flex; gap: 2rem; margin-top: 2.5rem; flex-wrap: wrap;
+  }
+  .stat { }
+  .stat-num { font-size: 2rem; font-weight: 900; color: var(--primary); line-height: 1; }
+  .stat-label { font-size: 0.8rem; color: #6b7280; }
+  .hero-card {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 20px; padding: 2rem;
+  }
+  .hero-card h3 { color: white; font-size: 1rem; margin-bottom: 1.5rem; opacity: 0.7; }
+  .service-list-hero { list-style: none; }
+  .service-list-hero li {
+    display: flex; align-items: center; gap: 1rem;
+    padding: 0.75rem 0; border-bottom: 1px solid rgba(255,255,255,0.08);
+    color: white; font-size: 0.95rem;
+  }
+  .service-list-hero li:last-child { border-bottom: none; }
+  .service-icon {
+    width: 36px; height: 36px; border-radius: 8px;
+    background: rgba(214,40,40,0.2); display: flex; align-items: center; justify-content: center;
+    font-size: 1rem; flex-shrink: 0;
+  }
+
+  /* SECTIONS */
+  section { padding: 5rem 2rem; }
+  .container { max-width: 1100px; margin: 0 auto; }
+  .section-tag {
+    display: inline-block;
+    background: #fee2e2; color: var(--primary);
+    padding: 0.3rem 0.8rem; border-radius: 6px;
+    font-size: 0.8rem; font-weight: 700;
+    letter-spacing: 0.08em; text-transform: uppercase;
+    margin-bottom: 1rem;
+  }
+  h2 { font-size: clamp(1.8rem, 4vw, 2.5rem); font-weight: 800; margin-bottom: 1rem; line-height: 1.2; }
+  .lead { font-size: 1.05rem; color: var(--muted); }
+
+  /* SLUŽBY */
+  .sluzby { background: var(--light); }
+  .sluzby-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; margin-top: 3rem; }
+  @media(max-width:900px){ .sluzby-grid { grid-template-columns: repeat(2,1fr); } }
+  @media(max-width:500px){ .sluzby-grid { grid-template-columns: 1fr; } }
+  .sluzba-card {
+    background: white; border-radius: 16px; padding: 1.75rem;
+    border: 1px solid var(--border); text-align: center;
+    transition: all 0.2s; cursor: default;
+  }
+  .sluzba-card:hover {
+    border-color: var(--primary);
+    box-shadow: 0 8px 24px rgba(214,40,40,0.1);
+    transform: translateY(-3px);
+  }
+  .sluzba-icon { font-size: 2.5rem; margin-bottom: 1rem; }
+  .sluzba-card h3 { font-weight: 700; font-size: 1rem; margin-bottom: 0.5rem; }
+  .sluzba-card p { color: var(--muted); font-size: 0.88rem; }
+
+  /* PROČ MY */
+  .proc-my-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center; margin-top: 3rem; }
+  @media(max-width:800px){ .proc-my-grid { grid-template-columns: 1fr; } }
+  .vyhoda-list { list-style: none; }
+  .vyhoda-item {
+    display: flex; gap: 1rem; align-items: flex-start;
+    padding: 1.25rem 0; border-bottom: 1px solid var(--border);
+  }
+  .vyhoda-item:last-child { border-bottom: none; }
+  .vyhoda-icon {
+    width: 48px; height: 48px; border-radius: 12px;
+    background: #fee2e2; color: var(--primary);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.4rem; flex-shrink: 0;
+  }
+  .vyhoda-text h4 { font-weight: 700; margin-bottom: 0.25rem; }
+  .vyhoda-text p { color: var(--muted); font-size: 0.9rem; }
+  .proc-my-visual {
+    background: linear-gradient(135deg, var(--secondary), #2d1b3d);
+    border-radius: 20px; padding: 2.5rem;
+    text-align: center; color: white;
+  }
+  .big-stat { font-size: 4rem; font-weight: 900; color: var(--primary); line-height: 1; }
+  .big-stat-label { color: #9ca3af; margin-bottom: 2rem; }
+  .divider-line { border: none; border-top: 1px solid rgba(255,255,255,0.1); margin: 1.5rem 0; }
+  .mini-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+  .mini-stat { text-align: center; }
+  .mini-num { font-size: 1.8rem; font-weight: 900; color: white; }
+  .mini-label { font-size: 0.75rem; color: #9ca3af; }
+
+  /* REFERENCE */
+  .reference { background: var(--light); }
+  .ref-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.5rem; margin-top: 3rem; }
+  @media(max-width:800px){ .ref-grid { grid-template-columns:1fr; } }
+  .ref-card {
+    background: white; border-radius: 16px; padding: 2rem;
+    border: 1px solid var(--border);
+  }
+  .ref-stars { color: #f59e0b; font-size: 1.1rem; margin-bottom: 0.75rem; }
+  .ref-text { color: var(--text); font-style: italic; margin-bottom: 1.25rem; line-height: 1.6; }
+  .ref-author { display: flex; align-items: center; gap: 0.75rem; }
+  .ref-avatar {
+    width: 40px; height: 40px; border-radius: 50%;
+    background: linear-gradient(135deg, var(--primary), var(--accent));
+    display: flex; align-items: center; justify-content: center;
+    color: white; font-weight: 700; font-size: 0.9rem;
+  }
+  .ref-name { font-weight: 700; font-size: 0.9rem; }
+  .ref-car { font-size: 0.8rem; color: var(--muted); }
+
+  /* KONTAKT */
+  .kontakt { background: var(--secondary); color: white; }
+  .kontakt h2 { color: white; }
+  .kontakt-grid { display: grid; grid-template-columns: 1fr 1.5fr; gap: 3rem; margin-top: 3rem; align-items: start; }
+  @media(max-width:800px){ .kontakt-grid { grid-template-columns:1fr; } }
+  .kontakt-info {}
+  .info-item {
+    display: flex; gap: 1rem; align-items: flex-start;
+    margin-bottom: 1.75rem;
+  }
+  .info-icon {
+    width: 48px; height: 48px; border-radius: 12px;
+    background: rgba(214,40,40,0.2); color: var(--primary);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.3rem; flex-shrink: 0;
+  }
+  .info-label { font-size: 0.8rem; color: #6b7280; }
+  .info-value { color: white; font-weight: 600; font-size: 1rem; }
+  .info-value a { color: white; text-decoration: none; }
+  .info-value a:hover { color: var(--primary); }
+  .kontakt-form {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 20px; padding: 2rem;
+  }
+  .kontakt-form h3 { color: white; font-weight: 700; margin-bottom: 1.5rem; }
+  .form-group { margin-bottom: 1rem; }
+  .form-group label { display: block; font-size: 0.85rem; color: #9ca3af; margin-bottom: 0.4rem; font-weight: 600; }
+  .form-group input, .form-group textarea, .form-group select {
+    width: 100%; padding: 0.875rem 1rem;
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.15);
+    border-radius: 10px; color: white;
+    font-size: 0.95rem; outline: none; font-family: inherit;
+    transition: border-color 0.2s;
+  }
+  .form-group input::placeholder, .form-group textarea::placeholder { color: rgba(255,255,255,0.35); }
+  .form-group input:focus, .form-group textarea:focus { border-color: var(--primary); }
+  .form-group select option { background: #1a1a2e; }
+  .form-group textarea { resize: vertical; min-height: 90px; }
+  .form-row-2 { display: grid; grid-template-columns:1fr 1fr; gap: 1rem; }
+  @media(max-width:500px){ .form-row-2 { grid-template-columns:1fr; } }
+  .btn-submit {
+    width: 100%; padding: 1rem;
+    background: var(--primary); color: white;
+    border: none; border-radius: 10px;
+    font-size: 1rem; font-weight: 700; cursor: pointer;
+    transition: all 0.2s; margin-top: 0.5rem;
+  }
+  .btn-submit:hover { background: var(--primary-dark); transform: translateY(-1px); }
+
+  /* FOOTER */
+  footer {
+    background: #0d0d1a; color: #6b7280;
+    text-align: center; padding: 2rem;
+    font-size: 0.85rem;
+  }
+  footer a { color: var(--primary); text-decoration: none; }
+
+  @media(max-width:600px){
+    section { padding: 3rem 1.25rem; }
+    nav { padding: 0.875rem 1.25rem; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="logo">🔧 Autoservis <span>Procházka</span></div>
+  <a href="tel:+420777123456" class="nav-phone">📞 777 123 456</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="uvod">
+  <div class="hero-inner">
+    <div class="hero-text">
+      <div class="location-badge">📍 Most & okolí</div>
+      <h1>Rychlý a spolehlivý<br><em>autoservis v Mostě</em></h1>
+      <p class="hero-sub">Opravíme vaše auto rychle, kvalitně a za férovou cenu. Bez skrytých poplatků.</p>
+      <div class="hero-ctas">
+        <a href="tel:+420777123456" class="btn-red">📞 Zavolat nyní</a>
+        <a href="#kontakt" class="btn-ghost">✉️ Napsat zprávu</a>
+      </div>
+      <div class="hero-stats">
+        <div class="stat">
+          <div class="stat-num">10+</div>
+          <div class="stat-label">let zkušeností</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num">2 400+</div>
+          <div class="stat-label">spokojených zákazníků</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num">98%</div>
+          <div class="stat-label">doporučení</div>
+        </div>
+      </div>
+    </div>
+    <div class="hero-card">
+      <h3>Nejčastější opravy</h3>
+      <ul class="service-list-hero">
+        <li><div class="service-icon">🔧</div> Servis motoru a převodovky</li>
+        <li><div class="service-icon">🔍</div> Počítačová diagnostika</li>
+        <li><div class="service-icon">🛢️</div> Výměna oleje a filtrů</li>
+        <li><div class="service-icon">🚗</div> Příprava na STK/TÜV</li>
+        <li><div class="service-icon">❄️</div> Klimatizace – servis</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- SLUŽBY -->
+<section class="sluzby" id="sluzby">
+  <div class="container">
+    <div class="section-tag">Co opravíme</div>
+    <h2>Naše služby</h2>
+    <p class="lead">Komplexní péče o vaše vozidlo na jednom místě.</p>
+    <div class="sluzby-grid">
+      <div class="sluzba-card">
+        <div class="sluzba-icon">🔧</div>
+        <h3>Servis motoru</h3>
+        <p>Opravy, výměna součástek, ladění výkonu</p>
+      </div>
+      <div class="sluzba-card">
+        <div class="sluzba-icon">💻</div>
+        <h3>Diagnostika</h3>
+        <p>Moderní počítačová diagnostika všech systémů</p>
+      </div>
+      <div class="sluzba-card">
+        <div class="sluzba-icon">🛢️</div>
+        <h3>Výměna oleje</h3>
+        <p>Výměna motorového oleje a všech filtrů</p>
+      </div>
+      <div class="sluzba-card">
+        <div class="sluzba-icon">✅</div>
+        <h3>STK příprava</h3>
+        <p>Kontrola a příprava vozu na technickou prohlídku</p>
+      </div>
+      <div class="sluzba-card">
+        <div class="sluzba-icon">🛞</div>
+        <h3>Pneuservis</h3>
+        <p>Přezutí, vyvážení, opravy pneumatik</p>
+      </div>
+      <div class="sluzba-card">
+        <div class="sluzba-icon">🔩</div>
+        <h3>Brzdy & podvozek</h3>
+        <p>Výměna brzdových destiček, tlumičů, ložisek</p>
+      </div>
+      <div class="sluzba-card">
+        <div class="sluzba-icon">❄️</div>
+        <h3>Klimatizace</h3>
+        <p>Plnění, servis a dezinfekce klimatizace</p>
+      </div>
+      <div class="sluzba-card">
+        <div class="sluzba-icon">⚡</div>
+        <h3>Elektroinstalace</h3>
+        <p>Opravy el. systémů, světla, akumulátory</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROČ MY -->
+<section id="proc-my">
+  <div class="container">
+    <div class="proc-my-grid">
+      <div>
+        <div class="section-tag">Proč nás vybrat</div>
+        <h2>Férový servis<br>bez překvapení</h2>
+        <ul class="vyhoda-list">
+          <li class="vyhoda-item">
+            <div class="vyhoda-icon">🏆</div>
+            <div class="vyhoda-text">
+              <h4>10+ let zkušeností</h4>
+              <p>Opravujeme auta od roku 2013. Znáte nás, znáte naši kvalitu.</p>
+            </div>
+          </li>
+          <li class="vyhoda-item">
+            <div class="vyhoda-icon">⚡</div>
+            <div class="vyhoda-text">
+              <h4>Rychlé termíny</h4>
+              <p>Většinu oprav zvládneme do 24 hodin. Urgentní opravy ještě dnes.</p>
+            </div>
+          </li>
+          <li class="vyhoda-item">
+            <div class="vyhoda-icon">💰</div>
+            <div class="vyhoda-text">
+              <h4>Férové ceny</h4>
+              <p>Cenu sdělíme předem. Žádné skryté příplatky ani nepříjemná překvapení.</p>
+            </div>
+          </li>
+          <li class="vyhoda-item">
+            <div class="vyhoda-icon">🔍</div>
+            <div class="vyhoda-text">
+              <h4>Transparentní opravy</h4>
+              <p>Ukážeme, co jsme opravili. Použité díly k nahlédnutí vždy.</p>
+            </div>
+          </li>
+        </ul>
+      </div>
+      <div class="proc-my-visual">
+        <div class="big-stat">98%</div>
+        <p class="big-stat-label">zákazníků by nás doporučilo</p>
+        <hr class="divider-line">
+        <div class="mini-stats">
+          <div class="mini-stat">
+            <div class="mini-num">2 400+</div>
+            <div class="mini-label">opravených vozidel</div>
+          </div>
+          <div class="mini-stat">
+            <div class="mini-num">10+</div>
+            <div class="mini-label">let na trhu</div>
+          </div>
+          <div class="mini-stat">
+            <div class="mini-num">4.9★</div>
+            <div class="mini-label">hodnocení Google</div>
+          </div>
+          <div class="mini-stat">
+            <div class="mini-num">24h</div>
+            <div class="mini-label">většina oprav</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- REFERENCE -->
+<section class="reference" id="reference">
+  <div class="container">
+    <div class="section-tag">Recenze zákazníků</div>
+    <h2>Co říkají naši zákazníci</h2>
+    <p class="lead">Přes 200 hodnocení — průměr 4,9 hvězdiček na Google.</p>
+    <div class="ref-grid">
+      <div class="ref-card">
+        <div class="ref-stars">★★★★★</div>
+        <p class="ref-text">„Rychlé jednání, doporučuji. Auto bylo hotové do druhého rána, cena přesně jak řekli. Konečně servis, kde se dá věřit."</p>
+        <div class="ref-author">
+          <div class="ref-avatar">PK</div>
+          <div>
+            <div class="ref-name">Pavel K.</div>
+            <div class="ref-car">VW Golf VII</div>
+          </div>
+        </div>
+      </div>
+      <div class="ref-card">
+        <div class="ref-stars">★★★★★</div>
+        <p class="ref-text">„Auto opraveno do druhého dne. Pánové jsou profíci — diagnostika ukázala přesně problém a opravili ho napoprvé. Určitě se vrátím."</p>
+        <div class="ref-author">
+          <div class="ref-avatar">MV</div>
+          <div>
+            <div class="ref-name">Monika V.</div>
+            <div class="ref-car">Škoda Octavia</div>
+          </div>
+        </div>
+      </div>
+      <div class="ref-card">
+        <div class="ref-stars">★★★★★</div>
+        <p class="ref-text">„Volal jsem ráno, odpoledne bylo auto hotové. Cena velmi férová, srovnával jsem s jiným servisem a tady ušetřím vždy. Doporučuji!"</p>
+        <div class="ref-author">
+          <div class="ref-avatar">TN</div>
+          <div>
+            <div class="ref-name">Tomáš N.</div>
+            <div class="ref-car">Ford Focus</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- KONTAKT -->
+<section class="kontakt" id="kontakt">
+  <div class="container">
+    <div class="section-tag" style="background:rgba(214,40,40,0.2); color:#f87171;">Kontakt</div>
+    <h2>Zavolejte nebo napište</h2>
+    <p style="color:#9ca3af; margin-top:0.25rem;">Odpovídáme do 1 hodiny ve všední dny.</p>
+    <div class="kontakt-grid">
+      <div class="kontakt-info">
+        <div class="info-item">
+          <div class="info-icon">📞</div>
+          <div>
+            <div class="info-label">Telefon</div>
+            <div class="info-value"><a href="tel:+420777123456">+420 777 123 456</a></div>
+          </div>
+        </div>
+        <div class="info-item">
+          <div class="info-icon">✉️</div>
+          <div>
+            <div class="info-label">E-mail</div>
+            <div class="info-value"><a href="mailto:servis@autoservis-prochazka.cz">servis@autoservis-prochazka.cz</a></div>
+          </div>
+        </div>
+        <div class="info-item">
+          <div class="info-icon">📍</div>
+          <div>
+            <div class="info-label">Adresa</div>
+            <div class="info-value">Průmyslová 42, 434 01 Most</div>
+          </div>
+        </div>
+        <div class="info-item">
+          <div class="info-icon">🕐</div>
+          <div>
+            <div class="info-label">Otevírací doba</div>
+            <div class="info-value">Po–Pá: 7:00 – 17:00<br>So: 8:00 – 12:00</div>
+          </div>
+        </div>
+      </div>
+      <div class="kontakt-form">
+        <h3>Poptávka / Rezervace termínu</h3>
+        <form onsubmit="handleSubmit(event)">
+          <div class="form-row-2">
+            <div class="form-group">
+              <label>Jméno</label>
+              <input type="text" placeholder="Jan Novák" required>
+            </div>
+            <div class="form-group">
+              <label>Telefon</label>
+              <input type="tel" placeholder="777 123 456" required>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>SPZ / Typ vozidla</label>
+            <input type="text" placeholder="1M1 2345 / VW Golf 2019">
+          </div>
+          <div class="form-group">
+            <label>Typ opravy</label>
+            <select>
+              <option>Diagnostika</option>
+              <option>Servis motoru</option>
+              <option>Výměna oleje</option>
+              <option>STK příprava</option>
+              <option>Pneuservis</option>
+              <option>Jiné</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Popis závady (nepovinné)</label>
+            <textarea placeholder="Popište problém s autem..."></textarea>
+          </div>
+          <button type="submit" class="btn-submit">📩 Odeslat poptávku</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>© 2024 Autoservis Procházka · Most · <a href="tel:+420777123456">777 123 456</a></p>
+</footer>
+
+<script>
+function handleSubmit(e) {
+  e.preventDefault();
+  const btn = e.target.querySelector('.btn-submit');
+  btn.textContent = '✅ Odesláno — zavoláme vám brzy!';
+  btn.style.background = '#10b981';
+  btn.disabled = true;
+}
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    e.preventDefault();
+    document.querySelector(a.getAttribute('href'))?.scrollIntoView({ behavior: 'smooth' });
+  });
+});
+</script>
+  <!-- webdo24.cz badge -->
+  <style>#wd24-bar{position:fixed;bottom:0;left:0;right:0;z-index:99999;display:flex;align-items:center;justify-content:center;gap:8px;background:rgba(15,23,42,.88);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-top:1px solid rgba(255,255,255,.08);padding:10px 20px;font-family:-apple-system,'Inter',sans-serif;font-size:11px;font-weight:500;color:rgba(255,255,255,.5);box-shadow:0 -4px 16px rgba(0,0,0,.2)}#wd24-bar a{color:rgba(255,255,255,.85);text-decoration:none;font-weight:800;letter-spacing:-.02em;font-size:13px}#wd24-bar a span{color:#f97316}#wd24-bar a:hover{color:#fff}</style>
+  <div id="wd24-bar">Web&nbsp;vytvořil&nbsp;<a href="https://webyprobyznys.cz" target="_blank" rel="noopener">WebyPro<span>Byznys</span>.cz</a>&nbsp;·&nbsp;Profesionální web do 24&nbsp;hodin</div>
+</body>
+</html>

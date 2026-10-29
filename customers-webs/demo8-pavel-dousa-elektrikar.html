@@ -1,0 +1,753 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pavel Douša | Elektrikář a motorkář v Chabařovicích</title>
+  <meta name="description" content="Pavel Douša, elektrikář z Chabařovic. Montáže rozvaděčů, elektroinstalace, rekonstrukce, revizní příprava a chytré úpravy domácností i provozů.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&amp;family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --ink: #16191f;
+      --muted: #5f6874;
+      --line: #dce3ea;
+      --paper: #ffffff;
+      --soft: #f4f8fa;
+      --yellow: #ffd028;
+      --yellow-2: #ffb000;
+      --teal: #00a7a5;
+      --blue: #1d7bd8;
+      --red: #ef3b2d;
+      --rubber: #25282f;
+      --radius: 8px;
+      --shadow: 0 18px 60px rgba(22,25,31,.14);
+    }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--ink);
+      background:
+        linear-gradient(90deg, rgba(0,167,165,.06) 1px, transparent 1px),
+        linear-gradient(180deg, rgba(0,167,165,.05) 1px, transparent 1px),
+        var(--soft);
+      background-size: 44px 44px;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+    a { color: inherit; text-decoration: none; }
+    img, svg { max-width: 100%; display: block; }
+    .wrap { width: min(1180px, calc(100% - 40px)); margin: 0 auto; }
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(255,255,255,.9);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(22,25,31,.1);
+    }
+    .nav-inner {
+      height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 900;
+      letter-spacing: 0;
+    }
+    .brand-mark {
+      width: 46px;
+      height: 46px;
+      border-radius: 8px;
+      color: var(--ink);
+      background: var(--yellow);
+      display: grid;
+      place-items: center;
+      box-shadow: inset -8px -8px 0 rgba(255,176,0,.55), 0 10px 28px rgba(255,176,0,.35);
+    }
+    .brand-mark svg { width: 27px; }
+    .brand small {
+      display: block;
+      color: var(--muted);
+      font-size: .72rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0;
+    }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 22px;
+      color: var(--muted);
+      font-size: .9rem;
+      font-weight: 700;
+    }
+    .nav-links a:hover { color: var(--ink); }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      min-height: 46px;
+      padding: 0 20px;
+      border-radius: 8px;
+      border: 2px solid var(--ink);
+      font-weight: 900;
+      letter-spacing: 0;
+      transition: transform .18s ease, box-shadow .18s ease, background .18s ease;
+      cursor: pointer;
+      font-family: inherit;
+    }
+    .btn:hover { transform: translateY(-2px); }
+    .btn-primary {
+      background: var(--yellow);
+      box-shadow: 5px 5px 0 var(--ink);
+    }
+    .btn-primary:hover { box-shadow: 7px 7px 0 var(--ink); }
+    .btn-dark { background: var(--ink); color: #fff; box-shadow: 5px 5px 0 var(--yellow); }
+    .btn-ghost { background: #fff; }
+    .hero {
+      position: relative;
+      overflow: hidden;
+      padding: 78px 0 46px;
+      background:
+        radial-gradient(circle at 85% 12%, rgba(255,208,40,.52), transparent 24%),
+        linear-gradient(135deg, #ffffff 0%, #effafe 55%, #fff8d9 100%);
+      border-bottom: 1px solid rgba(22,25,31,.1);
+    }
+    .spark-wire {
+      position: absolute;
+      inset: 92px -80px auto auto;
+      width: min(620px, 70vw);
+      opacity: .95;
+      pointer-events: none;
+    }
+    .hero-grid {
+      position: relative;
+      display: grid;
+      grid-template-columns: 1.02fr .98fr;
+      align-items: center;
+      gap: 48px;
+      z-index: 1;
+    }
+    .kicker {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      padding: 8px 12px;
+      border: 2px solid var(--ink);
+      border-radius: 999px;
+      background: #fff;
+      font-size: .78rem;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 0;
+      box-shadow: 4px 4px 0 var(--yellow);
+      margin-bottom: 22px;
+    }
+    .kicker::before {
+      content: "";
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: var(--teal);
+    }
+    h1, h2, h3 {
+      font-family: "Barlow Condensed", Inter, sans-serif;
+      line-height: .95;
+      text-transform: uppercase;
+      letter-spacing: 0;
+    }
+    h1 {
+      font-size: 6.8rem;
+      max-width: 720px;
+    }
+    h1 .zap { color: var(--teal); text-shadow: 4px 4px 0 var(--yellow); }
+    .hero p {
+      max-width: 650px;
+      margin: 24px 0 0;
+      font-size: 1.18rem;
+      color: #34404c;
+    }
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      margin-top: 30px;
+    }
+    .hero-notes {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 28px;
+    }
+    .note {
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: 8px 12px;
+      color: var(--muted);
+      font-size: .86rem;
+      font-weight: 800;
+    }
+    .visual-card {
+      position: relative;
+      min-height: 560px;
+      border-radius: 8px;
+      border: 3px solid var(--ink);
+      background:
+        linear-gradient(140deg, rgba(255,208,40,.96), rgba(255,176,0,.86) 48%, rgba(0,167,165,.9) 49%, rgba(0,167,165,.72)),
+        #fff;
+      box-shadow: 12px 12px 0 var(--ink);
+      overflow: hidden;
+      isolation: isolate;
+    }
+    .visual-card::before {
+      content: "";
+      position: absolute;
+      inset: 26px;
+      border: 2px dashed rgba(22,25,31,.34);
+      border-radius: 8px;
+    }
+    .switchboard {
+      position: absolute;
+      left: 50%;
+      top: 52%;
+      width: min(430px, 86%);
+      transform: translate(-50%, -50%) rotate(-3deg);
+      filter: drop-shadow(0 24px 20px rgba(22,25,31,.18));
+    }
+    .helmet {
+      position: absolute;
+      right: 38px;
+      bottom: 38px;
+      width: 154px;
+      transform: rotate(9deg);
+      filter: drop-shadow(0 14px 18px rgba(22,25,31,.2));
+    }
+    .visual-tag {
+      position: absolute;
+      left: 28px;
+      bottom: 30px;
+      max-width: 260px;
+      padding: 14px 16px;
+      border-radius: 8px;
+      border: 2px solid var(--ink);
+      background: #fff;
+      box-shadow: 6px 6px 0 var(--ink);
+      font-weight: 900;
+      line-height: 1.25;
+    }
+    .visual-tag span {
+      display: block;
+      color: var(--red);
+      font-size: .78rem;
+      letter-spacing: 0;
+      text-transform: uppercase;
+      margin-bottom: 4px;
+    }
+    section { padding: 86px 0; }
+    .section-head {
+      display: grid;
+      grid-template-columns: .7fr 1fr;
+      gap: 38px;
+      align-items: end;
+      margin-bottom: 34px;
+    }
+    .section-head h2 { font-size: 4.8rem; }
+    .section-head p { color: var(--muted); font-size: 1.08rem; max-width: 680px; }
+    .strip {
+      background: var(--ink);
+      color: #fff;
+      padding: 18px 0;
+      overflow: hidden;
+      white-space: nowrap;
+      border-top: 4px solid var(--yellow);
+      border-bottom: 4px solid var(--yellow);
+    }
+    .strip-track {
+      display: inline-flex;
+      gap: 34px;
+      font-family: "Barlow Condensed", Inter, sans-serif;
+      font-size: 2.2rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      animation: ride 18s linear infinite;
+    }
+    .strip-track span:nth-child(even) { color: var(--yellow); }
+    @keyframes ride {
+      from { transform: translateX(0); }
+      to { transform: translateX(-50%); }
+    }
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+    .card {
+      position: relative;
+      min-height: 270px;
+      padding: 26px;
+      border: 2px solid var(--ink);
+      border-radius: 8px;
+      background: #fff;
+      box-shadow: 8px 8px 0 rgba(22,25,31,.12);
+      overflow: hidden;
+      transition: transform .18s ease, box-shadow .18s ease;
+    }
+    .card:hover { transform: translateY(-5px); box-shadow: 10px 12px 0 rgba(22,25,31,.18); }
+    .card.featured {
+      grid-column: span 2;
+      background:
+        linear-gradient(120deg, rgba(255,208,40,.93), rgba(255,255,255,.96) 58%),
+        #fff;
+    }
+    .icon {
+      width: 54px;
+      height: 54px;
+      display: grid;
+      place-items: center;
+      border: 2px solid var(--ink);
+      border-radius: 8px;
+      background: var(--yellow);
+      margin-bottom: 20px;
+      font-size: 1.55rem;
+    }
+    .card h3 {
+      font-size: 2.2rem;
+      margin-bottom: 12px;
+    }
+    .card p { color: var(--muted); }
+    .card ul {
+      list-style: none;
+      margin-top: 16px;
+      display: grid;
+      gap: 8px;
+    }
+    .card li {
+      display: flex;
+      gap: 10px;
+      color: #364351;
+      font-weight: 700;
+    }
+    .card li::before { content: "⚡"; color: var(--yellow-2); flex: 0 0 auto; }
+    .product {
+      background:
+        radial-gradient(circle at 16% 20%, rgba(255,208,40,.42), transparent 28%),
+        radial-gradient(circle at 88% 10%, rgba(0,167,165,.22), transparent 22%),
+        #fff;
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+    }
+    .product-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 34px;
+      align-items: center;
+    }
+    .deal {
+      border: 3px solid var(--ink);
+      border-radius: 8px;
+      background: var(--paper);
+      box-shadow: var(--shadow);
+      padding: 30px;
+    }
+    .deal h2 { font-size: 5.1rem; }
+    .deal p { color: var(--muted); margin-top: 16px; font-size: 1.06rem; }
+    .deal-list {
+      margin-top: 24px;
+      display: grid;
+      gap: 12px;
+    }
+    .deal-item {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 12px;
+      align-items: start;
+      padding: 14px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #f8fbfc;
+    }
+    .deal-item strong { display: block; }
+    .deal-item span { color: var(--muted); font-size: .93rem; }
+    .panel {
+      min-height: 520px;
+      border-radius: 8px;
+      border: 3px solid var(--ink);
+      background: var(--rubber);
+      position: relative;
+      overflow: hidden;
+      box-shadow: 12px 12px 0 var(--yellow);
+    }
+    .panel svg { width: 100%; height: 100%; }
+    .proof {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+      margin-top: 26px;
+    }
+    .proof-box {
+      background: #fff;
+      border: 2px solid var(--ink);
+      border-radius: 8px;
+      padding: 20px;
+    }
+    .proof-box strong {
+      display: block;
+      font-family: "Barlow Condensed", Inter, sans-serif;
+      font-size: 2.05rem;
+      line-height: .95;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+    .proof-box span { color: var(--muted); font-size: .92rem; }
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+    }
+    .step {
+      border-radius: 8px;
+      background: #fff;
+      border: 2px solid var(--ink);
+      padding: 24px;
+      position: relative;
+      min-height: 250px;
+    }
+    .step-num {
+      font-family: "Barlow Condensed", Inter, sans-serif;
+      font-size: 4.2rem;
+      line-height: .8;
+      color: var(--yellow-2);
+      text-shadow: 2px 2px 0 var(--ink);
+      margin-bottom: 18px;
+    }
+    .step h3 { font-size: 1.8rem; }
+    .step p { margin-top: 10px; color: var(--muted); }
+    .cta {
+      padding: 86px 0;
+      background:
+        linear-gradient(135deg, rgba(22,25,31,.95), rgba(22,25,31,.88)),
+        var(--ink);
+      color: #fff;
+    }
+    .cta-grid {
+      display: grid;
+      grid-template-columns: .95fr 1.05fr;
+      gap: 34px;
+      align-items: stretch;
+    }
+    .cta h2 { font-size: 5.2rem; }
+    .cta p { color: #c7d0d8; margin-top: 18px; font-size: 1.08rem; }
+    .contact-card {
+      background: #fff;
+      color: var(--ink);
+      border: 3px solid var(--yellow);
+      border-radius: 8px;
+      padding: 28px;
+      box-shadow: 12px 12px 0 rgba(255,208,40,.32);
+    }
+    .contact-card h3 { font-size: 2.3rem; margin-bottom: 8px; }
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-top: 22px;
+    }
+    label { display: grid; gap: 7px; font-size: .78rem; color: #4b5663; font-weight: 900; text-transform: uppercase; letter-spacing: 0; }
+    input, select, textarea {
+      width: 100%;
+      border: 2px solid var(--line);
+      border-radius: 8px;
+      padding: 13px 14px;
+      font: inherit;
+      color: var(--ink);
+      background: #fff;
+    }
+    input:focus, select:focus, textarea:focus {
+      outline: none;
+      border-color: var(--yellow-2);
+      box-shadow: 0 0 0 4px rgba(255,208,40,.28);
+    }
+    textarea { min-height: 116px; resize: vertical; }
+    .wide { grid-column: 1 / -1; }
+    .form-note {
+      margin-top: 14px;
+      color: var(--muted);
+      font-size: .88rem;
+    }
+    .footer {
+      padding: 28px 0;
+      background: #fff;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: .92rem;
+    }
+    .footer .wrap {
+      display: flex;
+      justify-content: space-between;
+      gap: 18px;
+      flex-wrap: wrap;
+    }
+    @media (max-width: 960px) {
+      .nav-links { display: none; }
+      .hero-grid, .section-head, .product-grid, .cta-grid { grid-template-columns: 1fr; }
+      .visual-card { min-height: 440px; }
+      .cards, .steps { grid-template-columns: 1fr 1fr; }
+      .card.featured { grid-column: span 1; }
+      .proof { grid-template-columns: repeat(2, 1fr); }
+      h1 { font-size: 5rem; }
+      .section-head h2, .deal h2, .cta h2 { font-size: 4rem; }
+    }
+    @media (max-width: 640px) {
+      .wrap { width: min(100% - 28px, 1180px); }
+      .nav-inner { height: 64px; }
+      .brand-mark { width: 40px; height: 40px; }
+      .brand div:last-child { font-size: .92rem; }
+      .hero { padding: 48px 0 30px; }
+      h1 { font-size: 3.25rem; }
+      .hero p { font-size: 1.02rem; }
+      .section-head h2, .deal h2, .cta h2 { font-size: 3rem; }
+      .strip-track { font-size: 1.55rem; }
+      section { padding: 58px 0; }
+      .cards, .steps, .proof, .form-grid { grid-template-columns: 1fr; }
+      .visual-card { min-height: 380px; }
+      .visual-tag { left: 18px; right: 18px; bottom: 18px; max-width: none; }
+      .helmet { width: 118px; right: 20px; bottom: 112px; }
+      .btn { width: 100%; }
+      .nav .btn { width: auto; min-height: 42px; padding: 0 14px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
+    }
+  </style>
+</head>
+<body>
+  <nav class="nav">
+    <div class="wrap nav-inner">
+      <a class="brand" href="#top" aria-label="Pavel Douša - úvod">
+        <span class="brand-mark" aria-hidden="true">
+          <svg viewBox="0 0 48 48" role="img"><path fill="currentColor" d="M27 2 9 27h13l-3 19 20-28H26L27 2Z"/></svg>
+        </span>
+        <span>Pavel Douša<small>elektrikář &amp; motorkář</small></span>
+      </a>
+      <div class="nav-links" aria-label="Navigace">
+        <a href="#rozvadece">Rozvaděče</a>
+        <a href="#sluzby">Služby</a>
+        <a href="#postup">Postup</a>
+        <a href="#kontakt">Poptávka</a>
+      </div>
+      <a class="btn btn-primary" href="#kontakt">Chci termín</a>
+    </div>
+  </nav>
+
+  <header class="hero" id="top">
+    <svg class="spark-wire" viewBox="0 0 780 260" aria-hidden="true">
+      <path d="M12 132 C130 35 202 220 332 105 S535 20 746 152" fill="none" stroke="#16191f" stroke-width="6" stroke-linecap="round" stroke-dasharray="18 18"/>
+      <path d="M88 78h64v52h82v-30h76" fill="none" stroke="#00a7a5" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="m594 52 27 52h-35l34 78" fill="none" stroke="#ef3b2d" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+    <div class="wrap hero-grid">
+      <div>
+        <div class="kicker">Chabařovice a okolí · elektřina bez dramatu</div>
+        <h1>Rozvaděče, kabely a <span class="zap">klid v pojistkách</span>.</h1>
+        <p>Elektrikář, který má rád pořádek v rozvaděči, dobré řemeslo a motorky. Pavel Douša řeší montáže rozvaděčů, rekonstrukce elektroinstalací a zakázky, kde se nechcete spoléhat na “nějak to bliká”.</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#kontakt">Poptat elektrikáře</a>
+          <a class="btn btn-ghost" href="#rozvadece">Chci nový rozvaděč</a>
+        </div>
+        <div class="hero-notes">
+          <span class="note">Rozvaděče</span>
+          <span class="note">Rekonstrukce</span>
+          <span class="note">Příprava pro revizi</span>
+          <span class="note">Bez “to bude dobrý”</span>
+        </div>
+      </div>
+      <div class="visual-card" aria-label="Ilustrace elektrikáře a motorkáře">
+        <svg class="switchboard" viewBox="0 0 520 520" role="img" aria-label="Ilustrace rozvaděče">
+          <rect x="82" y="54" width="356" height="412" rx="24" fill="#fff" stroke="#16191f" stroke-width="10"/>
+          <rect x="112" y="92" width="296" height="74" rx="12" fill="#ffd028" stroke="#16191f" stroke-width="7"/>
+          <circle cx="148" cy="130" r="18" fill="#00a7a5" stroke="#16191f" stroke-width="6"/>
+          <circle cx="202" cy="130" r="18" fill="#ef3b2d" stroke="#16191f" stroke-width="6"/>
+          <circle cx="256" cy="130" r="18" fill="#1d7bd8" stroke="#16191f" stroke-width="6"/>
+          <rect x="120" y="210" width="70" height="116" rx="9" fill="#f4f8fa" stroke="#16191f" stroke-width="7"/>
+          <rect x="224" y="210" width="70" height="116" rx="9" fill="#f4f8fa" stroke="#16191f" stroke-width="7"/>
+          <rect x="328" y="210" width="70" height="116" rx="9" fill="#f4f8fa" stroke="#16191f" stroke-width="7"/>
+          <path d="M155 230v75M259 230v75M363 230v75" stroke="#16191f" stroke-width="9" stroke-linecap="round"/>
+          <path d="M130 378h260" stroke="#16191f" stroke-width="8" stroke-linecap="round" stroke-dasharray="20 16"/>
+          <path d="M111 420c62-30 104 31 157 0s85 31 139 0" fill="none" stroke="#00a7a5" stroke-width="9" stroke-linecap="round"/>
+        </svg>
+        <svg class="helmet" viewBox="0 0 220 160" role="img" aria-label="Motorkářská helma">
+          <path d="M27 97C27 46 68 16 118 16c45 0 77 25 85 67 4 20-8 37-28 37H62c-21 0-35-7-35-23Z" fill="#25282f" stroke="#16191f" stroke-width="8"/>
+          <path d="M78 58h102c-8 26-29 40-66 40H58c1-16 8-30 20-40Z" fill="#ffd028" stroke="#16191f" stroke-width="7"/>
+          <path d="M35 110c23 21 58 31 112 25" fill="none" stroke="#00a7a5" stroke-width="10" stroke-linecap="round"/>
+        </svg>
+        <div class="visual-tag"><span>Servisní hláška</span>Když rozvaděč vypadá jako klubko hadů, je čas zavolat Pavla.</div>
+      </div>
+    </div>
+  </header>
+
+  <div class="strip" aria-hidden="true">
+    <div class="strip-track">
+      <span>rozvaděče</span><span>elektroinstalace</span><span>rekonstrukce</span><span>světla</span><span>zásuvky</span><span>příprava pro revizi</span>
+      <span>rozvaděče</span><span>elektroinstalace</span><span>rekonstrukce</span><span>světla</span><span>zásuvky</span><span>příprava pro revizi</span>
+    </div>
+  </div>
+
+  <section class="product" id="rozvadece">
+    <div class="wrap product-grid">
+      <div class="deal">
+        <div class="kicker">Hlavní tahák</div>
+        <h2>Rozvaděč, za který se nemusíte omlouvat.</h2>
+        <p>Nový byt, rekonstrukce domu, garáž, dílna nebo menší provoz? Rozvaděč je srdce elektroinstalace. Když je udělaný čistě, popsaný a logicky, šetří nervy při každé další úpravě.</p>
+        <div class="deal-list">
+          <div class="deal-item"><strong>Montáž a výměna rozvaděčů</strong><span>Pro domy, byty, garáže, dílny a menší provozy.</span></div>
+          <div class="deal-item"><strong>Přehledné popisy okruhů</strong><span>Ať víte, co vypínáte, dřív než vypnete lednici i Wi-Fi.</span></div>
+          <div class="deal-item"><strong>Příprava pro revizi</strong><span>Čisté zapojení, dokumentace dle domluvy a logika, která dává smysl.</span></div>
+        </div>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#kontakt">Poptat rozvaděč</a>
+        </div>
+      </div>
+      <div class="panel" aria-label="Grafika rozvaděče">
+        <svg viewBox="0 0 680 620" role="img" aria-label="Stylizovaná elektroinstalace">
+          <rect x="62" y="54" width="556" height="512" rx="28" fill="#f8fbfc" stroke="#ffd028" stroke-width="10"/>
+          <path d="M128 148h424M128 250h424M128 352h424M128 454h424" stroke="#16191f" stroke-width="8" stroke-linecap="round"/>
+          <g fill="#fff" stroke="#16191f" stroke-width="7">
+            <rect x="142" y="174" width="86" height="52" rx="8"/><rect x="252" y="174" width="86" height="52" rx="8"/><rect x="362" y="174" width="86" height="52" rx="8"/><rect x="472" y="174" width="60" height="52" rx="8"/>
+            <rect x="142" y="276" width="86" height="52" rx="8"/><rect x="252" y="276" width="86" height="52" rx="8"/><rect x="362" y="276" width="86" height="52" rx="8"/><rect x="472" y="276" width="60" height="52" rx="8"/>
+            <rect x="142" y="378" width="86" height="52" rx="8"/><rect x="252" y="378" width="86" height="52" rx="8"/><rect x="362" y="378" width="86" height="52" rx="8"/><rect x="472" y="378" width="60" height="52" rx="8"/>
+          </g>
+          <path d="M122 510c74-44 132 44 206 0s120 44 218 0" fill="none" stroke="#00a7a5" stroke-width="14" stroke-linecap="round"/>
+          <path d="m500 72 26 52h-35l34 78" fill="none" stroke="#ef3b2d" stroke-width="13" stroke-linecap="round" stroke-linejoin="round"/>
+          <circle cx="132" cy="90" r="18" fill="#ffd028"/><circle cx="190" cy="90" r="18" fill="#00a7a5"/><circle cx="248" cy="90" r="18" fill="#ef3b2d"/>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <section id="sluzby">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>Práce, které mají cenu poptat.</h2>
+        <p>Žádný nekonečný seznam drobností. Tady jsou zakázky, kde dává smysl zavolat elektrikáře, který udělá čistou práci a nenechá po sobě hádanku pro dalšího člověka.</p>
+      </div>
+      <div class="cards">
+        <article class="card featured">
+          <div class="icon">⚡</div>
+          <h3>Kompletní elektroinstalace</h3>
+          <p>Rekonstrukce bytů, domů, garáží a dílen. Trasy, kabely, zásuvky, světla, rozvaděč a příprava tak, aby výsledek držel pohromadě.</p>
+          <ul>
+            <li>nové okruhy a přívody</li>
+            <li>rozumné rozmístění zásuvek</li>
+            <li>příprava pro revizi a další profese</li>
+          </ul>
+        </article>
+        <article class="card">
+          <div class="icon">🔌</div>
+          <h3>Rozvaděče</h3>
+          <p>Montáž, výměna a zpřehlednění rozvaděčů. Popisky, pořádek, logika. Prostě rozvaděč, kde se nehraje elektro-loterie.</p>
+        </article>
+        <article class="card">
+          <div class="icon">💡</div>
+          <h3>Světla a chytré prvky</h3>
+          <p>Svítidla, LED pásky, venkovní osvětlení, čidla a praktická automatizace. Chytře, ale bez zbytečného sci-fi.</p>
+        </article>
+        <article class="card">
+          <div class="icon">🏠</div>
+          <h3>Byty a domy</h3>
+          <p>Elektro úpravy při rekonstrukci, kuchyně, koupelny, technické místnosti, garáže a příprava na moderní spotřebiče.</p>
+        </article>
+        <article class="card">
+          <div class="icon">🧰</div>
+          <h3>Provozovny a dílny</h3>
+          <p>Zásuvky pro stroje, pracovní světla, úpravy okruhů a rozumné řešení pro malé provozy v okolí Chabařovic.</p>
+        </article>
+        <article class="card">
+          <div class="icon">🏍</div>
+          <h3>Motorkářský přístup</h3>
+          <p>Neznamená to kravál. Znamená to: připravit, zkontrolovat, dotáhnout. Na silnici i v rozvaděči se improvizace rychle prodraží.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="product">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>Proč to bude konvertovat?</h2>
+        <p>Web prodává hlavně jistotu. Návštěvník vidí konkrétní práce, rychle pozná lokalitu a dostane jasnou cestu k poptávce bez hledání kontaktu po stránce.</p>
+      </div>
+      <div class="proof">
+        <div class="proof-box"><strong>Hned jasné</strong><span>Elektrikář z Chabařovic, rozvaděče a elektroinstalace.</span></div>
+        <div class="proof-box"><strong>Bez mlhy</strong><span>Texty mluví o zakázkách, ne o “komplexních řešeních”.</span></div>
+        <div class="proof-box"><strong>CTA pořád</strong><span>Poptávka je v hero, u rozvaděče i v kontaktním bloku.</span></div>
+        <div class="proof-box"><strong>Vtip s mírou</strong><span>Motorkářský tón je zapamatovatelný, ale pořád důvěryhodný.</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="postup">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>Jak probíhá zakázka.</h2>
+        <p>Jednoduše, protože elektřina má být napínavá jen ve fyzice, ne v komunikaci.</p>
+      </div>
+      <div class="steps">
+        <article class="step"><div class="step-num">01</div><h3>Pošlete poptávku</h3><p>Napište, kde je zakázka, co potřebujete a jestli jde o rozvaděč, rekonstrukci nebo úpravu.</p></article>
+        <article class="step"><div class="step-num">02</div><h3>Domluva na místě</h3><p>Pavel projde situaci, navrhne rozumné řešení a řekne, co má prioritu.</p></article>
+        <article class="step"><div class="step-num">03</div><h3>Čistá montáž</h3><p>Práce s důrazem na pořádek, přehledné vedení a logické zapojení.</p></article>
+        <article class="step"><div class="step-num">04</div><h3>Předání bez hádanek</h3><p>Víte, co se udělalo, kde co je a co bude případně potřeba dál.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta" id="kontakt">
+    <div class="wrap cta-grid">
+      <div>
+        <div class="kicker">Poptávka bez kopání do zdi naslepo</div>
+        <h2>Máte rozvaděč, rekonstrukci nebo kabelový rébus?</h2>
+        <p>Napište, co potřebujete vyřešit. Kontaktní údaje se doplní podle reálných dat zákazníka, aby web nic nevymýšlel.</p>
+      </div>
+      <form class="contact-card" onsubmit="event.preventDefault(); this.querySelector('.form-note').textContent='Díky. Formulář je v demu ukázkový, pro ostrý web se napojí na e-mail nebo CRM.';">
+        <h3>Rychlá poptávka</h3>
+        <p>Čím přesněji popíšete situaci, tím rychleji se dá odhadnout rozsah práce.</p>
+        <div class="form-grid">
+          <label>Jméno<input type="text" name="name" placeholder="Vaše jméno"></label>
+          <label>Lokalita<input type="text" name="place" placeholder="Chabařovice / okolí"></label>
+          <label>Typ práce
+            <select name="job">
+              <option>Montáž nebo výměna rozvaděče</option>
+              <option>Rekonstrukce elektroinstalace</option>
+              <option>Světla, zásuvky, chytré prvky</option>
+              <option>Provozovna, dílna, garáž</option>
+            </select>
+          </label>
+          <label>Termín<input type="text" name="date" placeholder="Kdy to potřebujete"></label>
+          <label class="wide">Co se děje<textarea name="message" placeholder="Například: rekonstrukce bytu, nový rozvaděč, kuchyň, garáž, dílna..."></textarea></label>
+        </div>
+        <button class="btn btn-dark wide" type="submit">Odeslat ukázkovou poptávku</button>
+        <div class="form-note">Ukázkový formulář. Pro ostrý web se doplní telefon, e-mail a napojení odesílání.</div>
+      </form>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="wrap">
+      <span>Pavel Douša · elektrikář &amp; motorkář · Chabařovice</span>
+      <span>Rozvaděče · elektroinstalace · rekonstrukce · světla</span>
+    </div>
+  </footer>
+  <!-- webdo24.cz badge -->
+  <style>#wd24-bar{position:fixed;bottom:0;left:0;right:0;z-index:99999;display:flex;align-items:center;justify-content:center;gap:8px;background:rgba(15,23,42,.88);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-top:1px solid rgba(255,255,255,.08);padding:10px 20px;font-family:-apple-system,'Inter',sans-serif;font-size:11px;font-weight:500;color:rgba(255,255,255,.5);box-shadow:0 -4px 16px rgba(0,0,0,.2)}#wd24-bar a{color:rgba(255,255,255,.85);text-decoration:none;font-weight:800;letter-spacing:-.02em;font-size:13px}#wd24-bar a span{color:#f97316}#wd24-bar a:hover{color:#fff}</style>
+  <div id="wd24-bar">Web&nbsp;vytvořil&nbsp;<a href="https://webyprobyznys.cz" target="_blank" rel="noopener">WebyPro<span>Byznys</span>.cz</a>&nbsp;·&nbsp;Profesionální web do 24&nbsp;hodin</div>
+</body>
+</html>

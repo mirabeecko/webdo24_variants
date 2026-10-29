@@ -1,0 +1,1520 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- ═══ SEO META ═══════════════════════════════════════════════
+       Změnit: title, description, og:url, og:image po nasazení
+  ══════════════════════════════════════════════════════════════ -->
+  <title>Kadeřnictví Maruška — Střih, barvení, melíry | Rezervace online</title>
+  <meta name="description" content="Profesionální kadeřnictví Maruška. Střihy, barvení, melíry a regenerace vlasů s 15 lety praxe. Individuální přístup, prémiová kosmetika. Rezervujte termín snadno online nebo telefonicky.">
+  <meta name="keywords" content="kadeřnictví, střih, barvení, melír, balayage, regenerace vlasů, rezervace, Maruška">
+  <meta property="og:title" content="Kadeřnictví Maruška — Luxusní péče o vlasy">
+  <meta property="og:description" content="15 let praxe, individuální přístup, prémiová kosmetika. Rezervujte termín online.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://kadernictvi-maruska.cz"><!-- ZMĚNIT -->
+  <link rel="canonical" href="https://kadernictvi-maruska.cz"><!-- ZMĚNIT -->
+
+  <!-- Fonts: Playfair Display (nadpisy) + Inter (tělo) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    /* ═══════════════════════════════════════════════════════════
+       PROMĚNNÉ
+    ═══════════════════════════════════════════════════════════ */
+    :root {
+      --green:      #0f4d45;
+      --green-d:    #0a3830;
+      --green-l:    #1a6b60;
+      --green-pale: #e8f0ee;
+      --gold:       #c9a85a;
+      --gold-l:     #e0c57a;
+      --bg:         #f7f6f4;
+      --bg-warm:    #f0ece6;
+      --card:       #ffffff;
+      --text:       #1c1c1c;
+      --muted:      #6b7280;
+      --border:     #e5e0d8;
+      --font-h:     'Playfair Display', Georgia, serif;
+      --font-b:     'Inter', -apple-system, system-ui, sans-serif;
+      --r:          10px;
+      --r-lg:       18px;
+      --shadow:     0 4px 20px rgba(15,77,69,.10);
+      --shadow-lg:  0 12px 48px rgba(15,77,69,.15);
+      --max:        1160px;
+      --trans:      all .3s ease;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       RESET & BASE
+    ═══════════════════════════════════════════════════════════ */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; font-size: 16px; }
+    body { font-family: var(--font-b); background: var(--bg); color: var(--text); line-height: 1.65; overflow-x: hidden; }
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
+    ul { list-style: none; }
+    button { cursor: pointer; font-family: var(--font-b); }
+    input, select, textarea { font-family: var(--font-b); }
+
+    h1, h2, h3 { font-family: var(--font-h); line-height: 1.2; }
+    h1 { font-size: clamp(2rem, 5vw, 3.2rem); }
+    h2 { font-size: clamp(1.6rem, 3.5vw, 2.4rem); }
+    h3 { font-size: clamp(1.1rem, 2vw, 1.3rem); }
+
+    .container { max-width: var(--max); margin: 0 auto; padding: 0 24px; }
+    .section-tag {
+      display: inline-block;
+      font-size: .75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: var(--gold);
+      margin-bottom: 12px;
+    }
+    .gold { color: var(--gold); }
+    .green { color: var(--green); }
+
+    /* ─── Scroll reveal ─── */
+    .reveal { opacity: 0; transform: translateY(24px); transition: opacity .65s ease, transform .65s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    /* ═══════════════════════════════════════════════════════════
+       MOBILE STICKY CTA — pouze mobil
+    ═══════════════════════════════════════════════════════════ */
+    .mobile-sticky {
+      display: none;
+      position: fixed;
+      bottom: 0; left: 0; right: 0;
+      z-index: 200;
+      padding: 12px 16px;
+      background: var(--green);
+      gap: 10px;
+    }
+    .mobile-sticky a {
+      flex: 1;
+      text-align: center;
+      padding: 14px 8px;
+      border-radius: 8px;
+      font-weight: 700;
+      font-size: .95rem;
+    }
+    .mobile-sticky .btn-call { background: var(--gold); color: #fff; }
+    .mobile-sticky .btn-book { background: rgba(255,255,255,.12); color: #fff; border: 1px solid rgba(255,255,255,.3); }
+
+    /* ═══════════════════════════════════════════════════════════
+       HEADER
+    ═══════════════════════════════════════════════════════════ */
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: var(--green);
+      padding: 14px 0;
+      transition: box-shadow .3s;
+    }
+    .site-header.scrolled { box-shadow: 0 4px 24px rgba(0,0,0,.2); }
+
+    .header-inner {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+    }
+
+    /* Logo */
+    .site-logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-shrink: 0;
+    }
+    /* ── LOGO: sem vložte skutečné logo ──
+       Nahraďte .logo-mark za <img src="logo.svg" alt="Kadeřnictví Maruška" width="40">
+    */
+    .logo-mark {
+      width: 40px; height: 40px;
+      background: var(--gold);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-family: var(--font-h);
+      font-size: 1.2rem;
+      color: var(--green);
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+    .logo-text { color: #fff; }
+    .logo-text strong { display: block; font-family: var(--font-h); font-size: 1.1rem; font-weight: 600; line-height: 1.1; }
+    .logo-text span { font-size: .75rem; color: rgba(255,255,255,.6); letter-spacing: .5px; }
+
+    /* Nav */
+    .site-nav { margin-left: auto; }
+    .site-nav ul { display: flex; gap: 28px; align-items: center; }
+    .site-nav a {
+      color: rgba(255,255,255,.8);
+      font-size: .9rem;
+      font-weight: 500;
+      transition: color .2s;
+    }
+    .site-nav a:hover { color: var(--gold); }
+
+    .header-cta {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-shrink: 0;
+    }
+    .header-cta .tel-link {
+      color: rgba(255,255,255,.75);
+      font-size: .88rem;
+      transition: color .2s;
+    }
+    .header-cta .tel-link:hover { color: var(--gold); }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 7px;
+      padding: 11px 22px;
+      border-radius: 8px;
+      font-weight: 700;
+      font-size: .9rem;
+      border: none;
+      transition: var(--trans);
+      white-space: nowrap;
+    }
+    .btn-gold { background: var(--gold); color: #fff; }
+    .btn-gold:hover { background: var(--gold-l); transform: translateY(-1px); }
+    .btn-outline { background: transparent; color: #fff; border: 1px solid rgba(255,255,255,.35); }
+    .btn-outline:hover { border-color: var(--gold); color: var(--gold); }
+    .btn-green { background: var(--green); color: #fff; }
+    .btn-green:hover { background: var(--green-l); transform: translateY(-2px); box-shadow: 0 4px 16px rgba(15,77,69,.3); }
+    .btn-large { padding: 16px 32px; font-size: 1rem; border-radius: 10px; }
+
+    /* Hamburger */
+    .hamburger { display: none; background: none; border: none; padding: 4px; margin-left: auto; }
+    .hamburger span { display: block; width: 24px; height: 2px; background: #fff; border-radius: 2px; margin: 5px 0; transition: var(--trans); }
+
+    /* Mobile nav overlay */
+    .mobile-nav {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: var(--green-d);
+      z-index: 99;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 32px;
+    }
+    .mobile-nav.open { display: flex; }
+    .mobile-nav a { color: #fff; font-size: 1.4rem; font-family: var(--font-h); transition: color .2s; }
+    .mobile-nav a:hover { color: var(--gold); }
+    .mobile-nav .close-btn { position: absolute; top: 20px; right: 24px; background: none; border: none; color: #fff; font-size: 2rem; line-height: 1; }
+
+    /* ═══════════════════════════════════════════════════════════
+       HERO
+    ═══════════════════════════════════════════════════════════ */
+    .hero {
+      background: linear-gradient(160deg, var(--green-d) 0%, var(--green) 55%, var(--green-l) 100%);
+      color: #fff;
+      padding: 100px 0 80px;
+      overflow: hidden;
+      position: relative;
+    }
+    /* Dekorativní kružnice */
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -120px; right: -120px;
+      width: 480px; height: 480px;
+      background: radial-gradient(circle, rgba(201,168,90,.15) 0%, transparent 70%);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+    .hero::after {
+      content: '';
+      position: absolute;
+      bottom: -80px; left: -80px;
+      width: 320px; height: 320px;
+      background: radial-gradient(circle, rgba(201,168,90,.10) 0%, transparent 70%);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: center;
+      position: relative;
+    }
+
+    .hero-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(201,168,90,.15);
+      border: 1px solid rgba(201,168,90,.3);
+      color: var(--gold-l);
+      padding: 6px 16px;
+      border-radius: 100px;
+      font-size: .8rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: .8px;
+      margin-bottom: 24px;
+    }
+
+    .hero h1 { margin-bottom: 20px; color: #fff; }
+    .hero h1 em { font-style: italic; color: var(--gold-l); }
+
+    .hero-sub {
+      color: rgba(255,255,255,.75);
+      font-size: 1.05rem;
+      margin-bottom: 36px;
+      line-height: 1.75;
+    }
+
+    .hero-pills {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-bottom: 36px;
+    }
+    .hero-pill {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(255,255,255,.1);
+      border: 1px solid rgba(255,255,255,.15);
+      color: rgba(255,255,255,.9);
+      padding: 7px 14px;
+      border-radius: 100px;
+      font-size: .85rem;
+      font-weight: 500;
+    }
+    .hero-pill .dot { width: 6px; height: 6px; background: var(--gold); border-radius: 50%; flex-shrink: 0; }
+
+    .hero-actions {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    /* Hero visual — foto placeholder */
+    .hero-photo {
+      position: relative;
+    }
+    /* ── FOTO: Nahraďte .photo-placeholder za <img src="hero.jpg" alt="Kadeřnictví Maruška"> ── */
+    .photo-placeholder {
+      width: 100%;
+      aspect-ratio: 4/5;
+      background: linear-gradient(135deg, rgba(255,255,255,.08), rgba(201,168,90,.12));
+      border: 2px dashed rgba(201,168,90,.4);
+      border-radius: var(--r-lg);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      color: rgba(255,255,255,.5);
+      font-size: .9rem;
+      text-align: center;
+      padding: 24px;
+    }
+    .photo-placeholder .ph-icon { font-size: 3rem; opacity: .5; }
+    .photo-badge {
+      position: absolute;
+      bottom: 24px;
+      left: 24px;
+      background: rgba(15,56,48,.95);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(201,168,90,.3);
+      border-radius: var(--r);
+      padding: 16px 20px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .pb-icon { font-size: 1.5rem; }
+    .pb-num { font-size: 1.4rem; font-weight: 800; color: var(--gold-l); line-height: 1; }
+    .pb-lbl { font-size: .8rem; color: rgba(255,255,255,.65); }
+
+    /* ═══════════════════════════════════════════════════════════
+       BENEFIT STRIP
+    ═══════════════════════════════════════════════════════════ */
+    .benefit-strip {
+      background: var(--green-d);
+      padding: 20px 0;
+    }
+    .benefit-strip ul {
+      display: flex;
+      justify-content: center;
+      gap: 0;
+      flex-wrap: wrap;
+    }
+    .benefit-strip li {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 8px 28px;
+      border-right: 1px solid rgba(255,255,255,.1);
+      color: rgba(255,255,255,.8);
+      font-size: .88rem;
+    }
+    .benefit-strip li:last-child { border-right: none; }
+    .benefit-strip .b-icon { font-size: 1.1rem; }
+
+    /* ═══════════════════════════════════════════════════════════
+       SEKCE — obecné
+    ═══════════════════════════════════════════════════════════ */
+    .section { padding: 96px 0; }
+    .section-alt { background: var(--bg-warm); }
+    .section-dark { background: var(--green); color: #fff; }
+
+    .section-header { text-align: center; margin-bottom: 56px; }
+    .section-header h2 { margin-bottom: 14px; }
+    .section-header p { color: var(--muted); font-size: 1.05rem; max-width: 560px; margin: 0 auto; }
+    .section-dark .section-header p { color: rgba(255,255,255,.7); }
+
+    /* ═══════════════════════════════════════════════════════════
+       SERVICES
+    ═══════════════════════════════════════════════════════════ */
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+    .service-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--r-lg);
+      padding: 32px 28px;
+      transition: var(--trans);
+    }
+    .service-card:hover {
+      border-color: var(--gold);
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-lg);
+    }
+    .service-icon {
+      width: 52px; height: 52px;
+      background: var(--green-pale);
+      border-radius: 12px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.4rem;
+      margin-bottom: 18px;
+    }
+    .service-card h3 { margin-bottom: 8px; font-size: 1.1rem; }
+    .service-card p { color: var(--muted); font-size: .9rem; line-height: 1.65; }
+    .service-tag {
+      display: inline-block;
+      margin-top: 14px;
+      background: var(--green-pale);
+      color: var(--green);
+      padding: 3px 10px;
+      border-radius: 4px;
+      font-size: .78rem;
+      font-weight: 700;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       PRODUCTS
+    ═══════════════════════════════════════════════════════════ */
+    .products-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+    }
+    /* ── FOTO: nahraďte .prod-placeholder za <img src="produkty.jpg" alt="Prémiová kosmetika"> ── */
+    .prod-placeholder {
+      background: linear-gradient(135deg, var(--green-pale), #e8e0d0);
+      border-radius: var(--r-lg);
+      aspect-ratio: 4/3;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      color: var(--muted);
+      font-size: .9rem;
+      border: 2px dashed var(--border);
+    }
+    .prod-placeholder .ph-icon { font-size: 3.5rem; opacity: .5; }
+
+    .products-content .section-tag { display: block; }
+    .products-content h2 { margin-bottom: 16px; }
+    .products-content p { color: var(--muted); line-height: 1.8; margin-bottom: 16px; }
+    .prod-list {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-bottom: 28px;
+    }
+    .prod-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 12px 16px;
+      background: var(--bg);
+      border-radius: 8px;
+      font-size: .92rem;
+    }
+    .prod-item .pi { font-size: 1.2rem; }
+    .prod-item strong { color: var(--text); }
+    .prod-item span { color: var(--muted); font-size: .85rem; display: block; }
+
+    /* ═══════════════════════════════════════════════════════════
+       WHY US
+    ═══════════════════════════════════════════════════════════ */
+    .why-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 28px;
+    }
+    .why-card {
+      background: rgba(255,255,255,.08);
+      border: 1px solid rgba(255,255,255,.12);
+      border-radius: var(--r-lg);
+      padding: 36px 28px;
+      text-align: center;
+      transition: var(--trans);
+    }
+    .why-card:hover {
+      background: rgba(255,255,255,.12);
+      border-color: rgba(201,168,90,.4);
+      transform: translateY(-4px);
+    }
+    .why-num {
+      font-family: var(--font-h);
+      font-size: 3rem;
+      font-weight: 700;
+      color: var(--gold);
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+    .why-card h3 { color: #fff; margin-bottom: 10px; font-size: 1.1rem; }
+    .why-card p { color: rgba(255,255,255,.65); font-size: .9rem; line-height: 1.7; }
+
+    /* ═══════════════════════════════════════════════════════════
+       BOOKING FORM
+    ═══════════════════════════════════════════════════════════ */
+    .booking-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.2fr;
+      gap: 64px;
+      align-items: start;
+    }
+    .booking-info h2 { margin-bottom: 16px; }
+    .booking-info p { color: var(--muted); line-height: 1.8; margin-bottom: 28px; }
+
+    .booking-contact {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      margin-bottom: 28px;
+    }
+    .bc-item {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 14px 18px;
+      background: var(--bg);
+      border-radius: 10px;
+      transition: var(--trans);
+    }
+    .bc-item:hover { background: var(--green-pale); }
+    .bc-icon {
+      width: 40px; height: 40px;
+      background: var(--green);
+      border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1rem;
+      flex-shrink: 0;
+    }
+    .bc-label { font-size: .78rem; color: var(--muted); }
+    .bc-val { font-size: .95rem; font-weight: 700; color: var(--text); }
+    .bc-val a { color: var(--green); }
+
+    .hours-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8px;
+    }
+    .hour-box {
+      background: var(--bg);
+      border-radius: 8px;
+      padding: 10px 12px;
+      text-align: center;
+    }
+    .hour-box .hb-day { font-size: .75rem; font-weight: 700; color: var(--muted); text-transform: uppercase; letter-spacing: .5px; }
+    .hour-box .hb-time { font-size: .88rem; font-weight: 600; color: var(--green); margin-top: 2px; }
+    .hour-box.closed .hb-time { color: #ef4444; }
+
+    /* Form card */
+    .form-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--r-lg);
+      padding: 36px;
+      box-shadow: var(--shadow);
+    }
+    .form-card h3 { margin-bottom: 8px; font-size: 1.2rem; }
+    .form-card .form-sub { color: var(--muted); font-size: .88rem; margin-bottom: 24px; }
+
+    .form-group { margin-bottom: 16px; }
+    .form-group label {
+      display: block;
+      font-size: .82rem;
+      font-weight: 700;
+      color: var(--muted);
+      margin-bottom: 6px;
+      text-transform: uppercase;
+      letter-spacing: .3px;
+    }
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%;
+      padding: 12px 14px;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      font-size: .95rem;
+      color: var(--text);
+      outline: none;
+      transition: var(--trans);
+    }
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      border-color: var(--green);
+      box-shadow: 0 0 0 3px rgba(15,77,69,.1);
+      background: #fff;
+    }
+    .form-group input::placeholder,
+    .form-group textarea::placeholder { color: #b0b0b0; }
+    .form-group textarea { resize: vertical; }
+    .form-group select option { background: #fff; }
+
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+
+    .gdpr-check {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      margin-bottom: 20px;
+      font-size: .82rem;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+    .gdpr-check input { width: 16px; height: 16px; margin-top: 1px; flex-shrink: 0; accent-color: var(--green); }
+    .gdpr-check a { color: var(--green); text-decoration: underline; }
+
+    .form-btn {
+      width: 100%;
+      padding: 16px;
+      background: var(--green);
+      color: #fff;
+      border: none;
+      border-radius: 10px;
+      font-size: 1rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: var(--trans);
+      font-family: var(--font-b);
+    }
+    .form-btn:hover { background: var(--green-l); transform: translateY(-2px); box-shadow: 0 6px 24px rgba(15,77,69,.3); }
+    .form-btn:disabled { opacity: .6; cursor: not-allowed; transform: none; }
+
+    .form-msg {
+      display: none;
+      margin-top: 16px;
+      padding: 14px 18px;
+      border-radius: 8px;
+      font-size: .9rem;
+      font-weight: 600;
+      text-align: center;
+    }
+    .form-msg.success { background: #ecfdf5; border: 1px solid #6ee7b7; color: #065f46; }
+    .form-msg.error   { background: #fef2f2; border: 1px solid #fca5a5; color: #991b1b; }
+    .form-msg.fallback { background: #fffbeb; border: 1px solid #fcd34d; color: #92400e; }
+    .form-msg a { color: inherit; text-decoration: underline; font-weight: 700; }
+
+    /* ═══════════════════════════════════════════════════════════
+       ABOUT
+    ═══════════════════════════════════════════════════════════ */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.5fr;
+      gap: 64px;
+      align-items: center;
+    }
+    /* ── FOTO: nahraďte .about-photo za <img src="maruska.jpg" alt="Maruška Nováková"> ── */
+    .about-photo {
+      background: linear-gradient(135deg, var(--green-pale), var(--bg-warm));
+      border-radius: var(--r-lg);
+      aspect-ratio: 3/4;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      color: var(--muted);
+      font-size: .88rem;
+      border: 2px dashed var(--border);
+      position: relative;
+    }
+    .about-photo .ph-icon { font-size: 4rem; opacity: .4; }
+    .about-badge {
+      position: absolute;
+      bottom: 20px;
+      right: -16px;
+      background: var(--green);
+      color: #fff;
+      padding: 12px 20px;
+      border-radius: var(--r);
+      text-align: center;
+      box-shadow: var(--shadow);
+    }
+    .about-badge strong { display: block; font-size: 1.5rem; font-family: var(--font-h); color: var(--gold-l); }
+    .about-badge span { font-size: .75rem; opacity: .8; }
+
+    .about-content .section-tag { display: block; }
+    .about-content h2 { margin-bottom: 16px; }
+    .about-content p { color: var(--muted); line-height: 1.8; margin-bottom: 16px; }
+    .about-content p:last-of-type { margin-bottom: 28px; }
+    .about-skills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .skill-tag {
+      background: var(--green-pale);
+      color: var(--green);
+      padding: 6px 14px;
+      border-radius: 100px;
+      font-size: .82rem;
+      font-weight: 600;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       GALLERY
+    ═══════════════════════════════════════════════════════════ */
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+    /* ── GALERIE: nahraďte .gallery-item za <img src="foto-X.jpg" alt="Popis"> ── */
+    .gallery-item {
+      aspect-ratio: 3/4;
+      background: linear-gradient(135deg, var(--green-pale), var(--bg-warm));
+      border: 2px dashed var(--border);
+      border-radius: var(--r);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      color: var(--muted);
+      font-size: .82rem;
+      text-align: center;
+      padding: 20px;
+      transition: var(--trans);
+      cursor: pointer;
+    }
+    .gallery-item:hover { border-color: var(--gold); transform: scale(1.02); }
+    .gallery-item .ph-icon { font-size: 2rem; opacity: .4; }
+    .gallery-item strong { color: var(--green); font-size: .85rem; display: block; }
+    .gallery-note {
+      text-align: center;
+      margin-top: 24px;
+      color: var(--muted);
+      font-size: .88rem;
+      background: var(--bg-warm);
+      padding: 14px 24px;
+      border-radius: 8px;
+      display: inline-block;
+    }
+
+    /* ── Skutečné fotografie ── */
+    .hero-photo img { width:100%; aspect-ratio:4/5; object-fit:cover; border-radius:var(--r-lg); display:block; }
+    .prod-photo { width:100%; aspect-ratio:4/3; object-fit:cover; border-radius:var(--r-lg); display:block; }
+    .about-photo { overflow:hidden; display:block; padding:0; }
+    .about-photo > img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; border-radius:var(--r-lg); }
+    .gallery-img { width:100%; aspect-ratio:3/4; object-fit:cover; border-radius:var(--r); display:block; transition:var(--trans); cursor:pointer; }
+    .gallery-img:hover { transform:scale(1.02); }
+
+    /* ═══════════════════════════════════════════════════════════
+       FOOTER
+    ═══════════════════════════════════════════════════════════ */
+    .site-footer {
+      background: var(--green-d);
+      color: rgba(255,255,255,.8);
+      padding: 56px 0 28px;
+    }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: 48px;
+      margin-bottom: 40px;
+    }
+    .footer-brand .logo-text strong,
+    .footer-brand .logo-text span { color: rgba(255,255,255,.9); }
+    .footer-brand .logo-text span { color: rgba(255,255,255,.5); }
+    .footer-brand p {
+      margin-top: 14px;
+      color: rgba(255,255,255,.55);
+      font-size: .88rem;
+      line-height: 1.75;
+    }
+    .footer-col h4 {
+      font-size: .75rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--gold);
+      margin-bottom: 16px;
+    }
+    .footer-col ul { display: flex; flex-direction: column; gap: 10px; }
+    .footer-col li, .footer-col a {
+      font-size: .88rem;
+      color: rgba(255,255,255,.6);
+      transition: color .2s;
+      line-height: 1.5;
+    }
+    .footer-col a:hover { color: var(--gold); }
+    .footer-col .f-val { color: rgba(255,255,255,.85); font-weight: 500; }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(255,255,255,.08);
+      padding-top: 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .footer-bottom p { font-size: .8rem; color: rgba(255,255,255,.4); }
+    .footer-bottom a { color: rgba(255,255,255,.4); font-size: .8rem; transition: color .2s; }
+    .footer-bottom a:hover { color: var(--gold); }
+
+    /* ═══════════════════════════════════════════════════════════
+       RESPONSIVE
+    ═══════════════════════════════════════════════════════════ */
+    @media (max-width: 1024px) {
+      .services-grid { grid-template-columns: repeat(2, 1fr); }
+      .gallery-grid  { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    @media (max-width: 768px) {
+      .site-nav, .header-cta .tel-link, .btn-outline { display: none; }
+      .hamburger { display: block; }
+      .mobile-sticky { display: flex; padding-bottom: calc(12px + env(safe-area-inset-bottom)); }
+
+      body { padding-bottom: 72px; }
+
+      .hero { padding: 60px 0 56px; }
+      .hero-grid { grid-template-columns: 1fr; gap: 0; }
+      .hero-photo { display: none; }
+
+      .section { padding: 64px 0; }
+
+      .benefit-strip li { padding: 6px 14px; font-size: .82rem; }
+
+      .services-grid { grid-template-columns: 1fr; }
+
+      .products-grid { grid-template-columns: 1fr; gap: 36px; }
+      .prod-placeholder { aspect-ratio: 16/9; }
+
+      .why-grid { grid-template-columns: 1fr; gap: 16px; }
+
+      .booking-grid { grid-template-columns: 1fr; gap: 40px; }
+
+      .form-row { grid-template-columns: 1fr; gap: 0; }
+
+      .about-grid { grid-template-columns: 1fr; gap: 36px; }
+      .about-badge { right: 0; }
+
+      .gallery-grid { grid-template-columns: 1fr 1fr; }
+
+      .footer-grid { grid-template-columns: 1fr; gap: 32px; }
+      .footer-bottom { flex-direction: column; text-align: center; }
+
+      .hours-grid { grid-template-columns: 1fr 1fr 1fr; }
+    }
+
+    @media (max-width: 480px) {
+      h1 { font-size: 1.9rem; }
+      .hero-actions { flex-direction: column; }
+      .hero-actions .btn { width: 100%; }
+      .benefit-strip ul { justify-content: flex-start; overflow-x: auto; flex-wrap: nowrap; padding: 0 16px; }
+      .gallery-grid { grid-template-columns: 1fr; }
+    }
+
+    /* Focus styles pro přístupnost */
+    :focus-visible {
+      outline: 3px solid var(--gold);
+      outline-offset: 3px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ══════════════════════════════════════
+       MOBILE STICKY CTA BAR
+  ══════════════════════════════════════ -->
+  <div class="mobile-sticky" id="mobileSticky">
+    <a href="tel:+420777888999" class="btn-call" aria-label="Zavolat +420 777 888 999">📞 Zavolat</a>
+    <a href="#booking"          class="btn-book">✂️ Rezervovat</a>
+  </div>
+
+  <!-- ══════════════════════════════════════
+       HEADER
+  ══════════════════════════════════════ -->
+  <header class="site-header" id="siteHeader">
+    <div class="container header-inner">
+      <!-- ── Logo: nahraďte .logo-mark za <img src="logo.svg" alt="logo" width="40"> ── -->
+      <a href="#" class="site-logo" aria-label="Kadeřnictví Maruška — domů">
+        <div class="logo-mark" aria-hidden="true">M</div>
+        <div class="logo-text">
+          <strong>kadeřnictví Maruška</strong>
+          <span>Luxusní péče o vlasy</span>
+        </div>
+      </a>
+
+      <nav class="site-nav" aria-label="Hlavní navigace">
+        <ul>
+          <li><a href="#services">Služby</a></li>
+          <li><a href="#why">O nás</a></li>
+          <li><a href="#about">Maruška</a></li>
+          <li><a href="#gallery">Galerie</a></li>
+        </ul>
+      </nav>
+
+      <div class="header-cta">
+        <a href="tel:+420777888999" class="tel-link" aria-label="Zavolat +420 777 888 999">📞 +420 777 888 999</a>
+        <a href="#booking" class="btn btn-gold">Rezervovat termín</a>
+      </div>
+
+      <button class="hamburger" id="hamburger" aria-label="Otevřít menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Mobile nav overlay -->
+  <nav class="mobile-nav" id="mobileNav" aria-label="Mobilní navigace">
+    <button class="close-btn" id="closeNav" aria-label="Zavřít menu">×</button>
+    <a href="#services" class="nav-link">Služby</a>
+    <a href="#products" class="nav-link">Kosmetika</a>
+    <a href="#why"      class="nav-link">Proč my</a>
+    <a href="#about"    class="nav-link">Maruška</a>
+    <a href="#gallery"  class="nav-link">Galerie</a>
+    <a href="#booking"  class="nav-link" style="color:var(--gold)">Rezervovat</a>
+  </nav>
+
+  <main>
+
+    <!-- ══════════════════════════════════════
+         HERO
+    ══════════════════════════════════════ -->
+    <section class="hero" id="hero" aria-label="Úvod">
+      <div class="container">
+        <div class="hero-grid">
+          <div class="hero-content">
+            <div class="hero-eyebrow" role="text">
+              <span>✂️</span> Profesionální kadeřnictví
+            </div>
+            <h1>Nový střih, barva i péče —&nbsp;<em>bez kompromisů</em></h1>
+            <p class="hero-sub">
+              15 let praxe, individuální konzultace a prémiová kosmetika.<br>
+              Každá klientka si zaslouží péči přesně podle svých vlasů.
+            </p>
+            <div class="hero-pills" role="list">
+              <span class="hero-pill" role="listitem"><span class="dot" aria-hidden="true"></span> 15 let zkušeností</span>
+              <span class="hero-pill" role="listitem"><span class="dot" aria-hidden="true"></span> Individuální přístup</span>
+              <span class="hero-pill" role="listitem"><span class="dot" aria-hidden="true"></span> Prémiová kosmetika</span>
+            </div>
+            <div class="hero-actions">
+              <a href="#booking" class="btn btn-gold btn-large">✂️ Rezervovat termín</a>
+              <a href="tel:+420777888999" class="btn btn-outline btn-large" aria-label="Zavolat nám">📞 Zavolat</a>
+            </div>
+          </div>
+
+          <div class="hero-photo reveal" aria-hidden="true">
+            <img src="https://images.unsplash.com/photo-1560066984-138dadb4c035?auto=format&w=600&q=80&fit=crop" alt="Kadeřnictví Maruška — interiér salonu" loading="lazy">
+            <div class="photo-badge" role="presentation">
+              <span class="pb-icon">⭐</span>
+              <div>
+                <div class="pb-num">15+</div>
+                <div class="pb-lbl">let zkušeností</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Benefit strip -->
+    <div class="benefit-strip" aria-hidden="true">
+      <div class="container">
+        <ul>
+          <li><span class="b-icon">✂️</span> Střihy & styling</li>
+          <li><span class="b-icon">🎨</span> Barvení & melíry</li>
+          <li><span class="b-icon">💆</span> Regenerace vlasů</li>
+          <li><span class="b-icon">🛍</span> Prémiová kosmetika</li>
+          <li><span class="b-icon">📞</span> Rychlá rezervace</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- ══════════════════════════════════════
+         SERVICES
+    ══════════════════════════════════════ -->
+    <section class="section" id="services" aria-labelledby="services-heading">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="section-tag">Nabídka služeb</span>
+          <h2 id="services-heading">Co pro vás udělám</h2>
+          <p>Kompletní péče o vaše vlasy — každá návštěva začíná konzultací, abychom společně našly to nejlepší řešení.</p>
+        </div>
+        <div class="services-grid">
+
+          <article class="service-card reveal" aria-label="Střihy">
+            <div class="service-icon" aria-hidden="true">✂️</div>
+            <h3>Dámské & pánské střihy</h3>
+            <p>Klasické i moderní střihy přizpůsobené tvaru obličeje, struktuře vlasů a vašemu životnímu stylu.</p>
+            <span class="service-tag">Střih + foukání</span>
+          </article>
+
+          <article class="service-card reveal" aria-label="Barvení">
+            <div class="service-icon" aria-hidden="true">🎨</div>
+            <h3>Barvení vlasů</h3>
+            <p>Plné přebarvení, kořínky nebo jemné přechody. Používám šetrnými barvami, které pečují o vlasy zároveň.</p>
+            <span class="service-tag">Včetně konzultace</span>
+          </article>
+
+          <article class="service-card reveal" aria-label="Melíry">
+            <div class="service-icon" aria-hidden="true">✨</div>
+            <h3>Melíry & balayage</h3>
+            <p>Klasické melíry, pudroné techniky, balayage i ombre — přirozené světlé efekty na míru.</p>
+            <span class="service-tag">Pudrová technika</span>
+          </article>
+
+          <article class="service-card reveal" aria-label="Regenerace">
+            <div class="service-icon" aria-hidden="true">💆</div>
+            <h3>Regenerace vlasů</h3>
+            <p>Hloubkové ošetření pro poškozené nebo suché vlasy. Keratinové a proteinové kúry pro viditelný rozdíl.</p>
+            <span class="service-tag">Keratinová kúra</span>
+          </article>
+
+          <article class="service-card reveal" aria-label="Styling">
+            <div class="service-icon" aria-hidden="true">💇</div>
+            <h3>Styling & příležitostné účesy</h3>
+            <p>Foukání, ondulace, společenské nebo svatební účesy. Přijďte krásná na každou příležitost.</p>
+            <span class="service-tag">Svatby & večírky</span>
+          </article>
+
+          <article class="service-card reveal" aria-label="Konzultace">
+            <div class="service-icon" aria-hidden="true">💬</div>
+            <h3>Vlasová konzultace</h3>
+            <p>Nejste si jistá co chcete? Přijďte na konzultaci — společně najdeme styl, který vám sluší a hodí se k vašemu životnímu stylu.</p>
+            <span class="service-tag">Zdarma při návštěvě</span>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════
+         PRODUCTS
+    ══════════════════════════════════════ -->
+    <section class="section section-alt" id="products" aria-labelledby="products-heading">
+      <div class="container">
+        <div class="products-grid">
+          <img class="prod-photo reveal" src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&w=800&q=80&fit=crop" alt="Prémiová vlasová kosmetika — salonní produkty" loading="lazy">
+          <div class="products-content reveal">
+            <span class="section-tag">Prémiová kosmetika</span>
+            <h2 id="products-heading">Péče, která pokračuje doma</h2>
+            <p>Salon ošetření vydrží déle, když se doma staráte správně. Doporučím a dovezu přesně ty přípravky, které váš typ vlasů potřebuje — bez zbytečného hádání ve drogerii.</p>
+            <div class="prod-list">
+              <div class="prod-item">
+                <span class="pi">🌿</span>
+                <div><strong>Šampony & kondicionéry</strong><span>Profesionální řady pro barvené, poškozené i jemné vlasy</span></div>
+              </div>
+              <div class="prod-item">
+                <span class="pi">✨</span>
+                <div><strong>Masky & kúry</strong><span>Hloubková regenerace pro výsledky jako ze salonu</span></div>
+              </div>
+              <div class="prod-item">
+                <span class="pi">🔥</span>
+                <div><strong>Tepelná ochrana</strong><span>Pro žehlení, foukaní a kulmu — bez poškození</span></div>
+              </div>
+              <div class="prod-item">
+                <span class="pi">💫</span>
+                <div><strong>Styling přípravky</strong><span>Laky, vosky, sérové oleje pro každý typ vlasů</span></div>
+              </div>
+            </div>
+            <a href="#booking" class="btn btn-green">Zeptat se na produkty →</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════
+         WHY US
+    ══════════════════════════════════════ -->
+    <section class="section section-dark" id="why" aria-labelledby="why-heading">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="section-tag">Proč Maruška</span>
+          <h2 id="why-heading">Jasné výhody pro vás</h2>
+          <p>Nejsem řetězcový salon. Jsem jedna kadeřnice, která si dá na vaše vlasy záležet.</p>
+        </div>
+        <div class="why-grid">
+          <div class="why-card reveal">
+            <div class="why-num" aria-label="15 let">15</div>
+            <h3>Let zkušeností</h3>
+            <p>Za 15 let jsem prošla tisíci vlasů a viděla jsem (skoro) vše. Vaše vlasy jsou v dobrých rukou.</p>
+          </div>
+          <div class="why-card reveal">
+            <div class="why-num" aria-label="100 %">100%</div>
+            <h3>Individuální přístup</h3>
+            <p>Každá klientka je jiná. Vždy začínám konzultací a výsledek přizpůsobím vašim vlasům i přáním.</p>
+          </div>
+          <div class="why-card reveal">
+            <div class="why-num" aria-label="Nejlepší ceny">✓</div>
+            <h3>Skvělé ceny</h3>
+            <p>Prémiová kvalita nemusí stát prémiové peníze. Konkurenční ceny a pravidelné akce pro stálé klientky.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════
+         BOOKING FORM
+         ── webhook: https://mirabeecko.app.n8n.cloud/webhook-test/web-intake
+         ── fallback: mailto:maruska@kadernictvi.cz
+         ── změnit webhook → const WEBHOOK_URL níže v <script>
+    ══════════════════════════════════════ -->
+    <section class="section" id="booking" aria-labelledby="booking-heading">
+      <div class="container">
+        <div class="booking-grid">
+
+          <!-- Info levá strana -->
+          <div class="booking-info">
+            <span class="section-tag reveal">Rezervace</span>
+            <h2 id="booking-heading" class="reveal">Objednejte se<br><span class="gold">snadno a rychle</span></h2>
+            <p class="reveal">Vyplňte krátký formulář a ozvu se vám do 24 hodin s potvrzením. Nebo zavolejte přímo — ráda poradím i s výběrem služby.</p>
+
+            <div class="booking-contact reveal" role="list">
+              <a href="tel:+420777888999" class="bc-item" role="listitem" aria-label="Zavolat +420 777 888 999">
+                <span class="bc-icon" aria-hidden="true">📞</span>
+                <div>
+                  <div class="bc-label">Telefon (tap-to-call)</div>
+                  <div class="bc-val"><a href="tel:+420777888999">+420 777 888 999</a></div>
+                </div>
+              </a>
+              <div class="bc-item" role="listitem">
+                <span class="bc-icon" aria-hidden="true">✉️</span>
+                <div>
+                  <div class="bc-label">E-mail</div>
+                  <div class="bc-val"><a href="mailto:maruska@kadernictvi.cz">maruska@kadernictvi.cz</a></div>
+                </div>
+              </div>
+            </div>
+
+            <div class="reveal">
+              <p style="font-size:.82rem;color:var(--muted);text-transform:uppercase;letter-spacing:.5px;font-weight:700;margin-bottom:12px">Otevírací doba</p>
+              <div class="hours-grid" role="list">
+                <div class="hour-box" role="listitem"><div class="hb-day">Po–Pá</div><div class="hb-time">9:00–18:00</div></div>
+                <div class="hour-box" role="listitem"><div class="hb-day">Sobota</div><div class="hb-time">8:00–12:00</div></div>
+                <div class="hour-box closed" role="listitem"><div class="hb-day">Neděle</div><div class="hb-time">Zavřeno</div></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Formulář -->
+          <div class="form-card reveal">
+            <h3>Rychlá rezervace</h3>
+            <p class="form-sub">Odpovím do 24 hodin s potvrzením termínu.</p>
+
+            <form id="bookingForm" novalidate aria-label="Rezervační formulář">
+              <div class="form-group">
+                <label for="f-name">Vaše jméno <span aria-hidden="true" style="color:#ef4444">*</span></label>
+                <input type="text" id="f-name" name="name" placeholder="Jana Nováková" required autocomplete="name" aria-required="true">
+              </div>
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="f-phone">Telefon <span aria-hidden="true" style="color:#ef4444">*</span></label>
+                  <input type="tel" id="f-phone" name="phone" placeholder="+420 777 123 456" required autocomplete="tel" aria-required="true">
+                </div>
+                <div class="form-group">
+                  <label for="f-email">E-mail <span style="color:var(--muted);font-weight:400">(volitelné)</span></label>
+                  <input type="email" id="f-email" name="email" placeholder="jana@email.cz" autocomplete="email">
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="f-service">Služba <span aria-hidden="true" style="color:#ef4444">*</span></label>
+                <select id="f-service" name="service" required aria-required="true">
+                  <option value="">— vyberte službu —</option>
+                  <option value="Dámský střih">✂️ Dámský střih</option>
+                  <option value="Pánský střih">✂️ Pánský střih</option>
+                  <option value="Barvení">🎨 Barvení</option>
+                  <option value="Melír / Balayage">✨ Melír / Balayage</option>
+                  <option value="Regenerace">💆 Regenerace vlasů</option>
+                  <option value="Styling">💇 Styling & účes</option>
+                  <option value="Konzultace">💬 Konzultace</option>
+                  <option value="Jiné">Jiné / Nevím</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="f-datetime">Preferovaný termín</label>
+                <input type="text" id="f-datetime" name="preferred_date_time" placeholder="např. Středa 10:00, nebo Kdykoli dopoledne">
+              </div>
+              <div class="form-group">
+                <label for="f-message">Poznámka nebo dotaz</label>
+                <textarea id="f-message" name="message" rows="3" placeholder="Délka vlasů, konkrétní přání, barva, nebo cokoliv dalšího…" aria-label="Poznámka nebo dotaz"></textarea>
+              </div>
+
+              <!-- GDPR -->
+              <div class="gdpr-check">
+                <input type="checkbox" id="gdpr" name="gdpr" required aria-required="true" aria-label="Souhlas se zpracováním osobních údajů">
+                <label for="gdpr">
+                  Souhlasím se <a href="#" onclick="return false">zpracováním osobních údajů</a> pro účely rezervace. Data nebudou sdílena třetím stranám a budou uchována po dobu nezbytně nutnou.
+                </label>
+              </div>
+
+              <button type="submit" class="form-btn" id="submitBtn">
+                Odeslat rezervaci →
+              </button>
+
+              <!-- Stavy formuláře -->
+              <div class="form-msg success" id="msgSuccess" role="alert" aria-live="polite">
+                ✅ Rezervace přijata! Ozvu se vám do 24 hodin s potvrzením termínu.
+              </div>
+              <div class="form-msg error" id="msgError" role="alert" aria-live="polite">
+                ❌ Něco se pokazilo. Zkuste to prosím znovu nebo
+                <a href="mailto:maruska@kadernictvi.cz?subject=Rezervace" id="fallbackLink">napište přímo e-mailem</a>.
+              </div>
+              <div class="form-msg fallback" id="msgFallback" role="alert" aria-live="polite">
+                ⚠️ Formulář momentálně nedostupný. Rezervujte prosím <a href="mailto:maruska@kadernictvi.cz?subject=Rezervace" id="fallbackLink2">přímo e-mailem</a> nebo zavolejte na <a href="tel:+420777888999">+420 777 888 999</a>.
+              </div>
+            </form>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════
+         ABOUT
+    ══════════════════════════════════════ -->
+    <section class="section section-alt" id="about" aria-labelledby="about-heading">
+      <div class="container">
+        <div class="about-grid">
+          <div class="about-photo reveal">
+            <img src="https://images.unsplash.com/photo-1580618672591-eb180b1a973f?auto=format&w=600&q=80&fit=crop&crop=faces" alt="Maruška Nováková, kadeřnice" loading="lazy">
+            <div class="about-badge" aria-label="15 let praxe">
+              <strong>15+</strong>
+              <span>let praxe</span>
+            </div>
+          </div>
+          <div class="about-content">
+            <span class="section-tag reveal">O mně</span>
+            <h2 id="about-heading" class="reveal">Maruška Nováková</h2>
+            <p class="reveal" style="font-family:var(--font-h);font-size:1.15rem;color:var(--green);font-style:italic;margin-bottom:16px">"Ke každé klientce přistupuji jako k jednotlivci — protože každé vlasy jsou jiné."</p>
+            <p class="reveal">Kadeřnictví mě baví od prvního dne a po 15 letech mě baví stále stejně. Specializuji se na dámské střihy a barevné techniky s důrazem na zdraví vlasů.</p>
+            <p class="reveal">Každá klientka si u mě projde individuální konzultací, abychom společně našly styl, který jí opravdu sluší — a vydrží.</p>
+            <div class="about-skills reveal" role="list" aria-label="Specializace">
+              <span class="skill-tag" role="listitem">Dámské střihy</span>
+              <span class="skill-tag" role="listitem">Barvení & melíry</span>
+              <span class="skill-tag" role="listitem">Balayage</span>
+              <span class="skill-tag" role="listitem">Pudrová technika</span>
+              <span class="skill-tag" role="listitem">Keratinová kúra</span>
+              <span class="skill-tag" role="listitem">Vlasová diagnostika</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════
+         GALLERY
+         ── Nahraďte .gallery-item za <img src="foto.jpg" alt="popis">
+    ══════════════════════════════════════ -->
+    <section class="section" id="gallery" aria-labelledby="gallery-heading">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="section-tag">Galerie</span>
+          <h2 id="gallery-heading">Ukázky prací</h2>
+          <p>Sem vložte fotografie před/po, výsledky barvení, melírů nebo styling. Vlastní fotky ze salonu.</p>
+        </div>
+        <div class="gallery-grid" role="list" aria-label="Fotogalerie — ukázky práce">
+          <img class="gallery-img reveal" src="https://images.unsplash.com/photo-1522337660859-02fbefca4702?auto=format&w=600&q=80&fit=crop" alt="Balayage — přírodní přechod barev" loading="lazy" role="listitem">
+          <img class="gallery-img reveal" src="https://images.unsplash.com/photo-1519345182560-3f2917c472ef?auto=format&w=600&q=80&fit=crop" alt="Blond melír — světlé prameny" loading="lazy" role="listitem">
+          <img class="gallery-img reveal" src="https://images.unsplash.com/photo-1492106087820-71f1a00d2b11?auto=format&w=600&q=80&fit=crop" alt="Moderní střih — precizní tvar" loading="lazy" role="listitem">
+          <img class="gallery-img reveal" src="https://images.unsplash.com/photo-1595476108010-b4d1f102b1b1?auto=format&w=600&q=80&fit=crop" alt="Barvení vlasů — živé tóny" loading="lazy" role="listitem">
+          <img class="gallery-img reveal" src="https://images.unsplash.com/photo-1605497788044-5a32c7078486?auto=format&w=600&q=80&fit=crop" alt="Styling a foukání — hedvábný lesk" loading="lazy" role="listitem">
+          <img class="gallery-img reveal" src="https://images.unsplash.com/photo-1609368548163-26c7aa45bbd2?auto=format&w=600&q=80&fit=crop" alt="Regenerace — vlasy plné zdraví" loading="lazy" role="listitem">
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ══════════════════════════════════════
+       FOOTER
+  ══════════════════════════════════════ -->
+  <footer class="site-footer" id="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="site-logo">
+            <div class="logo-mark" aria-hidden="true">M</div>
+            <div class="logo-text">
+              <strong>kadeřnictví Maruška</strong>
+              <span>Luxusní péče o vlasy</span>
+            </div>
+          </div>
+          <p>Profesionální kadeřnické služby s 15 lety praxe. Individuální přístup, prémiová kosmetika a konkurenční ceny.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Navigace</h4>
+          <ul>
+            <li><a href="#services">Služby</a></li>
+            <li><a href="#products">Kosmetika</a></li>
+            <li><a href="#why">Proč my</a></li>
+            <li><a href="#about">O Marušce</a></li>
+            <li><a href="#gallery">Galerie</a></li>
+            <li><a href="#booking">Rezervace</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Kontakt</h4>
+          <ul>
+            <li>
+              <div class="bc-label" style="font-size:.75rem;color:rgba(255,255,255,.4);margin-bottom:2px">Telefon</div>
+              <a href="tel:+420777888999" class="f-val">+420 777 888 999</a>
+            </li>
+            <li>
+              <div class="bc-label" style="font-size:.75rem;color:rgba(255,255,255,.4);margin-bottom:2px">E-mail</div>
+              <a href="mailto:maruska@kadernictvi.cz" class="f-val">maruska@kadernictvi.cz</a>
+            </li>
+            <li style="margin-top:8px">
+              <div class="bc-label" style="font-size:.75rem;color:rgba(255,255,255,.4);margin-bottom:6px">Otevírací doba</div>
+              <div style="font-size:.85rem;line-height:1.7;color:rgba(255,255,255,.7)">
+                Po–Pá: 9:00–18:00<br>
+                Sobota: 8:00–12:00<br>
+                Neděle: Zavřeno
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2024 Kadeřnictví Maruška. Všechna práva vyhrazena.</p>
+        <div style="display:flex;gap:20px;flex-wrap:wrap;justify-content:center">
+          <a href="#">Ochrana osobních údajů</a><!-- DOPLNIT odkaz -->
+          <a href="#">Zásady cookies</a><!-- DOPLNIT odkaz -->
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ══════════════════════════════════════
+       JSON-LD Schema — LocalBusiness
+       https://search.google.com/test/rich-results
+  ══════════════════════════════════════ -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "HairSalon",
+    "name": "Kadeřnictví Maruška",
+    "description": "Profesionální kadeřnictví s 15 lety praxe. Střihy, barvení, melíry, regenerace a prémiová vlasová kosmetika.",
+    "telephone": "+420777888999",
+    "email": "maruska@kadernictvi.cz",
+    "url": "https://kadernictvi-maruska.cz",
+    "openingHours": ["Mo-Fr 09:00-18:00", "Sa 08:00-12:00"],
+    "priceRange": "$$",
+    "currenciesAccepted": "CZK",
+    "paymentAccepted": "Cash, Card",
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": "Kadeřnické služby",
+      "itemListElement": [
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Dámský střih" } },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Barvení vlasů" } },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Melír a balayage" } },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Regenerace vlasů" } }
+      ]
+    }
+  }
+  </script>
+
+  <!-- ══════════════════════════════════════
+       JAVASCRIPT
+
+       KDE ZMĚNIT:
+       1. WEBHOOK_URL   — vaše n8n adresa
+       2. FALLBACK_MAIL — váš email pro fallback
+       3. Google Analytics — odkomentujte GA blok níže
+  ══════════════════════════════════════ -->
+  <script>
+    /* ── KONFIGURACE ─────────────────────────────────────────── */
+    const WEBHOOK_URL   = 'https://mirabeecko.app.n8n.cloud/webhook-test/web-intake';
+    const FALLBACK_MAIL = 'maruska@kadernictvi.cz';
+
+    /* ── Google Analytics — ODKOMENTOVAT po nasazení ─────────
+    (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-XXXXXXX'); // <-- váš GTM ID
+    ────────────────────────────────────────────────────────── */
+
+    /* ── Sticky header ───────────────────────────────────────── */
+    const header = document.getElementById('siteHeader');
+    window.addEventListener('scroll', () => {
+      header.classList.toggle('scrolled', window.scrollY > 40);
+    }, { passive: true });
+
+    /* ── Hamburger menu ──────────────────────────────────────── */
+    const hamburger = document.getElementById('hamburger');
+    const mobileNav = document.getElementById('mobileNav');
+    const closeNav  = document.getElementById('closeNav');
+
+    function openMenu()  { mobileNav.classList.add('open');    hamburger.setAttribute('aria-expanded', 'true');  document.body.style.overflow = 'hidden'; }
+    function closeMenu() { mobileNav.classList.remove('open'); hamburger.setAttribute('aria-expanded', 'false'); document.body.style.overflow = ''; }
+
+    hamburger.addEventListener('click', openMenu);
+    closeNav.addEventListener('click', closeMenu);
+    mobileNav.querySelectorAll('a').forEach(a => a.addEventListener('click', closeMenu));
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') closeMenu(); });
+
+    /* ── Scroll reveal ───────────────────────────────────────── */
+    const revealObs = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting) { e.target.classList.add('visible'); revealObs.unobserve(e.target); }
+      });
+    }, { threshold: 0.08, rootMargin: '0px 0px -32px 0px' });
+
+    document.querySelectorAll('.reveal').forEach(el => {
+      const r = el.getBoundingClientRect();
+      if (r.top < window.innerHeight) el.classList.add('visible');
+      else revealObs.observe(el);
+    });
+
+    /* ── Smooth scroll pro kotvy ─────────────────────────────── */
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', function(e) {
+        const href = this.getAttribute('href');
+        if (!href || href === '#') return;
+        const target = document.querySelector(href);
+        if (!target) return;
+        e.preventDefault();
+        const offset = header.offsetHeight + 8;
+        window.scrollTo({ top: target.getBoundingClientRect().top + window.scrollY - offset, behavior: 'smooth' });
+      });
+    });
+
+    /* ── REZERVAČNÍ FORMULÁŘ ─────────────────────────────────── */
+    const form       = document.getElementById('bookingForm');
+    const submitBtn  = document.getElementById('submitBtn');
+    const msgSuccess = document.getElementById('msgSuccess');
+    const msgError   = document.getElementById('msgError');
+    const msgFallback= document.getElementById('msgFallback');
+
+    function hideAllMsg() {
+      [msgSuccess, msgError, msgFallback].forEach(m => m.style.display = 'none');
+    }
+
+    function buildFallbackLink(data) {
+      const subject = encodeURIComponent(`Rezervace — ${data.service || 'kadeřnictví'}`);
+      const body = encodeURIComponent(
+        `Jméno: ${data.name}\nTelefon: ${data.phone}\nE-mail: ${data.email || '—'}\nSlužba: ${data.service || '—'}\nPreferovaný termín: ${data.preferred_date_time || '—'}\nPoznámka: ${data.message || '—'}`
+      );
+      return `mailto:${FALLBACK_MAIL}?subject=${subject}&body=${body}`;
+    }
+
+    form.addEventListener('submit', async function(e) {
+      e.preventDefault();
+      hideAllMsg();
+
+      /* Klientská validace */
+      const name    = form.querySelector('[name=name]').value.trim();
+      const phone   = form.querySelector('[name=phone]').value.trim();
+      const service = form.querySelector('[name=service]').value;
+      const gdpr    = form.querySelector('[name=gdpr]').checked;
+
+      if (!name || !phone || !service || !gdpr) {
+        /* Highlight chybějící pole */
+        [['name', name], ['phone', phone], ['service', service]].forEach(([n, v]) => {
+          const el = form.querySelector(`[name=${n}]`);
+          if (!v) { el.style.borderColor = '#ef4444'; el.addEventListener('input', () => el.style.borderColor = '', { once: true }); }
+        });
+        if (!gdpr) {
+          const gdprEl = form.querySelector('[name=gdpr]');
+          gdprEl.parentElement.style.color = '#ef4444';
+          gdprEl.addEventListener('change', () => gdprEl.parentElement.style.color = '', { once: true });
+        }
+        return;
+      }
+
+      submitBtn.textContent = 'Odesílám…';
+      submitBtn.disabled    = true;
+
+      const payload = {
+        name,
+        phone,
+        email:               form.querySelector('[name=email]').value.trim() || null,
+        service,
+        preferred_date_time: form.querySelector('[name=preferred_date_time]').value.trim() || null,
+        message:             form.querySelector('[name=message]').value.trim() || null,
+        source:              'kadernictvi-maruska',
+        sent_at:             new Date().toISOString(),
+        zdroj:               window.location.href
+      };
+
+      /* Fallback mailto URL (pro případ selhání) */
+      const fallbackHref = buildFallbackLink(payload);
+      document.getElementById('fallbackLink').href  = fallbackHref;
+      document.getElementById('fallbackLink2').href = fallbackHref;
+
+      try {
+        const res = await fetch(WEBHOOK_URL, {
+          method:  'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body:    JSON.stringify(payload),
+          mode:    'cors'
+        });
+
+        if (res.ok || res.status === 0 || res.status === 204) {
+          form.reset();
+          msgSuccess.style.display = 'block';
+          msgSuccess.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        } else {
+          throw new Error(`HTTP ${res.status}`);
+        }
+      } catch (err) {
+        console.warn('Webhook error:', err.message);
+        msgFallback.style.display = 'block';
+        msgFallback.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      } finally {
+        submitBtn.textContent = 'Odeslat rezervaci →';
+        submitBtn.disabled    = false;
+      }
+    });
+  </script>
+
+  <!-- webdo24.cz badge -->
+  <style>#wd24-bar{position:fixed;bottom:0;left:0;right:0;z-index:99999;display:flex;align-items:center;justify-content:center;gap:8px;background:rgba(15,23,42,.88);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-top:1px solid rgba(255,255,255,.08);padding:10px 20px;font-family:-apple-system,'Inter',sans-serif;font-size:11px;font-weight:500;color:rgba(255,255,255,.5);box-shadow:0 -4px 16px rgba(0,0,0,.2)}#wd24-bar a{color:rgba(255,255,255,.85);text-decoration:none;font-weight:800;letter-spacing:-.02em;font-size:13px}#wd24-bar a span{color:#f97316}#wd24-bar a:hover{color:#fff}</style>
+  <div id="wd24-bar">Web&nbsp;vytvořil&nbsp;<a href="https://webyprobyznys.cz" target="_blank" rel="noopener">WebyPro<span>Byznys</span>.cz</a>&nbsp;·&nbsp;Profesionální web do 24&nbsp;hodin</div>
+</body>
+</html>
